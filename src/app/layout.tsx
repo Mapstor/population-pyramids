@@ -110,7 +110,9 @@ export default function RootLayout({
                   <ul className="space-y-2 text-sm">
                     <li><a href="/" className="text-gray-400 hover:text-white transition">All Countries</a></li>
                     <li><a href="/compare" className="text-gray-400 hover:text-white transition">Compare</a></li>
+                    <li><a href="/search" className="text-gray-400 hover:text-white transition">Search</a></li>
                     <li><a href="/about" className="text-gray-400 hover:text-white transition">About</a></li>
+                    <li><a href="/sitemap.xml" className="text-gray-400 hover:text-white transition">Sitemap</a></li>
                   </ul>
                 </div>
 
@@ -151,9 +153,10 @@ export default function RootLayout({
                   © {new Date().getFullYear()} PopulationPyramids. Data licensed under Creative Commons.
                 </p>
                 <div className="flex items-center space-x-6 mt-4 md:mt-0">
-                  <a href="/about" className="text-sm text-gray-500 hover:text-gray-300 transition">Privacy</a>
-                  <a href="/about" className="text-sm text-gray-500 hover:text-gray-300 transition">Terms</a>
-                  <a href="/about" className="text-sm text-gray-500 hover:text-gray-300 transition">Contact</a>
+                  <a href="/privacy" className="text-sm text-gray-500 hover:text-gray-300 transition">Privacy</a>
+                  <a href="/terms" className="text-sm text-gray-500 hover:text-gray-300 transition">Terms</a>
+                  <a href="/contact" className="text-sm text-gray-500 hover:text-gray-300 transition">Contact</a>
+                  <a href="/sitemap.xml" className="text-sm text-gray-500 hover:text-gray-300 transition">Sitemap</a>
                 </div>
               </div>
             </div>
