@@ -37,7 +37,9 @@ interface CountryPageProps {
 
 export async function generateMetadata({ params }: CountryPageProps) {
   try {
-    const countrySlug = params.slug.replace('-population-pyramid', '');
+    const countrySlug = params.slug.endsWith('-population-pyramid') 
+      ? params.slug.replace('-population-pyramid', '')
+      : params.slug;
     const countryData = await loadCountryData(countrySlug);
     const availableYears = getAvailableYears(countryData);
     const latestYear = Math.max(...availableYears);
@@ -57,7 +59,9 @@ export async function generateMetadata({ params }: CountryPageProps) {
 
 export default async function CountryPage({ params }: CountryPageProps) {
   try {
-    const countrySlug = params.slug.replace('-population-pyramid', '');
+    const countrySlug = params.slug.endsWith('-population-pyramid') 
+      ? params.slug.replace('-population-pyramid', '')
+      : params.slug;
     const countryData = await loadCountryData(countrySlug);
     const countries = await loadCountries();
     const availableYears = getAvailableYears(countryData);

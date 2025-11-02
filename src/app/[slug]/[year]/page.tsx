@@ -40,7 +40,9 @@ interface CountryYearPageProps {
 
 export async function generateMetadata({ params }: CountryYearPageProps) {
   try {
-    const countrySlug = params.slug.replace('-population-pyramid', '');
+    const countrySlug = params.slug.endsWith('-population-pyramid') 
+      ? params.slug.replace('-population-pyramid', '')
+      : params.slug;
     const countryData = await loadCountryData(countrySlug);
     const year = parseInt(params.year);
     const yearData = countryData.years[params.year];
@@ -61,7 +63,9 @@ export async function generateMetadata({ params }: CountryYearPageProps) {
 
 export default async function CountryYearPage({ params }: CountryYearPageProps) {
   try {
-    const countrySlug = params.slug.replace('-population-pyramid', '');
+    const countrySlug = params.slug.endsWith('-population-pyramid') 
+      ? params.slug.replace('-population-pyramid', '')
+      : params.slug;
     const countryData = await loadCountryData(countrySlug);
     const yearData = countryData.years[params.year];
     
