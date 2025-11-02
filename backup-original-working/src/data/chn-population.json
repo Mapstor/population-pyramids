@@ -1,0 +1,31 @@
+[
+  {
+    "year": 2024,
+    "totalPopulation": 1425671352,
+    "malePopulation": 729000000,
+    "femalePopulation": 696671352,
+    "ageGroups": [
+      {"ageGroup": {"id": 1, "range": "0-4", "label": "0-4 years", "minAge": 0, "maxAge": 4}, "male": 35123456, "female": 32876543},
+      {"ageGroup": {"id": 2, "range": "5-9", "label": "5-9 years", "minAge": 5, "maxAge": 9}, "male": 38456789, "female": 36123456},
+      {"ageGroup": {"id": 3, "range": "10-14", "label": "10-14 years", "minAge": 10, "maxAge": 14}, "male": 42789012, "female": 40456789},
+      {"ageGroup": {"id": 4, "range": "15-19", "label": "15-19 years", "minAge": 15, "maxAge": 19}, "male": 45012345, "female": 42678901},
+      {"ageGroup": {"id": 5, "range": "20-24", "label": "20-24 years", "minAge": 20, "maxAge": 24}, "male": 48234567, "female": 45890123},
+      {"ageGroup": {"id": 6, "range": "25-29", "label": "25-29 years", "minAge": 25, "maxAge": 29}, "male": 52345678, "female": 49901234},
+      {"ageGroup": {"id": 7, "range": "30-34", "label": "30-34 years", "minAge": 30, "maxAge": 34}, "male": 55567890, "female": 53234567},
+      {"ageGroup": {"id": 8, "range": "35-39", "label": "35-39 years", "minAge": 35, "maxAge": 39}, "male": 58890123, "female": 56567890},
+      {"ageGroup": {"id": 9, "range": "40-44", "label": "40-44 years", "minAge": 40, "maxAge": 44}, "male": 62234567, "female": 59890123},
+      {"ageGroup": {"id": 10, "range": "45-49", "label": "45-49 years", "minAge": 45, "maxAge": 49}, "male": 65567890, "female": 63234567},
+      {"ageGroup": {"id": 11, "range": "50-54", "label": "50-54 years", "minAge": 50, "maxAge": 54}, "male": 58890123, "female": 56567890},
+      {"ageGroup": {"id": 12, "range": "55-59", "label": "55-59 years", "minAge": 55, "maxAge": 59}, "male": 52123456, "female": 49890123},
+      {"ageGroup": {"id": 13, "range": "60-64", "label": "60-64 years", "minAge": 60, "maxAge": 64}, "male": 45456789, "female": 43123456},
+      {"ageGroup": {"id": 14, "range": "65-69", "label": "65-69 years", "minAge": 65, "maxAge": 69}, "male": 38789012, "female": 36456789},
+      {"ageGroup": {"id": 15, "range": "70-74", "label": "70-74 years", "minAge": 70, "maxAge": 74}, "male": 25012345, "female": 22789012},
+      {"ageGroup": {"id": 16, "range": "75-79", "label": "75-79 years", "minAge": 75, "maxAge": 79}, "male": 15234567, "female": 13012345},
+      {"ageGroup": {"id": 17, "range": "80-84", "label": "80-84 years", "minAge": 80, "maxAge": 84}, "male": 8456789, "female": 6234567},
+      {"ageGroup": {"id": 18, "range": "85-89", "label": "85-89 years", "minAge": 85, "maxAge": 89}, "male": 3678901, "female": 1456789},
+      {"ageGroup": {"id": 19, "range": "90-94", "label": "90-94 years", "minAge": 90, "maxAge": 94}, "male": 1567890, "female": 345678},
+      {"ageGroup": {"id": 20, "range": "95-99", "label": "95-99 years", "minAge": 95, "maxAge": 99}, "male": 323456, "female": 101234},
+      {"ageGroup": {"id": 21, "range": "100+", "label": "100+ years", "minAge": 100, "maxAge": null}, "male": 53456, "female": 12345}
+    ]
+  }
+]

@@ -1,0 +1,32 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="32" height="32" fill="#f8fafc"/>
+  
+  <!-- Population pyramid bars - representing age groups from bottom (young) to top (old) -->
+  <!-- Bottom tier (largest - young population) -->
+  <rect x="6" y="24" width="8" height="4" fill="#3b82f6" opacity="0.9"/>
+  <rect x="18" y="24" width="8" height="4" fill="#ec4899" opacity="0.9"/>
+  
+  <!-- Second tier -->
+  <rect x="7" y="20" width="7" height="3" fill="#3b82f6" opacity="0.9"/>
+  <rect x="18" y="20" width="7" height="3" fill="#ec4899" opacity="0.9"/>
+  
+  <!-- Third tier -->
+  <rect x="8" y="16" width="6" height="3" fill="#3b82f6" opacity="0.9"/>
+  <rect x="18" y="16" width="6" height="3" fill="#ec4899" opacity="0.9"/>
+  
+  <!-- Fourth tier -->
+  <rect x="9" y="12" width="5" height="3" fill="#3b82f6" opacity="0.9"/>
+  <rect x="18" y="12" width="5" height="3" fill="#ec4899" opacity="0.9"/>
+  
+  <!-- Fifth tier -->
+  <rect x="10" y="8" width="4" height="3" fill="#3b82f6" opacity="0.9"/>
+  <rect x="18" y="8" width="4" height="3" fill="#ec4899" opacity="0.9"/>
+  
+  <!-- Top tier (smallest - elderly population) -->
+  <rect x="11" y="4" width="3" height="3" fill="#3b82f6" opacity="0.9"/>
+  <rect x="18" y="4" width="3" height="3" fill="#ec4899" opacity="0.9"/>
+  
+  <!-- Center line -->
+  <line x1="16" y1="2" x2="16" y2="30" stroke="#6b7280" stroke-width="0.5" opacity="0.5"/>
+</svg>
