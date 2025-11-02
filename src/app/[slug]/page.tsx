@@ -21,18 +21,23 @@ import RegionalComparison from '@/components/RegionalComparison';
 import DecadeBreakdown from '@/components/DecadeBreakdown';
 import ShareButtons from '@/components/ShareButtons';
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
 interface CountryPageProps {
   params: {
     slug: string;
   };
 }
 
-export async function generateStaticParams() {
-  const countries = await loadCountries();
-  return countries.map(country => ({
-    slug: `${country.slug}-population-pyramid`
-  }));
-}
+// Disable static generation - use force-dynamic only
+// export async function generateStaticParams() {
+//   const countries = await loadCountries();
+//   return countries.map(country => ({
+//     slug: `${country.slug}-population-pyramid`
+//   }));
+// }
 
 export async function generateMetadata({ params }: CountryPageProps) {
   try {
