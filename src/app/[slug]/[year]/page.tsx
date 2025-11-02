@@ -39,7 +39,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: CountryYearPageProps) {
   try {
-    const countrySlug = params.country;
+    const countrySlug = params.slug.replace('-population-pyramid', '');
     const countryData = await loadCountryData(countrySlug);
     const year = parseInt(params.year);
     const yearData = countryData.years[params.year];
@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: CountryYearPageProps) {
 
 export default async function CountryYearPage({ params }: CountryYearPageProps) {
   try {
-    const countrySlug = params.country;
+    const countrySlug = params.slug.replace('-population-pyramid', '');
     const countryData = await loadCountryData(countrySlug);
     const yearData = countryData.years[params.year];
     
@@ -81,7 +81,7 @@ export default async function CountryYearPage({ params }: CountryYearPageProps) 
         <div className="mb-6 text-sm text-gray-600">
           <Link href="/" className="hover:text-blue-600">Home</Link>
           <span className="mx-2">/</span>
-          <Link href={`/${params.country}-population-pyramid`} className="hover:text-blue-600">
+          <Link href={`/${params.slug}`} className="hover:text-blue-600">
             {countryData.countryName}
           </Link>
           <span className="mx-2">/</span>
@@ -102,21 +102,21 @@ export default async function CountryYearPage({ params }: CountryYearPageProps) 
         <div className="mb-8 flex gap-4">
           {prevYear && (
             <Link
-              href={`/${params.country}-population-pyramid/${prevYear}`}
+              href={`/${params.slug}/${prevYear}`}
               className="px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition"
             >
               ← {prevYear}
             </Link>
           )}
           <Link
-            href={`/${params.country}`}
+            href={`/${params.slug.replace('-population-pyramid', '')}`}
             className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
           >
             Current ({Math.max(...availableYears)})
           </Link>
           {nextYear && (
             <Link
-              href={`/${params.country}-population-pyramid/${nextYear}`}
+              href={`/${params.slug}/${nextYear}`}
               className="px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition"
             >
               {nextYear} →
@@ -146,7 +146,7 @@ export default async function CountryYearPage({ params }: CountryYearPageProps) 
         {/* Share Buttons */}
         <div className="mb-8">
           <ShareButtons
-            url={`https://populationpyramids.org/${params.country}-population-pyramid/${year}`}
+            url={`https://populationpyramids.org/${params.slug}/${year}`}
             title={`${countryData.countryName} Population Pyramid ${year}`}
           />
         </div>
