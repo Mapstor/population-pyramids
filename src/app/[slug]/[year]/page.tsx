@@ -14,39 +14,9 @@ interface CountryYearPageProps {
   };
 }
 
-// Enable static generation for key countries to fix routing
-export async function generateStaticParams() {
-  const countries = await loadCountries();
-  const params: { slug: string; year: string }[] = [];
-  
-  // Add a few key countries for testing
-  const testCountries = countries.slice(0, 10);
-  
-  for (const country of testCountries) {
-    try {
-      const countryData = await loadCountryData(country.slug);
-      const availableYears = getAvailableYears(countryData);
-      
-      // Generate a few recent years for each country
-      const recentYears = availableYears.slice(-5);
-      
-      recentYears.forEach(year => {
-        params.push({
-          slug: country.slug,
-          year: year.toString()
-        });
-        params.push({
-          slug: `${country.slug}-population-pyramid`,
-          year: year.toString()
-        });
-      });
-    } catch (error) {
-      console.error(`Failed to load data for ${country.slug}`);
-    }
-  }
-  
-  return params;
-}
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
 export async function generateMetadata({ params }: CountryYearPageProps) {
   try {

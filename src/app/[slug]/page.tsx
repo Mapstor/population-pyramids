@@ -27,22 +27,9 @@ interface CountryPageProps {
   };
 }
 
-// Enable static generation for key countries to fix routing
-export async function generateStaticParams() {
-  const countries = await loadCountries();
-  // Generate both formats to ensure compatibility
-  const params = [];
-  
-  // Add a few key countries for testing
-  const testCountries = countries.slice(0, 10);
-  
-  for (const country of testCountries) {
-    params.push({ slug: country.slug });
-    params.push({ slug: `${country.slug}-population-pyramid` });
-  }
-  
-  return params;
-}
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
 export async function generateMetadata({ params }: CountryPageProps) {
   try {
