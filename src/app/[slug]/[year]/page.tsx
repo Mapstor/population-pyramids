@@ -14,28 +14,29 @@ interface CountryYearPageProps {
   };
 }
 
-export async function generateStaticParams() {
-  const countries = await loadCountries();
-  const params: { slug: string; year: string }[] = [];
-  
-  for (const country of countries) {
-    try {
-      const countryData = await loadCountryData(country.slug);
-      const availableYears = getAvailableYears(countryData);
-      
-      availableYears.forEach(year => {
-        params.push({
-          slug: `${country.slug}-population-pyramid`,
-          year: year.toString()
-        });
-      });
-    } catch (error) {
-      console.error(`Failed to load data for ${country.slug}`);
-    }
-  }
-  
-  return params;
-}
+// Temporarily disable static generation to fix lambda routing
+// export async function generateStaticParams() {
+//   const countries = await loadCountries();
+//   const params: { slug: string; year: string }[] = [];
+//   
+//   for (const country of countries) {
+//     try {
+//       const countryData = await loadCountryData(country.slug);
+//       const availableYears = getAvailableYears(countryData);
+//       
+//       availableYears.forEach(year => {
+//         params.push({
+//           slug: `${country.slug}-population-pyramid`,
+//           year: year.toString()
+//         });
+//       });
+//     } catch (error) {
+//       console.error(`Failed to load data for ${country.slug}`);
+//     }
+//   }
+//   
+//   return params;
+// }
 
 export async function generateMetadata({ params }: CountryYearPageProps) {
   try {

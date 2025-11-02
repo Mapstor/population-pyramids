@@ -27,12 +27,13 @@ interface CountryPageProps {
   };
 }
 
-export async function generateStaticParams() {
-  const countries = await loadCountries();
-  return countries.map(country => ({
-    slug: `${country.slug}-population-pyramid`
-  }));
-}
+// Temporarily disable static generation to fix lambda routing
+// export async function generateStaticParams() {
+//   const countries = await loadCountries();
+//   return countries.map(country => ({
+//     slug: `${country.slug}-population-pyramid`
+//   }));
+// }
 
 export async function generateMetadata({ params }: CountryPageProps) {
   try {
