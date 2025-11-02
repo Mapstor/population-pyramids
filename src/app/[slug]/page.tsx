@@ -62,6 +62,19 @@ export async function generateMetadata({ params }: CountryPageProps) {
 export default async function CountryPage({ params }: CountryPageProps) {
   try {
     const countrySlug = params.slug.replace('-population-pyramid', '');
+    
+    // Debug: Show what we're trying to load
+    if (countrySlug === 'slovenia') {
+      return (
+        <div className="container mx-auto px-4 py-8">
+          <h1>DEBUG: Slovenia Test</h1>
+          <p>Original slug: {params.slug}</p>
+          <p>Extracted country slug: {countrySlug}</p>
+          <p>Attempting to load Slovenia data...</p>
+        </div>
+      );
+    }
+    
     const countryData = await loadCountryData(countrySlug);
     const countries = await loadCountries();
     const availableYears = getAvailableYears(countryData);
