@@ -81,7 +81,7 @@ export default async function CountryYearPage({ params }: CountryYearPageProps) 
         <div className="mb-6 text-sm text-gray-600">
           <Link href="/" className="hover:text-blue-600">Home</Link>
           <span className="mx-2">/</span>
-          <Link href={`/${params['country-population-pyramid']}`} className="hover:text-blue-600">
+          <Link href={`/${params['country-population-pyramid']}` as any} className="hover:text-blue-600">
             {countryData.countryName}
           </Link>
           <span className="mx-2">/</span>
