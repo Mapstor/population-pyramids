@@ -9,14 +9,14 @@ import ShareButtons from '@/components/ShareButtons';
 
 interface CountryYearPageProps {
   params: {
-    'country-population-pyramid': string;
+    slug: string;
     year: string;
   };
 }
 
 export async function generateStaticParams() {
   const countries = await loadCountries();
-  const params: { 'country-population-pyramid': string; year: string }[] = [];
+  const params: { slug: string; year: string }[] = [];
   
   for (const country of countries) {
     try {
@@ -25,7 +25,7 @@ export async function generateStaticParams() {
       
       availableYears.forEach(year => {
         params.push({
-          'country-population-pyramid': `${country.slug}-population-pyramid`,
+          slug: `${country.slug}-population-pyramid`,
           year: year.toString()
         });
       });

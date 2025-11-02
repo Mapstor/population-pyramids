@@ -23,14 +23,14 @@ import ShareButtons from '@/components/ShareButtons';
 
 interface CountryPageProps {
   params: {
-    'country-population-pyramid': string;
+    slug: string;
   };
 }
 
 export async function generateStaticParams() {
   const countries = await loadCountries();
   return countries.map(country => ({
-    'country-population-pyramid': `${country.slug}-population-pyramid`
+    slug: `${country.slug}-population-pyramid`
   }));
 }
 
