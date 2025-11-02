@@ -5,6 +5,8 @@ import { calculateMetrics } from '@/lib/calculations';
 import { generateCountryContent } from '@/lib/content-generator';
 import { generateImplications } from '@/lib/implications-analyzer';
 import PopulationPyramid from '@/components/PopulationPyramid';
+import StatsTable from '@/components/StatsTable';
+import ShareButtons from '@/components/ShareButtons';
 
 // Force dynamic rendering
 export const dynamic = 'force-dynamic'
@@ -271,6 +273,283 @@ export default async function CountryPage({ params }: CountryPageProps) {
           </div>
         </section>
 
+        {/* Stats Table */}
+        <section className="mb-12">
+          <StatsTable 
+            data={yearData} 
+            metrics={metrics} 
+            countryName={countryData.countryName}
+            year={latestYear}
+          />
+        </section>
+
+        {/* Demographic Glossary */}
+        <section className="bg-white rounded-lg shadow-sm p-8 mb-8">
+          <div className="flex items-center mb-6">
+            <span className="text-3xl mr-3">📖</span>
+            <h2 className="text-3xl font-bold text-gray-900">
+              Understanding Demographic Terms for {countryData.countryName}
+            </h2>
+          </div>
+          <p className="text-gray-600 mb-8">
+            Key demographic concepts explained in the specific context of {countryData.countryName}'s population data and development patterns.
+          </p>
+
+          <div className="grid lg:grid-cols-2 gap-6">
+            {[
+              {
+                term: "Population Pyramid",
+                definition: "A graphical representation of the age and sex distribution of a population, with males typically shown on the left and females on the right.",
+                context: `${countryData.countryName}'s population pyramid shows a ${metrics.pyramidType || 'expanding'} pattern, indicating the country's demographic stage.`,
+                example: "Countries with young populations show wide bases, while aging populations show narrow bases and wider tops."
+              },
+              {
+                term: "Median Age",
+                definition: "The age that divides a population into two equal halves - half younger and half older than this age.",
+                context: `With a median age of ${yearData.medianAge?.toFixed(1) || '25'} years, ${countryData.countryName} has a ${(yearData.medianAge || 25) < 30 ? 'young' : (yearData.medianAge || 25) < 40 ? 'mature' : 'aging'} population structure.`,
+                example: "Global median age is approximately 30 years, with significant variation between developed and developing countries."
+              },
+              {
+                term: "Dependency Ratio",
+                definition: "The ratio of dependents (people younger than 15 or older than 64) to the working-age population (ages 15-64).",
+                context: `${countryData.countryName}'s dependency ratio of ${metrics.dependencyRatio.toFixed(1)} means ${metrics.dependencyRatio.toFixed(1)} dependents per 100 working-age people.`,
+                example: "High ratios indicate greater economic burden on the working population to support dependents."
+              },
+              {
+                term: "Population Growth Rate",
+                definition: "The annual rate at which a population increases or decreases as a percentage of the total population.",
+                context: `${countryData.countryName}'s current growth patterns reflect economic development, healthcare improvements, and demographic transition.`,
+                example: "Global population growth has slowed from 2.1% in the 1960s to about 1.0% today."
+              }
+            ].map((term, index) => (
+              <div key={index} className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6 border border-green-200">
+                <div className="mb-4">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    {term.term}
+                  </h3>
+                  <p className="text-gray-700 text-sm leading-relaxed mb-3">
+                    {term.definition}
+                  </p>
+                </div>
+                
+                <div className="bg-white rounded-lg p-4 border border-green-300 mb-3">
+                  <h4 className="font-semibold text-green-900 mb-2 flex items-center">
+                    <span className="text-lg mr-2">🏛️</span>
+                    For {countryData.countryName}
+                  </h4>
+                  <p className="text-green-800 text-sm leading-relaxed">
+                    {term.context}
+                  </p>
+                </div>
+
+                <div className="bg-blue-100 rounded-lg p-3 border border-blue-300">
+                  <h4 className="font-semibold text-blue-900 mb-2 flex items-center">
+                    <span className="text-sm mr-2">💡</span>
+                    Global Context
+                  </h4>
+                  <p className="text-blue-800 text-xs leading-relaxed">
+                    {term.example}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* How to Use This Data */}
+        <section className="bg-white rounded-lg shadow-sm p-8 mb-8">
+          <div className="flex items-center mb-6">
+            <span className="text-3xl mr-3">🎯</span>
+            <h2 className="text-3xl font-bold text-gray-900">
+              How to Use {countryData.countryName}'s Demographic Data
+            </h2>
+          </div>
+          <p className="text-gray-600 mb-8">
+            This demographic analysis serves multiple audiences with specific applications for education, research, policy making, business strategy, and media reporting.
+          </p>
+
+          <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-6">
+            {[
+              {
+                audience: "Students & Educators",
+                icon: "🎓",
+                title: "Educational Applications",
+                description: "Use this data for geography, social studies, economics, and demographics coursework. Perfect for research projects and comparative studies.",
+                applications: [
+                  "School geography projects and presentations",
+                  "University demographic research papers",
+                  "Comparative population studies between countries",
+                  "Understanding global development patterns"
+                ],
+                citation: `Population Pyramids. (${new Date().getFullYear()}). ${countryData.countryName} Population Pyramid ${latestYear}. Retrieved from https://populationpyramids.org/${params.slug}`,
+                tips: [
+                  "Compare with neighboring countries for regional analysis",
+                  "Track changes over decades to see demographic transition"
+                ]
+              },
+              {
+                audience: "Researchers",
+                icon: "🔬",
+                title: "Academic Research",
+                description: "Comprehensive demographic data for scholarly research, policy analysis, and academic publications in demography and development studies.",
+                applications: [
+                  "Peer-reviewed academic publications",
+                  "Demographic transition research",
+                  "Development studies and policy analysis",
+                  "Comparative international studies"
+                ],
+                citation: `UN DESA Population Division data via Population Pyramids platform. ${countryData.countryName} demographic analysis ${latestYear}.`,
+                tips: [
+                  "Cite original UN sources for academic credibility",
+                  "Cross-reference with official national statistics"
+                ]
+              },
+              {
+                audience: "Policy Makers",
+                icon: "🏛️",
+                title: "Policy Development",
+                description: "Essential demographic insights for evidence-based policy making in healthcare, education, employment, and social services planning.",
+                applications: [
+                  "Healthcare system capacity planning",
+                  "Education infrastructure development",
+                  "Pension and social security policy",
+                  "Economic development strategies"
+                ],
+                citation: `Demographic analysis supporting policy brief - ${countryData.countryName} Population Structure ${latestYear}`,
+                tips: [
+                  "Focus on dependency ratios for social service planning",
+                  "Consider demographic momentum in long-term planning"
+                ]
+              },
+              {
+                audience: "Business & Investment",
+                icon: "💼",
+                title: "Market Analysis",
+                description: "Demographic trends for market research, investment decisions, and business strategy development in emerging and established markets.",
+                applications: [
+                  "Market size estimation and growth projections",
+                  "Consumer demographic profiling",
+                  "Infrastructure investment planning",
+                  "Labor market analysis for operations"
+                ],
+                citation: `${countryData.countryName} Market Demographics ${latestYear} - Population Pyramids Analysis`,
+                tips: [
+                  "Young populations indicate growing consumer markets",
+                  "Aging populations suggest healthcare and services opportunities"
+                ]
+              },
+              {
+                audience: "Media & Journalism",
+                icon: "📺",
+                title: "News & Reporting",
+                description: "Reliable demographic context for news stories, feature articles, and documentary research on population trends and social issues.",
+                applications: [
+                  "News articles on demographic trends",
+                  "Documentary background research",
+                  "Feature stories on aging or youth bulges",
+                  "International development reporting"
+                ],
+                citation: `According to UN demographic data via Population Pyramids, ${countryData.countryName} has...`,
+                tips: [
+                  "Use visualizations to illustrate demographic stories",
+                  "Connect demographic data to current events and trends"
+                ]
+              },
+              {
+                audience: "General Public",
+                icon: "👥",
+                title: "Personal Interest",
+                description: "Accessible demographic information for personal curiosity, travel planning, cultural understanding, and general knowledge about world populations.",
+                applications: [
+                  "Understanding countries before travel or relocation",
+                  "Satisfying curiosity about global population trends",
+                  "Educational family discussions and learning",
+                  "Cultural and social awareness development"
+                ],
+                citation: `Population facts about ${countryData.countryName} from Population Pyramids website`,
+                tips: [
+                  "Compare your country with others to gain perspective",
+                  "Explore historical trends to understand current conditions"
+                ]
+              }
+            ].map((guide, index) => (
+              <div key={index} className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-lg p-6 border border-purple-200 hover:shadow-lg transition">
+                <div className="flex items-center mb-4">
+                  <span className="text-3xl mr-3">{guide.icon}</span>
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900">
+                      {guide.audience}
+                    </h3>
+                    <p className="text-sm text-purple-700 font-medium">
+                      {guide.title}
+                    </p>
+                  </div>
+                </div>
+
+                <p className="text-gray-700 text-sm leading-relaxed mb-4">
+                  {guide.description}
+                </p>
+
+                <div className="mb-4">
+                  <h4 className="font-semibold text-purple-900 mb-2 text-sm">
+                    Key Applications:
+                  </h4>
+                  <ul className="space-y-1">
+                    {guide.applications.slice(0, 3).map((application, appIndex) => (
+                      <li key={appIndex} className="text-xs text-gray-700 flex items-start">
+                        <span className="text-purple-600 mr-2 flex-shrink-0">•</span>
+                        <span>{application}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="bg-white rounded-lg p-3 border border-purple-300 mb-3">
+                  <h4 className="font-semibold text-purple-900 mb-1 text-xs">
+                    Citation Format:
+                  </h4>
+                  <p className="text-xs text-purple-800 font-mono leading-relaxed">
+                    {guide.citation}
+                  </p>
+                </div>
+
+                <div className="bg-blue-100 rounded-lg p-3 border border-blue-300">
+                  <h4 className="font-semibold text-blue-900 mb-2 text-xs">
+                    Best Practices:
+                  </h4>
+                  <ul className="space-y-1">
+                    {guide.tips.slice(0, 2).map((tip, tipIndex) => (
+                      <li key={tipIndex} className="text-xs text-blue-800 flex items-start">
+                        <span className="text-blue-600 mr-1 flex-shrink-0">→</span>
+                        <span>{tip}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Data Sources */}
+        <section className="bg-blue-50 rounded-lg p-6 mb-8 border border-blue-200">
+          <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            Data Sources & Methodology
+          </h3>
+          <p className="text-gray-700 text-sm mb-2">
+            All population data is sourced from the United Nations Department of Economic and Social Affairs, 
+            Population Division. The data represents medium-variant projections based on comprehensive demographic research.
+          </p>
+          <a 
+            href="https://population.un.org/wpp/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:text-blue-700 text-sm font-medium"
+          >
+            View UN World Population Prospects Data →
+          </a>
+        </section>
+
         {/* Year Navigation */}
         <div className="mb-8 bg-white p-6 rounded-lg border">
           <h2 className="text-xl font-bold mb-4 text-gray-900">Explore Other Years</h2>
@@ -290,6 +569,13 @@ export default async function CountryPage({ params }: CountryPageProps) {
             ))}
           </div>
         </div>
+
+        {/* Share Buttons */}
+        <ShareButtons
+          url={`https://populationpyramids.org/${params.slug}`}
+          title={`${countryData.countryName} Population Pyramid ${latestYear}`}
+          description={`Explore demographic data and population trends for ${countryData.countryName}`}
+        />
       </div>
     );
   } catch (error) {
