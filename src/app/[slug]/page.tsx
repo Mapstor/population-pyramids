@@ -4,7 +4,7 @@ import { loadCountryData, getAvailableYears } from '@/lib/data-loader';
 import { calculateMetrics } from '@/lib/calculations';
 import { generateCountryContent } from '@/lib/content-generator';
 import { generateImplications } from '@/lib/implications-analyzer';
-import PopulationPyramid from '@/components/PopulationPyramid';
+import PopulationPyramidSimple from '@/components/PopulationPyramidSimple';
 import StatsTable from '@/components/StatsTable';
 import ShareButtons from '@/components/ShareButtons';
 
@@ -90,7 +90,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
 
         {/* Main Chart */}
         <div className="mb-8">
-          <PopulationPyramid
+          <PopulationPyramidSimple
             data={yearData}
             countryName={countryData.countryName}
             year={latestYear}
