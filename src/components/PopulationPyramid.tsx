@@ -1,7 +1,26 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Bar } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+} from 'chart.js';
+import type { ChartOptions } from 'chart.js';
 import type { YearData } from '@/types/population';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 interface PopulationPyramidProps {
   data: YearData;
@@ -20,87 +39,6 @@ export default function PopulationPyramid({
   height = 600,
   className = ''
 }: PopulationPyramidProps) {
-  const [ChartComponent, setChartComponent] = useState<any>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const loadChart = async () => {
-      try {
-        const { Bar } = await import('react-chartjs-2');
-        const {
-          Chart as ChartJS,
-          CategoryScale,
-          LinearScale,
-          BarElement,
-          Title,
-          Tooltip,
-          Legend
-        } = await import('chart.js');
-
-        ChartJS.register(
-          CategoryScale,
-          LinearScale,
-          BarElement,
-          Title,
-          Tooltip,
-          Legend
-        );
-
-        setChartComponent(() => Bar);
-        setIsLoading(false);
-      } catch (err) {
-        setError('Failed to load chart component');
-        setIsLoading(false);
-      }
-    };
-
-    loadChart();
-  }, []);
-
-  if (isLoading) {
-    return (
-      <div className={`bg-white rounded-lg shadow-sm p-6 ${className}`}>
-        <div style={{ height: `${height}px` }} className="flex items-center justify-center">
-          <div className="text-gray-500">Loading population pyramid...</div>
-        </div>
-      </div>
-    );
-  }
-
-  if (error || !ChartComponent) {
-    return (
-      <div className={`bg-white rounded-lg shadow-sm p-6 ${className}`}>
-        <div className="mb-6">
-          <h3 className="text-xl font-bold text-center">
-            {countryName} Population Pyramid ({year})
-          </h3>
-        </div>
-        <div className="bg-gray-100 rounded-lg p-8 text-center" style={{ height: `${height}px` }}>
-          <div className="text-gray-500 mb-4">Population pyramid visualization temporarily unavailable</div>
-          <div className="text-sm text-gray-600">
-            <p>Male population: {data.malePopulation.toLocaleString()}</p>
-            <p>Female population: {data.femalePopulation.toLocaleString()}</p>
-            <p>Total population: {data.totalPopulation.toLocaleString()}</p>
-          </div>
-        </div>
-        <div className="mt-4 pt-4 border-t border-gray-200 flex justify-center gap-6 text-sm">
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 bg-blue-500 rounded"></div>
-            <span>Male: {data.malePopulation.toLocaleString()}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 bg-pink-500 rounded"></div>
-            <span>Female: {data.femalePopulation.toLocaleString()}</span>
-          </div>
-          <div className="font-semibold">
-            Total: {data.totalPopulation.toLocaleString()}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   const chartData = {
     labels: data.ageGroups.map(ag => ag.ageRange).reverse(),
     datasets: [
@@ -121,26 +59,26 @@ export default function PopulationPyramid({
     ]
   };
 
-  const options = {
-    indexAxis: 'y' as const,
+  const options: ChartOptions<'bar'> = {
+    indexAxis: 'y',
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
       legend: {
         display: showLegend,
-        position: 'top' as const,
+        position: 'top',
       },
       title: {
         display: true,
         text: `${countryName} Population Pyramid (${year})`,
         font: {
           size: 18,
-          weight: 'bold' as const
+          weight: 'bold'
         }
       },
       tooltip: {
         callbacks: {
-          label: function(context: any) {
+          label: function(context) {
             const value = Math.abs(context.parsed.x || 0);
             const formatted = value.toLocaleString();
             return `${context.dataset.label}: ${formatted}`;
@@ -152,7 +90,7 @@ export default function PopulationPyramid({
       x: {
         stacked: true,
         ticks: {
-          callback: function(value: any) {
+          callback: function(value) {
             const numValue = typeof value === 'number' ? value : 0;
             return Math.abs(numValue).toLocaleString();
           }
@@ -164,7 +102,7 @@ export default function PopulationPyramid({
       },
       y: {
         stacked: true,
-        position: 'left' as const,
+        position: 'left',
         title: {
           display: true,
           text: 'Age Group'
@@ -176,7 +114,7 @@ export default function PopulationPyramid({
   return (
     <div className={`bg-white rounded-lg shadow-sm p-6 ${className}`}>
       <div style={{ height: `${height}px` }}>
-        <ChartComponent data={chartData} options={options} />
+        <Bar data={chartData} options={options} />
       </div>
       <div className="mt-4 pt-4 border-t border-gray-200 flex justify-center gap-6 text-sm">
         <div className="flex items-center gap-2">
