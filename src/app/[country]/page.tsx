@@ -37,7 +37,7 @@ export async function generateStaticParams() {
 }
 
 export const dynamic = 'force-static';
-export const dynamicParams = false; // Return 404 for invalid countries
+export const dynamicParams = true;
 
 interface CountryPageProps {
   params: {
