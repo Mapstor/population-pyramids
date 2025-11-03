@@ -25,11 +25,11 @@ import path from 'path';
 
 export async function generateStaticParams() {
   try {
-    console.log('🔍 generateStaticParams EXECUTING - v3');
+    console.log('🔍 generateStaticParams EXECUTING - v4');
     return [
-      { 'country-population-pyramid': 'germany-population-pyramid' },
-      { 'country-population-pyramid': 'afghanistan-population-pyramid' },
-      { 'country-population-pyramid': 'united-states-population-pyramid' }
+      { 'country': 'germany-population-pyramid' },
+      { 'country': 'afghanistan-population-pyramid' },
+      { 'country': 'united-states-population-pyramid' }
     ];
   } catch (error) {
     console.error('❌ generateStaticParams ERROR:', error);
@@ -42,7 +42,7 @@ export const dynamicParams = false; // Return 404 for invalid countries
 
 interface CountryPageProps {
   params: {
-    'country-population-pyramid': string;
+    country: string;
   };
 }
 
@@ -56,7 +56,7 @@ interface CountryPageProps {
 
 export async function generateMetadata({ params }: CountryPageProps) {
   try {
-    const countrySlug = params['country-population-pyramid'].replace('-population-pyramid', '');
+    const countrySlug = params.country.replace('-population-pyramid', '');
     const countryData = await loadCountryData(countrySlug);
     const availableYears = getAvailableYears(countryData);
     const latestYear = Math.max(...availableYears);
@@ -76,7 +76,7 @@ export async function generateMetadata({ params }: CountryPageProps) {
 
 export default async function CountryPage({ params }: CountryPageProps) {
   try {
-    const countrySlug = params['country-population-pyramid'].replace('-population-pyramid', '');
+    const countrySlug = params.country.replace('-population-pyramid', '');
     const countryData = await loadCountryData(countrySlug);
     const countries = await loadCountries();
     const availableYears = getAvailableYears(countryData);
