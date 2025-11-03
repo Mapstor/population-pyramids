@@ -24,7 +24,7 @@ import fs from 'fs';
 import path from 'path';
 
 export async function generateStaticParams() {
-  console.log('🔍 generateStaticParams EXECUTING');
+  console.log('🔍 generateStaticParams EXECUTING - v2');
   const countriesPath = path.join(process.cwd(), 'src/data/countries.json');
   console.log('📁 Path:', countriesPath);
   const countriesData = JSON.parse(fs.readFileSync(countriesPath, 'utf-8'));
