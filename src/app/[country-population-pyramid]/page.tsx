@@ -24,15 +24,17 @@ import fs from 'fs';
 import path from 'path';
 
 export async function generateStaticParams() {
-  console.log('🔍 generateStaticParams EXECUTING - v2');
-  const countriesPath = path.join(process.cwd(), 'src/data/countries.json');
-  console.log('📁 Path:', countriesPath);
-  const countriesData = JSON.parse(fs.readFileSync(countriesPath, 'utf-8'));
-  console.log('✅ Loaded countries:', countriesData.length);
-  
-  return countriesData.map((country: any) => ({
-    'country-population-pyramid': `${country.slug}-population-pyramid`
-  }));
+  try {
+    console.log('🔍 generateStaticParams EXECUTING - v3');
+    return [
+      { 'country-population-pyramid': 'germany-population-pyramid' },
+      { 'country-population-pyramid': 'afghanistan-population-pyramid' },
+      { 'country-population-pyramid': 'united-states-population-pyramid' }
+    ];
+  } catch (error) {
+    console.error('❌ generateStaticParams ERROR:', error);
+    return [];
+  }
 }
 
 export const dynamic = 'force-dynamic';
