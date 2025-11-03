@@ -20,11 +20,16 @@ import DemographicCharts from '@/components/DemographicCharts';
 import RegionalComparison from '@/components/RegionalComparison';
 import DecadeBreakdown from '@/components/DecadeBreakdown';
 import ShareButtons from '@/components/ShareButtons';
+import countries from '@/data/countries.json';
 
-// Force dynamic rendering to avoid static generation issues
-export const dynamic = 'force-dynamic'
-export const runtime = 'nodejs'
-// Added comment to trigger redeployment
+export async function generateStaticParams() {
+  return countries.map((country) => ({
+    'country-population-pyramid': `${country.slug}-population-pyramid`
+  }));
+}
+
+export const dynamic = 'force-dynamic';
+export const dynamicParams = false; // Return 404 for invalid countries
 
 interface CountryPageProps {
   params: {
