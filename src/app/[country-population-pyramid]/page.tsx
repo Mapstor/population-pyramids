@@ -28,7 +28,7 @@ export const runtime = 'nodejs'
 
 interface CountryPageProps {
   params: {
-    country: string;
+    'country-population-pyramid': string;
   };
 }
 
@@ -42,7 +42,7 @@ interface CountryPageProps {
 
 export async function generateMetadata({ params }: CountryPageProps) {
   try {
-    const countrySlug = params.country.replace('-population-pyramid', '');
+    const countrySlug = params['country-population-pyramid'].replace('-population-pyramid', '');
     const countryData = await loadCountryData(countrySlug);
     const availableYears = getAvailableYears(countryData);
     const latestYear = Math.max(...availableYears);
@@ -62,7 +62,7 @@ export async function generateMetadata({ params }: CountryPageProps) {
 
 export default async function CountryPage({ params }: CountryPageProps) {
   try {
-    const countrySlug = params.country.replace('-population-pyramid', '');
+    const countrySlug = params['country-population-pyramid'].replace('-population-pyramid', '');
     const countryData = await loadCountryData(countrySlug);
     const countries = await loadCountries();
     const availableYears = getAvailableYears(countryData);
@@ -918,7 +918,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
 
           {/* Share Buttons */}
           <ShareButtons
-            url={`https://populationpyramids.org/${params.country}`}
+            url={`https://populationpyramids.org/${params['country-population-pyramid']}`}
             title={`${countryData.countryName} Population Pyramid ${latestYear}`}
             description={`Explore demographic data and population trends for ${countryData.countryName}`}
           />
