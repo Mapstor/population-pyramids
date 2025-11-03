@@ -20,10 +20,14 @@ import DemographicCharts from '@/components/DemographicCharts';
 import RegionalComparison from '@/components/RegionalComparison';
 import DecadeBreakdown from '@/components/DecadeBreakdown';
 import ShareButtons from '@/components/ShareButtons';
-import countries from '@/data/countries.json';
+import fs from 'fs';
+import path from 'path';
 
 export async function generateStaticParams() {
-  return countries.map((country) => ({
+  const countriesPath = path.join(process.cwd(), 'src/data/countries.json');
+  const countriesData = JSON.parse(fs.readFileSync(countriesPath, 'utf-8'));
+  
+  return countriesData.map((country: any) => ({
     'country-population-pyramid': `${country.slug}-population-pyramid`
   }));
 }
