@@ -27,9 +27,9 @@ export async function generateStaticParams() {
   try {
     console.log('🔍 generateStaticParams EXECUTING - v4');
     return [
-      { 'country': 'germany-population-pyramid' },
-      { 'country': 'afghanistan-population-pyramid' },
-      { 'country': 'united-states-population-pyramid' }
+      { country: 'germany-population-pyramid' },
+      { country: 'afghanistan-population-pyramid' },
+      { country: 'united-states-population-pyramid' }
     ];
   } catch (error) {
     console.error('❌ generateStaticParams ERROR:', error);
