@@ -24,6 +24,7 @@ import ShareButtons from '@/components/ShareButtons';
 // Force dynamic rendering to avoid static generation issues
 export const dynamic = 'force-dynamic'
 export const runtime = 'nodejs'
+// Added comment to trigger redeployment
 
 interface CountryPageProps {
   params: {
