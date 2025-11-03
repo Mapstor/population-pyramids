@@ -25,12 +25,11 @@ import path from 'path';
 
 export async function generateStaticParams() {
   try {
-    console.log('🔍 generateStaticParams EXECUTING - v4');
-    return [
-      { country: 'germany-population-pyramid' },
-      { country: 'afghanistan-population-pyramid' },
-      { country: 'united-states-population-pyramid' }
-    ];
+    console.log('🔍 generateStaticParams EXECUTING - ALL 195 COUNTRIES');
+    const countries = await loadCountries();
+    return countries.map(country => ({
+      country: `${country.slug}-population-pyramid`
+    }));
   } catch (error) {
     console.error('❌ generateStaticParams ERROR:', error);
     return [];
