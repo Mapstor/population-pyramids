@@ -2,6 +2,7 @@
 const nextConfig = {
   experimental: {
     typedRoutes: true,
+    outputFileTracingRoot: undefined,
   },
   // Temporarily disable strict type checking for deployment
   typescript: {
