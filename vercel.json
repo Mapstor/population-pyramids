@@ -1,5 +1,17 @@
 {
   "framework": "nextjs",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next",
+      "config": {
+        "maxLambdaSize": "50mb"
+      }
+    }
+  ],
+  "env": {
+    "NODE_OPTIONS": "--max-old-space-size=7168"
+  },
   "functions": {
     "app/[country-population-pyramid]/page.tsx": {
       "memory": 2048,
