@@ -37,7 +37,6 @@ export async function generateStaticParams() {
 }
 
 export const dynamic = 'force-static';
-export const dynamicParams = true;
 
 interface CountryPageProps {
   params: {
