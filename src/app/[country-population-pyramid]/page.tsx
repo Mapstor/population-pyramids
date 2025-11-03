@@ -24,8 +24,11 @@ import fs from 'fs';
 import path from 'path';
 
 export async function generateStaticParams() {
+  console.log('🔍 generateStaticParams EXECUTING');
   const countriesPath = path.join(process.cwd(), 'src/data/countries.json');
+  console.log('📁 Path:', countriesPath);
   const countriesData = JSON.parse(fs.readFileSync(countriesPath, 'utf-8'));
+  console.log('✅ Loaded countries:', countriesData.length);
   
   return countriesData.map((country: any) => ({
     'country-population-pyramid': `${country.slug}-population-pyramid`
