@@ -31,12 +31,13 @@ interface CountryPageProps {
   };
 }
 
-export async function generateStaticParams() {
-  const countries = await loadCountries();
-  return countries.map(country => ({
-    'country-population-pyramid': `${country.slug}-population-pyramid`
-  }));
-}
+// Disable static generation - use dynamic rendering only
+// export async function generateStaticParams() {
+//   const countries = await loadCountries();
+//   return countries.map(country => ({
+//     'country-population-pyramid': `${country.slug}-population-pyramid`
+//   }));
+// }
 
 export async function generateMetadata({ params }: CountryPageProps) {
   try {

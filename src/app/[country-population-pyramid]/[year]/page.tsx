@@ -14,28 +14,32 @@ interface CountryYearPageProps {
   };
 }
 
-export async function generateStaticParams() {
-  const countries = await loadCountries();
-  const params: { 'country-population-pyramid': string; year: string }[] = [];
-  
-  for (const country of countries) {
-    try {
-      const countryData = await loadCountryData(country.slug);
-      const availableYears = getAvailableYears(countryData);
-      
-      availableYears.forEach(year => {
-        params.push({
-          'country-population-pyramid': `${country.slug}-population-pyramid`,
-          year: year.toString()
-        });
-      });
-    } catch (error) {
-      console.error(`Failed to load data for ${country.slug}`);
-    }
-  }
-  
-  return params;
-}
+// Disable static generation to avoid conflicts with main country routes
+// export async function generateStaticParams() {
+//   const countries = await loadCountries();
+//   const params: { 'country-population-pyramid': string; year: string }[] = [];
+//   
+//   for (const country of countries) {
+//     try {
+//       const countryData = await loadCountryData(country.slug);
+//       const availableYears = getAvailableYears(countryData);
+//       
+//       availableYears.forEach(year => {
+//         params.push({
+//           'country-population-pyramid': `${country.slug}-population-pyramid`,
+//           year: year.toString()
+//         });
+//       });
+//     } catch (error) {
+//       console.error(`Failed to load data for ${country.slug}`);
+//     }
+//   }
+//   
+//   return params;
+// }
+
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
 
 export async function generateMetadata({ params }: CountryYearPageProps) {
   try {
