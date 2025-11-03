@@ -25,9 +25,11 @@ import path from 'path';
 
 export async function generateStaticParams() {
   try {
-    console.log('🔍 generateStaticParams EXECUTING - ALL 195 COUNTRIES');
+    console.log('🔍 generateStaticParams - TESTING WITH 5 COUNTRIES ONLY');
     const countries = await loadCountries();
-    return countries.map(country => ({
+    
+    // TEMPORARILY only generate 5 countries for testing
+    return countries.slice(0, 5).map(country => ({
       slug: `${country.slug}-population-pyramid`
     }));
   } catch (error) {
