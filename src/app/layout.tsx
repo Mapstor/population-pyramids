@@ -120,10 +120,10 @@ export default function RootLayout({
                 <div>
                   <h3 className="font-semibold text-white mb-4">Popular</h3>
                   <ul className="space-y-2 text-sm">
-                    <li><a href="/united-states-population-pyramid" className="text-gray-400 hover:text-white transition">United States</a></li>
-                    <li><a href="/china-population-pyramid" className="text-gray-400 hover:text-white transition">China</a></li>
-                    <li><a href="/india-population-pyramid" className="text-gray-400 hover:text-white transition">India</a></li>
-                    <li><a href="/japan-population-pyramid" className="text-gray-400 hover:text-white transition">Japan</a></li>
+                    <li><a href="/countries/united-states-population-pyramid" className="text-gray-400 hover:text-white transition">United States</a></li>
+                    <li><a href="/countries/china-population-pyramid" className="text-gray-400 hover:text-white transition">China</a></li>
+                    <li><a href="/countries/india-population-pyramid" className="text-gray-400 hover:text-white transition">India</a></li>
+                    <li><a href="/countries/japan-population-pyramid" className="text-gray-400 hover:text-white transition">Japan</a></li>
                   </ul>
                 </div>
 

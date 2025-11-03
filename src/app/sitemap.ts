@@ -43,7 +43,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Dynamic country pages
   const countryPages = countries.map((country) => ({
-    url: `${baseUrl}/${country.slug}-population-pyramid`,
+    url: `${baseUrl}/countries/${country.slug}-population-pyramid`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.7,

@@ -55,7 +55,7 @@ export function generateUsageGuide(
         `Social policy research addressing ${isAgingPopulation ? 'aging society challenges' : 'youth development opportunities'}`,
         'Cross-national studies on fertility, mortality, and migration trends'
       ],
-      citation: `Population Pyramids. (${currentYear}). ${countryName} Population Pyramid and Demographic Analysis. Retrieved from https://populationpyramids.com/${countrySlug}-population-pyramid`,
+      citation: `Population Pyramids. (${currentYear}). ${countryName} Population Pyramid and Demographic Analysis. Retrieved from https://populationpyramids.com/countries/${countrySlug}-population-pyramid`,
       tips: [
         'Verify data currency - this analysis uses 2024 projections',
         'Cross-reference with original UN sources for academic rigor',
