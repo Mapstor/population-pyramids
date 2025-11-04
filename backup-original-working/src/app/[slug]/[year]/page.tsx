@@ -7,8 +7,7 @@ import PopulationPyramid from '@/components/PopulationPyramid';
 import StatsTable from '@/components/StatsTable';
 import ShareButtons from '@/components/ShareButtons';
 
-export const dynamic = 'force-static';
-export const dynamicParams = false;
+export const revalidate = 86400; // Revalidate every 24 hours
 
 interface CountryYearPageProps {
   params: {
