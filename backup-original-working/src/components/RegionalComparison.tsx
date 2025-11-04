@@ -221,7 +221,7 @@ export default function RegionalComparison({ currentCountry, year }: RegionalCom
         {comparisonCountries.map((country) => (
           <Link 
             key={country.slug} 
-            href={`/${country.slug}-population-pyramid`}
+            href={`/${country.slug}`}
             className="block bg-gray-50 border border-gray-200 rounded-lg p-4 hover:bg-gray-100 transition"
           >
             <div className="h-32 mb-3">
@@ -285,7 +285,7 @@ export default function RegionalComparison({ currentCountry, year }: RegionalCom
               <tr key={country.slug} className="hover:bg-gray-50">
                 <td className="px-4 py-3">
                   <Link 
-                    href={`/${country.slug}-population-pyramid`}
+                    href={`/${country.slug}`}
                     className="text-blue-600 hover:text-blue-800 font-medium"
                   >
                     {country.name}
