@@ -21,6 +21,9 @@ import RegionalComparison from '@/components/RegionalComparison';
 import DecadeBreakdown from '@/components/DecadeBreakdown';
 import ShareButtons from '@/components/ShareButtons';
 
+export const dynamic = 'force-static';
+export const dynamicParams = false;
+
 interface CountryPageProps {
   params: {
     'country-population-pyramid': string;

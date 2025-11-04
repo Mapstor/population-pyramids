@@ -7,6 +7,9 @@ import PopulationPyramid from '@/components/PopulationPyramid';
 import StatsTable from '@/components/StatsTable';
 import ShareButtons from '@/components/ShareButtons';
 
+export const dynamic = 'force-static';
+export const dynamicParams = false;
+
 interface CountryYearPageProps {
   params: {
     'country-population-pyramid': string;
