@@ -14,11 +14,11 @@ import { generateRelatedDemographics } from '@/lib/related-demographics';
 import { generateDemographicGlossary, generateGlossarySummary } from '@/lib/demographic-glossary';
 import { generateUsageGuide, generateUsageSummary } from '@/lib/usage-guide';
 import PopulationPyramid from '@/components/PopulationPyramid';
-import TimelinePyramid from '@/components/TimelinePyramid';
+// import TimelinePyramid from '@/components/TimelinePyramid';
 import StatsTable from '@/components/StatsTable';
-import DemographicCharts from '@/components/DemographicCharts';
-import RegionalComparison from '@/components/RegionalComparison';
-import DecadeBreakdown from '@/components/DecadeBreakdown';
+// import DemographicCharts from '@/components/DemographicCharts';
+// import RegionalComparison from '@/components/RegionalComparison';
+// import DecadeBreakdown from '@/components/DecadeBreakdown';
 import ShareButtons from '@/components/ShareButtons';
 
 export const dynamic = 'force-static';
@@ -32,7 +32,9 @@ interface CountryPageProps {
 
 export async function generateStaticParams() {
   const countries = await loadCountries();
+  console.log('Generating params for countries:', countries.length);
   const testCountries = countries.filter(c => c.slug === 'afghanistan');
+  console.log('Filtered to test countries:', testCountries.length);
   return testCountries.map(country => ({
     slug: country.slug
   }));
@@ -207,13 +209,13 @@ export default async function CountryPage({ params }: CountryPageProps) {
           </section>
 
           {/* TIMELINE PYRAMID - Interactive Animation */}
-          <section className="mb-12">
+          {/* <section className="mb-12">
             <TimelinePyramid
               countryData={countryData}
               countryName={countryData.countryName}
               height={500}
             />
-          </section>
+          </section> */}
 
           {/* Historical Changes */}
           <section className="bg-white rounded-lg shadow-sm p-8 mb-8">
@@ -419,14 +421,14 @@ export default async function CountryPage({ params }: CountryPageProps) {
           </section>
 
           {/* Demographic Charts */}
-          <section className="mb-12">
+          {/* <section className="mb-12">
             <DemographicCharts
               countryName={countryData.countryName}
               countryData={countryData}
               currentYearData={yearData}
               currentMetrics={metrics}
             />
-          </section>
+          </section> */}
 
 
           {/* Future Trends */}
@@ -504,16 +506,16 @@ export default async function CountryPage({ params }: CountryPageProps) {
           </section>
 
           {/* Decade-by-Decade Breakdown */}
-          <section className="mb-8">
+          {/* <section className="mb-8">
             <DecadeBreakdown
               countryName={countryData.countryName}
               countrySlug={countrySlug}
               countryData={countryData}
             />
-          </section>
+          </section> */}
 
           {/* Regional Comparison */}
-          <section className="mb-8">
+          {/* <section className="mb-8">
             <RegionalComparison
               currentCountry={{
                 slug: countrySlug,
@@ -523,7 +525,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
               }}
               year={latestYear}
             />
-          </section>
+          </section> */}
 
           {/* Comprehensive FAQ Section */}
           <section className="bg-white rounded-lg shadow-sm p-8 mb-8">
