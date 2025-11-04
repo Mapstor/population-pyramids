@@ -35,6 +35,7 @@ export async function generateStaticParams() {
   console.log('Generating params for countries:', countries.length);
   const testCountries = countries.filter(c => c.slug === 'afghanistan');
   console.log('Filtered to test countries:', testCountries.length);
+  console.log('Afghanistan slug will be:', testCountries[0]?.slug);
   return testCountries.map(country => ({
     slug: country.slug
   }));
