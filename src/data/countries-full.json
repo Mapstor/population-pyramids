@@ -1,0 +1,1367 @@
+[
+  {
+    "code": "AFG",
+    "name": "Afghanistan",
+    "slug": "afghanistan",
+    "flag": "\ud83c\udf0d",
+    "population2024": 42200000
+  },
+  {
+    "code": "ALB",
+    "name": "Albania",
+    "slug": "albania",
+    "flag": "\ud83c\udf0d",
+    "population2024": 2800000
+  },
+  {
+    "code": "DZA",
+    "name": "Algeria",
+    "slug": "algeria",
+    "flag": "\ud83c\udf0d",
+    "population2024": 45400000
+  },
+  {
+    "code": "AND",
+    "name": "Andorra",
+    "slug": "andorra",
+    "flag": "\ud83c\udf0d",
+    "population2024": 80000
+  },
+  {
+    "code": "AGO",
+    "name": "Angola",
+    "slug": "angola",
+    "flag": "\ud83c\udf0d",
+    "population2024": 35600000
+  },
+  {
+    "code": "ATG",
+    "name": "Antigua and Barbuda",
+    "slug": "antigua-and-barbuda",
+    "flag": "\ud83c\udf0d",
+    "population2024": 100000
+  },
+  {
+    "code": "ARG",
+    "name": "Argentina",
+    "slug": "argentina",
+    "flag": "\ud83c\udf0d",
+    "population2024": 45800000
+  },
+  {
+    "code": "ARM",
+    "name": "Armenia",
+    "slug": "armenia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 3000000
+  },
+  {
+    "code": "AUS",
+    "name": "Australia",
+    "slug": "australia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 26400000
+  },
+  {
+    "code": "AUT",
+    "name": "Austria",
+    "slug": "austria",
+    "flag": "\ud83c\udf0d",
+    "population2024": 9100000
+  },
+  {
+    "code": "AZE",
+    "name": "Azerbaijan",
+    "slug": "azerbaijan",
+    "flag": "\ud83c\udf0d",
+    "population2024": 10400000
+  },
+  {
+    "code": "BHS",
+    "name": "Bahamas",
+    "slug": "bahamas",
+    "flag": "\ud83c\udf0d",
+    "population2024": 400000
+  },
+  {
+    "code": "BHR",
+    "name": "Bahrain",
+    "slug": "bahrain",
+    "flag": "\ud83c\udf0d",
+    "population2024": 1800000
+  },
+  {
+    "code": "BGD",
+    "name": "Bangladesh",
+    "slug": "bangladesh",
+    "flag": "\ud83c\udf0d",
+    "population2024": 173600000
+  },
+  {
+    "code": "BRB",
+    "name": "Barbados",
+    "slug": "barbados",
+    "flag": "\ud83c\udf0d",
+    "population2024": 300000
+  },
+  {
+    "code": "BLR",
+    "name": "Belarus",
+    "slug": "belarus",
+    "flag": "\ud83c\udf0d",
+    "population2024": 9400000
+  },
+  {
+    "code": "BEL",
+    "name": "Belgium",
+    "slug": "belgium",
+    "flag": "\ud83c\udf0d",
+    "population2024": 11700000
+  },
+  {
+    "code": "BLZ",
+    "name": "Belize",
+    "slug": "belize",
+    "flag": "\ud83c\udf0d",
+    "population2024": 400000
+  },
+  {
+    "code": "BEN",
+    "name": "Benin",
+    "slug": "benin",
+    "flag": "\ud83c\udf0d",
+    "population2024": 13500000
+  },
+  {
+    "code": "BTN",
+    "name": "Bhutan",
+    "slug": "bhutan",
+    "flag": "\ud83c\udf0d",
+    "population2024": 800000
+  },
+  {
+    "code": "BOL",
+    "name": "Bolivia",
+    "slug": "bolivia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 12400000
+  },
+  {
+    "code": "BIH",
+    "name": "Bosnia and Herzegovina",
+    "slug": "bosnia-and-herzegovina",
+    "flag": "\ud83c\udf0d",
+    "population2024": 3200000
+  },
+  {
+    "code": "BWA",
+    "name": "Botswana",
+    "slug": "botswana",
+    "flag": "\ud83c\udf0d",
+    "population2024": 2600000
+  },
+  {
+    "code": "BRA",
+    "name": "Brazil",
+    "slug": "brazil",
+    "flag": "\ud83c\udf0d",
+    "population2024": 216400000
+  },
+  {
+    "code": "BRN",
+    "name": "Brunei",
+    "slug": "brunei",
+    "flag": "\ud83c\udf0d",
+    "population2024": 500000
+  },
+  {
+    "code": "BGR",
+    "name": "Bulgaria",
+    "slug": "bulgaria",
+    "flag": "\ud83c\udf0d",
+    "population2024": 6900000
+  },
+  {
+    "code": "BFA",
+    "name": "Burkina Faso",
+    "slug": "burkina-faso",
+    "flag": "\ud83c\udf0d",
+    "population2024": 23000000
+  },
+  {
+    "code": "BDI",
+    "name": "Burundi",
+    "slug": "burundi",
+    "flag": "\ud83c\udf0d",
+    "population2024": 13200000
+  },
+  {
+    "code": "CPV",
+    "name": "Cabo Verde",
+    "slug": "cabo-verde",
+    "flag": "\ud83c\udf0d",
+    "population2024": 600000
+  },
+  {
+    "code": "KHM",
+    "name": "Cambodia",
+    "slug": "cambodia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 16800000
+  },
+  {
+    "code": "CMR",
+    "name": "Cameroon",
+    "slug": "cameroon",
+    "flag": "\ud83c\udf0d",
+    "population2024": 28600000
+  },
+  {
+    "code": "CAN",
+    "name": "Canada",
+    "slug": "canada",
+    "flag": "\ud83c\udf0d",
+    "population2024": 39700000
+  },
+  {
+    "code": "CAF",
+    "name": "Central African Republic",
+    "slug": "central-african-republic",
+    "flag": "\ud83c\udf0d",
+    "population2024": 5600000
+  },
+  {
+    "code": "TCD",
+    "name": "Chad",
+    "slug": "chad",
+    "flag": "\ud83c\udf0d",
+    "population2024": 18300000
+  },
+  {
+    "code": "CHL",
+    "name": "Chile",
+    "slug": "chile",
+    "flag": "\ud83c\udf0d",
+    "population2024": 19600000
+  },
+  {
+    "code": "CHN",
+    "name": "China",
+    "slug": "china",
+    "flag": "\ud83c\udf0d",
+    "population2024": 1425671352
+  },
+  {
+    "code": "COL",
+    "name": "Colombia",
+    "slug": "colombia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 52000000
+  },
+  {
+    "code": "COM",
+    "name": "Comoros",
+    "slug": "comoros",
+    "flag": "\ud83c\udf0d",
+    "population2024": 900000
+  },
+  {
+    "code": "COG",
+    "name": "Congo",
+    "slug": "congo",
+    "flag": "\ud83c\udf0d",
+    "population2024": 6100000
+  },
+  {
+    "code": "CRI",
+    "name": "Costa Rica",
+    "slug": "costa-rica",
+    "flag": "\ud83c\udf0d",
+    "population2024": 5200000
+  },
+  {
+    "code": "CIV",
+    "name": "C\u00f4te d'Ivoire",
+    "slug": "cote-divoire",
+    "flag": "\ud83c\udf0d",
+    "population2024": 28900000
+  },
+  {
+    "code": "HRV",
+    "name": "Croatia",
+    "slug": "croatia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 3900000
+  },
+  {
+    "code": "CUB",
+    "name": "Cuba",
+    "slug": "cuba",
+    "flag": "\ud83c\udf0d",
+    "population2024": 11300000
+  },
+  {
+    "code": "CYP",
+    "name": "Cyprus",
+    "slug": "cyprus",
+    "flag": "\ud83c\udf0d",
+    "population2024": 1300000
+  },
+  {
+    "code": "CZE",
+    "name": "Czech Republic",
+    "slug": "czech-republic",
+    "flag": "\ud83c\udf0d",
+    "population2024": 10900000
+  },
+  {
+    "code": "COD",
+    "name": "Democratic Republic of the Congo",
+    "slug": "democratic-republic-of-the-congo",
+    "flag": "\ud83c\udf0d",
+    "population2024": 102300000
+  },
+  {
+    "code": "DNK",
+    "name": "Denmark",
+    "slug": "denmark",
+    "flag": "\ud83c\udf0d",
+    "population2024": 5900000
+  },
+  {
+    "code": "DJI",
+    "name": "Djibouti",
+    "slug": "djibouti",
+    "flag": "\ud83c\udf0d",
+    "population2024": 1100000
+  },
+  {
+    "code": "DMA",
+    "name": "Dominica",
+    "slug": "dominica",
+    "flag": "\ud83c\udf0d",
+    "population2024": 70000
+  },
+  {
+    "code": "DOM",
+    "name": "Dominican Republic",
+    "slug": "dominican-republic",
+    "flag": "\ud83c\udf0d",
+    "population2024": 11300000
+  },
+  {
+    "code": "ECU",
+    "name": "Ecuador",
+    "slug": "ecuador",
+    "flag": "\ud83c\udf0d",
+    "population2024": 18000000
+  },
+  {
+    "code": "EGY",
+    "name": "Egypt",
+    "slug": "egypt",
+    "flag": "\ud83c\udf0d",
+    "population2024": 112000000
+  },
+  {
+    "code": "SLV",
+    "name": "El Salvador",
+    "slug": "el-salvador",
+    "flag": "\ud83c\udf0d",
+    "population2024": 6300000
+  },
+  {
+    "code": "GNQ",
+    "name": "Equatorial Guinea",
+    "slug": "equatorial-guinea",
+    "flag": "\ud83c\udf0d",
+    "population2024": 1700000
+  },
+  {
+    "code": "ERI",
+    "name": "Eritrea",
+    "slug": "eritrea",
+    "flag": "\ud83c\udf0d",
+    "population2024": 3700000
+  },
+  {
+    "code": "EST",
+    "name": "Estonia",
+    "slug": "estonia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 1300000
+  },
+  {
+    "code": "SWZ",
+    "name": "Eswatini",
+    "slug": "eswatini",
+    "flag": "\ud83c\udf0d",
+    "population2024": 1200000
+  },
+  {
+    "code": "ETH",
+    "name": "Ethiopia",
+    "slug": "ethiopia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 126500000
+  },
+  {
+    "code": "FJI",
+    "name": "Fiji",
+    "slug": "fiji",
+    "flag": "\ud83c\udf0d",
+    "population2024": 900000
+  },
+  {
+    "code": "FIN",
+    "name": "Finland",
+    "slug": "finland",
+    "flag": "\ud83c\udf0d",
+    "population2024": 5600000
+  },
+  {
+    "code": "FRA",
+    "name": "France",
+    "slug": "france",
+    "flag": "\ud83c\udf0d",
+    "population2024": 68400000
+  },
+  {
+    "code": "GAB",
+    "name": "Gabon",
+    "slug": "gabon",
+    "flag": "\ud83c\udf0d",
+    "population2024": 2400000
+  },
+  {
+    "code": "GMB",
+    "name": "Gambia",
+    "slug": "gambia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 2700000
+  },
+  {
+    "code": "GEO",
+    "name": "Georgia",
+    "slug": "georgia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 3700000
+  },
+  {
+    "code": "DEU",
+    "name": "Germany",
+    "slug": "germany",
+    "flag": "\ud83c\udf0d",
+    "population2024": 83294633
+  },
+  {
+    "code": "GHA",
+    "name": "Ghana",
+    "slug": "ghana",
+    "flag": "\ud83c\udf0d",
+    "population2024": 34100000
+  },
+  {
+    "code": "GRC",
+    "name": "Greece",
+    "slug": "greece",
+    "flag": "\ud83c\udf0d",
+    "population2024": 10400000
+  },
+  {
+    "code": "GRD",
+    "name": "Grenada",
+    "slug": "grenada",
+    "flag": "\ud83c\udf0d",
+    "population2024": 100000
+  },
+  {
+    "code": "GTM",
+    "name": "Guatemala",
+    "slug": "guatemala",
+    "flag": "\ud83c\udf0d",
+    "population2024": 18600000
+  },
+  {
+    "code": "GNB",
+    "name": "Guinea-Bissau",
+    "slug": "guinea-bissau",
+    "flag": "\ud83c\udf0d",
+    "population2024": 2200000
+  },
+  {
+    "code": "GIN",
+    "name": "Guinea",
+    "slug": "guinea",
+    "flag": "\ud83c\udf0d",
+    "population2024": 14200000
+  },
+  {
+    "code": "GUY",
+    "name": "Guyana",
+    "slug": "guyana",
+    "flag": "\ud83c\udf0d",
+    "population2024": 800000
+  },
+  {
+    "code": "HTI",
+    "name": "Haiti",
+    "slug": "haiti",
+    "flag": "\ud83c\udf0d",
+    "population2024": 11700000
+  },
+  {
+    "code": "HND",
+    "name": "Honduras",
+    "slug": "honduras",
+    "flag": "\ud83c\udf0d",
+    "population2024": 10600000
+  },
+  {
+    "code": "HUN",
+    "name": "Hungary",
+    "slug": "hungary",
+    "flag": "\ud83c\udf0d",
+    "population2024": 9600000
+  },
+  {
+    "code": "ISL",
+    "name": "Iceland",
+    "slug": "iceland",
+    "flag": "\ud83c\udf0d",
+    "population2024": 400000
+  },
+  {
+    "code": "IND",
+    "name": "India",
+    "slug": "india",
+    "flag": "\ud83c\udf0d",
+    "population2024": 1428627663
+  },
+  {
+    "code": "IDN",
+    "name": "Indonesia",
+    "slug": "indonesia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 277500000
+  },
+  {
+    "code": "IRN",
+    "name": "Iran",
+    "slug": "iran",
+    "flag": "\ud83c\udf0d",
+    "population2024": 86800000
+  },
+  {
+    "code": "IRQ",
+    "name": "Iraq",
+    "slug": "iraq",
+    "flag": "\ud83c\udf0d",
+    "population2024": 45500000
+  },
+  {
+    "code": "IRL",
+    "name": "Ireland",
+    "slug": "ireland",
+    "flag": "\ud83c\udf0d",
+    "population2024": 5200000
+  },
+  {
+    "code": "ISR",
+    "name": "Israel",
+    "slug": "israel",
+    "flag": "\ud83c\udf0d",
+    "population2024": 9500000
+  },
+  {
+    "code": "ITA",
+    "name": "Italy",
+    "slug": "italy",
+    "flag": "\ud83c\udf0d",
+    "population2024": 58900000
+  },
+  {
+    "code": "JAM",
+    "name": "Jamaica",
+    "slug": "jamaica",
+    "flag": "\ud83c\udf0d",
+    "population2024": 2800000
+  },
+  {
+    "code": "JPN",
+    "name": "Japan",
+    "slug": "japan",
+    "flag": "\ud83c\udf0d",
+    "population2024": 123294513
+  },
+  {
+    "code": "JOR",
+    "name": "Jordan",
+    "slug": "jordan",
+    "flag": "\ud83c\udf0d",
+    "population2024": 11300000
+  },
+  {
+    "code": "KAZ",
+    "name": "Kazakhstan",
+    "slug": "kazakhstan",
+    "flag": "\ud83c\udf0d",
+    "population2024": 20000000
+  },
+  {
+    "code": "KEN",
+    "name": "Kenya",
+    "slug": "kenya",
+    "flag": "\ud83c\udf0d",
+    "population2024": 55100000
+  },
+  {
+    "code": "KIR",
+    "name": "Kiribati",
+    "slug": "kiribati",
+    "flag": "\ud83c\udf0d",
+    "population2024": 100000
+  },
+  {
+    "code": "KWT",
+    "name": "Kuwait",
+    "slug": "kuwait",
+    "flag": "\ud83c\udf0d",
+    "population2024": 4300000
+  },
+  {
+    "code": "KGZ",
+    "name": "Kyrgyzstan",
+    "slug": "kyrgyzstan",
+    "flag": "\ud83c\udf0d",
+    "population2024": 7000000
+  },
+  {
+    "code": "LAO",
+    "name": "Laos",
+    "slug": "laos",
+    "flag": "\ud83c\udf0d",
+    "population2024": 7600000
+  },
+  {
+    "code": "LVA",
+    "name": "Latvia",
+    "slug": "latvia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 1900000
+  },
+  {
+    "code": "LBN",
+    "name": "Lebanon",
+    "slug": "lebanon",
+    "flag": "\ud83c\udf0d",
+    "population2024": 5500000
+  },
+  {
+    "code": "LSO",
+    "name": "Lesotho",
+    "slug": "lesotho",
+    "flag": "\ud83c\udf0d",
+    "population2024": 2300000
+  },
+  {
+    "code": "LBR",
+    "name": "Liberia",
+    "slug": "liberia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 5400000
+  },
+  {
+    "code": "LBY",
+    "name": "Libya",
+    "slug": "libya",
+    "flag": "\ud83c\udf0d",
+    "population2024": 6900000
+  },
+  {
+    "code": "LIE",
+    "name": "Liechtenstein",
+    "slug": "liechtenstein",
+    "flag": "\ud83c\udf0d",
+    "population2024": 40000
+  },
+  {
+    "code": "LTU",
+    "name": "Lithuania",
+    "slug": "lithuania",
+    "flag": "\ud83c\udf0d",
+    "population2024": 2800000
+  },
+  {
+    "code": "LUX",
+    "name": "Luxembourg",
+    "slug": "luxembourg",
+    "flag": "\ud83c\udf0d",
+    "population2024": 700000
+  },
+  {
+    "code": "MDG",
+    "name": "Madagascar",
+    "slug": "madagascar",
+    "flag": "\ud83c\udf0d",
+    "population2024": 30300000
+  },
+  {
+    "code": "MWI",
+    "name": "Malawi",
+    "slug": "malawi",
+    "flag": "\ud83c\udf0d",
+    "population2024": 20900000
+  },
+  {
+    "code": "MYS",
+    "name": "Malaysia",
+    "slug": "malaysia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 34200000
+  },
+  {
+    "code": "MDV",
+    "name": "Maldives",
+    "slug": "maldives",
+    "flag": "\ud83c\udf0d",
+    "population2024": 500000
+  },
+  {
+    "code": "MLI",
+    "name": "Mali",
+    "slug": "mali",
+    "flag": "\ud83c\udf0d",
+    "population2024": 23300000
+  },
+  {
+    "code": "MLT",
+    "name": "Malta",
+    "slug": "malta",
+    "flag": "\ud83c\udf0d",
+    "population2024": 500000
+  },
+  {
+    "code": "MHL",
+    "name": "Marshall Islands",
+    "slug": "marshall-islands",
+    "flag": "\ud83c\udf0d",
+    "population2024": 40000
+  },
+  {
+    "code": "MRT",
+    "name": "Mauritania",
+    "slug": "mauritania",
+    "flag": "\ud83c\udf0d",
+    "population2024": 5000000
+  },
+  {
+    "code": "MUS",
+    "name": "Mauritius",
+    "slug": "mauritius",
+    "flag": "\ud83c\udf0d",
+    "population2024": 1300000
+  },
+  {
+    "code": "MEX",
+    "name": "Mexico",
+    "slug": "mexico",
+    "flag": "\ud83c\udf0d",
+    "population2024": 128900000
+  },
+  {
+    "code": "FSM",
+    "name": "Micronesia",
+    "slug": "micronesia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 100000
+  },
+  {
+    "code": "MDA",
+    "name": "Moldova",
+    "slug": "moldova",
+    "flag": "\ud83c\udf0d",
+    "population2024": 2500000
+  },
+  {
+    "code": "MCO",
+    "name": "Monaco",
+    "slug": "monaco",
+    "flag": "\ud83c\udf0d",
+    "population2024": 40000
+  },
+  {
+    "code": "MNG",
+    "name": "Mongolia",
+    "slug": "mongolia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 3400000
+  },
+  {
+    "code": "MNE",
+    "name": "Montenegro",
+    "slug": "montenegro",
+    "flag": "\ud83c\udf0d",
+    "population2024": 600000
+  },
+  {
+    "code": "MAR",
+    "name": "Morocco",
+    "slug": "morocco",
+    "flag": "\ud83c\udf0d",
+    "population2024": 37800000
+  },
+  {
+    "code": "MOZ",
+    "name": "Mozambique",
+    "slug": "mozambique",
+    "flag": "\ud83c\udf0d",
+    "population2024": 33900000
+  },
+  {
+    "code": "MMR",
+    "name": "Myanmar",
+    "slug": "myanmar",
+    "flag": "\ud83c\udf0d",
+    "population2024": 55400000
+  },
+  {
+    "code": "NAM",
+    "name": "Namibia",
+    "slug": "namibia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 2600000
+  },
+  {
+    "code": "NRU",
+    "name": "Nauru",
+    "slug": "nauru",
+    "flag": "\ud83c\udf0d",
+    "population2024": 10000
+  },
+  {
+    "code": "NPL",
+    "name": "Nepal",
+    "slug": "nepal",
+    "flag": "\ud83c\udf0d",
+    "population2024": 30900000
+  },
+  {
+    "code": "NLD",
+    "name": "Netherlands",
+    "slug": "netherlands",
+    "flag": "\ud83c\udf0d",
+    "population2024": 17500000
+  },
+  {
+    "code": "NZL",
+    "name": "New Zealand",
+    "slug": "new-zealand",
+    "flag": "\ud83c\udf0d",
+    "population2024": 5200000
+  },
+  {
+    "code": "NIC",
+    "name": "Nicaragua",
+    "slug": "nicaragua",
+    "flag": "\ud83c\udf0d",
+    "population2024": 7000000
+  },
+  {
+    "code": "NER",
+    "name": "Niger",
+    "slug": "niger",
+    "flag": "\ud83c\udf0d",
+    "population2024": 27200000
+  },
+  {
+    "code": "NGA",
+    "name": "Nigeria",
+    "slug": "nigeria",
+    "flag": "\ud83c\udf0d",
+    "population2024": 231400000
+  },
+  {
+    "code": "PRK",
+    "name": "North Korea",
+    "slug": "north-korea",
+    "flag": "\ud83c\udf0d",
+    "population2024": 26200000
+  },
+  {
+    "code": "MKD",
+    "name": "North Macedonia",
+    "slug": "north-macedonia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 2100000
+  },
+  {
+    "code": "NOR",
+    "name": "Norway",
+    "slug": "norway",
+    "flag": "\ud83c\udf0d",
+    "population2024": 5500000
+  },
+  {
+    "code": "OMN",
+    "name": "Oman",
+    "slug": "oman",
+    "flag": "\ud83c\udf0d",
+    "population2024": 4600000
+  },
+  {
+    "code": "PAK",
+    "name": "Pakistan",
+    "slug": "pakistan",
+    "flag": "\ud83c\udf0d",
+    "population2024": 251300000
+  },
+  {
+    "code": "PLW",
+    "name": "Palau",
+    "slug": "palau",
+    "flag": "\ud83c\udf0d",
+    "population2024": 20000
+  },
+  {
+    "code": "PSE",
+    "name": "Palestine",
+    "slug": "palestine",
+    "flag": "\ud83c\udf0d",
+    "population2024": 5400000
+  },
+  {
+    "code": "PAN",
+    "name": "Panama",
+    "slug": "panama",
+    "flag": "\ud83c\udf0d",
+    "population2024": 4400000
+  },
+  {
+    "code": "PNG",
+    "name": "Papua New Guinea",
+    "slug": "papua-new-guinea",
+    "flag": "\ud83c\udf0d",
+    "population2024": 10000000
+  },
+  {
+    "code": "PRY",
+    "name": "Paraguay",
+    "slug": "paraguay",
+    "flag": "\ud83c\udf0d",
+    "population2024": 6900000
+  },
+  {
+    "code": "PER",
+    "name": "Peru",
+    "slug": "peru",
+    "flag": "\ud83c\udf0d",
+    "population2024": 34000000
+  },
+  {
+    "code": "PHL",
+    "name": "Philippines",
+    "slug": "philippines",
+    "flag": "\ud83c\udf0d",
+    "population2024": 117300000
+  },
+  {
+    "code": "POL",
+    "name": "Poland",
+    "slug": "poland",
+    "flag": "\ud83c\udf0d",
+    "population2024": 36800000
+  },
+  {
+    "code": "PRT",
+    "name": "Portugal",
+    "slug": "portugal",
+    "flag": "\ud83c\udf0d",
+    "population2024": 10600000
+  },
+  {
+    "code": "QAT",
+    "name": "Qatar",
+    "slug": "qatar",
+    "flag": "\ud83c\udf0d",
+    "population2024": 3000000
+  },
+  {
+    "code": "ROU",
+    "name": "Romania",
+    "slug": "romania",
+    "flag": "\ud83c\udf0d",
+    "population2024": 19100000
+  },
+  {
+    "code": "RUS",
+    "name": "Russia",
+    "slug": "russia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 144400000
+  },
+  {
+    "code": "RWA",
+    "name": "Rwanda",
+    "slug": "rwanda",
+    "flag": "\ud83c\udf0d",
+    "population2024": 14100000
+  },
+  {
+    "code": "KNA",
+    "name": "Saint Kitts and Nevis",
+    "slug": "saint-kitts-and-nevis",
+    "flag": "\ud83c\udf0d",
+    "population2024": 50000
+  },
+  {
+    "code": "LCA",
+    "name": "Saint Lucia",
+    "slug": "saint-lucia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 200000
+  },
+  {
+    "code": "VCT",
+    "name": "Saint Vincent and the Grenadines",
+    "slug": "saint-vincent-and-the-grenadines",
+    "flag": "\ud83c\udf0d",
+    "population2024": 100000
+  },
+  {
+    "code": "WSM",
+    "name": "Samoa",
+    "slug": "samoa",
+    "flag": "\ud83c\udf0d",
+    "population2024": 200000
+  },
+  {
+    "code": "SMR",
+    "name": "San Marino",
+    "slug": "san-marino",
+    "flag": "\ud83c\udf0d",
+    "population2024": 30000
+  },
+  {
+    "code": "STP",
+    "name": "Sao Tome and Principe",
+    "slug": "sao-tome-and-principe",
+    "flag": "\ud83c\udf0d",
+    "population2024": 200000
+  },
+  {
+    "code": "SAU",
+    "name": "Saudi Arabia",
+    "slug": "saudi-arabia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 36400000
+  },
+  {
+    "code": "SEN",
+    "name": "Senegal",
+    "slug": "senegal",
+    "flag": "\ud83c\udf0d",
+    "population2024": 18400000
+  },
+  {
+    "code": "SRB",
+    "name": "Serbia",
+    "slug": "serbia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 6800000
+  },
+  {
+    "code": "SYC",
+    "name": "Seychelles",
+    "slug": "seychelles",
+    "flag": "\ud83c\udf0d",
+    "population2024": 100000
+  },
+  {
+    "code": "SLE",
+    "name": "Sierra Leone",
+    "slug": "sierra-leone",
+    "flag": "\ud83c\udf0d",
+    "population2024": 8600000
+  },
+  {
+    "code": "SGP",
+    "name": "Singapore",
+    "slug": "singapore",
+    "flag": "\ud83c\udf0d",
+    "population2024": 6000000
+  },
+  {
+    "code": "SVK",
+    "name": "Slovakia",
+    "slug": "slovakia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 5400000
+  },
+  {
+    "code": "SVN",
+    "name": "Slovenia",
+    "slug": "slovenia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 2100000
+  },
+  {
+    "code": "SLB",
+    "name": "Solomon Islands",
+    "slug": "solomon-islands",
+    "flag": "\ud83c\udf0d",
+    "population2024": 700000
+  },
+  {
+    "code": "SOM",
+    "name": "Somalia",
+    "slug": "somalia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 18100000
+  },
+  {
+    "code": "ZAF",
+    "name": "South Africa",
+    "slug": "south-africa",
+    "flag": "\ud83c\udf0d",
+    "population2024": 60400000
+  },
+  {
+    "code": "KOR",
+    "name": "South Korea",
+    "slug": "south-korea",
+    "flag": "\ud83c\udf0d",
+    "population2024": 51700000
+  },
+  {
+    "code": "SSD",
+    "name": "South Sudan",
+    "slug": "south-sudan",
+    "flag": "\ud83c\udf0d",
+    "population2024": 11100000
+  },
+  {
+    "code": "ESP",
+    "name": "Spain",
+    "slug": "spain",
+    "flag": "\ud83c\udf0d",
+    "population2024": 47800000
+  },
+  {
+    "code": "LKA",
+    "name": "Sri Lanka",
+    "slug": "sri-lanka",
+    "flag": "\ud83c\udf0d",
+    "population2024": 22200000
+  },
+  {
+    "code": "SDN",
+    "name": "Sudan",
+    "slug": "sudan",
+    "flag": "\ud83c\udf0d",
+    "population2024": 48100000
+  },
+  {
+    "code": "SUR",
+    "name": "Suriname",
+    "slug": "suriname",
+    "flag": "\ud83c\udf0d",
+    "population2024": 600000
+  },
+  {
+    "code": "SWE",
+    "name": "Sweden",
+    "slug": "sweden",
+    "flag": "\ud83c\udf0d",
+    "population2024": 10500000
+  },
+  {
+    "code": "CHE",
+    "name": "Switzerland",
+    "slug": "switzerland",
+    "flag": "\ud83c\udf0d",
+    "population2024": 8800000
+  },
+  {
+    "code": "SYR",
+    "name": "Syria",
+    "slug": "syria",
+    "flag": "\ud83c\udf0d",
+    "population2024": 23200000
+  },
+  {
+    "code": "TJK",
+    "name": "Tajikistan",
+    "slug": "tajikistan",
+    "flag": "\ud83c\udf0d",
+    "population2024": 10100000
+  },
+  {
+    "code": "TZA",
+    "name": "Tanzania",
+    "slug": "tanzania",
+    "flag": "\ud83c\udf0d",
+    "population2024": 67400000
+  },
+  {
+    "code": "THA",
+    "name": "Thailand",
+    "slug": "thailand",
+    "flag": "\ud83c\udf0d",
+    "population2024": 71700000
+  },
+  {
+    "code": "TLS",
+    "name": "Timor-Leste",
+    "slug": "timor-leste",
+    "flag": "\ud83c\udf0d",
+    "population2024": 1400000
+  },
+  {
+    "code": "TGO",
+    "name": "Togo",
+    "slug": "togo",
+    "flag": "\ud83c\udf0d",
+    "population2024": 8800000
+  },
+  {
+    "code": "TON",
+    "name": "Tonga",
+    "slug": "tonga",
+    "flag": "\ud83c\udf0d",
+    "population2024": 100000
+  },
+  {
+    "code": "TTO",
+    "name": "Trinidad and Tobago",
+    "slug": "trinidad-and-tobago",
+    "flag": "\ud83c\udf0d",
+    "population2024": 1500000
+  },
+  {
+    "code": "TUN",
+    "name": "Tunisia",
+    "slug": "tunisia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 12400000
+  },
+  {
+    "code": "TUR",
+    "name": "Turkey",
+    "slug": "turkey",
+    "flag": "\ud83c\udf0d",
+    "population2024": 85300000
+  },
+  {
+    "code": "TKM",
+    "name": "Turkmenistan",
+    "slug": "turkmenistan",
+    "flag": "\ud83c\udf0d",
+    "population2024": 6100000
+  },
+  {
+    "code": "TUV",
+    "name": "Tuvalu",
+    "slug": "tuvalu",
+    "flag": "\ud83c\udf0d",
+    "population2024": 10000
+  },
+  {
+    "code": "UGA",
+    "name": "Uganda",
+    "slug": "uganda",
+    "flag": "\ud83c\udf0d",
+    "population2024": 48600000
+  },
+  {
+    "code": "UKR",
+    "name": "Ukraine",
+    "slug": "ukraine",
+    "flag": "\ud83c\udf0d",
+    "population2024": 37800000
+  },
+  {
+    "code": "ARE",
+    "name": "United Arab Emirates",
+    "slug": "united-arab-emirates",
+    "flag": "\ud83c\udf0d",
+    "population2024": 9500000
+  },
+  {
+    "code": "GBR",
+    "name": "United Kingdom",
+    "slug": "united-kingdom",
+    "flag": "\ud83c\udf0d",
+    "population2024": 67700000
+  },
+  {
+    "code": "USA",
+    "name": "United States",
+    "slug": "united-states",
+    "flag": "\ud83c\udf0d",
+    "population2024": 339996563
+  },
+  {
+    "code": "URY",
+    "name": "Uruguay",
+    "slug": "uruguay",
+    "flag": "\ud83c\udf0d",
+    "population2024": 3400000
+  },
+  {
+    "code": "UZB",
+    "name": "Uzbekistan",
+    "slug": "uzbekistan",
+    "flag": "\ud83c\udf0d",
+    "population2024": 36000000
+  },
+  {
+    "code": "VUT",
+    "name": "Vanuatu",
+    "slug": "vanuatu",
+    "flag": "\ud83c\udf0d",
+    "population2024": 300000
+  },
+  {
+    "code": "VAT",
+    "name": "Vatican City",
+    "slug": "vatican-city",
+    "flag": "\ud83c\udf0d",
+    "population2024": 1000
+  },
+  {
+    "code": "VEN",
+    "name": "Venezuela",
+    "slug": "venezuela",
+    "flag": "\ud83c\udf0d",
+    "population2024": 28800000
+  },
+  {
+    "code": "VNM",
+    "name": "Vietnam",
+    "slug": "vietnam",
+    "flag": "\ud83c\udf0d",
+    "population2024": 98900000
+  },
+  {
+    "code": "YEM",
+    "name": "Yemen",
+    "slug": "yemen",
+    "flag": "\ud83c\udf0d",
+    "population2024": 34400000
+  },
+  {
+    "code": "ZMB",
+    "name": "Zambia",
+    "slug": "zambia",
+    "flag": "\ud83c\udf0d",
+    "population2024": 20000000
+  },
+  {
+    "code": "ZWE",
+    "name": "Zimbabwe",
+    "slug": "zimbabwe",
+    "flag": "\ud83c\udf0d",
+    "population2024": 16700000
+  }
+]
