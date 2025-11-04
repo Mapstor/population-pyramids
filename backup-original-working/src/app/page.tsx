@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { generateWorldPopulationData, getCountriesWithPopulationChange } from '@/lib/world-data-aggregator';
-import WorldPopulationPyramid from '@/components/WorldPopulationPyramid';
-import SortableCountryTable from '@/components/SortableCountryTable';
+// import { generateWorldPopulationData, getCountriesWithPopulationChange } from '@/lib/world-data-aggregator';
+// import WorldPopulationPyramid from '@/components/WorldPopulationPyramid';
+// import SortableCountryTable from '@/components/SortableCountryTable';
 
 // JSON-LD Schema for SEO
 const jsonLd = {
@@ -49,10 +49,13 @@ const jsonLd = {
 };
 
 export default async function HomePage() {
-  const [worldData, countries] = await Promise.all([
-    generateWorldPopulationData(),
-    getCountriesWithPopulationChange()
-  ]);
+  // Temporarily disabled for debugging OOM
+  // const [worldData, countries] = await Promise.all([
+  //   generateWorldPopulationData(),
+  //   getCountriesWithPopulationChange()
+  // ]);
+  const worldData = { years: { '2024': { totalPopulation: 8000000000 }, '2000': { totalPopulation: 6000000000 } } };
+  const countries = [];
 
   const totalWorldPop2024 = worldData.years['2024']?.totalPopulation || 0;
   const totalWorldPop2000 = worldData.years['2000']?.totalPopulation || 0;
@@ -110,7 +113,7 @@ export default async function HomePage() {
             </p>
           </div>
           
-          <WorldPopulationPyramid worldData={worldData.years} className="max-w-6xl mx-auto" />
+          {/* <WorldPopulationPyramid worldData={worldData.years} className="max-w-6xl mx-auto" /> */}
         </div>
 
         {/* SEO Content Sections */}
@@ -241,7 +244,7 @@ export default async function HomePage() {
             </p>
           </div>
 
-          <SortableCountryTable countries={countries} />
+          {/* <SortableCountryTable countries={countries} /> */}
         </div>
 
         {/* About This Website */}
