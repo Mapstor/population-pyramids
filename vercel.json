@@ -1,6 +1,5 @@
 {
   "framework": "nextjs",
-  "rootDirectory": "backup-original-working",
   "buildCommand": "rm -rf .next && npm run build",
   "env": {
     "NODE_OPTIONS": "--max-old-space-size=8192"
