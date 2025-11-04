@@ -33,12 +33,16 @@ interface CountryPageProps {
 export async function generateStaticParams() {
   const countries = await loadCountries();
   console.log('Generating params for countries:', countries.length);
+  
+  // IMPORTANT: Only generate Afghanistan for testing
   const testCountries = countries.filter(c => c.slug === 'afghanistan');
   console.log('Filtered to test countries:', testCountries.length);
   console.log('Afghanistan slug will be:', testCountries[0]?.slug);
-  return testCountries.map(country => ({
-    slug: country.slug
-  }));
+  
+  // Return ONLY Afghanistan
+  return [{
+    slug: 'afghanistan'
+  }];
 }
 
 export async function generateMetadata({ params }: CountryPageProps) {
