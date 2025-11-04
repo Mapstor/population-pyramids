@@ -31,7 +31,8 @@ interface CountryPageProps {
 
 export async function generateStaticParams() {
   const countries = await loadCountries();
-  return countries.map(country => ({
+  const testCountries = countries.filter(c => c.slug === 'afghanistan');
+  return testCountries.map(country => ({
     slug: country.slug
   }));
 }

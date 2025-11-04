@@ -18,9 +18,10 @@ interface CountryYearPageProps {
 
 export async function generateStaticParams() {
   const countries = await loadCountries();
+  const testCountries = countries.filter(c => c.slug === 'afghanistan');
   const params: { slug: string; year: string }[] = [];
   
-  for (const country of countries) {
+  for (const country of testCountries) {
     try {
       const countryData = await loadCountryData(country.slug);
       const availableYears = getAvailableYears(countryData);
