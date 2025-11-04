@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { generateWorldPopulationData, getCountriesWithPopulationChange } from '@/lib/world-data-aggregator';
-import WorldPopulationPyramid from '@/components/WorldPopulationPyramid';
-import SortableCountryTable from '@/components/SortableCountryTable';
+// import { generateWorldPopulationData, getCountriesWithPopulationChange } from '@/lib/world-data-aggregator';
+// import WorldPopulationPyramid from '@/components/WorldPopulationPyramid';
+// import SortableCountryTable from '@/components/SortableCountryTable';
 
 // JSON-LD Schema for SEO
 const jsonLd = {
@@ -49,10 +49,15 @@ const jsonLd = {
 };
 
 export default async function HomePage() {
-  const [worldData, countries] = await Promise.all([
-    generateWorldPopulationData(),
-    getCountriesWithPopulationChange()
-  ]);
+  // TEMPORARILY DISABLED: Heavy data loading causing OOM
+  // const [worldData, countries] = await Promise.all([
+  //   generateWorldPopulationData(),
+  //   getCountriesWithPopulationChange()
+  // ]);
+
+  // Temporary dummy data for testing
+  const worldData = { years: { '2024': { totalPopulation: 8120000000 }, '2000': { totalPopulation: 6143000000 } } };
+  const countries: any[] = [];
 
   const totalWorldPop2024 = worldData.years['2024']?.totalPopulation || 0;
   const totalWorldPop2000 = worldData.years['2000']?.totalPopulation || 0;
@@ -110,7 +115,8 @@ export default async function HomePage() {
             </p>
           </div>
           
-          <WorldPopulationPyramid worldData={worldData.years} className="max-w-6xl mx-auto" />
+          {/* TEMPORARILY DISABLED: <WorldPopulationPyramid worldData={worldData.years} className="max-w-6xl mx-auto" /> */}
+          <div className="text-center p-8 bg-gray-100 rounded">World Population Pyramid temporarily disabled for deployment testing</div>
         </div>
 
         {/* SEO Content Sections */}
@@ -241,7 +247,8 @@ export default async function HomePage() {
             </p>
           </div>
 
-          <SortableCountryTable countries={countries} />
+          {/* TEMPORARILY DISABLED: <SortableCountryTable countries={countries} /> */}
+          <div className="text-center p-8 bg-gray-100 rounded">Country table temporarily disabled for deployment testing</div>
         </div>
 
         {/* About This Website */}
