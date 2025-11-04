@@ -21,7 +21,8 @@ import RegionalComparison from '@/components/RegionalComparison';
 import DecadeBreakdown from '@/components/DecadeBreakdown';
 import ShareButtons from '@/components/ShareButtons';
 
-export const revalidate = 86400; // Revalidate every 24 hours
+export const dynamic = 'force-static';
+export const dynamicParams = false;
 
 interface CountryPageProps {
   params: {
