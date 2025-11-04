@@ -21,8 +21,8 @@ import StatsTable from '@/components/StatsTable';
 // import DecadeBreakdown from '@/components/DecadeBreakdown';
 import ShareButtons from '@/components/ShareButtons';
 
-export const dynamic = 'force-static';
-export const dynamicParams = false;
+// export const dynamic = 'force-static';
+// export const dynamicParams = false;
 
 interface CountryPageProps {
   params: {
