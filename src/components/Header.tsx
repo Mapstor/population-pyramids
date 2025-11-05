@@ -48,6 +48,12 @@ export default function Header() {
               Countries
             </Link>
             <Link 
+              href="/blog" 
+              className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition"
+            >
+              Blog
+            </Link>
+            <Link 
               href="/compare" 
               className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition"
             >
@@ -89,6 +95,13 @@ export default function Header() {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Countries
+              </Link>
+              <Link 
+                href="/blog" 
+                className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Blog
               </Link>
               <Link 
                 href="/compare" 
