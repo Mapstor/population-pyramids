@@ -61,8 +61,10 @@ export const metadata: Metadata = {
   },
   
   verification: {
-    google: 'your-google-verification-code',
-    yandex: 'your-yandex-verification-code',
+    google: 'google12f8c2f9c03913a3',
+    other: {
+      'msvalidate.01': '57C407E8336C4915E2D28EEA649C8078'
+    }
   },
   
   category: 'education',
@@ -76,8 +78,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {/* Google Analytics */}
-        <GoogleAnalytics measurementId="G-XXXXXXXXXX" />
+        <GoogleAnalytics measurementId="G-HXTB2KJ9X6" />
         
         <div className="min-h-screen flex flex-col">
           <Header />

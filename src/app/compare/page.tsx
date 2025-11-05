@@ -271,7 +271,7 @@ export default function ComparePage() {
           <h2 className="text-xl font-semibold text-gray-900 mb-4">
             Popular Comparisons
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
             {popularComparisons.map(({ country1, country2, label }) => (
               <button
                 key={`${country1}-${country2}`}
