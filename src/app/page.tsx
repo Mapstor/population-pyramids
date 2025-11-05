@@ -1,7 +1,7 @@
 import Link from 'next/link';
 // import { generateWorldPopulationData, getCountriesWithPopulationChange } from '@/lib/world-data-aggregator';
 // import WorldPopulationPyramid from '@/components/WorldPopulationPyramid';
-// import SortableCountryTable from '@/components/SortableCountryTable';
+import SortableCountryTable from '@/components/SortableCountryTable';
 
 // JSON-LD Schema for SEO
 const jsonLd = {
@@ -57,7 +57,19 @@ export default async function HomePage() {
 
   // Temporary dummy data for testing
   const worldData = { years: { '2024': { totalPopulation: 8120000000 }, '2000': { totalPopulation: 6143000000 } } };
-  const countries: any[] = [];
+  // Create a minimal list of countries for the table with all required fields
+  const countries: any[] = [
+    { code: 'AFG', name: 'Afghanistan', slug: 'afghanistan', flag: '🇦🇫', population2024: 43844122, population2000: 20779000, population1990: 12412000, populationChange: 23065122, populationChangePercent: 111.0, medianAge2024: 18.3, medianAge2000: 16.0, medianAgeChange: 2.3, youthPercent2024: 42.6, elderlyPercent2024: 2.4, dependencyRatio2024: 81.8, region: 'Asia' },
+    { code: 'PAK', name: 'Pakistan', slug: 'pakistan', flag: '🇵🇰', population2024: 240485658, population2000: 154000000, population1990: 108000000, populationChange: 86485658, populationChangePercent: 56.1, medianAge2024: 21.0, medianAge2000: 18.5, medianAgeChange: 2.5, youthPercent2024: 35.0, elderlyPercent2024: 4.5, dependencyRatio2024: 65.0, region: 'Asia' },
+    { code: 'IND', name: 'India', slug: 'india', flag: '🇮🇳', population2024: 1441719852, population2000: 1053000000, population1990: 873000000, populationChange: 388719852, populationChangePercent: 36.9, medianAge2024: 28.7, medianAge2000: 23.0, medianAgeChange: 5.7, youthPercent2024: 25.0, elderlyPercent2024: 7.0, dependencyRatio2024: 47.0, region: 'Asia' },
+    { code: 'CHN', name: 'China', slug: 'china', flag: '🇨🇳', population2024: 1425671352, population2000: 1262000000, population1990: 1135000000, populationChange: 163671352, populationChangePercent: 13.0, medianAge2024: 39.0, medianAge2000: 30.0, medianAgeChange: 9.0, youthPercent2024: 17.0, elderlyPercent2024: 14.0, dependencyRatio2024: 45.0, region: 'Asia' },
+    { code: 'USA', name: 'United States', slug: 'united-states', flag: '🇺🇸', population2024: 341814420, population2000: 282200000, population1990: 249600000, populationChange: 59614420, populationChangePercent: 21.1, medianAge2024: 38.5, medianAge2000: 35.3, medianAgeChange: 3.2, youthPercent2024: 18.0, elderlyPercent2024: 18.0, dependencyRatio2024: 56.0, region: 'Americas' },
+    { code: 'BRA', name: 'Brazil', slug: 'brazil', flag: '🇧🇷', population2024: 217637297, population2000: 174500000, population1990: 149000000, populationChange: 43137297, populationChangePercent: 24.7, medianAge2024: 34.7, medianAge2000: 26.5, medianAgeChange: 8.2, youthPercent2024: 20.0, elderlyPercent2024: 10.0, dependencyRatio2024: 43.0, region: 'Americas' },
+    { code: 'NGA', name: 'Nigeria', slug: 'nigeria', flag: '🇳🇬', population2024: 232679478, population2000: 122000000, population1990: 95000000, populationChange: 110679478, populationChangePercent: 90.7, medianAge2024: 18.6, medianAge2000: 17.0, medianAgeChange: 1.6, youthPercent2024: 43.0, elderlyPercent2024: 3.0, dependencyRatio2024: 85.0, region: 'Africa' },
+    { code: 'JPN', name: 'Japan', slug: 'japan', flag: '🇯🇵', population2024: 122631432, population2000: 126700000, population1990: 123500000, populationChange: -4068568, populationChangePercent: -3.2, medianAge2024: 49.0, medianAge2000: 41.5, medianAgeChange: 7.5, youthPercent2024: 11.0, elderlyPercent2024: 30.0, dependencyRatio2024: 70.0, region: 'Asia' },
+    { code: 'DEU', name: 'Germany', slug: 'germany', flag: '🇩🇪', population2024: 84358845, population2000: 82200000, population1990: 79400000, populationChange: 2158845, populationChangePercent: 2.6, medianAge2024: 47.8, medianAge2000: 40.0, medianAgeChange: 7.8, youthPercent2024: 14.0, elderlyPercent2024: 23.0, dependencyRatio2024: 59.0, region: 'Europe' },
+    { code: 'GBR', name: 'United Kingdom', slug: 'united-kingdom', flag: '🇬🇧', population2024: 68350000, population2000: 58900000, population1990: 57200000, populationChange: 9450000, populationChangePercent: 16.0, medianAge2024: 40.6, medianAge2000: 37.6, medianAgeChange: 3.0, youthPercent2024: 17.0, elderlyPercent2024: 19.0, dependencyRatio2024: 56.0, region: 'Europe' }
+  ];
 
   const totalWorldPop2024 = worldData.years['2024']?.totalPopulation || 0;
   const totalWorldPop2000 = worldData.years['2000']?.totalPopulation || 0;
@@ -247,8 +259,7 @@ export default async function HomePage() {
             </p>
           </div>
 
-          {/* TEMPORARILY DISABLED: <SortableCountryTable countries={countries} /> */}
-          <div className="text-center p-8 bg-gray-100 rounded">Country table temporarily disabled for deployment testing</div>
+          <SortableCountryTable countries={countries} />
         </div>
 
         {/* About This Website */}

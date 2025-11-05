@@ -34,15 +34,28 @@ export async function generateStaticParams() {
   const countries = await loadCountries();
   console.log('Generating params for countries:', countries.length);
   
-  // IMPORTANT: Only generate Afghanistan for testing
-  const testCountries = countries.filter(c => c.slug === 'afghanistan');
-  console.log('Filtered to test countries:', testCountries.length);
-  console.log('Afghanistan slug will be:', testCountries[0]?.slug);
+  // Test with a small set of diverse countries
+  const testCountrySlugs = [
+    'afghanistan',
+    'pakistan', 
+    'india',
+    'china',
+    'united-states',
+    'brazil',
+    'nigeria',
+    'japan',
+    'germany',
+    'united-kingdom'
+  ];
   
-  // Return ONLY Afghanistan
-  return [{
-    slug: 'afghanistan'
-  }];
+  const testCountries = countries.filter(c => testCountrySlugs.includes(c.slug));
+  console.log('Filtered to test countries:', testCountries.length);
+  console.log('Test countries:', testCountries.map(c => c.slug).join(', '));
+  
+  // Return the test countries
+  return testCountries.map(country => ({
+    slug: country.slug
+  }));
 }
 
 export async function generateMetadata({ params }: CountryPageProps) {
