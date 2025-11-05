@@ -247,7 +247,7 @@ export default function SortableCountryTable({ countries }: SortableCountryTable
                 </td>
                 <td className="px-6 py-4">
                   <Link 
-                    href={`/${country.slug}-population-pyramid`}
+                    href={`/${country.slug}`}
                     className="flex items-center space-x-3 group"
                   >
                     <span className="text-2xl">{country.flag}</span>

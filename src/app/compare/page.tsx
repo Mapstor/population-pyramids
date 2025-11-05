@@ -467,7 +467,7 @@ export default function ComparePage() {
             {/* Individual Country Links */}
             <div className="grid md:grid-cols-2 gap-6">
               <Link
-                href={`/${comparisonData1.slug}-population-pyramid`}
+                href={`/${comparisonData1.slug}`}
                 className="block bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition"
               >
                 <h3 className="text-lg font-semibold text-blue-600 mb-2">
@@ -479,7 +479,7 @@ export default function ComparePage() {
               </Link>
               
               <Link
-                href={`/${comparisonData2.slug}-population-pyramid`}
+                href={`/${comparisonData2.slug}`}
                 className="block bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition"
               >
                 <h3 className="text-lg font-semibold text-green-600 mb-2">
