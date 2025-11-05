@@ -158,7 +158,7 @@ export default function WorldPopulationPyramid({
           label: function(context) {
             const value = Math.abs(context.parsed.x || 0);
             const gender = context.dataset.label;
-            return `${gender}: ${value.toFixed(2)}M people`;
+            return `${gender}: ${value.toFixed(1)}M people`;
           }
         }
       }
@@ -170,7 +170,7 @@ export default function WorldPopulationPyramid({
         max: maxValues.max,
         ticks: {
           callback: function(value) {
-            return Math.abs(Number(value)) + 'M';
+            return Math.abs(Number(value)).toFixed(1) + 'M';
           }
         },
         title: {
@@ -247,10 +247,10 @@ export default function WorldPopulationPyramid({
         </div>
 
         {/* Playback Controls */}
-        <div className="flex items-center justify-center space-x-4">
+        <div className="flex items-center justify-center space-x-2 sm:space-x-4">
           <button
             onClick={handlePlayPause}
-            className={`px-6 py-2 rounded-lg font-medium transition ${
+            className={`px-4 sm:px-6 py-2 rounded-lg font-medium transition text-sm sm:text-base ${
               isPlaying 
                 ? 'bg-red-500 text-white hover:bg-red-600' 
                 : 'bg-blue-500 text-white hover:bg-blue-600'
@@ -261,7 +261,7 @@ export default function WorldPopulationPyramid({
           
           <button
             onClick={handleReset}
-            className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition"
+            className="px-3 sm:px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition text-sm sm:text-base"
           >
             🔄 Reset
           </button>

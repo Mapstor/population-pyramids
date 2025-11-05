@@ -95,7 +95,7 @@ export default function DemographicCharts({
       tooltip: {
         callbacks: {
           label: function(context: any) {
-            return `${context.parsed.y.toFixed(1)}M people`;
+            return `${parseFloat(context.parsed.y).toFixed(1)}M people`;
           }
         }
       }
@@ -109,7 +109,7 @@ export default function DemographicCharts({
         },
         ticks: {
           callback: function(value: any) {
-            return `${value}M`;
+            return `${parseFloat(value).toFixed(1)}M`;
           }
         }
       },
@@ -345,10 +345,10 @@ export default function DemographicCharts({
         Comprehensive charts showing {countryName}'s demographic trends, age structure evolution, and current population distribution patterns.
       </p>
 
-      <div className="grid lg:grid-cols-2 gap-8">
+      <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
         {/* Population Growth Chart */}
-        <div className="bg-gray-50 rounded-lg p-6">
-          <div style={{ height: '300px' }}>
+        <div className="bg-gray-50 rounded-lg p-4 sm:p-6">
+          <div style={{ height: '250px', minHeight: '250px' }} className="sm:h-80">
             <Line data={populationChartData} options={populationChartOptions} />
           </div>
           <div className="mt-4 text-sm text-gray-700 leading-relaxed">
@@ -359,8 +359,8 @@ export default function DemographicCharts({
         </div>
 
         {/* Median Age Evolution Chart */}
-        <div className="bg-gray-50 rounded-lg p-6">
-          <div style={{ height: '300px' }}>
+        <div className="bg-gray-50 rounded-lg p-4 sm:p-6">
+          <div style={{ height: '250px', minHeight: '250px' }} className="sm:h-80">
             <Line data={medianAgeChartData} options={medianAgeChartOptions} />
           </div>
           <div className="mt-4 text-sm text-gray-700 leading-relaxed">
@@ -372,8 +372,8 @@ export default function DemographicCharts({
 
         {/* Age Structure Comparison */}
         {ageGroupComparison && (
-          <div className="bg-gray-50 rounded-lg p-6">
-            <div style={{ height: '300px' }}>
+          <div className="bg-gray-50 rounded-lg p-4 sm:p-6">
+            <div style={{ height: '250px', minHeight: '250px' }} className="sm:h-80">
               <Bar data={ageGroupComparison} options={ageGroupComparisonOptions} />
             </div>
             <div className="mt-4 text-sm text-gray-700 leading-relaxed">
@@ -385,8 +385,8 @@ export default function DemographicCharts({
         )}
 
         {/* Current Age Distribution */}
-        <div className="bg-gray-50 rounded-lg p-6">
-          <div style={{ height: '300px' }}>
+        <div className="bg-gray-50 rounded-lg p-4 sm:p-6">
+          <div style={{ height: '250px', minHeight: '250px' }} className="sm:h-80">
             <Pie data={currentAgeDistribution} options={pieChartOptions} />
           </div>
           <div className="mt-4 text-sm text-gray-700 leading-relaxed">
