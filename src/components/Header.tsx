@@ -42,6 +42,12 @@ export default function Header() {
           {/* Navigation - Clean and Minimal */}
           <nav className="hidden md:flex items-center space-x-1">
             <Link 
+              href="/countries" 
+              className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition"
+            >
+              Countries
+            </Link>
+            <Link 
               href="/compare" 
               className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition"
             >
@@ -77,6 +83,13 @@ export default function Header() {
         {isMobileMenuOpen && (
           <div className="md:hidden border-t border-gray-200 py-4">
             <nav className="flex flex-col space-y-2">
+              <Link 
+                href="/countries" 
+                className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Countries
+              </Link>
               <Link 
                 href="/compare" 
                 className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition"
