@@ -53,7 +53,7 @@ export default function BlogPage() {
                     <span className="px-3 py-1 bg-red-500 text-white text-xs font-semibold rounded-full">
                       Featured
                     </span>
-                    <span className="px-3 py-1 bg-white bg-opacity-20 text-white text-xs font-semibold rounded-full">
+                    <span className="px-3 py-1 bg-black bg-opacity-50 text-white text-xs font-semibold rounded-full">
                       {post.category}
                     </span>
                   </div>
@@ -112,7 +112,7 @@ export default function BlogPage() {
                 <div className={`h-32 bg-gradient-to-r ${article.color} relative`}>
                   <div className="absolute inset-0 bg-black bg-opacity-20"></div>
                   <div className="absolute bottom-3 left-3 right-3">
-                    <span className="px-2 py-1 bg-white bg-opacity-20 text-white text-xs font-semibold rounded">
+                    <span className="px-2 py-1 bg-black bg-opacity-50 text-white text-xs font-semibold rounded">
                       {article.category}
                     </span>
                   </div>

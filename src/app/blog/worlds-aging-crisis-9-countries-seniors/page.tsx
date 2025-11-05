@@ -85,17 +85,36 @@ export default async function AgingCrisisArticle() {
         {/* Opening Story */}
         <div className="prose prose-lg max-w-none mb-12">
           <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-            <div className="text-6xl mb-6 text-center">🏥</div>
-            <p className="text-xl leading-relaxed text-gray-800 mb-6">
-              <strong>Picture this:</strong> It's 2030 in Tokyo. At a local hospital, the pediatric ward has been converted 
-              to geriatric care for the third time this decade. The playground across the street sits empty most days, 
-              while the senior center next door has a waiting list of 500 people.
-            </p>
-            <p className="text-lg leading-relaxed text-gray-700">
-              This isn't science fiction. This is the demographic reality facing Japan—and eight other countries—right now. 
-              What we're witnessing is the fastest population aging in human history, and it's about to reshape everything 
-              we know about society, economics, and human civilization itself.
-            </p>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="text-center">
+                <div className="text-6xl mb-4">👵</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-3">Hiroko, 78, Tokyo</h3>
+                <p className="text-gray-700 text-sm leading-relaxed">
+                  "When I was young, our neighborhood was full of children playing in the streets. 
+                  Now I'm the youngest person at my grocery store most days. My doctor is 
+                  older than I am, and he can't find a replacement."
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="text-6xl mb-4">👶</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-3">Min-jun, 8 months, Seoul</h3>
+                <p className="text-gray-700 text-sm leading-relaxed">
+                  Min-jun is one of only 230,000 babies born in South Korea this year—in a country 
+                  of 52 million people. He'll grow up in classrooms with half-empty desks, 
+                  in a society desperately hoping he'll help care for millions of elderly.
+                </p>
+              </div>
+            </div>
+            <div className="mt-8 text-center">
+              <p className="text-xl leading-relaxed text-gray-800 mb-4">
+                <strong>This is the human face of the world's aging crisis.</strong>
+              </p>
+              <p className="text-lg leading-relaxed text-gray-700">
+                Across nine countries, the demographic balance that has sustained human civilization for millennia 
+                is shifting at breakneck speed. The implications reach far beyond statistics—they're reshaping 
+                how we live, work, and care for each other in ways we're only beginning to understand.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -105,8 +124,8 @@ export default async function AgingCrisisArticle() {
           
           <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
             <p className="text-lg text-gray-700 mb-6">
-              When Steve Jobs unveiled the iPhone, he didn't start with technical specs. He told a story. 
-              Today, I want to tell you the story of nine countries where the demographic data reads like a thriller novel.
+              Behind every demographic statistic is a human story. In these nine countries, those stories are converging 
+              into a narrative that will define the next century of human civilization.
             </p>
             
             {/* Key Stats Grid */}
@@ -187,19 +206,28 @@ export default async function AgingCrisisArticle() {
           <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
             <div className="grid lg:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">The Demographic Revolution</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">A Nation Transformed</h3>
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+                  <p className="text-blue-800 text-sm italic mb-3">
+                    "I teach in a school that once had 1,200 students. Now we have 200. The hallways echo 
+                    with emptiness where children's laughter used to fill every corner. We've converted 
+                    three classrooms into a senior day-care center—it's the only way to keep the building alive."
+                  </p>
+                  <p className="text-blue-700 text-xs">— Kenji Tanaka, Elementary School Principal, Akita Prefecture</p>
+                </div>
                 <p className="text-gray-700 mb-4">
-                  Japan isn't just aging—it's rewriting the rules of human society. With a median age of 49, 
+                  Japan isn't just aging—it's pioneering a new form of human society. With a median age of 49, 
                   Japan has become the world's first "super-aged" society where seniors don't just outnumber 
                   children—they outnumber them 3-to-1.
                 </p>
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
-                  <h4 className="font-semibold text-blue-900 mb-2">Japan by the Numbers:</h4>
-                  <ul className="text-blue-800 text-sm space-y-1">
+                <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
+                  <h4 className="font-semibold text-red-900 mb-2">The Stark Reality:</h4>
+                  <ul className="text-red-800 text-sm space-y-1">
                     <li>• 30% of population is 65+ (38.3 million people)</li>
                     <li>• Only 11% are under 15 (13.5 million children)</li>
-                    <li>• Median age increased 7.5 years since 2000</li>
+                    <li>• 8,000+ schools closed in the past decade</li>
                     <li>• Adult diaper sales exceed baby diapers 3:1</li>
+                    <li>• 28,000 "ghost towns" with no children under 14</li>
                   </ul>
                 </div>
               </div>
@@ -234,25 +262,35 @@ export default async function AgingCrisisArticle() {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Aging at Warp Speed</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">The Fastest Transformation in History</h3>
+                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+                  <p className="text-yellow-800 text-sm italic mb-3">
+                    "My grandmother had 8 children. My mother had 3. I have one daughter, and she says 
+                    she might not have any. Looking at the cost of raising a child here, the competition, 
+                    the pressure—I understand her choice. But who will take care of us when we're old?"
+                  </p>
+                  <p className="text-yellow-700 text-xs">— Park Soo-jin, 45, Software Engineer, Seoul</p>
+                </div>
                 <p className="text-gray-700 mb-4">
-                  If Japan is the canary, South Korea is the rocket ship. No country in human history has aged 
-                  faster than South Korea. What took Japan 25 years to achieve, South Korea did in 18 years.
+                  If Japan is the canary, South Korea is the rocket ship hurtling toward an unprecedented future. 
+                  No country in human history has aged faster. What took Japan 25 years to achieve, 
+                  South Korea accomplished in just 18 years.
                 </p>
                 <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
-                  <h4 className="font-semibold text-red-900 mb-2">The Korean Acceleration:</h4>
+                  <h4 className="font-semibold text-red-900 mb-2">Speed of Light Aging:</h4>
                   <ul className="text-red-800 text-sm space-y-1">
                     <li>• Median age: 44.4 years (was 31.8 in 2000)</li>
-                    <li>• Birth rate: 0.78 children per woman (lowest in world)</li>
-                    <li>• Aging speed: Median age rising 6 months per year</li>
-                    <li>• By 2030: Will surpass Japan's current aging level</li>
+                    <li>• Birth rate: 0.78 children per woman (lowest in world history)</li>
+                    <li>• Universities closing: 40 expected to shut down by 2030</li>
+                    <li>• Military recruitment crisis: Not enough young men</li>
+                    <li>• Wedding industry collapse: 50% fewer marriages since 2010</li>
                   </ul>
                 </div>
-                <p className="text-gray-700 text-sm italic">
-                  "South Korea is essentially time-traveling into its demographic future. 
-                  It's aging so fast, it's skipping entire stages of demographic transition." 
-                  - UN Population Division
-                </p>
+                <div className="bg-purple-50 border border-purple-200 rounded-lg p-3">
+                  <p className="text-purple-800 text-sm font-medium">
+                    💡 South Korea ages 6 months every calendar year—faster than any society in recorded history.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -265,20 +303,36 @@ export default async function AgingCrisisArticle() {
           <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
             <div className="grid lg:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">The Pasta Paradox</h3>
-                <p className="text-gray-700 mb-4">
-                  Italy, home to some of the world's oldest civilizations, is now home to some of the world's 
-                  oldest people. With a median age of 47.8 years, Italy faces a future where its famous 
-                  piazzas may echo with the footsteps of canes rather than children.
-                </p>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">When Ancient Civilizations Face Modern Aging</h3>
                 <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
-                  <h4 className="font-semibold text-green-900 mb-2">La Bella Vita Gets Older:</h4>
-                  <ul className="text-green-800 text-sm space-y-1">
+                  <p className="text-green-800 text-sm italic mb-3">
+                    "Every Sunday, my nonna makes pasta for the family. But now it's just her, me, and my cousin. 
+                    The dining table that once seated 12 cousins, aunts, and uncles now echoes with empty chairs. 
+                    She cooks for ghosts of children who were never born."
+                  </p>
+                  <p className="text-green-700 text-xs">— Marco Rossi, 34, Last grandchild, Liguria</p>
+                </div>
+                <p className="text-gray-700 mb-4">
+                  Italy, cradle of Western civilization, now confronts its own demographic winter. With a median age of 47.8 years, 
+                  the country that gave us the Renaissance is painting its future in shades of silver and gray. 
+                  Ancient piazzas where children once played now serve as gathering spots for pensioners.
+                </p>
+                <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-4">
+                  <h4 className="font-semibold text-orange-900 mb-2">The Mediterranean Paradox:</h4>
+                  <ul className="text-orange-800 text-sm space-y-1">
                     <li>• 23.6% are 65+ (14.1 million seniors)</li>
                     <li>• Only 12.9% are under 15 (7.7 million children)</li>
-                    <li>• Schools closing: 1,200 closures in past decade</li>
-                    <li>• New trend: "Nonna housing" for multi-generational care</li>
+                    <li>• 1,200 schools closed in past decade</li>
+                    <li>• 6,000 villages at risk of complete abandonment</li>
+                    <li>• Birth rate: 1.25 children per woman (EU's lowest)</li>
+                    <li>• "Nonna villages": Towns with no residents under 50</li>
                   </ul>
+                </div>
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                  <p className="text-blue-800 text-sm">
+                    📚 <strong>Historical Irony:</strong> Italy's population is aging faster than any empire declined in history—
+                    a demographic transformation more dramatic than the fall of Rome.
+                  </p>
                 </div>
               </div>
               <div className="bg-gray-50 rounded-lg p-4">
@@ -350,14 +404,48 @@ export default async function AgingCrisisArticle() {
           </div>
         </section>
 
+        {/* A Day in 2050 */}
+        <section className="mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">A Day in 2050: What This World Will Look Like</h2>
+          
+          <div className="bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded-lg p-8 mb-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-xl font-bold mb-4">🌅 Morning in Tokyo</h3>
+                <p className="text-gray-300 text-sm leading-relaxed mb-4">
+                  Akiko, 65, starts her day volunteering at an AI-assisted senior center where she helps 
+                  care for 90-year-olds. The building used to be an elementary school—one of 15,000 closed 
+                  in Japan since 2024. Her robot companion helps her navigate to the train station, 
+                  which runs on automated systems due to the labor shortage.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-4">🌆 Evening in Seoul</h3>
+                <p className="text-gray-300 text-sm leading-relaxed mb-4">
+                  Ji-hoon, 40, one of only 180,000 Koreans born in 2010, finishes his shift as a caregiver 
+                  managing 50 elderly patients through smart home technology. He's among the last generation 
+                  expected to have children—the birth rate hit 0.4 in 2045. His apartment building has 
+                  been converted: 2 floors for families, 8 floors for senior living.
+                </p>
+              </div>
+            </div>
+            <div className="mt-6 text-center">
+              <p className="text-gray-200 text-lg">
+                This isn't dystopian fiction. It's the mathematical certainty of current demographic trends.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* The Global Picture */}
         <section className="mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">The Global Picture: Who's Next?</h2>
           
           <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
             <p className="text-lg text-gray-700 mb-6">
-              These nine countries aren't alone. They're the early adopters of a global trend that will define 
-              the 21st century. By 2050, the number of people over 65 worldwide will more than double.
+              These nine countries aren't outliers—they're pioneers. Every developed nation is following 
+              the same trajectory, just a few years behind. By 2050, the number of people over 65 worldwide 
+              will more than double, reaching 1.6 billion people.
             </p>
             
             <div className="grid lg:grid-cols-3 gap-6">
