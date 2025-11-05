@@ -32,27 +32,9 @@ interface CountryPageProps {
 
 export async function generateStaticParams() {
   const countries = await loadCountries();
-  console.log('Generating params for countries:', countries.length);
+  console.log('Generating params for ALL countries:', countries.length);
   
-  // Test with our 10 countries
-  const testCountrySlugs = [
-    'afghanistan',
-    'pakistan', 
-    'india',
-    'china',
-    'united-states',
-    'brazil',
-    'nigeria',
-    'japan',
-    'germany',
-    'united-kingdom'
-  ];
-  
-  const testCountries = countries.filter(c => testCountrySlugs.includes(c.slug));
-  console.log('Filtered to test countries:', testCountries.length);
-  console.log('Test countries:', testCountries.map(c => c.slug).join(', '));
-  
-  return testCountries.map(country => ({
+  return countries.map(country => ({
     slug: country.slug
   }));
 }
