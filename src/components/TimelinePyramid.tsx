@@ -228,8 +228,10 @@ export default function TimelinePyramid({
 
         {/* Quick Jump Buttons */}
         <div className="flex flex-wrap gap-2 justify-center">
-          {[minYear, 1980, 1990, 2000, 2010, 2020, maxYear].map(year => (
-            availableYears.includes(year) && (
+          {[minYear, 1980, 1990, 2000, 2010, 2020, maxYear]
+            .filter((year, index, self) => self.indexOf(year) === index) // Remove duplicates
+            .filter(year => availableYears.includes(year))
+            .map(year => (
               <button
                 key={year}
                 onClick={() => {
@@ -244,8 +246,7 @@ export default function TimelinePyramid({
               >
                 {year}
               </button>
-            )
-          ))}
+            ))}
         </div>
       </div>
 

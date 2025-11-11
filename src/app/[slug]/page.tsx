@@ -131,8 +131,8 @@ export default async function CountryPage({ params }: CountryPageProps) {
     const usageSummary = generateUsageSummary(countryData.countryName, metrics);
 
     return (
-      <div className="min-h-screen bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="min-h-screen bg-gray-50 overflow-x-hidden">
+        <div className="max-w-7xl mx-auto px-4 py-8 w-full">
           {/* Breadcrumbs */}
           <nav className="mb-8 text-sm">
             <ol className="flex items-center space-x-2 text-gray-600">
@@ -147,8 +147,8 @@ export default async function CountryPage({ params }: CountryPageProps) {
           </nav>
 
           {/* Hero Section */}
-          <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg p-6 mb-8 shadow-lg">
-            <h1 className="text-3xl font-bold mb-3">
+          <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg p-6 mb-8 shadow-lg overflow-hidden">
+            <h1 className="text-3xl font-bold mb-3 break-words">
               {countryData.countryName} Population Pyramid ({latestYear})
             </h1>
             <div className="flex flex-wrap gap-4 text-sm">
@@ -189,7 +189,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
           {/* Demographics Facts */}
           <section className="mb-12">
             <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 break-words">
                 {countryData.countryName} Demographics
               </h2>
               
@@ -219,11 +219,11 @@ export default async function CountryPage({ params }: CountryPageProps) {
           </section>
 
           {/* Historical Changes */}
-          <section className="bg-white rounded-lg shadow-sm p-8 mb-8">
+          <section className="bg-white rounded-lg shadow-sm p-8 mb-8 overflow-hidden">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
               Historical Demographic Changes
             </h2>
-            <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+            <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed break-words overflow-hidden">
               {content.historicalChanges.split('\n\n').map((para, i) => (
                 <p key={i} className="mb-4">{para}</p>
               ))}
@@ -231,11 +231,11 @@ export default async function CountryPage({ params }: CountryPageProps) {
           </section>
 
           {/* Understanding Demographics Section */}
-          <section className="bg-white rounded-lg shadow-sm p-8 mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <section className="bg-white rounded-lg shadow-sm p-8 mb-8 overflow-hidden">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4 break-words">
               Understanding {countryData.countryName}'s Demographics
             </h2>
-            <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+            <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed break-words overflow-hidden">
               {content.understanding.split('\n\n').map((para, i) => (
                 <p key={i} className="mb-4">{para}</p>
               ))}
@@ -243,10 +243,10 @@ export default async function CountryPage({ params }: CountryPageProps) {
           </section>
 
           {/* Expert Demographic Analysis */}
-          <section className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg shadow-sm p-8 mb-8 border border-indigo-200">
+          <section className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg shadow-sm p-8 mb-8 border border-indigo-200 overflow-hidden">
             <div className="flex items-center mb-4">
               <span className="text-3xl mr-3">🎓</span>
-              <h2 className="text-3xl font-bold text-gray-900">
+              <h2 className="text-3xl font-bold text-gray-900 break-words">
                 Demographic Analysis: {countryData.countryName}'s Population Structure
               </h2>
             </div>
@@ -317,11 +317,11 @@ export default async function CountryPage({ params }: CountryPageProps) {
           </section>
 
           {/* Age Distribution Analysis */}
-          <section className="bg-white rounded-lg shadow-sm p-8 mb-8">
+          <section className="bg-white rounded-lg shadow-sm p-8 mb-8 overflow-hidden">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
               Age Distribution Analysis
             </h2>
-            <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+            <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed break-words overflow-hidden">
               {content.ageDistribution.split('\n\n').map((para, i) => (
                 <p key={i} className="mb-4">{para}</p>
               ))}
@@ -330,7 +330,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
 
           {/* What This Means Section */}
           <section className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg shadow-sm p-8 mb-8 border border-green-200">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4 break-words">
               What This Means for {countryData.countryName}
             </h2>
             <p className="text-gray-600 mb-6">
@@ -431,11 +431,11 @@ export default async function CountryPage({ params }: CountryPageProps) {
           </section>
 
           {/* Future Trends */}
-          <section className="bg-white rounded-lg shadow-sm p-8 mb-8">
+          <section className="bg-white rounded-lg shadow-sm p-8 mb-8 overflow-hidden">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
               Future Demographic Trends
             </h2>
-            <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+            <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed break-words overflow-hidden">
               {content.futureTrends.split('\n\n').map((para, i) => (
                 <p key={i} className="mb-4">{para}</p>
               ))}
@@ -446,7 +446,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
           <section className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-lg shadow-sm p-8 mb-8 border border-amber-200">
             <div className="flex items-center mb-4">
               <span className="text-3xl mr-3">📚</span>
-              <h2 className="text-3xl font-bold text-gray-900">
+              <h2 className="text-3xl font-bold text-gray-900 break-words">
                 Major Events That Shaped {countryData.countryName}'s Demographics
               </h2>
             </div>
@@ -526,11 +526,154 @@ export default async function CountryPage({ params }: CountryPageProps) {
             />
           </section>
 
+          {/* Related Demographic Insights */}
+          <section className="mb-8">
+            <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg shadow-sm p-6 border border-indigo-200">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                Trending Analysis & Global Demographics
+              </h2>
+              <div className="space-y-4">
+                {(() => {
+                  const countryNameLower = countryData.countryName.toLowerCase();
+                  const relatedArticles = [];
+                  
+                  // Fertility crisis countries
+                  const fertilityCountries = ['south korea', 'singapore', 'taiwan', 'hong kong', 'macau', 'italy', 'spain', 'japan'];
+                  if (fertilityCountries.includes(countryNameLower)) {
+                    relatedArticles.push({
+                      title: "Fertility Crisis: Korea 0.72 Births Per Woman",
+                      description: `${countryData.countryName} faces one of the world's most severe fertility crises, threatening future economic stability and population sustainability.`,
+                      link: "/blog/fertility-apocalypse-countries-stopped-having-babies"
+                    });
+                  }
+                  
+                  // Demographic time bomb countries
+                  const shrinkingCountries = ['japan', 'south korea', 'italy', 'spain', 'poland', 'greece', 'portugal', 'latvia', 'lithuania', 'bulgaria', 'ukraine', 'serbia', 'bosnia', 'croatia', 'hungary'];
+                  if (shrinkingCountries.includes(countryNameLower)) {
+                    relatedArticles.push({
+                      title: "Demographic Time Bombs: Countries Losing People",
+                      description: `${countryData.countryName} experiences rapid population decline, creating unprecedented economic and social challenges for the future.`,
+                      link: "/blog/demographic-time-bombs-countries-losing-people"
+                    });
+                  }
+                  
+                  // India-China population swap
+                  if (countryNameLower === 'india' || countryNameLower === 'china') {
+                    relatedArticles.push({
+                      title: "India Beats China: First Time in 300 Years",
+                      description: `The historic population shift between India and China marks a new era in global demographics and economic power dynamics.`,
+                      link: "/blog/india-beat-china-first-time-300-years-population"
+                    });
+                    relatedArticles.push({
+                      title: "China-India Population Swap: Global Power Shift",
+                      description: `How ${countryData.countryName}'s demographic transition reshapes global economics, geopolitics, and the future world order.`,
+                      link: "/blog/china-india-population-swap-global-shift"
+                    });
+                  }
+                  
+                  // Youth explosion African countries
+                  const youthCountries = ['niger', 'chad', 'central african republic', 'mali', 'somalia', 'uganda', 'angola', 'burkina faso', 'burundi'];
+                  if (youthCountries.includes(countryNameLower)) {
+                    relatedArticles.push({
+                      title: "Youth Explosion: Africa's Youngest Populations",
+                      description: `${countryData.countryName} has one of the world's youngest populations, presenting both massive opportunities and challenges for development.`,
+                      link: "/blog/youth-explosion-africa-youngest-populations"
+                    });
+                    relatedArticles.push({
+                      title: "Half This Country Under 17: Youth Explosion",
+                      description: `With median age under 18, ${countryData.countryName} faces unique challenges in education, employment, and infrastructure for its youth bulge.`,
+                      link: "/blog/half-this-country-under-17-youth-explosion"
+                    });
+                  }
+                  
+                  // Aging crisis countries
+                  const agingCountries = ['japan', 'italy', 'germany', 'finland', 'portugal', 'slovenia', 'south korea', 'greece', 'spain'];
+                  if (agingCountries.includes(countryNameLower)) {
+                    relatedArticles.push({
+                      title: "World's Aging Crisis: 9 Countries Where Half Will Be Seniors",
+                      description: `${countryData.countryName} faces a silver tsunami with rapidly aging population, straining healthcare and pension systems.`,
+                      link: "/blog/worlds-aging-crisis-9-countries-seniors"
+                    });
+                  }
+                  
+                  // Migration nations
+                  const migrationGainers = ['germany', 'united states', 'canada', 'uae', 'qatar', 'kuwait', 'luxembourg', 'switzerland', 'australia', 'new zealand', 'singapore'];
+                  const migrationLosers = ['venezuela', 'syria', 'lithuania', 'romania'];
+                  if (migrationGainers.includes(countryNameLower)) {
+                    relatedArticles.push({
+                      title: "Migration Nations: Countries Gaining Millions",
+                      description: `${countryData.countryName} attracts millions of migrants, transforming its demographic landscape and economic potential.`,
+                      link: "/blog/migration-nations-countries-gaining-losing-millions"
+                    });
+                  } else if (migrationLosers.includes(countryNameLower)) {
+                    relatedArticles.push({
+                      title: "Migration Nations: Countries Losing Millions",
+                      description: `Mass emigration from ${countryData.countryName} creates brain drain and demographic challenges for future development.`,
+                      link: "/blog/migration-nations-countries-gaining-losing-millions"
+                    });
+                  }
+                  
+                  // Gender imbalance countries
+                  const genderCountries = ['qatar', 'uae', 'kuwait', 'bahrain', 'oman', 'saudi arabia'];
+                  if (genderCountries.includes(countryNameLower)) {
+                    relatedArticles.push({
+                      title: "Country with 2.5 Men for Every Woman",
+                      description: `${countryData.countryName}'s extreme gender imbalance creates unique social challenges and reshapes traditional society.`,
+                      link: "/blog/country-2-5-men-for-every-woman-dating-crisis"
+                    });
+                  }
+                  
+                  // Add general trending articles if no specific matches or complement existing ones
+                  if (relatedArticles.length === 0) {
+                    relatedArticles.push({
+                      title: "Demographic Time Bombs: Countries Losing People",
+                      description: "Discover which countries face population collapse and what it means for the global economy.",
+                      link: "/blog/demographic-time-bombs-countries-losing-people"
+                    });
+                    relatedArticles.push({
+                      title: "Youth Explosion: Africa's Youngest Populations",
+                      description: "Explore the world's youngest nations and their demographic dividends and challenges.",
+                      link: "/blog/youth-explosion-africa-youngest-populations"
+                    });
+                  } else if (relatedArticles.length === 1) {
+                    // Add a complementary article
+                    if (!relatedArticles.some(a => a.link.includes('migration'))) {
+                      relatedArticles.push({
+                        title: "Migration Nations: Countries Gaining and Losing Millions",
+                        description: "Global migration patterns are reshaping demographics worldwide. See how your country compares.",
+                        link: "/blog/migration-nations-countries-gaining-losing-millions"
+                      });
+                    } else if (!relatedArticles.some(a => a.link.includes('fertility'))) {
+                      relatedArticles.push({
+                        title: "Fertility Crisis: Korea 0.72 Births Per Woman",
+                        description: "The global fertility collapse threatens economic stability. Compare birth rates worldwide.",
+                        link: "/blog/fertility-apocalypse-countries-stopped-having-babies"
+                      });
+                    }
+                  }
+                  
+                  return relatedArticles.slice(0, 3).map((article, index) => (
+                    <Link key={index} href={article.link} className="block group">
+                      <div className="bg-white p-4 rounded-lg border border-gray-200 hover:border-indigo-400 transition-all hover:shadow-md">
+                        <h3 className="text-lg font-semibold text-gray-900 group-hover:text-indigo-600 transition mb-2">
+                          {article.title}
+                        </h3>
+                        <p className="text-sm text-gray-600">
+                          {article.description}
+                        </p>
+                      </div>
+                    </Link>
+                  ));
+                })()}
+              </div>
+            </div>
+          </section>
+
           {/* Comprehensive FAQ Section */}
-          <section className="bg-white rounded-lg shadow-sm p-8 mb-8">
+          <section className="bg-white rounded-lg shadow-sm p-8 mb-8 overflow-hidden">
             <div className="flex items-center mb-6">
               <span className="text-3xl mr-3">❓</span>
-              <h2 className="text-3xl font-bold text-gray-900">
+              <h2 className="text-3xl font-bold text-gray-900 break-words">
                 Frequently Asked Questions About {countryData.countryName}
               </h2>
             </div>
@@ -644,7 +787,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
           </section>
 
           {/* Related Demographics Section */}
-          <section className="bg-white rounded-lg shadow-sm p-8 mb-8">
+          <section className="bg-white rounded-lg shadow-sm p-8 mb-8 overflow-hidden">
             <div className="flex items-center mb-6">
               <span className="text-3xl mr-3">📋</span>
               <h2 className="text-3xl font-bold text-gray-900">
@@ -720,7 +863,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
           </section>
 
           {/* Glossary Section */}
-          <section className="bg-white rounded-lg shadow-sm p-8 mb-8">
+          <section className="bg-white rounded-lg shadow-sm p-8 mb-8 overflow-hidden">
             <div className="flex items-center mb-6">
               <span className="text-3xl mr-3">📖</span>
               <h2 className="text-3xl font-bold text-gray-900">
@@ -792,7 +935,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
           </section>
 
           {/* How to Use This Data Section */}
-          <section className="bg-white rounded-lg shadow-sm p-8 mb-8">
+          <section className="bg-white rounded-lg shadow-sm p-8 mb-8 overflow-hidden">
             <div className="flex items-center mb-6">
               <span className="text-3xl mr-3">🎯</span>
               <h2 className="text-3xl font-bold text-gray-900">
@@ -804,59 +947,59 @@ export default async function CountryPage({ params }: CountryPageProps) {
               research, policy making, business strategy, and media reporting.
             </p>
 
-            <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 w-full">
               {usageGuides.map((guide, index) => (
-                <div key={index} className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-lg p-6 border border-purple-200 hover:shadow-lg transition">
-                  <div className="flex items-center mb-4">
-                    <span className="text-3xl mr-3">{guide.icon}</span>
-                    <div>
-                      <h3 className="text-lg font-bold text-gray-900">
+                <div key={index} className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-lg p-6 border border-purple-200 hover:shadow-lg transition w-full overflow-hidden">
+                  <div className="flex items-start mb-4 w-full">
+                    <span className="text-3xl mr-3 flex-shrink-0">{guide.icon}</span>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="text-lg font-bold text-gray-900 break-words">
                         {guide.audience}
                       </h3>
-                      <p className="text-sm text-purple-700 font-medium">
+                      <p className="text-sm text-purple-700 font-medium break-words">
                         {guide.title}
                       </p>
                     </div>
                   </div>
 
-                  <p className="text-gray-700 text-sm leading-relaxed mb-4">
+                  <p className="text-gray-700 text-sm leading-relaxed mb-4 break-words">
                     {guide.description}
                   </p>
 
-                  <div className="mb-4">
+                  <div className="mb-4 w-full overflow-hidden">
                     <h4 className="font-semibold text-purple-900 mb-2 text-sm">
                       Key Applications:
                     </h4>
                     <ul className="space-y-1">
                       {guide.applications.slice(0, 3).map((application, appIndex) => (
-                        <li key={appIndex} className="text-xs text-gray-700 flex items-start">
+                        <li key={appIndex} className="text-xs text-gray-700 flex items-start w-full">
                           <span className="text-purple-600 mr-2 flex-shrink-0">•</span>
-                          <span>{application}</span>
+                          <span className="break-words min-w-0 flex-1">{application}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
                   {guide.citation && (
-                    <div className="bg-white rounded-lg p-3 border border-purple-300 mb-3">
+                    <div className="bg-white rounded-lg p-3 border border-purple-300 mb-3 w-full overflow-hidden">
                       <h4 className="font-semibold text-purple-900 mb-1 text-xs">
                         Citation Format:
                       </h4>
-                      <p className="text-xs text-purple-800 font-mono leading-relaxed">
+                      <p className="text-xs text-purple-800 font-mono leading-relaxed break-all">
                         {guide.citation}
                       </p>
                     </div>
                   )}
 
-                  <div className="bg-blue-100 rounded-lg p-3 border border-blue-300">
+                  <div className="bg-blue-100 rounded-lg p-3 border border-blue-300 w-full overflow-hidden">
                     <h4 className="font-semibold text-blue-900 mb-2 text-xs">
                       Best Practices:
                     </h4>
                     <ul className="space-y-1">
                       {guide.tips.slice(0, 2).map((tip, tipIndex) => (
-                        <li key={tipIndex} className="text-xs text-blue-800 flex items-start">
+                        <li key={tipIndex} className="text-xs text-blue-800 flex items-start w-full">
                           <span className="text-blue-600 mr-1 flex-shrink-0">→</span>
-                          <span>{tip}</span>
+                          <span className="break-words min-w-0 flex-1">{tip}</span>
                         </li>
                       ))}
                     </ul>
@@ -877,19 +1020,20 @@ export default async function CountryPage({ params }: CountryPageProps) {
             </div>
 
             {/* Quick Access */}
-            <div className="mt-6 bg-gray-50 rounded-lg p-4 border border-gray-200">
+            <div className="mt-6 bg-gray-50 rounded-lg p-4 border border-gray-200 w-full overflow-hidden">
               <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
                 <span className="text-lg mr-2">⚡</span>
                 Quick Access for Different Users
               </h4>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 w-full">
                 {usageGuides.map((guide, index) => (
                   <button
                     key={index}
-                    className="px-3 py-2 text-xs bg-white border border-gray-300 rounded-lg hover:bg-purple-50 hover:border-purple-300 transition text-center"
+                    className="px-3 py-2 text-xs bg-white border border-gray-300 rounded-lg hover:bg-purple-50 hover:border-purple-300 transition text-center break-words min-w-0"
                     title={`Jump to ${guide.audience} section`}
                   >
-                    {guide.icon} {guide.audience}
+                    <span className="block">{guide.icon}</span>
+                    <span className="break-words">{guide.audience}</span>
                   </button>
                 ))}
               </div>

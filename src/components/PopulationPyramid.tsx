@@ -39,6 +39,11 @@ export default function PopulationPyramid({
   height = 600,
   className = ''
 }: PopulationPyramidProps) {
+  // Calculate the maximum value for perfect symmetry
+  const maxMale = Math.max(...data.ageGroups.map(ag => ag.male));
+  const maxFemale = Math.max(...data.ageGroups.map(ag => ag.female));
+  const maxValue = Math.max(maxMale, maxFemale);
+  
   const chartData = {
     labels: data.ageGroups.map(ag => ag.ageRange).reverse(),
     datasets: [
@@ -80,8 +85,7 @@ export default function PopulationPyramid({
         callbacks: {
           label: function(context) {
             const value = Math.abs(context.parsed.x || 0);
-            const formatted = value.toLocaleString();
-            return `${context.dataset.label}: ${formatted}`;
+            return `${context.dataset.label}: ${value.toLocaleString()}`;
           }
         }
       }
@@ -89,10 +93,13 @@ export default function PopulationPyramid({
     scales: {
       x: {
         stacked: true,
+        min: -maxValue,
+        max: maxValue,
         ticks: {
           callback: function(value) {
             const numValue = typeof value === 'number' ? value : 0;
-            return Math.abs(numValue).toLocaleString();
+            const absValue = Math.abs(numValue);
+            return absValue.toLocaleString();
           }
         },
         title: {
@@ -119,11 +126,15 @@ export default function PopulationPyramid({
       <div className="mt-4 pt-4 border-t border-gray-200 flex justify-center gap-6 text-sm">
         <div className="flex items-center gap-2">
           <div className="w-4 h-4 bg-blue-500 rounded"></div>
-          <span>Male: {data.malePopulation.toLocaleString()}</span>
+          <span>
+            Male: {data.malePopulation.toLocaleString()} ({((data.malePopulation / data.totalPopulation) * 100).toFixed(1)}%)
+          </span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-4 h-4 bg-pink-500 rounded"></div>
-          <span>Female: {data.femalePopulation.toLocaleString()}</span>
+          <span>
+            Female: {data.femalePopulation.toLocaleString()} ({((data.femalePopulation / data.totalPopulation) * 100).toFixed(1)}%)
+          </span>
         </div>
         <div className="font-semibold">
           Total: {data.totalPopulation.toLocaleString()}

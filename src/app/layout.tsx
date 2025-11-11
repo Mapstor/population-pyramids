@@ -110,6 +110,7 @@ export default function RootLayout({
                   <h3 className="font-semibold text-white mb-4">Browse</h3>
                   <ul className="space-y-2 text-sm">
                     <li><a href="/" className="text-gray-400 hover:text-white transition">All Countries</a></li>
+                    <li><a href="/states" className="text-gray-400 hover:text-white transition">US States</a></li>
                     <li><a href="/compare" className="text-gray-400 hover:text-white transition">Compare</a></li>
                     <li><a href="/search" className="text-gray-400 hover:text-white transition">Search</a></li>
                     <li><a href="/about" className="text-gray-400 hover:text-white transition">About</a></li>

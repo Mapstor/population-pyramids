@@ -1,0 +1,4434 @@
+{
+  "stateCode": "KS",
+  "stateName": "Kansas",
+  "slug": "kansas",
+  "fips": "20",
+  "region": "Midwest",
+  "years": {
+    "2000": {
+      "year": 2000,
+      "totalPopulation": 2745730,
+      "malePopulation": 1345903,
+      "femalePopulation": 1399827,
+      "medianAge": 35,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 97040,
+          "female": 91741,
+          "total": 188781,
+          "malePercent": 51.4,
+          "femalePercent": 48.6
+        },
+        {
+          "ageRange": "5-9",
+          "male": 100072,
+          "female": 94779,
+          "total": 194851,
+          "malePercent": 51.36,
+          "femalePercent": 48.64
+        },
+        {
+          "ageRange": "10-14",
+          "male": 105458,
+          "female": 99510,
+          "total": 204968,
+          "malePercent": 51.45,
+          "femalePercent": 48.55
+        },
+        {
+          "ageRange": "15-19",
+          "male": 108517,
+          "female": 102454,
+          "total": 210971,
+          "malePercent": 51.44,
+          "femalePercent": 48.56
+        },
+        {
+          "ageRange": "20-24",
+          "male": 99237,
+          "female": 91953,
+          "total": 191190,
+          "malePercent": 51.9,
+          "femalePercent": 48.1
+        },
+        {
+          "ageRange": "25-29",
+          "male": 88445,
+          "female": 83385,
+          "total": 171830,
+          "malePercent": 51.47,
+          "femalePercent": 48.53
+        },
+        {
+          "ageRange": "30-34",
+          "male": 89666,
+          "female": 86356,
+          "total": 176022,
+          "malePercent": 50.94,
+          "femalePercent": 49.06
+        },
+        {
+          "ageRange": "35-39",
+          "male": 103428,
+          "female": 103211,
+          "total": 206639,
+          "malePercent": 50.05,
+          "femalePercent": 49.95
+        },
+        {
+          "ageRange": "40-44",
+          "male": 106656,
+          "female": 106678,
+          "total": 213334,
+          "malePercent": 49.99,
+          "femalePercent": 50.01
+        },
+        {
+          "ageRange": "45-49",
+          "male": 97165,
+          "female": 96702,
+          "total": 193867,
+          "malePercent": 50.12,
+          "femalePercent": 49.88
+        },
+        {
+          "ageRange": "50-54",
+          "male": 81954,
+          "female": 81165,
+          "total": 163119,
+          "malePercent": 50.24,
+          "femalePercent": 49.76
+        },
+        {
+          "ageRange": "55-59",
+          "male": 59949,
+          "female": 62522,
+          "total": 122471,
+          "malePercent": 48.95,
+          "femalePercent": 51.05
+        },
+        {
+          "ageRange": "60-64",
+          "male": 47833,
+          "female": 51277,
+          "total": 99110,
+          "malePercent": 48.26,
+          "femalePercent": 51.74
+        },
+        {
+          "ageRange": "65-69",
+          "male": 41523,
+          "female": 48249,
+          "total": 89772,
+          "malePercent": 46.25,
+          "femalePercent": 53.75
+        },
+        {
+          "ageRange": "70-74",
+          "male": 38299,
+          "female": 47372,
+          "total": 85671,
+          "malePercent": 44.7,
+          "femalePercent": 55.3
+        },
+        {
+          "ageRange": "75-79",
+          "male": 31442,
+          "female": 43811,
+          "total": 75253,
+          "malePercent": 41.78,
+          "femalePercent": 58.22
+        },
+        {
+          "ageRange": "80-84",
+          "male": 19775,
+          "female": 34008,
+          "total": 53783,
+          "malePercent": 36.77,
+          "femalePercent": 63.23
+        },
+        {
+          "ageRange": "85-89",
+          "male": 14722,
+          "female": 37327,
+          "total": 52049,
+          "malePercent": 28.28,
+          "femalePercent": 71.72
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 14722,
+          "female": 37327,
+          "total": 52049,
+          "malePercent": 28.28,
+          "femalePercent": 71.72
+        }
+      ]
+    },
+    "2001": {
+      "year": 2001,
+      "totalPopulation": 2754206,
+      "malePopulation": 1350978,
+      "femalePopulation": 1403228,
+      "medianAge": 35,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 96919,
+          "female": 91670,
+          "total": 188589,
+          "malePercent": 51.39,
+          "femalePercent": 48.61
+        },
+        {
+          "ageRange": "5-9",
+          "male": 99043,
+          "female": 93846,
+          "total": 192889,
+          "malePercent": 51.35,
+          "femalePercent": 48.65
+        },
+        {
+          "ageRange": "10-14",
+          "male": 104882,
+          "female": 99139,
+          "total": 204021,
+          "malePercent": 51.41,
+          "femalePercent": 48.59
+        },
+        {
+          "ageRange": "15-19",
+          "male": 110075,
+          "female": 103051,
+          "total": 213126,
+          "malePercent": 51.65,
+          "femalePercent": 48.35
+        },
+        {
+          "ageRange": "20-24",
+          "male": 101206,
+          "female": 93943,
+          "total": 195149,
+          "malePercent": 51.86,
+          "femalePercent": 48.14
+        },
+        {
+          "ageRange": "25-29",
+          "male": 85560,
+          "female": 80920,
+          "total": 166480,
+          "malePercent": 51.39,
+          "femalePercent": 48.61
+        },
+        {
+          "ageRange": "30-34",
+          "male": 90091,
+          "female": 86916,
+          "total": 177007,
+          "malePercent": 50.9,
+          "femalePercent": 49.1
+        },
+        {
+          "ageRange": "35-39",
+          "male": 99595,
+          "female": 98796,
+          "total": 198391,
+          "malePercent": 50.2,
+          "femalePercent": 49.8
+        },
+        {
+          "ageRange": "40-44",
+          "male": 106633,
+          "female": 107376,
+          "total": 214009,
+          "malePercent": 49.83,
+          "femalePercent": 50.17
+        },
+        {
+          "ageRange": "45-49",
+          "male": 99276,
+          "female": 99189,
+          "total": 198465,
+          "malePercent": 50.02,
+          "femalePercent": 49.98
+        },
+        {
+          "ageRange": "50-54",
+          "male": 86611,
+          "female": 85832,
+          "total": 172443,
+          "malePercent": 50.23,
+          "femalePercent": 49.77
+        },
+        {
+          "ageRange": "55-59",
+          "male": 61680,
+          "female": 63518,
+          "total": 125198,
+          "malePercent": 49.27,
+          "femalePercent": 50.73
+        },
+        {
+          "ageRange": "60-64",
+          "male": 48471,
+          "female": 52321,
+          "total": 100792,
+          "malePercent": 48.09,
+          "femalePercent": 51.91
+        },
+        {
+          "ageRange": "65-69",
+          "male": 41634,
+          "female": 47615,
+          "total": 89249,
+          "malePercent": 46.65,
+          "femalePercent": 53.35
+        },
+        {
+          "ageRange": "70-74",
+          "male": 37810,
+          "female": 46854,
+          "total": 84664,
+          "malePercent": 44.66,
+          "femalePercent": 55.34
+        },
+        {
+          "ageRange": "75-79",
+          "male": 31454,
+          "female": 43206,
+          "total": 74660,
+          "malePercent": 42.13,
+          "femalePercent": 57.87
+        },
+        {
+          "ageRange": "80-84",
+          "male": 20474,
+          "female": 34512,
+          "total": 54986,
+          "malePercent": 37.23,
+          "femalePercent": 62.77
+        },
+        {
+          "ageRange": "85-89",
+          "male": 14782,
+          "female": 37262,
+          "total": 52044,
+          "malePercent": 28.4,
+          "femalePercent": 71.6
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 14782,
+          "female": 37262,
+          "total": 52044,
+          "malePercent": 28.4,
+          "femalePercent": 71.6
+        }
+      ]
+    },
+    "2002": {
+      "year": 2002,
+      "totalPopulation": 2765562,
+      "malePopulation": 1356549,
+      "femalePopulation": 1409013,
+      "medianAge": 35,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 97613,
+          "female": 92884,
+          "total": 190497,
+          "malePercent": 51.24,
+          "femalePercent": 48.76
+        },
+        {
+          "ageRange": "5-9",
+          "male": 97859,
+          "female": 92520,
+          "total": 190379,
+          "malePercent": 51.4,
+          "femalePercent": 48.6
+        },
+        {
+          "ageRange": "10-14",
+          "male": 104274,
+          "female": 98801,
+          "total": 203075,
+          "malePercent": 51.35,
+          "femalePercent": 48.65
+        },
+        {
+          "ageRange": "15-19",
+          "male": 109478,
+          "female": 102541,
+          "total": 212019,
+          "malePercent": 51.64,
+          "femalePercent": 48.36
+        },
+        {
+          "ageRange": "20-24",
+          "male": 104383,
+          "female": 97416,
+          "total": 201799,
+          "malePercent": 51.73,
+          "femalePercent": 48.27
+        },
+        {
+          "ageRange": "25-29",
+          "male": 84148,
+          "female": 80564,
+          "total": 164712,
+          "malePercent": 51.09,
+          "femalePercent": 48.91
+        },
+        {
+          "ageRange": "30-34",
+          "male": 90833,
+          "female": 87269,
+          "total": 178102,
+          "malePercent": 51.0,
+          "femalePercent": 49.0
+        },
+        {
+          "ageRange": "35-39",
+          "male": 95051,
+          "female": 94649,
+          "total": 189700,
+          "malePercent": 50.11,
+          "femalePercent": 49.89
+        },
+        {
+          "ageRange": "40-44",
+          "male": 105529,
+          "female": 106856,
+          "total": 212385,
+          "malePercent": 49.69,
+          "femalePercent": 50.31
+        },
+        {
+          "ageRange": "45-49",
+          "male": 101803,
+          "female": 101412,
+          "total": 203215,
+          "malePercent": 50.1,
+          "femalePercent": 49.9
+        },
+        {
+          "ageRange": "50-54",
+          "male": 87188,
+          "female": 86525,
+          "total": 173713,
+          "malePercent": 50.19,
+          "femalePercent": 49.81
+        },
+        {
+          "ageRange": "55-59",
+          "male": 67101,
+          "female": 68761,
+          "total": 135862,
+          "malePercent": 49.39,
+          "femalePercent": 50.61
+        },
+        {
+          "ageRange": "60-64",
+          "male": 49899,
+          "female": 53794,
+          "total": 103693,
+          "malePercent": 48.12,
+          "femalePercent": 51.88
+        },
+        {
+          "ageRange": "65-69",
+          "male": 41617,
+          "female": 47174,
+          "total": 88791,
+          "malePercent": 46.87,
+          "femalePercent": 53.13
+        },
+        {
+          "ageRange": "70-74",
+          "male": 37286,
+          "female": 46096,
+          "total": 83382,
+          "malePercent": 44.72,
+          "femalePercent": 55.28
+        },
+        {
+          "ageRange": "75-79",
+          "male": 31586,
+          "female": 42442,
+          "total": 74028,
+          "malePercent": 42.67,
+          "femalePercent": 57.33
+        },
+        {
+          "ageRange": "80-84",
+          "male": 21077,
+          "female": 35079,
+          "total": 56156,
+          "malePercent": 37.53,
+          "femalePercent": 62.47
+        },
+        {
+          "ageRange": "85-89",
+          "male": 14912,
+          "female": 37115,
+          "total": 52027,
+          "malePercent": 28.66,
+          "femalePercent": 71.34
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 14912,
+          "female": 37115,
+          "total": 52027,
+          "malePercent": 28.66,
+          "femalePercent": 71.34
+        }
+      ]
+    },
+    "2003": {
+      "year": 2003,
+      "totalPopulation": 2775545,
+      "malePopulation": 1360901,
+      "femalePopulation": 1414644,
+      "medianAge": 35,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 98519,
+          "female": 93665,
+          "total": 192184,
+          "malePercent": 51.26,
+          "femalePercent": 48.74
+        },
+        {
+          "ageRange": "5-9",
+          "male": 97391,
+          "female": 91844,
+          "total": 189235,
+          "malePercent": 51.47,
+          "femalePercent": 48.53
+        },
+        {
+          "ageRange": "10-14",
+          "male": 103924,
+          "female": 98619,
+          "total": 202543,
+          "malePercent": 51.31,
+          "femalePercent": 48.69
+        },
+        {
+          "ageRange": "15-19",
+          "male": 108598,
+          "female": 101716,
+          "total": 210314,
+          "malePercent": 51.64,
+          "femalePercent": 48.36
+        },
+        {
+          "ageRange": "20-24",
+          "male": 106070,
+          "female": 100429,
+          "total": 206499,
+          "malePercent": 51.37,
+          "femalePercent": 48.63
+        },
+        {
+          "ageRange": "25-29",
+          "male": 83033,
+          "female": 80009,
+          "total": 163042,
+          "malePercent": 50.93,
+          "femalePercent": 49.07
+        },
+        {
+          "ageRange": "30-34",
+          "male": 90439,
+          "female": 87629,
+          "total": 178068,
+          "malePercent": 50.79,
+          "femalePercent": 49.21
+        },
+        {
+          "ageRange": "35-39",
+          "male": 91003,
+          "female": 90067,
+          "total": 181070,
+          "malePercent": 50.26,
+          "femalePercent": 49.74
+        },
+        {
+          "ageRange": "40-44",
+          "male": 104197,
+          "female": 106239,
+          "total": 210436,
+          "malePercent": 49.51,
+          "femalePercent": 50.49
+        },
+        {
+          "ageRange": "45-49",
+          "male": 103193,
+          "female": 103117,
+          "total": 206310,
+          "malePercent": 50.02,
+          "femalePercent": 49.98
+        },
+        {
+          "ageRange": "50-54",
+          "male": 89223,
+          "female": 88731,
+          "total": 177954,
+          "malePercent": 50.14,
+          "femalePercent": 49.86
+        },
+        {
+          "ageRange": "55-59",
+          "male": 70182,
+          "female": 72027,
+          "total": 142209,
+          "malePercent": 49.35,
+          "femalePercent": 50.65
+        },
+        {
+          "ageRange": "60-64",
+          "male": 52513,
+          "female": 55989,
+          "total": 108502,
+          "malePercent": 48.4,
+          "femalePercent": 51.6
+        },
+        {
+          "ageRange": "65-69",
+          "male": 42060,
+          "female": 47413,
+          "total": 89473,
+          "malePercent": 47.01,
+          "femalePercent": 52.99
+        },
+        {
+          "ageRange": "70-74",
+          "male": 36652,
+          "female": 45373,
+          "total": 82025,
+          "malePercent": 44.68,
+          "femalePercent": 55.32
+        },
+        {
+          "ageRange": "75-79",
+          "male": 31817,
+          "female": 42264,
+          "total": 74081,
+          "malePercent": 42.95,
+          "femalePercent": 57.05
+        },
+        {
+          "ageRange": "80-84",
+          "male": 21463,
+          "female": 35055,
+          "total": 56518,
+          "malePercent": 37.98,
+          "femalePercent": 62.02
+        },
+        {
+          "ageRange": "85-89",
+          "male": 15312,
+          "female": 37229,
+          "total": 52541,
+          "malePercent": 29.14,
+          "femalePercent": 70.86
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 15312,
+          "female": 37229,
+          "total": 52541,
+          "malePercent": 29.14,
+          "femalePercent": 70.86
+        }
+      ]
+    },
+    "2004": {
+      "year": 2004,
+      "totalPopulation": 2787505,
+      "malePopulation": 1367627,
+      "femalePopulation": 1419878,
+      "medianAge": 35,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 98575,
+          "female": 94175,
+          "total": 192750,
+          "malePercent": 51.14,
+          "femalePercent": 48.86
+        },
+        {
+          "ageRange": "5-9",
+          "male": 97161,
+          "female": 92005,
+          "total": 189166,
+          "malePercent": 51.36,
+          "femalePercent": 48.64
+        },
+        {
+          "ageRange": "10-14",
+          "male": 103019,
+          "female": 97212,
+          "total": 200231,
+          "malePercent": 51.45,
+          "femalePercent": 48.55
+        },
+        {
+          "ageRange": "15-19",
+          "male": 107976,
+          "female": 101185,
+          "total": 209161,
+          "malePercent": 51.62,
+          "femalePercent": 48.38
+        },
+        {
+          "ageRange": "20-24",
+          "male": 107959,
+          "female": 102405,
+          "total": 210364,
+          "malePercent": 51.32,
+          "femalePercent": 48.68
+        },
+        {
+          "ageRange": "25-29",
+          "male": 83866,
+          "female": 80710,
+          "total": 164576,
+          "malePercent": 50.96,
+          "femalePercent": 49.04
+        },
+        {
+          "ageRange": "30-34",
+          "male": 89462,
+          "female": 86685,
+          "total": 176147,
+          "malePercent": 50.79,
+          "femalePercent": 49.21
+        },
+        {
+          "ageRange": "35-39",
+          "male": 88622,
+          "female": 87016,
+          "total": 175638,
+          "malePercent": 50.46,
+          "femalePercent": 49.54
+        },
+        {
+          "ageRange": "40-44",
+          "male": 103286,
+          "female": 104941,
+          "total": 208227,
+          "malePercent": 49.6,
+          "femalePercent": 50.4
+        },
+        {
+          "ageRange": "45-49",
+          "male": 103469,
+          "female": 103691,
+          "total": 207160,
+          "malePercent": 49.95,
+          "femalePercent": 50.05
+        },
+        {
+          "ageRange": "50-54",
+          "male": 91706,
+          "female": 91944,
+          "total": 183650,
+          "malePercent": 49.94,
+          "femalePercent": 50.06
+        },
+        {
+          "ageRange": "55-59",
+          "male": 73922,
+          "female": 75221,
+          "total": 149143,
+          "malePercent": 49.56,
+          "femalePercent": 50.44
+        },
+        {
+          "ageRange": "60-64",
+          "male": 54268,
+          "female": 58146,
+          "total": 112414,
+          "malePercent": 48.28,
+          "femalePercent": 51.72
+        },
+        {
+          "ageRange": "65-69",
+          "male": 43042,
+          "female": 47840,
+          "total": 90882,
+          "malePercent": 47.36,
+          "femalePercent": 52.64
+        },
+        {
+          "ageRange": "70-74",
+          "male": 36157,
+          "female": 44721,
+          "total": 80878,
+          "malePercent": 44.71,
+          "femalePercent": 55.29
+        },
+        {
+          "ageRange": "75-79",
+          "male": 31542,
+          "female": 41728,
+          "total": 73270,
+          "malePercent": 43.05,
+          "femalePercent": 56.95
+        },
+        {
+          "ageRange": "80-84",
+          "male": 22295,
+          "female": 35289,
+          "total": 57584,
+          "malePercent": 38.72,
+          "femalePercent": 61.28
+        },
+        {
+          "ageRange": "85-89",
+          "male": 15650,
+          "female": 37482,
+          "total": 53132,
+          "malePercent": 29.45,
+          "femalePercent": 70.55
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 15650,
+          "female": 37482,
+          "total": 53132,
+          "malePercent": 29.45,
+          "femalePercent": 70.55
+        }
+      ]
+    },
+    "2005": {
+      "year": 2005,
+      "totalPopulation": 2799535,
+      "malePopulation": 1373653,
+      "femalePopulation": 1425882,
+      "medianAge": 35,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 98265,
+          "female": 94732,
+          "total": 192997,
+          "malePercent": 50.92,
+          "femalePercent": 49.08
+        },
+        {
+          "ageRange": "5-9",
+          "male": 97751,
+          "female": 92065,
+          "total": 189816,
+          "malePercent": 51.5,
+          "femalePercent": 48.5
+        },
+        {
+          "ageRange": "10-14",
+          "male": 101806,
+          "female": 95768,
+          "total": 197574,
+          "malePercent": 51.53,
+          "femalePercent": 48.47
+        },
+        {
+          "ageRange": "15-19",
+          "male": 107972,
+          "female": 101110,
+          "total": 209082,
+          "malePercent": 51.64,
+          "femalePercent": 48.36
+        },
+        {
+          "ageRange": "20-24",
+          "male": 108660,
+          "female": 103199,
+          "total": 211859,
+          "malePercent": 51.29,
+          "femalePercent": 48.71
+        },
+        {
+          "ageRange": "25-29",
+          "male": 83500,
+          "female": 81791,
+          "total": 165291,
+          "malePercent": 50.52,
+          "femalePercent": 49.48
+        },
+        {
+          "ageRange": "30-34",
+          "male": 87916,
+          "female": 85316,
+          "total": 173232,
+          "malePercent": 50.75,
+          "femalePercent": 49.25
+        },
+        {
+          "ageRange": "35-39",
+          "male": 88053,
+          "female": 86296,
+          "total": 174349,
+          "malePercent": 50.5,
+          "femalePercent": 49.5
+        },
+        {
+          "ageRange": "40-44",
+          "male": 100628,
+          "female": 102068,
+          "total": 202696,
+          "malePercent": 49.64,
+          "femalePercent": 50.36
+        },
+        {
+          "ageRange": "45-49",
+          "male": 103547,
+          "female": 104618,
+          "total": 208165,
+          "malePercent": 49.74,
+          "femalePercent": 50.26
+        },
+        {
+          "ageRange": "50-54",
+          "male": 94618,
+          "female": 95015,
+          "total": 189633,
+          "malePercent": 49.9,
+          "femalePercent": 50.1
+        },
+        {
+          "ageRange": "55-59",
+          "male": 78553,
+          "female": 79227,
+          "total": 157780,
+          "malePercent": 49.79,
+          "femalePercent": 50.21
+        },
+        {
+          "ageRange": "60-64",
+          "male": 56128,
+          "female": 59712,
+          "total": 115840,
+          "malePercent": 48.45,
+          "femalePercent": 51.55
+        },
+        {
+          "ageRange": "65-69",
+          "male": 43428,
+          "female": 48398,
+          "total": 91826,
+          "malePercent": 47.29,
+          "femalePercent": 52.71
+        },
+        {
+          "ageRange": "70-74",
+          "male": 36194,
+          "female": 44107,
+          "total": 80301,
+          "malePercent": 45.07,
+          "femalePercent": 54.93
+        },
+        {
+          "ageRange": "75-79",
+          "male": 31337,
+          "female": 41504,
+          "total": 72841,
+          "malePercent": 43.02,
+          "femalePercent": 56.98
+        },
+        {
+          "ageRange": "80-84",
+          "male": 22673,
+          "female": 35108,
+          "total": 57781,
+          "malePercent": 39.24,
+          "femalePercent": 60.76
+        },
+        {
+          "ageRange": "85-89",
+          "male": 16312,
+          "female": 37924,
+          "total": 54236,
+          "malePercent": 30.08,
+          "femalePercent": 69.92
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 16312,
+          "female": 37924,
+          "total": 54236,
+          "malePercent": 30.08,
+          "femalePercent": 69.92
+        }
+      ]
+    },
+    "2006": {
+      "year": 2006,
+      "totalPopulation": 2818550,
+      "malePopulation": 1385879,
+      "femalePopulation": 1432671,
+      "medianAge": 36,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 98459,
+          "female": 94748,
+          "total": 193207,
+          "malePercent": 50.96,
+          "femalePercent": 49.04
+        },
+        {
+          "ageRange": "5-9",
+          "male": 98288,
+          "female": 93045,
+          "total": 191333,
+          "malePercent": 51.37,
+          "femalePercent": 48.63
+        },
+        {
+          "ageRange": "10-14",
+          "male": 101402,
+          "female": 95496,
+          "total": 196898,
+          "malePercent": 51.5,
+          "femalePercent": 48.5
+        },
+        {
+          "ageRange": "15-19",
+          "male": 107310,
+          "female": 100353,
+          "total": 207663,
+          "malePercent": 51.68,
+          "femalePercent": 48.32
+        },
+        {
+          "ageRange": "20-24",
+          "male": 110091,
+          "female": 102516,
+          "total": 212607,
+          "malePercent": 51.78,
+          "femalePercent": 48.22
+        },
+        {
+          "ageRange": "25-29",
+          "male": 87740,
+          "female": 84961,
+          "total": 172701,
+          "malePercent": 50.8,
+          "femalePercent": 49.2
+        },
+        {
+          "ageRange": "30-34",
+          "male": 87158,
+          "female": 83278,
+          "total": 170436,
+          "malePercent": 51.14,
+          "femalePercent": 48.86
+        },
+        {
+          "ageRange": "35-39",
+          "male": 88636,
+          "female": 87122,
+          "total": 175758,
+          "malePercent": 50.43,
+          "femalePercent": 49.57
+        },
+        {
+          "ageRange": "40-44",
+          "male": 97183,
+          "female": 97629,
+          "total": 194812,
+          "malePercent": 49.89,
+          "femalePercent": 50.11
+        },
+        {
+          "ageRange": "45-49",
+          "male": 103686,
+          "female": 105264,
+          "total": 208950,
+          "malePercent": 49.62,
+          "femalePercent": 50.38
+        },
+        {
+          "ageRange": "50-54",
+          "male": 96373,
+          "female": 97327,
+          "total": 193700,
+          "malePercent": 49.75,
+          "femalePercent": 50.25
+        },
+        {
+          "ageRange": "55-59",
+          "male": 83061,
+          "female": 83899,
+          "total": 166960,
+          "malePercent": 49.75,
+          "femalePercent": 50.25
+        },
+        {
+          "ageRange": "60-64",
+          "male": 57853,
+          "female": 60645,
+          "total": 118498,
+          "malePercent": 48.82,
+          "femalePercent": 51.18
+        },
+        {
+          "ageRange": "65-69",
+          "male": 44173,
+          "female": 49538,
+          "total": 93711,
+          "malePercent": 47.14,
+          "femalePercent": 52.86
+        },
+        {
+          "ageRange": "70-74",
+          "male": 36340,
+          "female": 43625,
+          "total": 79965,
+          "malePercent": 45.44,
+          "femalePercent": 54.56
+        },
+        {
+          "ageRange": "75-79",
+          "male": 31124,
+          "female": 41249,
+          "total": 72373,
+          "malePercent": 43.0,
+          "femalePercent": 57.0
+        },
+        {
+          "ageRange": "80-84",
+          "male": 22922,
+          "female": 34818,
+          "total": 57740,
+          "malePercent": 39.7,
+          "femalePercent": 60.3
+        },
+        {
+          "ageRange": "85-89",
+          "male": 17040,
+          "female": 38579,
+          "total": 55619,
+          "malePercent": 30.64,
+          "femalePercent": 69.36
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 17040,
+          "female": 38579,
+          "total": 55619,
+          "malePercent": 30.64,
+          "femalePercent": 69.36
+        }
+      ]
+    },
+    "2007": {
+      "year": 2007,
+      "totalPopulation": 2840845,
+      "malePopulation": 1395905,
+      "femalePopulation": 1444940,
+      "medianAge": 36,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 99996,
+          "female": 96245,
+          "total": 196241,
+          "malePercent": 50.96,
+          "femalePercent": 49.04
+        },
+        {
+          "ageRange": "5-9",
+          "male": 100315,
+          "female": 95035,
+          "total": 195350,
+          "malePercent": 51.35,
+          "femalePercent": 48.65
+        },
+        {
+          "ageRange": "10-14",
+          "male": 100841,
+          "female": 94860,
+          "total": 195701,
+          "malePercent": 51.53,
+          "femalePercent": 48.47
+        },
+        {
+          "ageRange": "15-19",
+          "male": 106922,
+          "female": 100563,
+          "total": 207485,
+          "malePercent": 51.53,
+          "femalePercent": 48.47
+        },
+        {
+          "ageRange": "20-24",
+          "male": 106519,
+          "female": 100468,
+          "total": 206987,
+          "malePercent": 51.46,
+          "femalePercent": 48.54
+        },
+        {
+          "ageRange": "25-29",
+          "male": 91589,
+          "female": 89290,
+          "total": 180879,
+          "malePercent": 50.64,
+          "femalePercent": 49.36
+        },
+        {
+          "ageRange": "30-34",
+          "male": 86642,
+          "female": 83766,
+          "total": 170408,
+          "malePercent": 50.84,
+          "femalePercent": 49.16
+        },
+        {
+          "ageRange": "35-39",
+          "male": 89151,
+          "female": 87104,
+          "total": 176255,
+          "malePercent": 50.58,
+          "femalePercent": 49.42
+        },
+        {
+          "ageRange": "40-44",
+          "male": 93261,
+          "female": 93824,
+          "total": 187085,
+          "malePercent": 49.85,
+          "femalePercent": 50.15
+        },
+        {
+          "ageRange": "45-49",
+          "male": 103081,
+          "female": 105160,
+          "total": 208241,
+          "malePercent": 49.5,
+          "femalePercent": 50.5
+        },
+        {
+          "ageRange": "50-54",
+          "male": 98833,
+          "female": 99835,
+          "total": 198668,
+          "malePercent": 49.75,
+          "femalePercent": 50.25
+        },
+        {
+          "ageRange": "55-59",
+          "male": 83884,
+          "female": 84660,
+          "total": 168544,
+          "malePercent": 49.77,
+          "femalePercent": 50.23
+        },
+        {
+          "ageRange": "60-64",
+          "male": 63397,
+          "female": 66032,
+          "total": 129429,
+          "malePercent": 48.98,
+          "femalePercent": 51.02
+        },
+        {
+          "ageRange": "65-69",
+          "male": 45453,
+          "female": 51040,
+          "total": 96493,
+          "malePercent": 47.1,
+          "femalePercent": 52.9
+        },
+        {
+          "ageRange": "70-74",
+          "male": 36579,
+          "female": 43330,
+          "total": 79909,
+          "malePercent": 45.78,
+          "femalePercent": 54.22
+        },
+        {
+          "ageRange": "75-79",
+          "male": 30835,
+          "female": 40639,
+          "total": 71474,
+          "malePercent": 43.14,
+          "femalePercent": 56.86
+        },
+        {
+          "ageRange": "80-84",
+          "male": 22957,
+          "female": 34619,
+          "total": 57576,
+          "malePercent": 39.87,
+          "femalePercent": 60.13
+        },
+        {
+          "ageRange": "85-89",
+          "male": 17825,
+          "female": 39235,
+          "total": 57060,
+          "malePercent": 31.24,
+          "femalePercent": 68.76
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 17825,
+          "female": 39235,
+          "total": 57060,
+          "malePercent": 31.24,
+          "femalePercent": 68.76
+        }
+      ]
+    },
+    "2008": {
+      "year": 2008,
+      "totalPopulation": 2865840,
+      "malePopulation": 1410778,
+      "femalePopulation": 1455062,
+      "medianAge": 36,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 101598,
+          "female": 97888,
+          "total": 199486,
+          "malePercent": 50.93,
+          "femalePercent": 49.07
+        },
+        {
+          "ageRange": "5-9",
+          "male": 101793,
+          "female": 96521,
+          "total": 198314,
+          "malePercent": 51.33,
+          "femalePercent": 48.67
+        },
+        {
+          "ageRange": "10-14",
+          "male": 100625,
+          "female": 94930,
+          "total": 195555,
+          "malePercent": 51.46,
+          "femalePercent": 48.54
+        },
+        {
+          "ageRange": "15-19",
+          "male": 106523,
+          "female": 99823,
+          "total": 206346,
+          "malePercent": 51.62,
+          "femalePercent": 48.38
+        },
+        {
+          "ageRange": "20-24",
+          "male": 107140,
+          "female": 100164,
+          "total": 207304,
+          "malePercent": 51.68,
+          "femalePercent": 48.32
+        },
+        {
+          "ageRange": "25-29",
+          "male": 96084,
+          "female": 92649,
+          "total": 188733,
+          "malePercent": 50.91,
+          "femalePercent": 49.09
+        },
+        {
+          "ageRange": "30-34",
+          "male": 87916,
+          "female": 84239,
+          "total": 172155,
+          "malePercent": 51.07,
+          "femalePercent": 48.93
+        },
+        {
+          "ageRange": "35-39",
+          "male": 89251,
+          "female": 87348,
+          "total": 176599,
+          "malePercent": 50.54,
+          "femalePercent": 49.46
+        },
+        {
+          "ageRange": "40-44",
+          "male": 90278,
+          "female": 89445,
+          "total": 179723,
+          "malePercent": 50.23,
+          "femalePercent": 49.77
+        },
+        {
+          "ageRange": "45-49",
+          "male": 102148,
+          "female": 104483,
+          "total": 206631,
+          "malePercent": 49.43,
+          "femalePercent": 50.57
+        },
+        {
+          "ageRange": "50-54",
+          "male": 100096,
+          "female": 101686,
+          "total": 201782,
+          "malePercent": 49.61,
+          "femalePercent": 50.39
+        },
+        {
+          "ageRange": "55-59",
+          "male": 86002,
+          "female": 86796,
+          "total": 172798,
+          "malePercent": 49.77,
+          "femalePercent": 50.23
+        },
+        {
+          "ageRange": "60-64",
+          "male": 66301,
+          "female": 69024,
+          "total": 135325,
+          "malePercent": 48.99,
+          "femalePercent": 51.01
+        },
+        {
+          "ageRange": "65-69",
+          "male": 47939,
+          "female": 53043,
+          "total": 100982,
+          "malePercent": 47.47,
+          "femalePercent": 52.53
+        },
+        {
+          "ageRange": "70-74",
+          "male": 36959,
+          "female": 43591,
+          "total": 80550,
+          "malePercent": 45.88,
+          "femalePercent": 54.12
+        },
+        {
+          "ageRange": "75-79",
+          "male": 30450,
+          "female": 40086,
+          "total": 70536,
+          "malePercent": 43.17,
+          "femalePercent": 56.83
+        },
+        {
+          "ageRange": "80-84",
+          "male": 23145,
+          "female": 34348,
+          "total": 57493,
+          "malePercent": 40.26,
+          "femalePercent": 59.74
+        },
+        {
+          "ageRange": "85-89",
+          "male": 18265,
+          "female": 39499,
+          "total": 57764,
+          "malePercent": 31.62,
+          "femalePercent": 68.38
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 18265,
+          "female": 39499,
+          "total": 57764,
+          "malePercent": 31.62,
+          "femalePercent": 68.38
+        }
+      ]
+    },
+    "2009": {
+      "year": 2009,
+      "totalPopulation": 2891390,
+      "malePopulation": 1423409,
+      "femalePopulation": 1467981,
+      "medianAge": 36,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 103275,
+          "female": 99492,
+          "total": 202767,
+          "malePercent": 50.93,
+          "femalePercent": 49.07
+        },
+        {
+          "ageRange": "5-9",
+          "male": 102827,
+          "female": 97817,
+          "total": 200644,
+          "malePercent": 51.25,
+          "femalePercent": 48.75
+        },
+        {
+          "ageRange": "10-14",
+          "male": 101371,
+          "female": 96242,
+          "total": 197613,
+          "malePercent": 51.3,
+          "femalePercent": 48.7
+        },
+        {
+          "ageRange": "15-19",
+          "male": 106113,
+          "female": 99129,
+          "total": 205242,
+          "malePercent": 51.7,
+          "femalePercent": 48.3
+        },
+        {
+          "ageRange": "20-24",
+          "male": 105457,
+          "female": 99024,
+          "total": 204481,
+          "malePercent": 51.57,
+          "femalePercent": 48.43
+        },
+        {
+          "ageRange": "25-29",
+          "male": 98598,
+          "female": 95594,
+          "total": 194192,
+          "malePercent": 50.77,
+          "femalePercent": 49.23
+        },
+        {
+          "ageRange": "30-34",
+          "male": 90090,
+          "female": 86674,
+          "total": 176764,
+          "malePercent": 50.97,
+          "femalePercent": 49.03
+        },
+        {
+          "ageRange": "35-39",
+          "male": 88210,
+          "female": 85967,
+          "total": 174177,
+          "malePercent": 50.64,
+          "femalePercent": 49.36
+        },
+        {
+          "ageRange": "40-44",
+          "male": 88001,
+          "female": 87182,
+          "total": 175183,
+          "malePercent": 50.23,
+          "femalePercent": 49.77
+        },
+        {
+          "ageRange": "45-49",
+          "male": 101876,
+          "female": 103634,
+          "total": 205510,
+          "malePercent": 49.57,
+          "femalePercent": 50.43
+        },
+        {
+          "ageRange": "50-54",
+          "male": 100700,
+          "female": 102477,
+          "total": 203177,
+          "malePercent": 49.56,
+          "femalePercent": 50.44
+        },
+        {
+          "ageRange": "55-59",
+          "male": 88342,
+          "female": 90100,
+          "total": 178442,
+          "malePercent": 49.51,
+          "femalePercent": 50.49
+        },
+        {
+          "ageRange": "60-64",
+          "male": 70184,
+          "female": 72225,
+          "total": 142409,
+          "malePercent": 49.28,
+          "femalePercent": 50.72
+        },
+        {
+          "ageRange": "65-69",
+          "male": 49809,
+          "female": 55113,
+          "total": 104922,
+          "malePercent": 47.47,
+          "femalePercent": 52.53
+        },
+        {
+          "ageRange": "70-74",
+          "male": 37796,
+          "female": 44162,
+          "total": 81958,
+          "malePercent": 46.12,
+          "femalePercent": 53.88
+        },
+        {
+          "ageRange": "75-79",
+          "male": 30033,
+          "female": 39623,
+          "total": 69656,
+          "malePercent": 43.12,
+          "femalePercent": 56.88
+        },
+        {
+          "ageRange": "80-84",
+          "male": 23039,
+          "female": 33842,
+          "total": 56881,
+          "malePercent": 40.5,
+          "femalePercent": 59.5
+        },
+        {
+          "ageRange": "85-89",
+          "male": 18844,
+          "female": 39842,
+          "total": 58686,
+          "malePercent": 32.11,
+          "femalePercent": 67.89
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 18844,
+          "female": 39842,
+          "total": 58686,
+          "malePercent": 32.11,
+          "femalePercent": 67.89
+        }
+      ]
+    },
+    "2010": {
+      "year": 2010,
+      "totalPopulation": 2918862,
+      "malePopulation": 1438217,
+      "femalePopulation": 1480645,
+      "medianAge": 35,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 104856,
+          "female": 100605,
+          "total": 205461,
+          "malePercent": 51.03,
+          "femalePercent": 48.97
+        },
+        {
+          "ageRange": "5-9",
+          "male": 103608,
+          "female": 99202,
+          "total": 202810,
+          "malePercent": 51.09,
+          "femalePercent": 48.91
+        },
+        {
+          "ageRange": "10-14",
+          "male": 102273,
+          "female": 96850,
+          "total": 199123,
+          "malePercent": 51.36,
+          "femalePercent": 48.64
+        },
+        {
+          "ageRange": "15-19",
+          "male": 105006,
+          "female": 98088,
+          "total": 203094,
+          "malePercent": 51.7,
+          "femalePercent": 48.3
+        },
+        {
+          "ageRange": "20-24",
+          "male": 105844,
+          "female": 99377,
+          "total": 205221,
+          "malePercent": 51.58,
+          "femalePercent": 48.42
+        },
+        {
+          "ageRange": "25-29",
+          "male": 101579,
+          "female": 96922,
+          "total": 198501,
+          "malePercent": 51.17,
+          "femalePercent": 48.83
+        },
+        {
+          "ageRange": "30-34",
+          "male": 92063,
+          "female": 89325,
+          "total": 181388,
+          "malePercent": 50.75,
+          "femalePercent": 49.25
+        },
+        {
+          "ageRange": "35-39",
+          "male": 86678,
+          "female": 84817,
+          "total": 171495,
+          "malePercent": 50.54,
+          "femalePercent": 49.46
+        },
+        {
+          "ageRange": "40-44",
+          "male": 87843,
+          "female": 86581,
+          "total": 174424,
+          "malePercent": 50.36,
+          "femalePercent": 49.64
+        },
+        {
+          "ageRange": "45-49",
+          "male": 99977,
+          "female": 101322,
+          "total": 201299,
+          "malePercent": 49.67,
+          "femalePercent": 50.33
+        },
+        {
+          "ageRange": "50-54",
+          "male": 101381,
+          "female": 103738,
+          "total": 205119,
+          "malePercent": 49.43,
+          "femalePercent": 50.57
+        },
+        {
+          "ageRange": "55-59",
+          "male": 90789,
+          "female": 92924,
+          "total": 183713,
+          "malePercent": 49.42,
+          "femalePercent": 50.58
+        },
+        {
+          "ageRange": "60-64",
+          "male": 74182,
+          "female": 75948,
+          "total": 150130,
+          "malePercent": 49.41,
+          "femalePercent": 50.59
+        },
+        {
+          "ageRange": "65-69",
+          "male": 51586,
+          "female": 56811,
+          "total": 108397,
+          "malePercent": 47.59,
+          "femalePercent": 52.41
+        },
+        {
+          "ageRange": "70-74",
+          "male": 38310,
+          "female": 44713,
+          "total": 83023,
+          "malePercent": 46.14,
+          "femalePercent": 53.86
+        },
+        {
+          "ageRange": "75-79",
+          "male": 30175,
+          "female": 39160,
+          "total": 69335,
+          "malePercent": 43.52,
+          "femalePercent": 56.48
+        },
+        {
+          "ageRange": "80-84",
+          "male": 23077,
+          "female": 33866,
+          "total": 56943,
+          "malePercent": 40.53,
+          "femalePercent": 59.47
+        },
+        {
+          "ageRange": "85-89",
+          "male": 19495,
+          "female": 40198,
+          "total": 59693,
+          "malePercent": 32.66,
+          "femalePercent": 67.34
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 19495,
+          "female": 40198,
+          "total": 59693,
+          "malePercent": 32.66,
+          "femalePercent": 67.34
+        }
+      ]
+    },
+    "2011": {
+      "year": 2011,
+      "totalPopulation": 2909475,
+      "malePopulation": 1426384,
+      "femalePopulation": 1483091,
+      "medianAge": 36,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 104496,
+          "female": 100026,
+          "total": 204522,
+          "malePercent": 51.09,
+          "femalePercent": 48.91
+        },
+        {
+          "ageRange": "5-9",
+          "male": 103720,
+          "female": 99248,
+          "total": 202968,
+          "malePercent": 51.1,
+          "femalePercent": 48.9
+        },
+        {
+          "ageRange": "10-14",
+          "male": 102950,
+          "female": 97354,
+          "total": 200304,
+          "malePercent": 51.4,
+          "femalePercent": 48.6
+        },
+        {
+          "ageRange": "15-19",
+          "male": 104599,
+          "female": 97989,
+          "total": 202588,
+          "malePercent": 51.63,
+          "femalePercent": 48.37
+        },
+        {
+          "ageRange": "20-24",
+          "male": 101980,
+          "female": 99129,
+          "total": 201109,
+          "malePercent": 50.71,
+          "femalePercent": 49.29
+        },
+        {
+          "ageRange": "25-29",
+          "male": 95908,
+          "female": 95953,
+          "total": 191861,
+          "malePercent": 49.99,
+          "femalePercent": 50.01
+        },
+        {
+          "ageRange": "30-34",
+          "male": 91553,
+          "female": 90950,
+          "total": 182503,
+          "malePercent": 50.17,
+          "femalePercent": 49.83
+        },
+        {
+          "ageRange": "35-39",
+          "male": 82758,
+          "female": 83320,
+          "total": 166078,
+          "malePercent": 49.83,
+          "femalePercent": 50.17
+        },
+        {
+          "ageRange": "40-44",
+          "male": 86106,
+          "female": 86550,
+          "total": 172656,
+          "malePercent": 49.87,
+          "femalePercent": 50.13
+        },
+        {
+          "ageRange": "45-49",
+          "male": 94955,
+          "female": 96328,
+          "total": 191283,
+          "malePercent": 49.64,
+          "femalePercent": 50.36
+        },
+        {
+          "ageRange": "50-54",
+          "male": 101109,
+          "female": 104281,
+          "total": 205390,
+          "malePercent": 49.23,
+          "femalePercent": 50.77
+        },
+        {
+          "ageRange": "55-59",
+          "male": 92431,
+          "female": 94802,
+          "total": 187233,
+          "malePercent": 49.37,
+          "femalePercent": 50.63
+        },
+        {
+          "ageRange": "60-64",
+          "male": 78541,
+          "female": 80641,
+          "total": 159182,
+          "malePercent": 49.34,
+          "femalePercent": 50.66
+        },
+        {
+          "ageRange": "65-69",
+          "male": 53044,
+          "female": 57499,
+          "total": 110543,
+          "malePercent": 47.98,
+          "femalePercent": 52.02
+        },
+        {
+          "ageRange": "70-74",
+          "male": 38821,
+          "female": 45651,
+          "total": 84472,
+          "malePercent": 45.96,
+          "femalePercent": 54.04
+        },
+        {
+          "ageRange": "75-79",
+          "male": 30243,
+          "female": 38584,
+          "total": 68827,
+          "malePercent": 43.94,
+          "femalePercent": 56.06
+        },
+        {
+          "ageRange": "80-84",
+          "male": 23088,
+          "female": 33822,
+          "total": 56910,
+          "malePercent": 40.57,
+          "femalePercent": 59.43
+        },
+        {
+          "ageRange": "85-89",
+          "male": 20041,
+          "female": 40482,
+          "total": 60523,
+          "malePercent": 33.11,
+          "femalePercent": 66.89
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 20041,
+          "female": 40482,
+          "total": 60523,
+          "malePercent": 33.11,
+          "femalePercent": 66.89
+        }
+      ]
+    },
+    "2012": {
+      "year": 2012,
+      "totalPopulation": 2924699,
+      "malePopulation": 1434690,
+      "femalePopulation": 1490009,
+      "medianAge": 36,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 103939,
+          "female": 99374,
+          "total": 203313,
+          "malePercent": 51.12,
+          "femalePercent": 48.88
+        },
+        {
+          "ageRange": "5-9",
+          "male": 104447,
+          "female": 100115,
+          "total": 204562,
+          "malePercent": 51.06,
+          "femalePercent": 48.94
+        },
+        {
+          "ageRange": "10-14",
+          "male": 103044,
+          "female": 97601,
+          "total": 200645,
+          "malePercent": 51.36,
+          "femalePercent": 48.64
+        },
+        {
+          "ageRange": "15-19",
+          "male": 103240,
+          "female": 96986,
+          "total": 200226,
+          "malePercent": 51.56,
+          "femalePercent": 48.44
+        },
+        {
+          "ageRange": "20-24",
+          "male": 105777,
+          "female": 101641,
+          "total": 207418,
+          "malePercent": 51.0,
+          "femalePercent": 49.0
+        },
+        {
+          "ageRange": "25-29",
+          "male": 94642,
+          "female": 94956,
+          "total": 189598,
+          "malePercent": 49.92,
+          "femalePercent": 50.08
+        },
+        {
+          "ageRange": "30-34",
+          "male": 93633,
+          "female": 92847,
+          "total": 186480,
+          "malePercent": 50.21,
+          "femalePercent": 49.79
+        },
+        {
+          "ageRange": "35-39",
+          "male": 82982,
+          "female": 83328,
+          "total": 166310,
+          "malePercent": 49.9,
+          "femalePercent": 50.1
+        },
+        {
+          "ageRange": "40-44",
+          "male": 86136,
+          "female": 86362,
+          "total": 172498,
+          "malePercent": 49.93,
+          "femalePercent": 50.07
+        },
+        {
+          "ageRange": "45-49",
+          "male": 91130,
+          "female": 92047,
+          "total": 183177,
+          "malePercent": 49.75,
+          "femalePercent": 50.25
+        },
+        {
+          "ageRange": "50-54",
+          "male": 100070,
+          "female": 103389,
+          "total": 203459,
+          "malePercent": 49.18,
+          "femalePercent": 50.82
+        },
+        {
+          "ageRange": "55-59",
+          "male": 94328,
+          "female": 96866,
+          "total": 191194,
+          "malePercent": 49.34,
+          "femalePercent": 50.66
+        },
+        {
+          "ageRange": "60-64",
+          "male": 78798,
+          "female": 81270,
+          "total": 160068,
+          "malePercent": 49.23,
+          "femalePercent": 50.77
+        },
+        {
+          "ageRange": "65-69",
+          "male": 57958,
+          "female": 62337,
+          "total": 120295,
+          "malePercent": 48.18,
+          "femalePercent": 51.82
+        },
+        {
+          "ageRange": "70-74",
+          "male": 39946,
+          "female": 46764,
+          "total": 86710,
+          "malePercent": 46.07,
+          "femalePercent": 53.93
+        },
+        {
+          "ageRange": "75-79",
+          "male": 30404,
+          "female": 38339,
+          "total": 68743,
+          "malePercent": 44.23,
+          "femalePercent": 55.77
+        },
+        {
+          "ageRange": "80-84",
+          "male": 23050,
+          "female": 33459,
+          "total": 56509,
+          "malePercent": 40.79,
+          "femalePercent": 59.21
+        },
+        {
+          "ageRange": "85-89",
+          "male": 20583,
+          "female": 41164,
+          "total": 61747,
+          "malePercent": 33.33,
+          "femalePercent": 66.67
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 20583,
+          "female": 41164,
+          "total": 61747,
+          "malePercent": 33.33,
+          "femalePercent": 66.67
+        }
+      ]
+    },
+    "2013": {
+      "year": 2013,
+      "totalPopulation": 2932444,
+      "malePopulation": 1439635,
+      "femalePopulation": 1492809,
+      "medianAge": 36,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 102874,
+          "female": 98126,
+          "total": 201000,
+          "malePercent": 51.18,
+          "femalePercent": 48.82
+        },
+        {
+          "ageRange": "5-9",
+          "male": 104753,
+          "female": 100187,
+          "total": 204940,
+          "malePercent": 51.11,
+          "femalePercent": 48.89
+        },
+        {
+          "ageRange": "10-14",
+          "male": 103182,
+          "female": 97699,
+          "total": 200881,
+          "malePercent": 51.36,
+          "femalePercent": 48.64
+        },
+        {
+          "ageRange": "15-19",
+          "male": 102465,
+          "female": 96837,
+          "total": 199302,
+          "malePercent": 51.41,
+          "femalePercent": 48.59
+        },
+        {
+          "ageRange": "20-24",
+          "male": 107824,
+          "female": 102746,
+          "total": 210570,
+          "malePercent": 51.21,
+          "femalePercent": 48.79
+        },
+        {
+          "ageRange": "25-29",
+          "male": 93686,
+          "female": 93123,
+          "total": 186809,
+          "malePercent": 50.15,
+          "femalePercent": 49.85
+        },
+        {
+          "ageRange": "30-34",
+          "male": 94702,
+          "female": 94522,
+          "total": 189224,
+          "malePercent": 50.05,
+          "femalePercent": 49.95
+        },
+        {
+          "ageRange": "35-39",
+          "male": 84160,
+          "female": 84306,
+          "total": 168466,
+          "malePercent": 49.96,
+          "femalePercent": 50.04
+        },
+        {
+          "ageRange": "40-44",
+          "male": 85154,
+          "female": 85630,
+          "total": 170784,
+          "malePercent": 49.86,
+          "femalePercent": 50.14
+        },
+        {
+          "ageRange": "45-49",
+          "male": 87481,
+          "female": 87781,
+          "total": 175262,
+          "malePercent": 49.91,
+          "femalePercent": 50.09
+        },
+        {
+          "ageRange": "50-54",
+          "male": 98964,
+          "female": 102139,
+          "total": 201103,
+          "malePercent": 49.21,
+          "femalePercent": 50.79
+        },
+        {
+          "ageRange": "55-59",
+          "male": 95273,
+          "female": 98391,
+          "total": 193664,
+          "malePercent": 49.19,
+          "femalePercent": 50.81
+        },
+        {
+          "ageRange": "60-64",
+          "male": 80421,
+          "female": 83233,
+          "total": 163654,
+          "malePercent": 49.14,
+          "femalePercent": 50.86
+        },
+        {
+          "ageRange": "65-69",
+          "male": 60838,
+          "female": 64892,
+          "total": 125730,
+          "malePercent": 48.39,
+          "femalePercent": 51.61
+        },
+        {
+          "ageRange": "70-74",
+          "male": 42045,
+          "female": 48710,
+          "total": 90755,
+          "malePercent": 46.33,
+          "femalePercent": 53.67
+        },
+        {
+          "ageRange": "75-79",
+          "male": 30726,
+          "female": 38636,
+          "total": 69362,
+          "malePercent": 44.3,
+          "femalePercent": 55.7
+        },
+        {
+          "ageRange": "80-84",
+          "male": 22883,
+          "female": 32993,
+          "total": 55876,
+          "malePercent": 40.95,
+          "femalePercent": 59.05
+        },
+        {
+          "ageRange": "85-89",
+          "male": 21102,
+          "female": 41429,
+          "total": 62531,
+          "malePercent": 33.75,
+          "femalePercent": 66.25
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 21102,
+          "female": 41429,
+          "total": 62531,
+          "malePercent": 33.75,
+          "femalePercent": 66.25
+        }
+      ]
+    },
+    "2014": {
+      "year": 2014,
+      "totalPopulation": 2942518,
+      "malePopulation": 1447030,
+      "femalePopulation": 1495488,
+      "medianAge": 36,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 102084,
+          "female": 97259,
+          "total": 199343,
+          "malePercent": 51.21,
+          "femalePercent": 48.79
+        },
+        {
+          "ageRange": "5-9",
+          "male": 104395,
+          "female": 99806,
+          "total": 204201,
+          "malePercent": 51.12,
+          "femalePercent": 48.88
+        },
+        {
+          "ageRange": "10-14",
+          "male": 103010,
+          "female": 97789,
+          "total": 200799,
+          "malePercent": 51.3,
+          "femalePercent": 48.7
+        },
+        {
+          "ageRange": "15-19",
+          "male": 102224,
+          "female": 96685,
+          "total": 198909,
+          "malePercent": 51.39,
+          "femalePercent": 48.61
+        },
+        {
+          "ageRange": "20-24",
+          "male": 110114,
+          "female": 103533,
+          "total": 213647,
+          "malePercent": 51.54,
+          "femalePercent": 48.46
+        },
+        {
+          "ageRange": "25-29",
+          "male": 94522,
+          "female": 91876,
+          "total": 186398,
+          "malePercent": 50.71,
+          "femalePercent": 49.29
+        },
+        {
+          "ageRange": "30-34",
+          "male": 95733,
+          "female": 95366,
+          "total": 191099,
+          "malePercent": 50.1,
+          "femalePercent": 49.9
+        },
+        {
+          "ageRange": "35-39",
+          "male": 86183,
+          "female": 85806,
+          "total": 171989,
+          "malePercent": 50.11,
+          "femalePercent": 49.89
+        },
+        {
+          "ageRange": "40-44",
+          "male": 83907,
+          "female": 84084,
+          "total": 167991,
+          "malePercent": 49.95,
+          "femalePercent": 50.05
+        },
+        {
+          "ageRange": "45-49",
+          "male": 84576,
+          "female": 84901,
+          "total": 169477,
+          "malePercent": 49.9,
+          "femalePercent": 50.1
+        },
+        {
+          "ageRange": "50-54",
+          "male": 97641,
+          "female": 100429,
+          "total": 198070,
+          "malePercent": 49.3,
+          "femalePercent": 50.7
+        },
+        {
+          "ageRange": "55-59",
+          "male": 95592,
+          "female": 98856,
+          "total": 194448,
+          "malePercent": 49.16,
+          "femalePercent": 50.84
+        },
+        {
+          "ageRange": "60-64",
+          "male": 82224,
+          "female": 85818,
+          "total": 168042,
+          "malePercent": 48.93,
+          "femalePercent": 51.07
+        },
+        {
+          "ageRange": "65-69",
+          "male": 63748,
+          "female": 67766,
+          "total": 131514,
+          "malePercent": 48.47,
+          "femalePercent": 51.53
+        },
+        {
+          "ageRange": "70-74",
+          "male": 43622,
+          "female": 50472,
+          "total": 94094,
+          "malePercent": 46.36,
+          "femalePercent": 53.64
+        },
+        {
+          "ageRange": "75-79",
+          "male": 31393,
+          "female": 39006,
+          "total": 70399,
+          "malePercent": 44.59,
+          "femalePercent": 55.41
+        },
+        {
+          "ageRange": "80-84",
+          "male": 22682,
+          "female": 32580,
+          "total": 55262,
+          "malePercent": 41.04,
+          "femalePercent": 58.96
+        },
+        {
+          "ageRange": "85-89",
+          "male": 21690,
+          "female": 41728,
+          "total": 63418,
+          "malePercent": 34.2,
+          "femalePercent": 65.8
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 21690,
+          "female": 41728,
+          "total": 63418,
+          "malePercent": 34.2,
+          "femalePercent": 65.8
+        }
+      ]
+    },
+    "2015": {
+      "year": 2015,
+      "totalPopulation": 2951088,
+      "malePopulation": 1451361,
+      "femalePopulation": 1499727,
+      "medianAge": 36,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 100791,
+          "female": 96501,
+          "total": 197292,
+          "malePercent": 51.09,
+          "femalePercent": 48.91
+        },
+        {
+          "ageRange": "5-9",
+          "male": 104304,
+          "female": 99622,
+          "total": 203926,
+          "malePercent": 51.15,
+          "femalePercent": 48.85
+        },
+        {
+          "ageRange": "10-14",
+          "male": 102284,
+          "female": 97551,
+          "total": 199835,
+          "malePercent": 51.18,
+          "femalePercent": 48.82
+        },
+        {
+          "ageRange": "15-19",
+          "male": 102871,
+          "female": 96762,
+          "total": 199633,
+          "malePercent": 51.53,
+          "femalePercent": 48.47
+        },
+        {
+          "ageRange": "20-24",
+          "male": 110026,
+          "female": 104230,
+          "total": 214256,
+          "malePercent": 51.35,
+          "femalePercent": 48.65
+        },
+        {
+          "ageRange": "25-29",
+          "male": 94940,
+          "female": 91629,
+          "total": 186569,
+          "malePercent": 50.89,
+          "femalePercent": 49.11
+        },
+        {
+          "ageRange": "30-34",
+          "male": 95545,
+          "female": 95529,
+          "total": 191074,
+          "malePercent": 50.0,
+          "femalePercent": 50.0
+        },
+        {
+          "ageRange": "35-39",
+          "male": 88656,
+          "female": 88064,
+          "total": 176720,
+          "malePercent": 50.17,
+          "femalePercent": 49.83
+        },
+        {
+          "ageRange": "40-44",
+          "male": 82618,
+          "female": 82440,
+          "total": 165058,
+          "malePercent": 50.05,
+          "femalePercent": 49.95
+        },
+        {
+          "ageRange": "45-49",
+          "male": 83931,
+          "female": 83881,
+          "total": 167812,
+          "malePercent": 50.01,
+          "femalePercent": 49.99
+        },
+        {
+          "ageRange": "50-54",
+          "male": 95001,
+          "female": 97185,
+          "total": 192186,
+          "malePercent": 49.43,
+          "femalePercent": 50.57
+        },
+        {
+          "ageRange": "55-59",
+          "male": 95468,
+          "female": 99525,
+          "total": 194993,
+          "malePercent": 48.96,
+          "femalePercent": 51.04
+        },
+        {
+          "ageRange": "60-64",
+          "male": 84344,
+          "female": 88210,
+          "total": 172554,
+          "malePercent": 48.88,
+          "femalePercent": 51.12
+        },
+        {
+          "ageRange": "65-69",
+          "male": 67091,
+          "female": 71057,
+          "total": 138148,
+          "malePercent": 48.56,
+          "femalePercent": 51.44
+        },
+        {
+          "ageRange": "70-74",
+          "male": 45053,
+          "female": 51764,
+          "total": 96817,
+          "malePercent": 46.53,
+          "femalePercent": 53.47
+        },
+        {
+          "ageRange": "75-79",
+          "male": 31755,
+          "female": 39386,
+          "total": 71141,
+          "malePercent": 44.64,
+          "femalePercent": 55.36
+        },
+        {
+          "ageRange": "80-84",
+          "male": 22651,
+          "female": 32007,
+          "total": 54658,
+          "malePercent": 41.44,
+          "femalePercent": 58.56
+        },
+        {
+          "ageRange": "85-89",
+          "male": 22016,
+          "female": 42192,
+          "total": 64208,
+          "malePercent": 34.29,
+          "femalePercent": 65.71
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 22016,
+          "female": 42192,
+          "total": 64208,
+          "malePercent": 34.29,
+          "femalePercent": 65.71
+        }
+      ]
+    },
+    "2016": {
+      "year": 2016,
+      "totalPopulation": 2956842,
+      "malePopulation": 1455967,
+      "femalePopulation": 1500875,
+      "medianAge": 36,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 99689,
+          "female": 95578,
+          "total": 195267,
+          "malePercent": 51.05,
+          "femalePercent": 48.95
+        },
+        {
+          "ageRange": "5-9",
+          "male": 103356,
+          "female": 98878,
+          "total": 202234,
+          "malePercent": 51.11,
+          "femalePercent": 48.89
+        },
+        {
+          "ageRange": "10-14",
+          "male": 102039,
+          "female": 97592,
+          "total": 199631,
+          "malePercent": 51.11,
+          "femalePercent": 48.89
+        },
+        {
+          "ageRange": "15-19",
+          "male": 103191,
+          "female": 96755,
+          "total": 199946,
+          "malePercent": 51.61,
+          "femalePercent": 48.39
+        },
+        {
+          "ageRange": "20-24",
+          "male": 110156,
+          "female": 103097,
+          "total": 213253,
+          "malePercent": 51.66,
+          "femalePercent": 48.34
+        },
+        {
+          "ageRange": "25-29",
+          "male": 96009,
+          "female": 91727,
+          "total": 187736,
+          "malePercent": 51.14,
+          "femalePercent": 48.86
+        },
+        {
+          "ageRange": "30-34",
+          "male": 95350,
+          "female": 95178,
+          "total": 190528,
+          "malePercent": 50.05,
+          "femalePercent": 49.95
+        },
+        {
+          "ageRange": "35-39",
+          "male": 91061,
+          "female": 90257,
+          "total": 181318,
+          "malePercent": 50.22,
+          "femalePercent": 49.78
+        },
+        {
+          "ageRange": "40-44",
+          "male": 81542,
+          "female": 80934,
+          "total": 162476,
+          "malePercent": 50.19,
+          "femalePercent": 49.81
+        },
+        {
+          "ageRange": "45-49",
+          "male": 84029,
+          "female": 83920,
+          "total": 167949,
+          "malePercent": 50.03,
+          "femalePercent": 49.97
+        },
+        {
+          "ageRange": "50-54",
+          "male": 91121,
+          "female": 92872,
+          "total": 183993,
+          "malePercent": 49.52,
+          "femalePercent": 50.48
+        },
+        {
+          "ageRange": "55-59",
+          "male": 95443,
+          "female": 99896,
+          "total": 195339,
+          "malePercent": 48.86,
+          "femalePercent": 51.14
+        },
+        {
+          "ageRange": "60-64",
+          "male": 85975,
+          "female": 89995,
+          "total": 175970,
+          "malePercent": 48.86,
+          "femalePercent": 51.14
+        },
+        {
+          "ageRange": "65-69",
+          "male": 70841,
+          "female": 75162,
+          "total": 146003,
+          "malePercent": 48.52,
+          "femalePercent": 51.48
+        },
+        {
+          "ageRange": "70-74",
+          "male": 46250,
+          "female": 52502,
+          "total": 98752,
+          "malePercent": 46.83,
+          "femalePercent": 53.17
+        },
+        {
+          "ageRange": "75-79",
+          "male": 32244,
+          "female": 40107,
+          "total": 72351,
+          "malePercent": 44.57,
+          "femalePercent": 55.43
+        },
+        {
+          "ageRange": "80-84",
+          "male": 22777,
+          "female": 31799,
+          "total": 54576,
+          "malePercent": 41.73,
+          "femalePercent": 58.27
+        },
+        {
+          "ageRange": "85-89",
+          "male": 22447,
+          "female": 42313,
+          "total": 64760,
+          "malePercent": 34.66,
+          "femalePercent": 65.34
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 22447,
+          "female": 42313,
+          "total": 64760,
+          "malePercent": 34.66,
+          "femalePercent": 65.34
+        }
+      ]
+    },
+    "2017": {
+      "year": 2017,
+      "totalPopulation": 2954115,
+      "malePopulation": 1454198,
+      "femalePopulation": 1499917,
+      "medianAge": 36,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 98156,
+          "female": 94052,
+          "total": 192208,
+          "malePercent": 51.07,
+          "femalePercent": 48.93
+        },
+        {
+          "ageRange": "5-9",
+          "male": 102378,
+          "female": 97722,
+          "total": 200100,
+          "malePercent": 51.16,
+          "femalePercent": 48.84
+        },
+        {
+          "ageRange": "10-14",
+          "male": 102503,
+          "female": 98002,
+          "total": 200505,
+          "malePercent": 51.12,
+          "femalePercent": 48.88
+        },
+        {
+          "ageRange": "15-19",
+          "male": 102831,
+          "female": 96382,
+          "total": 199213,
+          "malePercent": 51.62,
+          "femalePercent": 48.38
+        },
+        {
+          "ageRange": "20-24",
+          "male": 106621,
+          "female": 101450,
+          "total": 208071,
+          "malePercent": 51.24,
+          "femalePercent": 48.76
+        },
+        {
+          "ageRange": "25-29",
+          "male": 97090,
+          "female": 92434,
+          "total": 189524,
+          "malePercent": 51.23,
+          "femalePercent": 48.77
+        },
+        {
+          "ageRange": "30-34",
+          "male": 93634,
+          "female": 93705,
+          "total": 187339,
+          "malePercent": 49.98,
+          "femalePercent": 50.02
+        },
+        {
+          "ageRange": "35-39",
+          "male": 92857,
+          "female": 91693,
+          "total": 184550,
+          "malePercent": 50.32,
+          "femalePercent": 49.68
+        },
+        {
+          "ageRange": "40-44",
+          "male": 81676,
+          "female": 81110,
+          "total": 162786,
+          "malePercent": 50.17,
+          "femalePercent": 49.83
+        },
+        {
+          "ageRange": "45-49",
+          "male": 83766,
+          "female": 83677,
+          "total": 167443,
+          "malePercent": 50.03,
+          "femalePercent": 49.97
+        },
+        {
+          "ageRange": "50-54",
+          "male": 87464,
+          "female": 88785,
+          "total": 176249,
+          "malePercent": 49.63,
+          "femalePercent": 50.37
+        },
+        {
+          "ageRange": "55-59",
+          "male": 94508,
+          "female": 98908,
+          "total": 193416,
+          "malePercent": 48.86,
+          "femalePercent": 51.14
+        },
+        {
+          "ageRange": "60-64",
+          "male": 87585,
+          "female": 91830,
+          "total": 179415,
+          "malePercent": 48.82,
+          "femalePercent": 51.18
+        },
+        {
+          "ageRange": "65-69",
+          "male": 71032,
+          "female": 75703,
+          "total": 146735,
+          "malePercent": 48.41,
+          "femalePercent": 51.59
+        },
+        {
+          "ageRange": "70-74",
+          "male": 50660,
+          "female": 56886,
+          "total": 107546,
+          "malePercent": 47.11,
+          "femalePercent": 52.89
+        },
+        {
+          "ageRange": "75-79",
+          "male": 33165,
+          "female": 41088,
+          "total": 74253,
+          "malePercent": 44.66,
+          "femalePercent": 55.34
+        },
+        {
+          "ageRange": "80-84",
+          "male": 22844,
+          "female": 31586,
+          "total": 54430,
+          "malePercent": 41.97,
+          "femalePercent": 58.03
+        },
+        {
+          "ageRange": "85-89",
+          "male": 22714,
+          "female": 42452,
+          "total": 65166,
+          "malePercent": 34.86,
+          "femalePercent": 65.14
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 22714,
+          "female": 42452,
+          "total": 65166,
+          "malePercent": 34.86,
+          "femalePercent": 65.14
+        }
+      ]
+    },
+    "2018": {
+      "year": 2018,
+      "totalPopulation": 2955445,
+      "malePopulation": 1454820,
+      "femalePopulation": 1500625,
+      "medianAge": 36,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 96904,
+          "female": 92197,
+          "total": 189101,
+          "malePercent": 51.24,
+          "femalePercent": 48.76
+        },
+        {
+          "ageRange": "5-9",
+          "male": 101244,
+          "female": 96610,
+          "total": 197854,
+          "malePercent": 51.17,
+          "femalePercent": 48.83
+        },
+        {
+          "ageRange": "10-14",
+          "male": 102609,
+          "female": 98110,
+          "total": 200719,
+          "malePercent": 51.12,
+          "femalePercent": 48.88
+        },
+        {
+          "ageRange": "15-19",
+          "male": 103126,
+          "female": 96784,
+          "total": 199910,
+          "malePercent": 51.59,
+          "femalePercent": 48.41
+        },
+        {
+          "ageRange": "20-24",
+          "male": 105296,
+          "female": 101059,
+          "total": 206355,
+          "malePercent": 51.03,
+          "femalePercent": 48.97
+        },
+        {
+          "ageRange": "25-29",
+          "male": 98087,
+          "female": 92893,
+          "total": 190980,
+          "malePercent": 51.36,
+          "femalePercent": 48.64
+        },
+        {
+          "ageRange": "30-34",
+          "male": 92674,
+          "female": 92324,
+          "total": 184998,
+          "malePercent": 50.09,
+          "femalePercent": 49.91
+        },
+        {
+          "ageRange": "35-39",
+          "male": 93883,
+          "female": 93644,
+          "total": 187527,
+          "malePercent": 50.06,
+          "femalePercent": 49.94
+        },
+        {
+          "ageRange": "40-44",
+          "male": 82846,
+          "female": 81982,
+          "total": 164828,
+          "malePercent": 50.26,
+          "femalePercent": 49.74
+        },
+        {
+          "ageRange": "45-49",
+          "male": 82841,
+          "female": 83103,
+          "total": 165944,
+          "malePercent": 49.92,
+          "femalePercent": 50.08
+        },
+        {
+          "ageRange": "50-54",
+          "male": 84054,
+          "female": 84473,
+          "total": 168527,
+          "malePercent": 49.88,
+          "femalePercent": 50.12
+        },
+        {
+          "ageRange": "55-59",
+          "male": 93422,
+          "female": 97973,
+          "total": 191395,
+          "malePercent": 48.81,
+          "femalePercent": 51.19
+        },
+        {
+          "ageRange": "60-64",
+          "male": 88250,
+          "female": 93076,
+          "total": 181326,
+          "malePercent": 48.67,
+          "femalePercent": 51.33
+        },
+        {
+          "ageRange": "65-69",
+          "male": 72560,
+          "female": 77529,
+          "total": 150089,
+          "malePercent": 48.34,
+          "femalePercent": 51.66
+        },
+        {
+          "ageRange": "70-74",
+          "male": 53067,
+          "female": 59240,
+          "total": 112307,
+          "malePercent": 47.25,
+          "femalePercent": 52.75
+        },
+        {
+          "ageRange": "75-79",
+          "male": 34853,
+          "female": 42931,
+          "total": 77784,
+          "malePercent": 44.81,
+          "femalePercent": 55.19
+        },
+        {
+          "ageRange": "80-84",
+          "male": 23066,
+          "female": 31869,
+          "total": 54935,
+          "malePercent": 41.99,
+          "femalePercent": 58.01
+        },
+        {
+          "ageRange": "85-89",
+          "male": 23019,
+          "female": 42414,
+          "total": 65433,
+          "malePercent": 35.18,
+          "femalePercent": 64.82
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 23019,
+          "female": 42414,
+          "total": 65433,
+          "malePercent": 35.18,
+          "femalePercent": 64.82
+        }
+      ]
+    },
+    "2019": {
+      "year": 2019,
+      "totalPopulation": 2955401,
+      "malePopulation": 1454109,
+      "femalePopulation": 1501292,
+      "medianAge": 37,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 95296,
+          "female": 90748,
+          "total": 186044,
+          "malePercent": 51.22,
+          "femalePercent": 48.78
+        },
+        {
+          "ageRange": "5-9",
+          "male": 100368,
+          "female": 96055,
+          "total": 196423,
+          "malePercent": 51.1,
+          "femalePercent": 48.9
+        },
+        {
+          "ageRange": "10-14",
+          "male": 102425,
+          "female": 97779,
+          "total": 200204,
+          "malePercent": 51.16,
+          "femalePercent": 48.84
+        },
+        {
+          "ageRange": "15-19",
+          "male": 102915,
+          "female": 96563,
+          "total": 199478,
+          "malePercent": 51.59,
+          "femalePercent": 48.41
+        },
+        {
+          "ageRange": "20-24",
+          "male": 103394,
+          "female": 100544,
+          "total": 203938,
+          "malePercent": 50.7,
+          "femalePercent": 49.3
+        },
+        {
+          "ageRange": "25-29",
+          "male": 98003,
+          "female": 93062,
+          "total": 191065,
+          "malePercent": 51.29,
+          "femalePercent": 48.71
+        },
+        {
+          "ageRange": "30-34",
+          "male": 92132,
+          "female": 91092,
+          "total": 183224,
+          "malePercent": 50.28,
+          "femalePercent": 49.72
+        },
+        {
+          "ageRange": "35-39",
+          "male": 94280,
+          "female": 94399,
+          "total": 188679,
+          "malePercent": 49.97,
+          "femalePercent": 50.03
+        },
+        {
+          "ageRange": "40-44",
+          "male": 84505,
+          "female": 83572,
+          "total": 168077,
+          "malePercent": 50.28,
+          "femalePercent": 49.72
+        },
+        {
+          "ageRange": "45-49",
+          "male": 81506,
+          "female": 81682,
+          "total": 163188,
+          "malePercent": 49.95,
+          "femalePercent": 50.05
+        },
+        {
+          "ageRange": "50-54",
+          "male": 81509,
+          "female": 82030,
+          "total": 163539,
+          "malePercent": 49.84,
+          "femalePercent": 50.16
+        },
+        {
+          "ageRange": "55-59",
+          "male": 92157,
+          "female": 96346,
+          "total": 188503,
+          "malePercent": 48.89,
+          "femalePercent": 51.11
+        },
+        {
+          "ageRange": "60-64",
+          "male": 88941,
+          "female": 93680,
+          "total": 182621,
+          "malePercent": 48.7,
+          "femalePercent": 51.3
+        },
+        {
+          "ageRange": "65-69",
+          "male": 74294,
+          "female": 80156,
+          "total": 154450,
+          "malePercent": 48.1,
+          "femalePercent": 51.9
+        },
+        {
+          "ageRange": "70-74",
+          "male": 55904,
+          "female": 61920,
+          "total": 117824,
+          "malePercent": 47.45,
+          "femalePercent": 52.55
+        },
+        {
+          "ageRange": "75-79",
+          "male": 36331,
+          "female": 44807,
+          "total": 81138,
+          "malePercent": 44.78,
+          "femalePercent": 55.22
+        },
+        {
+          "ageRange": "80-84",
+          "male": 23789,
+          "female": 32213,
+          "total": 56002,
+          "malePercent": 42.48,
+          "femalePercent": 57.52
+        },
+        {
+          "ageRange": "85-89",
+          "male": 23180,
+          "female": 42322,
+          "total": 65502,
+          "malePercent": 35.39,
+          "femalePercent": 64.61
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 23180,
+          "female": 42322,
+          "total": 65502,
+          "malePercent": 35.39,
+          "femalePercent": 64.61
+        }
+      ]
+    },
+    "2020": {
+      "year": 2020,
+      "totalPopulation": 2956556,
+      "malePopulation": 1455337,
+      "femalePopulation": 1501219,
+      "medianAge": 37,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 93942,
+          "female": 89162,
+          "total": 183104,
+          "malePercent": 51.31,
+          "femalePercent": 48.69
+        },
+        {
+          "ageRange": "5-9",
+          "male": 99133,
+          "female": 95176,
+          "total": 194309,
+          "malePercent": 51.02,
+          "femalePercent": 48.98
+        },
+        {
+          "ageRange": "10-14",
+          "male": 102215,
+          "female": 97791,
+          "total": 200006,
+          "malePercent": 51.11,
+          "femalePercent": 48.89
+        },
+        {
+          "ageRange": "15-19",
+          "male": 102271,
+          "female": 96209,
+          "total": 198480,
+          "malePercent": 51.53,
+          "femalePercent": 48.47
+        },
+        {
+          "ageRange": "20-24",
+          "male": 103819,
+          "female": 100169,
+          "total": 203988,
+          "malePercent": 50.89,
+          "femalePercent": 49.11
+        },
+        {
+          "ageRange": "25-29",
+          "male": 97974,
+          "female": 93053,
+          "total": 191027,
+          "malePercent": 51.29,
+          "femalePercent": 48.71
+        },
+        {
+          "ageRange": "30-34",
+          "male": 91765,
+          "female": 90143,
+          "total": 181908,
+          "malePercent": 50.45,
+          "femalePercent": 49.55
+        },
+        {
+          "ageRange": "35-39",
+          "male": 93735,
+          "female": 94431,
+          "total": 188166,
+          "malePercent": 49.82,
+          "femalePercent": 50.18
+        },
+        {
+          "ageRange": "40-44",
+          "male": 86831,
+          "female": 85669,
+          "total": 172500,
+          "malePercent": 50.34,
+          "femalePercent": 49.66
+        },
+        {
+          "ageRange": "45-49",
+          "male": 80533,
+          "female": 80315,
+          "total": 160848,
+          "malePercent": 50.07,
+          "femalePercent": 49.93
+        },
+        {
+          "ageRange": "50-54",
+          "male": 80639,
+          "female": 81110,
+          "total": 161749,
+          "malePercent": 49.85,
+          "femalePercent": 50.15
+        },
+        {
+          "ageRange": "55-59",
+          "male": 89787,
+          "female": 93481,
+          "total": 183268,
+          "malePercent": 48.99,
+          "femalePercent": 51.01
+        },
+        {
+          "ageRange": "60-64",
+          "male": 88840,
+          "female": 94560,
+          "total": 183400,
+          "malePercent": 48.44,
+          "femalePercent": 51.56
+        },
+        {
+          "ageRange": "65-69",
+          "male": 76309,
+          "female": 82201,
+          "total": 158510,
+          "malePercent": 48.14,
+          "femalePercent": 51.86
+        },
+        {
+          "ageRange": "70-74",
+          "male": 58850,
+          "female": 65098,
+          "total": 123948,
+          "malePercent": 47.48,
+          "femalePercent": 52.52
+        },
+        {
+          "ageRange": "75-79",
+          "male": 37752,
+          "female": 46048,
+          "total": 83800,
+          "malePercent": 45.05,
+          "femalePercent": 54.95
+        },
+        {
+          "ageRange": "80-84",
+          "male": 24096,
+          "female": 32475,
+          "total": 56571,
+          "malePercent": 42.59,
+          "femalePercent": 57.41
+        },
+        {
+          "ageRange": "85-89",
+          "male": 23423,
+          "female": 42064,
+          "total": 65487,
+          "malePercent": 35.77,
+          "femalePercent": 64.23
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 23423,
+          "female": 42064,
+          "total": 65487,
+          "malePercent": 35.77,
+          "femalePercent": 64.23
+        }
+      ]
+    },
+    "2021": {
+      "year": 2021,
+      "totalPopulation": 2996696,
+      "malePopulation": 1495503,
+      "femalePopulation": 1501193,
+      "medianAge": 37,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 92028,
+          "female": 87145,
+          "total": 179173,
+          "malePercent": 51.36,
+          "femalePercent": 48.64
+        },
+        {
+          "ageRange": "5-9",
+          "male": 99640,
+          "female": 95429,
+          "total": 195069,
+          "malePercent": 51.08,
+          "femalePercent": 48.92
+        },
+        {
+          "ageRange": "10-14",
+          "male": 106180,
+          "female": 100973,
+          "total": 207153,
+          "malePercent": 51.26,
+          "femalePercent": 48.74
+        },
+        {
+          "ageRange": "15-19",
+          "male": 107619,
+          "female": 100185,
+          "total": 207804,
+          "malePercent": 51.79,
+          "femalePercent": 48.21
+        },
+        {
+          "ageRange": "20-24",
+          "male": 112481,
+          "female": 101828,
+          "total": 214309,
+          "malePercent": 52.49,
+          "femalePercent": 47.51
+        },
+        {
+          "ageRange": "25-29",
+          "male": 99693,
+          "female": 92119,
+          "total": 191812,
+          "malePercent": 51.97,
+          "femalePercent": 48.03
+        },
+        {
+          "ageRange": "30-34",
+          "male": 95854,
+          "female": 91236,
+          "total": 187090,
+          "malePercent": 51.23,
+          "femalePercent": 48.77
+        },
+        {
+          "ageRange": "35-39",
+          "male": 98389,
+          "female": 95541,
+          "total": 193930,
+          "malePercent": 50.73,
+          "femalePercent": 49.27
+        },
+        {
+          "ageRange": "40-44",
+          "male": 93479,
+          "female": 89036,
+          "total": 182515,
+          "malePercent": 51.22,
+          "femalePercent": 48.78
+        },
+        {
+          "ageRange": "45-49",
+          "male": 82542,
+          "female": 79339,
+          "total": 161881,
+          "malePercent": 50.99,
+          "femalePercent": 49.01
+        },
+        {
+          "ageRange": "50-54",
+          "male": 84188,
+          "female": 81845,
+          "total": 166033,
+          "malePercent": 50.71,
+          "femalePercent": 49.29
+        },
+        {
+          "ageRange": "55-59",
+          "male": 89211,
+          "female": 89993,
+          "total": 179204,
+          "malePercent": 49.78,
+          "femalePercent": 50.22
+        },
+        {
+          "ageRange": "60-64",
+          "male": 90914,
+          "female": 94512,
+          "total": 185426,
+          "malePercent": 49.03,
+          "femalePercent": 50.97
+        },
+        {
+          "ageRange": "65-69",
+          "male": 79014,
+          "female": 83303,
+          "total": 162317,
+          "malePercent": 48.68,
+          "femalePercent": 51.32
+        },
+        {
+          "ageRange": "70-74",
+          "male": 62088,
+          "female": 67836,
+          "total": 129924,
+          "malePercent": 47.79,
+          "femalePercent": 52.21
+        },
+        {
+          "ageRange": "75-79",
+          "male": 37441,
+          "female": 44685,
+          "total": 82126,
+          "malePercent": 45.59,
+          "femalePercent": 54.41
+        },
+        {
+          "ageRange": "80-84",
+          "male": 22998,
+          "female": 31216,
+          "total": 54214,
+          "malePercent": 42.42,
+          "femalePercent": 57.58
+        },
+        {
+          "ageRange": "85-89",
+          "male": 20872,
+          "female": 37486,
+          "total": 58358,
+          "malePercent": 35.77,
+          "femalePercent": 64.23
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 20872,
+          "female": 37486,
+          "total": 58358,
+          "malePercent": 35.77,
+          "femalePercent": 64.23
+        }
+      ]
+    },
+    "2022": {
+      "year": 2022,
+      "totalPopulation": 2995080,
+      "malePopulation": 1494509,
+      "femalePopulation": 1500571,
+      "medianAge": 37,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 90248,
+          "female": 86012,
+          "total": 176260,
+          "malePercent": 51.2,
+          "femalePercent": 48.8
+        },
+        {
+          "ageRange": "5-9",
+          "male": 98938,
+          "female": 94750,
+          "total": 193688,
+          "malePercent": 51.08,
+          "femalePercent": 48.92
+        },
+        {
+          "ageRange": "10-14",
+          "male": 104884,
+          "female": 99466,
+          "total": 204350,
+          "malePercent": 51.33,
+          "femalePercent": 48.67
+        },
+        {
+          "ageRange": "15-19",
+          "male": 108096,
+          "female": 100613,
+          "total": 208709,
+          "malePercent": 51.79,
+          "femalePercent": 48.21
+        },
+        {
+          "ageRange": "20-24",
+          "male": 113042,
+          "female": 101707,
+          "total": 214749,
+          "malePercent": 52.64,
+          "femalePercent": 47.36
+        },
+        {
+          "ageRange": "25-29",
+          "male": 98172,
+          "female": 91036,
+          "total": 189208,
+          "malePercent": 51.89,
+          "femalePercent": 48.11
+        },
+        {
+          "ageRange": "30-34",
+          "male": 96650,
+          "female": 91928,
+          "total": 188578,
+          "malePercent": 51.25,
+          "femalePercent": 48.75
+        },
+        {
+          "ageRange": "35-39",
+          "male": 97239,
+          "female": 94492,
+          "total": 191731,
+          "malePercent": 50.72,
+          "femalePercent": 49.28
+        },
+        {
+          "ageRange": "40-44",
+          "male": 95400,
+          "female": 90913,
+          "total": 186313,
+          "malePercent": 51.2,
+          "femalePercent": 48.8
+        },
+        {
+          "ageRange": "45-49",
+          "male": 82808,
+          "female": 79674,
+          "total": 162482,
+          "malePercent": 50.96,
+          "femalePercent": 49.04
+        },
+        {
+          "ageRange": "50-54",
+          "male": 83938,
+          "female": 81803,
+          "total": 165741,
+          "malePercent": 50.64,
+          "femalePercent": 49.36
+        },
+        {
+          "ageRange": "55-59",
+          "male": 85713,
+          "female": 85991,
+          "total": 171704,
+          "malePercent": 49.92,
+          "femalePercent": 50.08
+        },
+        {
+          "ageRange": "60-64",
+          "male": 90157,
+          "female": 94170,
+          "total": 184327,
+          "malePercent": 48.91,
+          "femalePercent": 51.09
+        },
+        {
+          "ageRange": "65-69",
+          "male": 80413,
+          "female": 84992,
+          "total": 165405,
+          "malePercent": 48.62,
+          "femalePercent": 51.38
+        },
+        {
+          "ageRange": "70-74",
+          "male": 62100,
+          "female": 68425,
+          "total": 130525,
+          "malePercent": 47.58,
+          "femalePercent": 52.42
+        },
+        {
+          "ageRange": "75-79",
+          "male": 41437,
+          "female": 48776,
+          "total": 90213,
+          "malePercent": 45.93,
+          "femalePercent": 54.07
+        },
+        {
+          "ageRange": "80-84",
+          "male": 23610,
+          "female": 31975,
+          "total": 55585,
+          "malePercent": 42.48,
+          "femalePercent": 57.52
+        },
+        {
+          "ageRange": "85-89",
+          "male": 20832,
+          "female": 36924,
+          "total": 57756,
+          "malePercent": 36.07,
+          "femalePercent": 63.93
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 20832,
+          "female": 36924,
+          "total": 57756,
+          "malePercent": 36.07,
+          "femalePercent": 63.93
+        }
+      ]
+    },
+    "2023": {
+      "year": 2023,
+      "totalPopulation": 3009652,
+      "malePopulation": 1501764,
+      "femalePopulation": 1507888,
+      "medianAge": 37,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 89645,
+          "female": 85802,
+          "total": 175447,
+          "malePercent": 51.1,
+          "femalePercent": 48.9
+        },
+        {
+          "ageRange": "5-9",
+          "male": 98164,
+          "female": 93646,
+          "total": 191810,
+          "malePercent": 51.18,
+          "femalePercent": 48.82
+        },
+        {
+          "ageRange": "10-14",
+          "male": 103643,
+          "female": 98411,
+          "total": 202054,
+          "malePercent": 51.29,
+          "femalePercent": 48.71
+        },
+        {
+          "ageRange": "15-19",
+          "male": 109432,
+          "female": 101969,
+          "total": 211401,
+          "malePercent": 51.77,
+          "femalePercent": 48.23
+        },
+        {
+          "ageRange": "20-24",
+          "male": 114334,
+          "female": 103016,
+          "total": 217350,
+          "malePercent": 52.6,
+          "femalePercent": 47.4
+        },
+        {
+          "ageRange": "25-29",
+          "male": 98437,
+          "female": 91283,
+          "total": 189720,
+          "malePercent": 51.89,
+          "femalePercent": 48.11
+        },
+        {
+          "ageRange": "30-34",
+          "male": 97703,
+          "female": 92877,
+          "total": 190580,
+          "malePercent": 51.27,
+          "femalePercent": 48.73
+        },
+        {
+          "ageRange": "35-39",
+          "male": 96727,
+          "female": 93871,
+          "total": 190598,
+          "malePercent": 50.75,
+          "femalePercent": 49.25
+        },
+        {
+          "ageRange": "40-44",
+          "male": 97434,
+          "female": 93359,
+          "total": 190793,
+          "malePercent": 51.07,
+          "femalePercent": 48.93
+        },
+        {
+          "ageRange": "45-49",
+          "male": 84358,
+          "female": 81050,
+          "total": 165408,
+          "malePercent": 51.0,
+          "femalePercent": 49.0
+        },
+        {
+          "ageRange": "50-54",
+          "male": 83398,
+          "female": 81302,
+          "total": 164700,
+          "malePercent": 50.64,
+          "femalePercent": 49.36
+        },
+        {
+          "ageRange": "55-59",
+          "male": 82680,
+          "female": 82590,
+          "total": 165270,
+          "malePercent": 50.03,
+          "femalePercent": 49.97
+        },
+        {
+          "ageRange": "60-64",
+          "male": 89331,
+          "female": 93363,
+          "total": 182694,
+          "malePercent": 48.9,
+          "femalePercent": 51.1
+        },
+        {
+          "ageRange": "65-69",
+          "male": 81507,
+          "female": 86655,
+          "total": 168162,
+          "malePercent": 48.47,
+          "femalePercent": 51.53
+        },
+        {
+          "ageRange": "70-74",
+          "male": 63853,
+          "female": 70494,
+          "total": 134347,
+          "malePercent": 47.53,
+          "femalePercent": 52.47
+        },
+        {
+          "ageRange": "75-79",
+          "male": 43581,
+          "female": 50829,
+          "total": 94410,
+          "malePercent": 46.16,
+          "femalePercent": 53.84
+        },
+        {
+          "ageRange": "80-84",
+          "male": 25041,
+          "female": 33563,
+          "total": 58604,
+          "malePercent": 42.73,
+          "femalePercent": 57.27
+        },
+        {
+          "ageRange": "85-89",
+          "male": 21248,
+          "female": 36904,
+          "total": 58152,
+          "malePercent": 36.54,
+          "femalePercent": 63.46
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 21248,
+          "female": 36904,
+          "total": 58152,
+          "malePercent": 36.54,
+          "femalePercent": 63.46
+        }
+      ]
+    },
+    "2024": {
+      "year": 2024,
+      "totalPopulation": 3029688,
+      "malePopulation": 1512160,
+      "femalePopulation": 1517528,
+      "medianAge": 37,
+      "ageGroups": [
+        {
+          "ageRange": "0-4",
+          "male": 88803,
+          "female": 85269,
+          "total": 174072,
+          "malePercent": 51.02,
+          "femalePercent": 48.98
+        },
+        {
+          "ageRange": "5-9",
+          "male": 96947,
+          "female": 92691,
+          "total": 189638,
+          "malePercent": 51.12,
+          "femalePercent": 48.88
+        },
+        {
+          "ageRange": "10-14",
+          "male": 102979,
+          "female": 97571,
+          "total": 200550,
+          "malePercent": 51.35,
+          "femalePercent": 48.65
+        },
+        {
+          "ageRange": "15-19",
+          "male": 110550,
+          "female": 102945,
+          "total": 213495,
+          "malePercent": 51.78,
+          "femalePercent": 48.22
+        },
+        {
+          "ageRange": "20-24",
+          "male": 116817,
+          "female": 104578,
+          "total": 221395,
+          "malePercent": 52.76,
+          "femalePercent": 47.24
+        },
+        {
+          "ageRange": "25-29",
+          "male": 99864,
+          "female": 92997,
+          "total": 192861,
+          "malePercent": 51.78,
+          "femalePercent": 48.22
+        },
+        {
+          "ageRange": "30-34",
+          "male": 98741,
+          "female": 93389,
+          "total": 192130,
+          "malePercent": 51.39,
+          "femalePercent": 48.61
+        },
+        {
+          "ageRange": "35-39",
+          "male": 96579,
+          "female": 93593,
+          "total": 190172,
+          "malePercent": 50.79,
+          "femalePercent": 49.21
+        },
+        {
+          "ageRange": "40-44",
+          "male": 98598,
+          "female": 95053,
+          "total": 193651,
+          "malePercent": 50.92,
+          "femalePercent": 49.08
+        },
+        {
+          "ageRange": "45-49",
+          "male": 86725,
+          "female": 83131,
+          "total": 169856,
+          "malePercent": 51.06,
+          "femalePercent": 48.94
+        },
+        {
+          "ageRange": "50-54",
+          "male": 82449,
+          "female": 80360,
+          "total": 162809,
+          "malePercent": 50.64,
+          "femalePercent": 49.36
+        },
+        {
+          "ageRange": "55-59",
+          "male": 80562,
+          "female": 80420,
+          "total": 160982,
+          "malePercent": 50.04,
+          "femalePercent": 49.96
+        },
+        {
+          "ageRange": "60-64",
+          "male": 88505,
+          "female": 92313,
+          "total": 180818,
+          "malePercent": 48.95,
+          "femalePercent": 51.05
+        },
+        {
+          "ageRange": "65-69",
+          "male": 82109,
+          "female": 87529,
+          "total": 169638,
+          "malePercent": 48.4,
+          "femalePercent": 51.6
+        },
+        {
+          "ageRange": "70-74",
+          "male": 65991,
+          "female": 73073,
+          "total": 139064,
+          "malePercent": 47.45,
+          "femalePercent": 52.55
+        },
+        {
+          "ageRange": "75-79",
+          "male": 46124,
+          "female": 53382,
+          "total": 99506,
+          "malePercent": 46.35,
+          "femalePercent": 53.65
+        },
+        {
+          "ageRange": "80-84",
+          "male": 26147,
+          "female": 34740,
+          "total": 60887,
+          "malePercent": 42.94,
+          "femalePercent": 57.06
+        },
+        {
+          "ageRange": "85-89",
+          "male": 21835,
+          "female": 37247,
+          "total": 59082,
+          "malePercent": 36.96,
+          "femalePercent": 63.04
+        },
+        {
+          "ageRange": "90-94",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "95-99",
+          "male": 0,
+          "female": 0,
+          "total": 0,
+          "malePercent": 0,
+          "femalePercent": 0
+        },
+        {
+          "ageRange": "100+",
+          "male": 21835,
+          "female": 37247,
+          "total": 59082,
+          "malePercent": 36.96,
+          "femalePercent": 63.04
+        }
+      ]
+    }
+  }
+}

@@ -83,11 +83,20 @@ export default function DemographicCharts({
   const populationChartOptions = {
     responsive: true,
     maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 10,
+        right: 10,
+        top: 10,
+        bottom: 10
+      }
+    },
     plugins: {
       title: {
         display: true,
         text: `${countryName} Total Population Growth (1970-2024)`,
-        font: { size: 16, weight: 'bold' as const }
+        font: { size: 14, weight: 'bold' as const },
+        padding: { bottom: 10 }
       },
       legend: {
         display: false
@@ -105,9 +114,11 @@ export default function DemographicCharts({
         beginAtZero: false,
         title: {
           display: true,
-          text: 'Population (Millions)'
+          text: 'Population (Millions)',
+          font: { size: 11 }
         },
         ticks: {
+          font: { size: 10 },
           callback: function(value: any) {
             return `${parseFloat(value).toFixed(1)}M`;
           }
@@ -116,7 +127,12 @@ export default function DemographicCharts({
       x: {
         title: {
           display: true,
-          text: 'Year'
+          text: 'Year',
+          font: { size: 11 }
+        },
+        ticks: {
+          font: { size: 10 },
+          maxTicksLimit: 8
         }
       }
     }
@@ -146,11 +162,20 @@ export default function DemographicCharts({
   const medianAgeChartOptions = {
     responsive: true,
     maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 10,
+        right: 10,
+        top: 10,
+        bottom: 10
+      }
+    },
     plugins: {
       title: {
         display: true,
         text: `${countryName} Median Age Evolution (1970-2024)`,
-        font: { size: 16, weight: 'bold' as const }
+        font: { size: 14, weight: 'bold' as const },
+        padding: { bottom: 10 }
       },
       legend: {
         display: false
@@ -168,9 +193,11 @@ export default function DemographicCharts({
         beginAtZero: false,
         title: {
           display: true,
-          text: 'Median Age (Years)'
+          text: 'Median Age (Years)',
+          font: { size: 11 }
         },
         ticks: {
+          font: { size: 10 },
           callback: function(value: any) {
             return `${value} yrs`;
           }
@@ -179,7 +206,12 @@ export default function DemographicCharts({
       x: {
         title: {
           display: true,
-          text: 'Year'
+          text: 'Year',
+          font: { size: 11 }
+        },
+        ticks: {
+          font: { size: 10 },
+          maxTicksLimit: 8
         }
       }
     }
@@ -247,15 +279,28 @@ export default function DemographicCharts({
   const ageGroupComparisonOptions = {
     responsive: true,
     maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 10,
+        right: 10,
+        top: 10,
+        bottom: 10
+      }
+    },
     plugins: {
       title: {
         display: true,
         text: `${countryName} Age Structure Comparison: 1970 vs 2024`,
-        font: { size: 16, weight: 'bold' as const }
+        font: { size: 14, weight: 'bold' as const },
+        padding: { bottom: 10 }
       },
       legend: {
         display: true,
-        position: 'top' as const
+        position: 'top' as const,
+        labels: {
+          font: { size: 11 },
+          padding: 10
+        }
       },
       tooltip: {
         callbacks: {
@@ -271,9 +316,11 @@ export default function DemographicCharts({
         max: 70,
         title: {
           display: true,
-          text: 'Percentage of Population'
+          text: 'Percentage of Population',
+          font: { size: 11 }
         },
         ticks: {
+          font: { size: 10 },
           callback: function(value: any) {
             return `${value}%`;
           }
@@ -282,7 +329,11 @@ export default function DemographicCharts({
       x: {
         title: {
           display: true,
-          text: 'Age Groups'
+          text: 'Age Groups',
+          font: { size: 11 }
+        },
+        ticks: {
+          font: { size: 10 }
         }
       }
     }
@@ -316,15 +367,28 @@ export default function DemographicCharts({
   const pieChartOptions = {
     responsive: true,
     maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 10,
+        right: 10,
+        top: 10,
+        bottom: 10
+      }
+    },
     plugins: {
       title: {
         display: true,
         text: `${countryName} Current Age Distribution (2024)`,
-        font: { size: 16, weight: 'bold' as const }
+        font: { size: 14, weight: 'bold' as const },
+        padding: { bottom: 10 }
       },
       legend: {
         display: true,
-        position: 'bottom' as const
+        position: 'bottom' as const,
+        labels: {
+          font: { size: 11 },
+          padding: 10
+        }
       },
       tooltip: {
         callbacks: {
@@ -337,18 +401,18 @@ export default function DemographicCharts({
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm p-8">
-      <h2 className="text-3xl font-bold text-gray-900 mb-6">
+    <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 lg:p-8 overflow-hidden">
+      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">
         Demographic Data Visualizations
       </h2>
-      <p className="text-gray-600 mb-8">
+      <p className="text-gray-600 mb-6 sm:mb-8">
         Comprehensive charts showing {countryName}'s demographic trends, age structure evolution, and current population distribution patterns.
       </p>
 
-      <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
         {/* Population Growth Chart */}
-        <div className="bg-gray-50 rounded-lg p-4 sm:p-6">
-          <div style={{ height: '250px', minHeight: '250px' }} className="sm:h-80">
+        <div className="bg-gray-50 rounded-lg p-4 sm:p-6 overflow-hidden">
+          <div style={{ height: '250px', minHeight: '250px', width: '100%' }} className="sm:h-80 relative">
             <Line data={populationChartData} options={populationChartOptions} />
           </div>
           <div className="mt-4 text-sm text-gray-700 leading-relaxed">
@@ -359,8 +423,8 @@ export default function DemographicCharts({
         </div>
 
         {/* Median Age Evolution Chart */}
-        <div className="bg-gray-50 rounded-lg p-4 sm:p-6">
-          <div style={{ height: '250px', minHeight: '250px' }} className="sm:h-80">
+        <div className="bg-gray-50 rounded-lg p-4 sm:p-6 overflow-hidden">
+          <div style={{ height: '250px', minHeight: '250px', width: '100%' }} className="sm:h-80 relative">
             <Line data={medianAgeChartData} options={medianAgeChartOptions} />
           </div>
           <div className="mt-4 text-sm text-gray-700 leading-relaxed">
@@ -372,8 +436,8 @@ export default function DemographicCharts({
 
         {/* Age Structure Comparison */}
         {ageGroupComparison && (
-          <div className="bg-gray-50 rounded-lg p-4 sm:p-6">
-            <div style={{ height: '250px', minHeight: '250px' }} className="sm:h-80">
+          <div className="bg-gray-50 rounded-lg p-4 sm:p-6 overflow-hidden">
+            <div style={{ height: '250px', minHeight: '250px', width: '100%' }} className="sm:h-80 relative">
               <Bar data={ageGroupComparison} options={ageGroupComparisonOptions} />
             </div>
             <div className="mt-4 text-sm text-gray-700 leading-relaxed">
@@ -385,8 +449,8 @@ export default function DemographicCharts({
         )}
 
         {/* Current Age Distribution */}
-        <div className="bg-gray-50 rounded-lg p-4 sm:p-6">
-          <div style={{ height: '250px', minHeight: '250px' }} className="sm:h-80">
+        <div className="bg-gray-50 rounded-lg p-4 sm:p-6 overflow-hidden">
+          <div style={{ height: '250px', minHeight: '250px', width: '100%' }} className="sm:h-80 relative">
             <Pie data={currentAgeDistribution} options={pieChartOptions} />
           </div>
           <div className="mt-4 text-sm text-gray-700 leading-relaxed">

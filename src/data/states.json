@@ -1,0 +1,410 @@
+[
+  {
+    "stateCode": "AL",
+    "stateName": "Alabama",
+    "slug": "alabama",
+    "fips": "01",
+    "region": "South",
+    "population2024": 5250413
+  },
+  {
+    "stateCode": "AK",
+    "stateName": "Alaska",
+    "slug": "alaska",
+    "fips": "02",
+    "region": "West",
+    "population2024": 747678
+  },
+  {
+    "stateCode": "AZ",
+    "stateName": "Arizona",
+    "slug": "arizona",
+    "fips": "04",
+    "region": "West",
+    "population2024": 7740724
+  },
+  {
+    "stateCode": "AR",
+    "stateName": "Arkansas",
+    "slug": "arkansas",
+    "fips": "05",
+    "region": "South",
+    "population2024": 3146351
+  },
+  {
+    "stateCode": "CA",
+    "stateName": "California",
+    "slug": "california",
+    "fips": "06",
+    "region": "West",
+    "population2024": 40160005
+  },
+  {
+    "stateCode": "CO",
+    "stateName": "Colorado",
+    "slug": "colorado",
+    "fips": "08",
+    "region": "West",
+    "population2024": 6047515
+  },
+  {
+    "stateCode": "CT",
+    "stateName": "Connecticut",
+    "slug": "connecticut",
+    "fips": "09",
+    "region": "Northeast",
+    "population2024": 3757194
+  },
+  {
+    "stateCode": "DE",
+    "stateName": "Delaware",
+    "slug": "delaware",
+    "fips": "10",
+    "region": "South",
+    "population2024": 1072619
+  },
+  {
+    "stateCode": "DC",
+    "stateName": "District of Columbia",
+    "slug": "district-of-columbia",
+    "fips": "11",
+    "region": "South",
+    "population2024": 713353
+  },
+  {
+    "stateCode": "FL",
+    "stateName": "Florida",
+    "slug": "florida",
+    "fips": "12",
+    "region": "South",
+    "population2024": 23984282
+  },
+  {
+    "stateCode": "GA",
+    "stateName": "Georgia",
+    "slug": "georgia",
+    "fips": "13",
+    "region": "South",
+    "population2024": 11340737
+  },
+  {
+    "stateCode": "HI",
+    "stateName": "Hawaii",
+    "slug": "hawaii",
+    "fips": "15",
+    "region": "West",
+    "population2024": 1488816
+  },
+  {
+    "stateCode": "ID",
+    "stateName": "Idaho",
+    "slug": "idaho",
+    "fips": "16",
+    "region": "West",
+    "population2024": 2033546
+  },
+  {
+    "stateCode": "IL",
+    "stateName": "Illinois",
+    "slug": "illinois",
+    "fips": "17",
+    "region": "Midwest",
+    "population2024": 12962095
+  },
+  {
+    "stateCode": "IN",
+    "stateName": "Indiana",
+    "slug": "indiana",
+    "fips": "18",
+    "region": "Midwest",
+    "population2024": 7049548
+  },
+  {
+    "stateCode": "IA",
+    "stateName": "Iowa",
+    "slug": "iowa",
+    "fips": "19",
+    "region": "Midwest",
+    "population2024": 3315019
+  },
+  {
+    "stateCode": "KS",
+    "stateName": "Kansas",
+    "slug": "kansas",
+    "fips": "20",
+    "region": "Midwest",
+    "population2024": 3029688
+  },
+  {
+    "stateCode": "KY",
+    "stateName": "Kentucky",
+    "slug": "kentucky",
+    "fips": "21",
+    "region": "South",
+    "population2024": 4666963
+  },
+  {
+    "stateCode": "LA",
+    "stateName": "Louisiana",
+    "slug": "louisiana",
+    "fips": "22",
+    "region": "South",
+    "population2024": 4675684
+  },
+  {
+    "stateCode": "ME",
+    "stateName": "Maine",
+    "slug": "maine",
+    "fips": "23",
+    "region": "Northeast",
+    "population2024": 1437619
+  },
+  {
+    "stateCode": "MD",
+    "stateName": "Maryland",
+    "slug": "maryland",
+    "fips": "24",
+    "region": "South",
+    "population2024": 6381099
+  },
+  {
+    "stateCode": "MA",
+    "stateName": "Massachusetts",
+    "slug": "massachusetts",
+    "fips": "25",
+    "region": "Northeast",
+    "population2024": 7281987
+  },
+  {
+    "stateCode": "MI",
+    "stateName": "Michigan",
+    "slug": "michigan",
+    "fips": "26",
+    "region": "Midwest",
+    "population2024": 10333679
+  },
+  {
+    "stateCode": "MN",
+    "stateName": "Minnesota",
+    "slug": "minnesota",
+    "fips": "27",
+    "region": "Midwest",
+    "population2024": 5913110
+  },
+  {
+    "stateCode": "MS",
+    "stateName": "Mississippi",
+    "slug": "mississippi",
+    "fips": "28",
+    "region": "South",
+    "population2024": 2994423
+  },
+  {
+    "stateCode": "MO",
+    "stateName": "Missouri",
+    "slug": "missouri",
+    "fips": "29",
+    "region": "Midwest",
+    "population2024": 6370091
+  },
+  {
+    "stateCode": "MT",
+    "stateName": "Montana",
+    "slug": "montana",
+    "fips": "30",
+    "region": "West",
+    "population2024": 1160040
+  },
+  {
+    "stateCode": "NE",
+    "stateName": "Nebraska",
+    "slug": "nebraska",
+    "fips": "31",
+    "region": "Midwest",
+    "population2024": 2043620
+  },
+  {
+    "stateCode": "NV",
+    "stateName": "Nevada",
+    "slug": "nevada",
+    "fips": "32",
+    "region": "West",
+    "population2024": 3317394
+  },
+  {
+    "stateCode": "NH",
+    "stateName": "New Hampshire",
+    "slug": "new-hampshire",
+    "fips": "33",
+    "region": "Northeast",
+    "population2024": 1438970
+  },
+  {
+    "stateCode": "NJ",
+    "stateName": "New Jersey",
+    "slug": "new-jersey",
+    "fips": "34",
+    "region": "Northeast",
+    "population2024": 9694097
+  },
+  {
+    "stateCode": "NM",
+    "stateName": "New Mexico",
+    "slug": "new-mexico",
+    "fips": "35",
+    "region": "West",
+    "population2024": 2172362
+  },
+  {
+    "stateCode": "NY",
+    "stateName": "New York",
+    "slug": "new-york",
+    "fips": "36",
+    "region": "Northeast",
+    "population2024": 20317896
+  },
+  {
+    "stateCode": "NC",
+    "stateName": "North Carolina",
+    "slug": "north-carolina",
+    "fips": "37",
+    "region": "South",
+    "population2024": 11231176
+  },
+  {
+    "stateCode": "ND",
+    "stateName": "North Dakota",
+    "slug": "north-dakota",
+    "fips": "38",
+    "region": "Midwest",
+    "population2024": 814479
+  },
+  {
+    "stateCode": "OH",
+    "stateName": "Ohio",
+    "slug": "ohio",
+    "fips": "39",
+    "region": "Midwest",
+    "population2024": 12116289
+  },
+  {
+    "stateCode": "OK",
+    "stateName": "Oklahoma",
+    "slug": "oklahoma",
+    "fips": "40",
+    "region": "South",
+    "population2024": 4165502
+  },
+  {
+    "stateCode": "OR",
+    "stateName": "Oregon",
+    "slug": "oregon",
+    "fips": "41",
+    "region": "West",
+    "population2024": 4353398
+  },
+  {
+    "stateCode": "PA",
+    "stateName": "Pennsylvania",
+    "slug": "pennsylvania",
+    "fips": "42",
+    "region": "Northeast",
+    "population2024": 13377338
+  },
+  {
+    "stateCode": "RI",
+    "stateName": "Rhode Island",
+    "slug": "rhode-island",
+    "fips": "44",
+    "region": "Northeast",
+    "population2024": 1137140
+  },
+  {
+    "stateCode": "SC",
+    "stateName": "South Carolina",
+    "slug": "south-carolina",
+    "fips": "45",
+    "region": "South",
+    "population2024": 5572636
+  },
+  {
+    "stateCode": "SD",
+    "stateName": "South Dakota",
+    "slug": "south-dakota",
+    "fips": "46",
+    "region": "Midwest",
+    "population2024": 943746
+  },
+  {
+    "stateCode": "TN",
+    "stateName": "Tennessee",
+    "slug": "tennessee",
+    "fips": "47",
+    "region": "South",
+    "population2024": 7345253
+  },
+  {
+    "stateCode": "TX",
+    "stateName": "Texas",
+    "slug": "texas",
+    "fips": "48",
+    "region": "South",
+    "population2024": 31702108
+  },
+  {
+    "stateCode": "UT",
+    "stateName": "Utah",
+    "slug": "utah",
+    "fips": "49",
+    "region": "West",
+    "population2024": 3541436
+  },
+  {
+    "stateCode": "VT",
+    "stateName": "Vermont",
+    "slug": "vermont",
+    "fips": "50",
+    "region": "Northeast",
+    "population2024": 662645
+  },
+  {
+    "stateCode": "VA",
+    "stateName": "Virginia",
+    "slug": "virginia",
+    "fips": "51",
+    "region": "South",
+    "population2024": 8967833
+  },
+  {
+    "stateCode": "WA",
+    "stateName": "Washington",
+    "slug": "washington",
+    "fips": "53",
+    "region": "West",
+    "population2024": 8090622
+  },
+  {
+    "stateCode": "WV",
+    "stateName": "West Virginia",
+    "slug": "west-virginia",
+    "fips": "54",
+    "region": "South",
+    "population2024": 1808599
+  },
+  {
+    "stateCode": "WI",
+    "stateName": "Wisconsin",
+    "slug": "wisconsin",
+    "fips": "55",
+    "region": "Midwest",
+    "population2024": 6078912
+  },
+  {
+    "stateCode": "WY",
+    "stateName": "Wyoming",
+    "slug": "wyoming",
+    "fips": "56",
+    "region": "West",
+    "population2024": 598402
+  }
+]

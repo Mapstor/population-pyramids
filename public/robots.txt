@@ -1,0 +1,53 @@
+# Robots.txt for populationpyramids.org
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://populationpyramids.org/sitemap.xml
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1
+
+# Allow major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 0
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 0
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# API endpoints - allow indexing for documentation
+Allow: /api/
+
+# Static assets
+Allow: /_next/static/
+Allow: /images/
+Allow: /blog/
+
+# Temporary or development paths
+Disallow: /tmp/
+Disallow: /temp/
+Disallow: /_next/
