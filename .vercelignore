@@ -1,2 +1,9 @@
 # Force Vercel to treat as static
 .next/server
+
+# Exclude large backup directories and files
+backup-*
+venv/
+*.csv
+node_modules/
+.git/
