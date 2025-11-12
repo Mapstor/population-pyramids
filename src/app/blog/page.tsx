@@ -14,6 +14,32 @@ export const metadata = {
 };
 
 const blogPosts = [
+  // Demographics Education Articles
+  {
+    slug: 'population-pyramid-types-complete-guide',
+    title: '3 Types of Population Pyramids: Complete Guide',
+    primaryKeyword: 'population pyramid types',
+    excerpt: 'Learn the 3 main population pyramid types: expansive (growing populations), constrictive (declining populations), and stationary (stable populations). Complete guide with examples from countries worldwide.',
+    date: '2024-11-12',
+    readTime: '8 min read',
+    category: 'Demographics Guide',
+    image: '/blog/pyramid-types.jpg',
+    featured: false,
+    tags: ['population pyramid types', 'demographics education', 'expansive pyramid', 'constrictive pyramid', 'stationary pyramid']
+  },
+  {
+    slug: 'population-pyramid-stages-demographic-transition',
+    title: '5 Population Pyramid Stages: Demographic Transition Model',
+    primaryKeyword: 'population pyramid stages',
+    excerpt: 'Understand the 5 population pyramid stages of demographic transition: from high birth/death rates to aging societies. Complete guide with country examples and economic implications.',
+    date: '2024-11-12',
+    readTime: '12 min read',
+    category: 'Demographics Guide',
+    image: '/blog/pyramid-stages.jpg',
+    featured: false,
+    tags: ['population pyramid stages', 'demographic transition model', 'population stages', 'demographic transition theory']
+  },
+  
   // Featured Global Demographics Articles
   {
     slug: 'fertility-apocalypse-countries-stopped-having-babies',
