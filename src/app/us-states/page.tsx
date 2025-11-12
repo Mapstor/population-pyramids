@@ -3,58 +3,67 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-// Comprehensive US States data
+// State flag emojis mapping
+const stateFlags: Record<string, string> = {
+  AL: '🏴', AK: '🏔️', AZ: '🌵', AR: '💎', CA: '🐻', CO: '⛰️', CT: '🌳', DE: '💎', FL: '🌴', GA: '🍑',
+  HI: '🌺', ID: '🥔', IL: '🌆', IN: '🏁', IA: '🌽', KS: '🌻', KY: '🐎', LA: '⚜️', ME: '🦞', MD: '🦀',
+  MA: '📚', MI: '🚗', MN: '❄️', MS: '🎵', MO: '🏛️', MT: '🦌', NE: '🌾', NV: '🎰', NH: '🗿', NJ: '🏖️',
+  NM: '🌶️', NY: '🗽', NC: '✈️', ND: '🦬', OH: '🌰', OK: '🛢️', OR: '🦫', PA: '🔔', RI: '⚓', SC: '🌙',
+  SD: '🗿', TN: '🎸', TX: '⭐', UT: '🏔️', VT: '🍁', VA: '🏛️', WA: '🍎', WV: '⛏️', WI: '🧀', WY: '🦬'
+};
+
+// Comprehensive US States data with slugs
 const statesData = [
-  { rank: 1, name: 'California', code: 'CA', population: 38965193, growth2020: -0.8, growth2010: 6.0, medianAge: 37.8, region: 'West' },
-  { rank: 2, name: 'Texas', code: 'TX', population: 30503301, growth2020: 4.7, growth2010: 15.9, medianAge: 35.5, region: 'South' },
-  { rank: 3, name: 'Florida', code: 'FL', population: 22610726, growth2020: 3.3, growth2010: 14.6, medianAge: 43.1, region: 'South' },
-  { rank: 4, name: 'New York', code: 'NY', population: 19571216, growth2020: -1.8, growth2010: 4.3, medianAge: 39.9, region: 'Northeast' },
-  { rank: 5, name: 'Pennsylvania', code: 'PA', population: 12961683, growth2020: -0.6, growth2010: 2.4, medianAge: 41.6, region: 'Northeast' },
-  { rank: 6, name: 'Illinois', code: 'IL', population: 12549689, growth2020: -2.1, growth2010: -0.1, medianAge: 39.4, region: 'Midwest' },
-  { rank: 7, name: 'Ohio', code: 'OH', population: 11780017, growth2020: 0.5, growth2010: 2.3, medianAge: 40.4, region: 'Midwest' },
-  { rank: 8, name: 'Georgia', code: 'GA', population: 11029227, growth2020: 3.3, growth2010: 10.6, medianAge: 37.5, region: 'South' },
-  { rank: 9, name: 'North Carolina', code: 'NC', population: 10835491, growth2020: 3.9, growth2010: 9.5, medianAge: 39.6, region: 'South' },
-  { rank: 10, name: 'Michigan', code: 'MI', population: 10037261, growth2020: 0.3, growth2010: 2.0, medianAge: 40.5, region: 'Midwest' },
-  { rank: 11, name: 'New Jersey', code: 'NJ', population: 9290841, growth2020: 1.0, growth2010: 5.7, medianAge: 40.7, region: 'Northeast' },
-  { rank: 12, name: 'Virginia', code: 'VA', population: 8715698, growth2020: 2.1, growth2010: 7.9, medianAge: 39.6, region: 'South' },
-  { rank: 13, name: 'Washington', code: 'WA', population: 7812880, growth2020: 3.3, growth2010: 14.1, medianAge: 38.1, region: 'West' },
-  { rank: 14, name: 'Arizona', code: 'AZ', population: 7431344, growth2020: 3.8, growth2010: 11.9, medianAge: 38.8, region: 'West' },
-  { rank: 15, name: 'Tennessee', code: 'TN', population: 7126489, growth2020: 3.5, growth2010: 8.9, medianAge: 39.5, region: 'South' },
-  { rank: 16, name: 'Massachusetts', code: 'MA', population: 7001399, growth2020: 0.8, growth2010: 7.4, medianAge: 40.7, region: 'Northeast' },
-  { rank: 17, name: 'Indiana', code: 'IN', population: 6862199, growth2020: 1.5, growth2010: 4.7, medianAge: 38.5, region: 'Midwest' },
-  { rank: 18, name: 'Missouri', code: 'MO', population: 6196715, growth2020: 0.7, growth2010: 2.8, medianAge: 39.7, region: 'Midwest' },
-  { rank: 19, name: 'Maryland', code: 'MD', population: 6165129, growth2020: 1.7, growth2010: 7.1, medianAge: 39.7, region: 'South' },
-  { rank: 20, name: 'Wisconsin', code: 'WI', population: 5910955, growth2020: 1.1, growth2010: 3.6, medianAge: 40.5, region: 'Midwest' },
-  { rank: 21, name: 'Colorado', code: 'CO', population: 5877610, growth2020: 2.8, growth2010: 14.5, medianAge: 37.5, region: 'West' },
-  { rank: 22, name: 'Minnesota', code: 'MN', population: 5737915, growth2020: 1.6, growth2010: 7.6, medianAge: 39.2, region: 'Midwest' },
-  { rank: 23, name: 'South Carolina', code: 'SC', population: 5373555, growth2020: 4.2, growth2010: 10.7, medianAge: 40.6, region: 'South' },
-  { rank: 24, name: 'Alabama', code: 'AL', population: 5108468, growth2020: 1.9, growth2010: 5.1, medianAge: 40.0, region: 'South' },
-  { rank: 25, name: 'Louisiana', code: 'LA', population: 4573749, growth2020: -1.4, growth2010: 2.7, medianAge: 38.1, region: 'South' },
-  { rank: 26, name: 'Kentucky', code: 'KY', population: 4526154, growth2020: 1.1, growth2010: 3.8, medianAge: 39.7, region: 'South' },
-  { rank: 27, name: 'Oregon', code: 'OR', population: 4233358, growth2020: 1.0, growth2010: 10.6, medianAge: 40.3, region: 'West' },
-  { rank: 28, name: 'Oklahoma', code: 'OK', population: 4053824, growth2020: 2.3, growth2010: 5.5, medianAge: 37.5, region: 'South' },
-  { rank: 29, name: 'Connecticut', code: 'CT', population: 3617176, growth2020: 0.3, growth2010: 0.9, medianAge: 41.8, region: 'Northeast' },
-  { rank: 30, name: 'Utah', code: 'UT', population: 3417734, growth2020: 5.4, growth2010: 18.4, medianAge: 32.3, region: 'West' },
-  { rank: 31, name: 'Iowa', code: 'IA', population: 3207004, growth2020: 1.5, growth2010: 4.7, medianAge: 39.1, region: 'Midwest' },
-  { rank: 32, name: 'Nevada', code: 'NV', population: 3194176, growth2020: 4.9, growth2010: 15.0, medianAge: 39.0, region: 'West' },
-  { rank: 33, name: 'Arkansas', code: 'AR', population: 3067732, growth2020: 1.8, growth2010: 3.3, medianAge: 39.0, region: 'South' },
-  { rank: 34, name: 'Mississippi', code: 'MS', population: 2940057, growth2020: -0.8, growth2010: 0.2, medianAge: 38.8, region: 'South' },
-  { rank: 35, name: 'Kansas', code: 'KS', population: 2940546, growth2020: 0.5, growth2010: 3.0, medianAge: 37.9, region: 'Midwest' },
-  { rank: 36, name: 'New Mexico', code: 'NM', population: 2114371, growth2020: 0.6, growth2010: 2.8, medianAge: 39.1, region: 'West' },
-  { rank: 37, name: 'Nebraska', code: 'NE', population: 1978379, growth2020: 2.3, growth2010: 7.4, medianAge: 37.4, region: 'Midwest' },
-  { rank: 38, name: 'Idaho', code: 'ID', population: 1964726, growth2020: 6.0, growth2010: 17.3, medianAge: 37.5, region: 'West' },
-  { rank: 39, name: 'West Virginia', code: 'WV', population: 1770071, growth2020: -2.9, growth2010: -3.2, medianAge: 43.5, region: 'South' },
-  { rank: 40, name: 'Hawaii', code: 'HI', population: 1435138, growth2020: -1.3, growth2010: 7.0, medianAge: 40.8, region: 'West' },
-  { rank: 41, name: 'New Hampshire', code: 'NH', population: 1402054, growth2020: 2.1, growth2010: 4.6, medianAge: 43.3, region: 'Northeast' },
-  { rank: 42, name: 'Maine', code: 'ME', population: 1395722, growth2020: 2.9, growth2010: 2.6, medianAge: 45.1, region: 'Northeast' },
-  { rank: 43, name: 'Montana', code: 'MT', population: 1132812, growth2020: 4.7, growth2010: 9.7, medianAge: 40.7, region: 'West' },
-  { rank: 44, name: 'Rhode Island', code: 'RI', population: 1095610, growth2020: 0.7, growth2010: 4.3, medianAge: 41.4, region: 'Northeast' },
-  { rank: 45, name: 'Delaware', code: 'DE', population: 1031890, growth2020: 4.4, growth2010: 10.2, medianAge: 41.7, region: 'South' },
-  { rank: 46, name: 'South Dakota', code: 'SD', population: 919318, growth2020: 3.4, growth2010: 8.9, medianAge: 38.0, region: 'Midwest' },
-  { rank: 47, name: 'North Dakota', code: 'ND', population: 783926, growth2020: 2.3, growth2010: 15.8, medianAge: 36.4, region: 'Midwest' },
-  { rank: 48, name: 'Alaska', code: 'AK', population: 733406, growth2020: 0.0, growth2010: 3.3, medianAge: 35.6, region: 'West' },
-  { rank: 49, name: 'Vermont', code: 'VT', population: 647464, growth2020: 0.8, growth2010: 2.8, medianAge: 43.7, region: 'Northeast' },
-  { rank: 50, name: 'Wyoming', code: 'WY', population: 584057, growth2020: 0.3, growth2010: 2.2, medianAge: 39.7, region: 'West' }
+  { rank: 1, name: 'California', code: 'CA', slug: 'california', population: 38965193, growth2020: -0.8, growth2010: 6.0, medianAge: 37.8, region: 'West' },
+  { rank: 2, name: 'Texas', code: 'TX', slug: 'texas', population: 30503301, growth2020: 4.7, growth2010: 15.9, medianAge: 35.5, region: 'South' },
+  { rank: 3, name: 'Florida', code: 'FL', slug: 'florida', population: 22610726, growth2020: 3.3, growth2010: 14.6, medianAge: 43.1, region: 'South' },
+  { rank: 4, name: 'New York', code: 'NY', slug: 'new-york', population: 19571216, growth2020: -1.8, growth2010: 4.3, medianAge: 39.9, region: 'Northeast' },
+  { rank: 5, name: 'Pennsylvania', code: 'PA', slug: 'pennsylvania', population: 12961683, growth2020: -0.6, growth2010: 2.4, medianAge: 41.6, region: 'Northeast' },
+  { rank: 6, name: 'Illinois', code: 'IL', slug: 'illinois', population: 12549689, growth2020: -2.1, growth2010: -0.1, medianAge: 39.4, region: 'Midwest' },
+  { rank: 7, name: 'Ohio', code: 'OH', slug: 'ohio', population: 11780017, growth2020: 0.5, growth2010: 2.3, medianAge: 40.4, region: 'Midwest' },
+  { rank: 8, name: 'Georgia', code: 'GA', slug: 'georgia', population: 11029227, growth2020: 3.3, growth2010: 10.6, medianAge: 37.5, region: 'South' },
+  { rank: 9, name: 'North Carolina', code: 'NC', slug: 'north-carolina', population: 10835491, growth2020: 3.9, growth2010: 9.5, medianAge: 39.6, region: 'South' },
+  { rank: 10, name: 'Michigan', code: 'MI', slug: 'michigan', population: 10037261, growth2020: 0.3, growth2010: 2.0, medianAge: 40.5, region: 'Midwest' },
+  { rank: 11, name: 'New Jersey', code: 'NJ', slug: 'new-jersey', population: 9290841, growth2020: 1.0, growth2010: 5.7, medianAge: 40.7, region: 'Northeast' },
+  { rank: 12, name: 'Virginia', code: 'VA', slug: 'virginia', population: 8715698, growth2020: 2.1, growth2010: 7.9, medianAge: 39.6, region: 'South' },
+  { rank: 13, name: 'Washington', code: 'WA', slug: 'washington', population: 7812880, growth2020: 3.3, growth2010: 14.1, medianAge: 38.1, region: 'West' },
+  { rank: 14, name: 'Arizona', code: 'AZ', slug: 'arizona', population: 7431344, growth2020: 3.8, growth2010: 11.9, medianAge: 38.8, region: 'West' },
+  { rank: 15, name: 'Tennessee', code: 'TN', slug: 'tennessee', population: 7126489, growth2020: 3.5, growth2010: 8.9, medianAge: 39.5, region: 'South' },
+  { rank: 16, name: 'Massachusetts', code: 'MA', slug: 'massachusetts', population: 7001399, growth2020: 0.8, growth2010: 7.4, medianAge: 40.7, region: 'Northeast' },
+  { rank: 17, name: 'Indiana', code: 'IN', slug: 'indiana', population: 6862199, growth2020: 1.5, growth2010: 4.7, medianAge: 38.5, region: 'Midwest' },
+  { rank: 18, name: 'Missouri', code: 'MO', slug: 'missouri', population: 6196715, growth2020: 0.7, growth2010: 2.8, medianAge: 39.7, region: 'Midwest' },
+  { rank: 19, name: 'Maryland', code: 'MD', slug: 'maryland', population: 6165129, growth2020: 1.7, growth2010: 7.1, medianAge: 39.7, region: 'South' },
+  { rank: 20, name: 'Wisconsin', code: 'WI', slug: 'wisconsin', population: 5910955, growth2020: 1.1, growth2010: 3.6, medianAge: 40.5, region: 'Midwest' },
+  { rank: 21, name: 'Colorado', code: 'CO', slug: 'colorado', population: 5877610, growth2020: 2.8, growth2010: 14.5, medianAge: 37.5, region: 'West' },
+  { rank: 22, name: 'Minnesota', code: 'MN', slug: 'minnesota', population: 5737915, growth2020: 1.6, growth2010: 7.6, medianAge: 39.2, region: 'Midwest' },
+  { rank: 23, name: 'South Carolina', code: 'SC', slug: 'south-carolina', population: 5373555, growth2020: 4.2, growth2010: 10.7, medianAge: 40.6, region: 'South' },
+  { rank: 24, name: 'Alabama', code: 'AL', slug: 'alabama', population: 5108468, growth2020: 1.9, growth2010: 5.1, medianAge: 40.0, region: 'South' },
+  { rank: 25, name: 'Louisiana', code: 'LA', slug: 'louisiana', population: 4573749, growth2020: -1.4, growth2010: 2.7, medianAge: 38.1, region: 'South' },
+  { rank: 26, name: 'Kentucky', code: 'KY', slug: 'kentucky', population: 4526154, growth2020: 1.1, growth2010: 3.8, medianAge: 39.7, region: 'South' },
+  { rank: 27, name: 'Oregon', code: 'OR', slug: 'oregon', population: 4233358, growth2020: 1.0, growth2010: 10.6, medianAge: 40.3, region: 'West' },
+  { rank: 28, name: 'Oklahoma', code: 'OK', slug: 'oklahoma', population: 4053824, growth2020: 2.3, growth2010: 5.5, medianAge: 37.5, region: 'South' },
+  { rank: 29, name: 'Connecticut', code: 'CT', slug: 'connecticut', population: 3617176, growth2020: 0.3, growth2010: 0.9, medianAge: 41.8, region: 'Northeast' },
+  { rank: 30, name: 'Utah', code: 'UT', slug: 'utah', population: 3417734, growth2020: 5.4, growth2010: 18.4, medianAge: 32.3, region: 'West' },
+  { rank: 31, name: 'Iowa', code: 'IA', slug: 'iowa', population: 3207004, growth2020: 1.5, growth2010: 4.7, medianAge: 39.1, region: 'Midwest' },
+  { rank: 32, name: 'Nevada', code: 'NV', slug: 'nevada', population: 3194176, growth2020: 4.9, growth2010: 15.0, medianAge: 39.0, region: 'West' },
+  { rank: 33, name: 'Arkansas', code: 'AR', slug: 'arkansas', population: 3067732, growth2020: 1.8, growth2010: 3.3, medianAge: 39.0, region: 'South' },
+  { rank: 34, name: 'Mississippi', code: 'MS', slug: 'mississippi', population: 2940057, growth2020: -0.8, growth2010: 0.2, medianAge: 38.8, region: 'South' },
+  { rank: 35, name: 'Kansas', code: 'KS', slug: 'kansas', population: 2940546, growth2020: 0.5, growth2010: 3.0, medianAge: 37.9, region: 'Midwest' },
+  { rank: 36, name: 'New Mexico', code: 'NM', slug: 'new-mexico', population: 2114371, growth2020: 0.6, growth2010: 2.8, medianAge: 39.1, region: 'West' },
+  { rank: 37, name: 'Nebraska', code: 'NE', slug: 'nebraska', population: 1978379, growth2020: 2.3, growth2010: 7.4, medianAge: 37.4, region: 'Midwest' },
+  { rank: 38, name: 'Idaho', code: 'ID', slug: 'idaho', population: 1964726, growth2020: 6.0, growth2010: 17.3, medianAge: 37.5, region: 'West' },
+  { rank: 39, name: 'West Virginia', code: 'WV', slug: 'west-virginia', population: 1770071, growth2020: -2.9, growth2010: -3.2, medianAge: 43.5, region: 'South' },
+  { rank: 40, name: 'Hawaii', code: 'HI', slug: 'hawaii', population: 1435138, growth2020: -1.3, growth2010: 7.0, medianAge: 40.8, region: 'West' },
+  { rank: 41, name: 'New Hampshire', code: 'NH', slug: 'new-hampshire', population: 1402054, growth2020: 2.1, growth2010: 4.6, medianAge: 43.3, region: 'Northeast' },
+  { rank: 42, name: 'Maine', code: 'ME', slug: 'maine', population: 1395722, growth2020: 2.9, growth2010: 2.6, medianAge: 45.1, region: 'Northeast' },
+  { rank: 43, name: 'Montana', code: 'MT', slug: 'montana', population: 1132812, growth2020: 4.7, growth2010: 9.7, medianAge: 40.7, region: 'West' },
+  { rank: 44, name: 'Rhode Island', code: 'RI', slug: 'rhode-island', population: 1095610, growth2020: 0.7, growth2010: 4.3, medianAge: 41.4, region: 'Northeast' },
+  { rank: 45, name: 'Delaware', code: 'DE', slug: 'delaware', population: 1031890, growth2020: 4.4, growth2010: 10.2, medianAge: 41.7, region: 'South' },
+  { rank: 46, name: 'South Dakota', code: 'SD', slug: 'south-dakota', population: 919318, growth2020: 3.4, growth2010: 8.9, medianAge: 38.0, region: 'Midwest' },
+  { rank: 47, name: 'North Dakota', code: 'ND', slug: 'north-dakota', population: 783926, growth2020: 2.3, growth2010: 15.8, medianAge: 36.4, region: 'Midwest' },
+  { rank: 48, name: 'Alaska', code: 'AK', slug: 'alaska', population: 733406, growth2020: 0.0, growth2010: 3.3, medianAge: 35.6, region: 'West' },
+  { rank: 49, name: 'Vermont', code: 'VT', slug: 'vermont', population: 647464, growth2020: 0.8, growth2010: 2.8, medianAge: 43.7, region: 'Northeast' },
+  { rank: 50, name: 'Wyoming', code: 'WY', slug: 'wyoming', population: 584057, growth2020: 0.3, growth2010: 2.2, medianAge: 39.7, region: 'West' }
 ];
 
 export default function USStatesPage() {
@@ -287,10 +296,15 @@ export default function USStatesPage() {
                   <tr key={state.code} className="hover:bg-gray-50 transition">
                     <td className="px-6 py-4 text-sm text-gray-500">{state.rank}</td>
                     <td className="px-6 py-4">
-                      <div>
-                        <div className="text-sm font-medium text-gray-900">{state.name}</div>
-                        <div className="text-xs text-gray-500">{state.code}</div>
-                      </div>
+                      <Link href={`/us-states/${state.slug || state.name.toLowerCase().replace(/ /g, '-')}`} className="group">
+                        <div className="flex items-center space-x-3">
+                          <span className="text-2xl">{stateFlags[state.code] || '🏴'}</span>
+                          <div>
+                            <div className="text-sm font-medium text-gray-900 group-hover:text-blue-600 transition">{state.name}</div>
+                            <div className="text-xs text-gray-500">{state.code}</div>
+                          </div>
+                        </div>
+                      </Link>
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-600">{state.region}</td>
                     <td className="px-6 py-4 text-right text-sm text-gray-900 font-medium">

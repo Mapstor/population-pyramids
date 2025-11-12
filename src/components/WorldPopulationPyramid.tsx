@@ -105,6 +105,8 @@ export default function WorldPopulationPyramid({
         backgroundColor: 'rgba(59, 130, 246, 0.8)',
         borderColor: 'rgba(59, 130, 246, 1)',
         borderWidth: 1,
+        barPercentage: 1.0,
+        categoryPercentage: 1.0,
       },
       {
         label: 'Female',
@@ -112,6 +114,8 @@ export default function WorldPopulationPyramid({
         backgroundColor: 'rgba(236, 72, 153, 0.8)',
         borderColor: 'rgba(236, 72, 153, 1)',
         borderWidth: 1,
+        barPercentage: 1.0,
+        categoryPercentage: 1.0,
       }
     ]
   };
@@ -157,14 +161,14 @@ export default function WorldPopulationPyramid({
           },
           label: function(context) {
             const value = Math.abs(context.parsed.x || 0);
-            const gender = context.dataset.label;
-            return `${gender}: ${value.toFixed(1)}M people`;
+            return `${context.dataset.label}: ${(value * 1000000).toLocaleString()}`;
           }
         }
-      }
+      },
     },
     scales: {
       x: {
+        stacked: true,
         beginAtZero: true,
         min: -maxValues.max,
         max: maxValues.max,
@@ -179,6 +183,8 @@ export default function WorldPopulationPyramid({
         }
       },
       y: {
+        stacked: true,
+        position: 'left',
         title: {
           display: true,
           text: 'Age Groups'
