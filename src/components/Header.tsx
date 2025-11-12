@@ -48,7 +48,7 @@ export default function Header() {
               Countries
             </Link>
             <Link 
-              href="/us-states" 
+              href="/states" 
               className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition"
             >
               US States
@@ -103,7 +103,7 @@ export default function Header() {
                 Countries
               </Link>
               <Link 
-                href="/us-states" 
+                href="/states" 
                 className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition"
                 onClick={() => setIsMobileMenuOpen(false)}
               >

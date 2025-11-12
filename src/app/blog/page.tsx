@@ -417,30 +417,6 @@ export default function BlogPage() {
           </div>
         )}
 
-        {/* Categories */}
-        <div className="bg-white rounded-lg shadow-sm p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Explore by Category</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { name: 'US Demographics', count: usStatesPosts.length, icon: '🇺🇸', color: 'purple' },
-              { name: 'Global Trends', count: globalPosts.filter(p => p.category === 'Global Trends').length, icon: '🌍', color: 'blue' },
-              { name: 'Youth Demographics', count: globalPosts.filter(p => p.category === 'Youth Demographics').length, icon: '👶', color: 'green' },
-              { name: 'Aging Societies', count: globalPosts.filter(p => p.category === 'Aging Societies').length, icon: '👴', color: 'gray' },
-              { name: 'Population Decline', count: globalPosts.filter(p => p.category === 'Population Decline').length, icon: '📉', color: 'red' },
-              { name: 'Migration Patterns', count: globalPosts.filter(p => p.category === 'Migration Patterns').length, icon: '✈️', color: 'indigo' },
-              { name: 'Urban Demographics', count: globalPosts.filter(p => p.category === 'Urban Demographics').length, icon: '🏙️', color: 'orange' },
-              { name: 'Fertility Crisis', count: globalPosts.filter(p => p.category === 'Fertility Crisis').length, icon: '👨‍👩‍👧', color: 'pink' }
-            ].map((category, index) => (
-              <div key={index} className="text-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition">
-                <div className="text-3xl mb-2">{category.icon}</div>
-                <h3 className="font-semibold text-gray-900 mb-1">{category.name}</h3>
-                <p className="text-sm text-gray-600">
-                  {category.count} {category.count === 1 ? 'article' : 'articles'}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </div>
   );
