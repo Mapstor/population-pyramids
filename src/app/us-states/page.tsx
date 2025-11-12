@@ -3,12 +3,6 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-export const metadata = {
-  title: 'US States Demographics - Population Data for All 50 States | Population Pyramids',
-  description: 'Explore comprehensive demographic data, population trends, and growth rates for all 50 US states. Interactive charts and detailed statistics.',
-  keywords: 'US states population, state demographics, population by state, US census data, state growth rates',
-};
-
 // Comprehensive US States data
 const statesData = [
   { rank: 1, name: 'California', code: 'CA', population: 38965193, growth2020: -0.8, growth2010: 6.0, medianAge: 37.8, region: 'West' },
