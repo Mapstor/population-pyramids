@@ -89,6 +89,8 @@ export default function PopulationPyramid({
     scales: {
       x: {
         stacked: true,
+        min: -Math.max(...data.ageGroups.map(ag => ag.male)) * 1.1,
+        max: Math.max(...data.ageGroups.map(ag => ag.female)) * 1.1,
         ticks: {
           callback: function(value) {
             const numValue = typeof value === 'number' ? value : 0;
@@ -98,6 +100,11 @@ export default function PopulationPyramid({
         title: {
           display: true,
           text: 'Population'
+        },
+        grid: {
+          display: true,
+          drawOnChartArea: true,
+          drawTicks: true
         }
       },
       y: {

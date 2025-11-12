@@ -299,7 +299,6 @@ export default function USStatesPage() {
                     <td className="px-6 py-4">
                       <Link href={`/states/${state.slug || state.name.toLowerCase().replace(/ /g, '-')}`} className="group">
                         <div className="flex items-center space-x-3">
-                          <span className="text-2xl">{stateFlags[state.code] || '🏴'}</span>
                           <div>
                             <div className="text-sm font-medium text-gray-900 group-hover:text-blue-600 transition">{state.name}</div>
                             <div className="text-xs text-gray-500">{state.code}</div>

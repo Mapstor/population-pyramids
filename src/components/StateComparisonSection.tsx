@@ -320,12 +320,12 @@ export default function StateComparisonSection({
         statesToCompare = regionalStates[currentState.region]?.filter(s => s.slug !== currentState.slug).slice(0, 3) || [];
       }
 
-      // Load data for comparison states
+      // Load data for comparison states from static data
       const statesWithData = await Promise.all(
         statesToCompare.map(async (state) => {
           try {
-            const response = await fetch(`/api/states-data/${state.slug}`);
-            const data = await response.json();
+            // Import the state data directly
+            const data = await import(`@/data/states/${state.slug}.json`);
             const yearData = data.years['2024'];
             
             // Calculate metrics
