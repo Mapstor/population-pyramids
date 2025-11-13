@@ -14,9 +14,9 @@ import {
 } from 'chart.js';
 
 // Import country data for examples
-import germanyData from '@/data/countries/germany.json';
-import japanData from '@/data/countries/japan.json';
-import southKoreaData from '@/data/countries/south-korea.json';
+import germanyData from '@/data/population/germany.json';
+import japanData from '@/data/population/japan.json';
+import southKoreaData from '@/data/population/south-korea.json';
 
 ChartJS.register(
   CategoryScale,
@@ -27,11 +27,6 @@ ChartJS.register(
   Legend
 );
 
-export const metadata = {
-  title: '4 vs 5 Stages of Demographic Transition: Which Model to Use? | Population Pyramids',
-  description: 'Understand the key differences between 4-stage and 5-stage demographic transition models. Learn when to use each model and why the 5th stage was added to explain population decline.',
-  keywords: '4 vs 5 stages demographic transition, demographic transition models, population decline stage 5, demographic transition theory comparison',
-};
 
 export default function FourVsFiveStagesPage() {
   // Get the latest year data for examples

@@ -14,16 +14,16 @@ import {
 } from 'chart.js';
 
 // Import country data - 4 examples of Stage 1 and comparison countries
-import nigerData from '@/data/countries/niger.json';           // Stage 1 example 1
-import chadData from '@/data/countries/chad.json';             // Stage 1 example 2  
-import maliData from '@/data/countries/mali.json';             // Stage 1 example 3
-import somaliaData from '@/data/countries/somalia.json';       // Stage 1 example 4
+import nigerData from '@/data/population/niger.json';           // Stage 1 example 1
+import chadData from '@/data/population/chad.json';             // Stage 1 example 2  
+import maliData from '@/data/population/mali.json';             // Stage 1 example 3
+import somaliaData from '@/data/population/somalia.json';       // Stage 1 example 4
 
 // Comparison countries for different stages
-import kenyaData from '@/data/countries/kenya.json';           // Stage 2
-import brazilData from '@/data/countries/brazil.json';         // Stage 3
-import germanyData from '@/data/countries/germany.json';       // Stage 4
-import japanData from '@/data/countries/japan.json';           // Stage 5
+import kenyaData from '@/data/population/kenya.json';           // Stage 2
+import brazilData from '@/data/population/brazil.json';         // Stage 3
+import germanyData from '@/data/population/germany.json';       // Stage 4
+import japanData from '@/data/population/japan.json';           // Stage 5
 
 ChartJS.register(
   CategoryScale,
@@ -34,11 +34,6 @@ ChartJS.register(
   Legend
 );
 
-export const metadata = {
-  title: 'Stage 1 Demographic Transition: High Birth & Death Rates Countries | Population Pyramids',
-  description: 'Explore Stage 1 demographic transition with Niger, Chad, Mali & Somalia examples. See population pyramids and learn about pre-industrial population patterns.',
-  keywords: 'stage 1 demographic transition, high stationary stage, pre-industrial population, Niger population pyramid, Chad demographics, high birth death rates',
-};
 
 export default function Stage1DemographicTransitionPage() {
   // Get 2024 data for all countries

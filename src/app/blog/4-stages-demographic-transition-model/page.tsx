@@ -14,10 +14,10 @@ import {
 } from 'chart.js';
 
 // Import country data for examples of each stage
-import nigerData from '@/data/countries/niger.json';           // Stage 1
-import kenyaData from '@/data/countries/kenya.json';           // Stage 2  
-import brazilData from '@/data/countries/brazil.json';         // Stage 3
-import germanyData from '@/data/countries/germany.json';       // Stage 4
+import nigerData from '@/data/population/niger.json';           // Stage 1
+import kenyaData from '@/data/population/kenya.json';           // Stage 2  
+import brazilData from '@/data/population/brazil.json';         // Stage 3
+import germanyData from '@/data/population/germany.json';       // Stage 4
 
 ChartJS.register(
   CategoryScale,
@@ -28,11 +28,6 @@ ChartJS.register(
   Legend
 );
 
-export const metadata = {
-  title: '4 Stages of Demographic Transition Model: Complete Guide to Population Change | Population Pyramids',
-  description: 'Learn the 4 stages of demographic transition: high stationary, early expanding, late expanding, and low stationary. Complete guide with country examples and demographic analysis.',
-  keywords: '4 stages of demographic transition, demographic transition model, population transition stages, demographic theory, population stages model',
-};
 
 export default function FourStagesDemographicTransitionPage() {
   // Get the latest year data for each country

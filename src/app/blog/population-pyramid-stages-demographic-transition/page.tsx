@@ -14,11 +14,11 @@ import {
 } from 'chart.js';
 
 // Import country data for examples of each stage
-import nigerData from '@/data/countries/niger.json';           // Stage 1
-import kenyaData from '@/data/countries/kenya.json';           // Stage 2  
-import brazilData from '@/data/countries/brazil.json';         // Stage 3
-import germanyData from '@/data/countries/germany.json';       // Stage 4
-import japanData from '@/data/countries/japan.json';           // Stage 5
+import nigerData from '@/data/population/niger.json';           // Stage 1
+import kenyaData from '@/data/population/kenya.json';           // Stage 2  
+import brazilData from '@/data/population/brazil.json';         // Stage 3
+import germanyData from '@/data/population/germany.json';       // Stage 4
+import japanData from '@/data/population/japan.json';           // Stage 5
 
 ChartJS.register(
   CategoryScale,
@@ -29,11 +29,6 @@ ChartJS.register(
   Legend
 );
 
-export const metadata = {
-  title: '5 Population Pyramid Stages: Complete Guide to Demographic Transition Model | Population Pyramids',
-  description: 'Learn the 5 population pyramid stages of demographic transition: from high birth/death rates to aging societies. Complete guide with country examples and timeline.',
-  keywords: 'population pyramid stages, demographic transition model, population stages, demographic transition theory, population growth stages, DTM stages',
-};
 
 export default function PopulationPyramidStagesPage() {
   // Get the latest year data for each country

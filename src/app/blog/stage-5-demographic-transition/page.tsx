@@ -6,16 +6,16 @@ import { Bar } from 'react-chartjs-2';
 import Link from 'next/link';
 
 // Import country data
-import japanData from '@/data/countries/japan.json';
-import southKoreaData from '@/data/countries/south-korea.json';
-import italyData from '@/data/countries/italy.json';
-import bulgariaDemoData from '@/data/countries/bulgaria.json';
+import japanData from '@/data/population/japan.json';
+import southKoreaData from '@/data/population/south-korea.json';
+import italyData from '@/data/population/italy.json';
+import bulgariaDemoData from '@/data/population/bulgaria.json';
 
 // Import comparison countries
-import nigerData from '@/data/countries/niger.json';
-import kenyaData from '@/data/countries/kenya.json';
-import brazilData from '@/data/countries/brazil.json';
-import germanyData from '@/data/countries/germany.json';
+import nigerData from '@/data/population/niger.json';
+import kenyaData from '@/data/population/kenya.json';
+import brazilData from '@/data/population/brazil.json';
+import germanyData from '@/data/population/germany.json';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -32,21 +32,20 @@ const Stage5DemographicTransition = () => {
   const brazil2024Data = brazilData.years['2024'];
   const germany2024Data = germanyData.years['2024'];
 
-  const ageLabels = ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75-79', '80-84', '85+'];
 
   const createPyramidData = (countryData: any, title: string, color: string) => ({
-    labels: ageLabels,
+    labels: countryData.ageGroups.map((ag: any) => ag.ageRange).reverse(),
     datasets: [
       {
         label: `${title} - Male`,
-        data: countryData.male.map((value: number) => -value),
+        data: countryData.ageGroups.map((ag: any) => -ag.male).reverse(),
         backgroundColor: color,
         borderColor: color,
         borderWidth: 1,
       },
       {
         label: `${title} - Female`,
-        data: countryData.female,
+        data: countryData.ageGroups.map((ag: any) => ag.female).reverse(),
         backgroundColor: color,
         borderColor: color,
         borderWidth: 1,

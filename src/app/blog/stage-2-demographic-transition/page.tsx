@@ -14,16 +14,16 @@ import {
 } from 'chart.js';
 
 // Import country data - 4 examples of Stage 2 and comparison countries
-import kenyaData from '@/data/countries/kenya.json';              // Stage 2 example 1
-import ugandaData from '@/data/countries/uganda.json';            // Stage 2 example 2  
-import afghanistanData from '@/data/countries/afghanistan.json';   // Stage 2 example 3
-import tanzaniaData from '@/data/countries/tanzania.json';         // Stage 2 example 4
+import kenyaData from '@/data/population/kenya.json';              // Stage 2 example 1
+import ugandaData from '@/data/population/uganda.json';            // Stage 2 example 2  
+import afghanistanData from '@/data/population/afghanistan.json';   // Stage 2 example 3
+import tanzaniaData from '@/data/population/tanzania.json';         // Stage 2 example 4
 
 // Comparison countries for different stages
-import nigerData from '@/data/countries/niger.json';              // Stage 1
-import brazilData from '@/data/countries/brazil.json';            // Stage 3
-import germanyData from '@/data/countries/germany.json';          // Stage 4
-import japanData from '@/data/countries/japan.json';              // Stage 5
+import nigerData from '@/data/population/niger.json';              // Stage 1
+import brazilData from '@/data/population/brazil.json';            // Stage 3
+import germanyData from '@/data/population/germany.json';          // Stage 4
+import japanData from '@/data/population/japan.json';              // Stage 5
 
 ChartJS.register(
   CategoryScale,
@@ -34,11 +34,6 @@ ChartJS.register(
   Legend
 );
 
-export const metadata = {
-  title: 'Stage 2 Demographic Transition: Early Expanding Population Countries | Population Pyramids',
-  description: 'Explore Stage 2 demographic transition with Kenya, Uganda, Afghanistan & Tanzania. See population explosions and rapid growth patterns.',
-  keywords: 'stage 2 demographic transition, early expanding stage, population explosion, Kenya population pyramid, rapid population growth, death rates declining',
-};
 
 export default function Stage2DemographicTransitionPage() {
   // Get 2024 data for all countries
