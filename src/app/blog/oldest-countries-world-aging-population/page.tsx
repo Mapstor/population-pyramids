@@ -67,14 +67,14 @@ export default function OldestCountriesWorld() {
           data: aggregatedAgeGroups.map((ag: any) => -ag.male).reverse(),
           backgroundColor: color,
           borderColor: color,
-          borderWidth: 1,
+          borderWidth: 3,
         },
         {
           label: `${title} - Female`,
           data: aggregatedAgeGroups.map((ag: any) => ag.female).reverse(),
           backgroundColor: color,
           borderColor: color,
-          borderWidth: 1,
+          borderWidth: 3,
         },
       ],
     };
