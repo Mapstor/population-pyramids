@@ -39,6 +39,30 @@ const blogPosts = [
     featured: false,
     tags: ['population pyramid stages', 'demographic transition model', 'population stages', 'demographic transition theory']
   },
+  {
+    slug: '4-stages-demographic-transition-model',
+    title: '4 Stages of Demographic Transition: The Classic Model',
+    primaryKeyword: '4 stages of demographic transition',
+    excerpt: 'Learn the original 4 stages of demographic transition model: high stationary, early expanding, late expanding, and low stationary. Complete guide with historical examples and economic analysis.',
+    date: '2024-11-12',
+    readTime: '10 min read',
+    category: 'Demographics Guide',
+    image: '/blog/4-stages-transition.jpg',
+    featured: false,
+    tags: ['4 stages demographic transition', 'demographic theory', 'population transition', 'economic development']
+  },
+  {
+    slug: '5-stages-demographic-transition-complete-model',
+    title: '5 Stages of Demographic Transition: Complete Modern Model',
+    primaryKeyword: '5 stages of demographic transition',
+    excerpt: 'Discover the complete 5 stages of demographic transition including Stage 5 population decline. Modern model explains Japan, Germany aging crisis. Full guide with country examples.',
+    date: '2024-11-12',
+    readTime: '13 min read',
+    category: 'Demographics Guide',
+    image: '/blog/5-stages-transition.jpg',
+    featured: false,
+    tags: ['5 stages demographic transition', 'population decline', 'demographic crisis', 'aging societies']
+  },
   
   // Featured Global Demographics Articles
   {
@@ -55,6 +79,42 @@ const blogPosts = [
   },
   
   // US States Articles
+  {
+    slug: 'oldest-states-in-us-aging-population',
+    title: 'States With Oldest Population: Top 15 Aging US States',
+    primaryKeyword: 'oldest states in the us',
+    excerpt: 'Maine has the oldest population in America with median age 45.1 years. Discover which state has the oldest population, states with most senior citizens, and cheapest states for seniors to live.',
+    date: '2024-11-12',
+    readTime: '10 min read',
+    category: 'US Demographics',
+    image: '/blog/oldest-states.jpg',
+    featured: false,
+    tags: ['oldest states', 'aging population', 'senior citizens', 'retirement states', 'demographic aging']
+  },
+  {
+    slug: 'youngest-states-in-us-youth-population',
+    title: 'Youngest States in the US: 15 Most Youthful States 2024',
+    primaryKeyword: 'youngest states in the us',
+    excerpt: 'Utah has the youngest population in America with median age 32.3 years. Discover the youngest states in the US, states with youngest population, and why these states attract young families.',
+    date: '2024-11-12',
+    readTime: '9 min read',
+    category: 'US Demographics',
+    image: '/blog/youngest-states.jpg',
+    featured: false,
+    tags: ['youngest states', 'youth population', 'young families', 'population growth', 'demographic trends']
+  },
+  {
+    slug: 'fastest-growing-states-population-2024',
+    title: 'Fastest Growing States Population 2024: Top 10 Growth',
+    primaryKeyword: 'fastest growing states',
+    excerpt: 'South Carolina leads with 4.2% population growth. Texas adds 470,000 people yearly. Discover the fastest growing state population, growth rates, and why these states attract millions.',
+    date: '2024-11-12',
+    readTime: '11 min read',
+    category: 'US Demographics',
+    image: '/blog/fastest-growing-states-new.jpg',
+    featured: false,
+    tags: ['fastest growing states', 'population growth', 'migration patterns', 'state demographics', 'economic growth']
+  },
   {
     slug: '15-fastest-growing-states-2024',
     title: '15 Fastest Growing US States',
