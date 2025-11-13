@@ -14,6 +14,14 @@ import {
   ChartOptions
 } from 'chart.js';
 
+// Import state data directly
+import utahData from '@/data/states/utah.json';
+import maineData from '@/data/states/maine.json';
+import vermontData from '@/data/states/vermont.json';
+import floridaData from '@/data/states/florida.json';
+import texasData from '@/data/states/texas.json';
+import alaskaData from '@/data/states/alaska.json';
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -24,38 +32,13 @@ ChartJS.register(
 );
 
 export default function UtahMaineAgeGapArticle() {
-  const [utahData, setUtahData] = useState<any>(null);
-  const [maineData, setMaineData] = useState<any>(null);
-  const [vermontData, setVermontData] = useState<any>(null);
-  const [floridaData, setFloridaData] = useState<any>(null);
-  const [texasData, setTexasData] = useState<any>(null);
-  const [alaskaData, setAlaskaData] = useState<any>(null);
-
-  useEffect(() => {
-    // Load state data from API
-    async function loadData() {
-      try {
-        const [utah, maine, vermont, florida, texas, alaska] = await Promise.all([
-          fetch('/api/states/utah').then(r => r.json()),
-          fetch('/api/states/maine').then(r => r.json()),
-          fetch('/api/states/vermont').then(r => r.json()),
-          fetch('/api/states/florida').then(r => r.json()),
-          fetch('/api/states/texas').then(r => r.json()),
-          fetch('/api/states/alaska').then(r => r.json()),
-        ]);
-        
-        setUtahData(utah['2024']);
-        setMaineData(maine['2024']);
-        setVermontData(vermont['2024']);
-        setFloridaData(florida['2024']);
-        setTexasData(texas['2024']);
-        setAlaskaData(alaska['2024']);
-      } catch (error) {
-        console.error('Error loading state data:', error);
-      }
-    }
-    loadData();
-  }, []);
+  // Use the imported data directly
+  const utah2024Data = utahData.years['2024'];
+  const maine2024Data = maineData.years['2024'];
+  const vermont2024Data = vermontData.years['2024'];
+  const florida2024Data = floridaData.years['2024'];
+  const texas2024Data = texasData.years['2024'];
+  const alaska2024Data = alaskaData.years['2024'];
 
   const createPyramidData = (data: any, title: string) => {
     if (!data) return null;
@@ -215,19 +198,19 @@ export default function UtahMaineAgeGapArticle() {
                 <Link href="/states/utah" className="hover:text-blue-600">Utah Population Pyramid 2024</Link>
               </h3>
               <div className="h-96">
-                {utahData && (() => {
-                  const pyramidData = createPyramidData(utahData, 'Utah 2024');
+                {utah2024Data && (() => {
+                  const pyramidData = createPyramidData(utah2024Data, 'Utah 2024');
                   if (!pyramidData) return null;
                   return (
                     <Bar 
                       data={pyramidData} 
                       options={{
-                        ...createPyramidOptions(pyramidData.maxValue, utahData.totalPopulation),
+                        ...createPyramidOptions(pyramidData.maxValue, utah2024Data.totalPopulation),
                         plugins: {
-                          ...createPyramidOptions(pyramidData.maxValue, utahData.totalPopulation).plugins,
+                          ...createPyramidOptions(pyramidData.maxValue, utah2024Data.totalPopulation).plugins,
                           title: {
                             display: true,
-                            text: `Median Age: ${utahData.medianAge?.toFixed(1) || 'N/A'} years`
+                            text: `Median Age: ${utah2024Data.medianAge?.toFixed(1) || 'N/A'} years`
                           }
                         }
                       }} 
@@ -242,19 +225,19 @@ export default function UtahMaineAgeGapArticle() {
                 <Link href="/states/maine" className="hover:text-blue-600">Maine Population Pyramid 2024</Link>
               </h3>
               <div className="h-96">
-                {maineData && (() => {
-                  const pyramidData = createPyramidData(maineData, 'Maine 2024');
+                {maine2024Data && (() => {
+                  const pyramidData = createPyramidData(maine2024Data, 'Maine 2024');
                   if (!pyramidData) return null;
                   return (
                     <Bar 
                       data={pyramidData} 
                       options={{
-                        ...createPyramidOptions(pyramidData.maxValue, maineData.totalPopulation),
+                        ...createPyramidOptions(pyramidData.maxValue, maine2024Data.totalPopulation),
                         plugins: {
-                          ...createPyramidOptions(pyramidData.maxValue, maineData.totalPopulation).plugins,
+                          ...createPyramidOptions(pyramidData.maxValue, maine2024Data.totalPopulation).plugins,
                           title: {
                             display: true,
-                            text: `Median Age: ${maineData.medianAge?.toFixed(1) || 'N/A'} years`
+                            text: `Median Age: ${maine2024Data.medianAge?.toFixed(1) || 'N/A'} years`
                           }
                         }
                       }} 
@@ -385,8 +368,8 @@ export default function UtahMaineAgeGapArticle() {
             <div>
               <h3 className="text-xl font-bold mb-4 text-center">Young Mountain West</h3>
               <div className="h-80">
-                {utahData && (() => {
-                  const pyramidData = createPyramidData(utahData, 'Utah');
+                {utah2024Data && (() => {
+                  const pyramidData = createPyramidData(utah2024Data, 'Utah');
                   if (!pyramidData) return null;
                   return (
                     <Bar 
@@ -411,8 +394,8 @@ export default function UtahMaineAgeGapArticle() {
             <div>
               <h3 className="text-xl font-bold mb-4 text-center">Young South</h3>
               <div className="h-80">
-                {texasData && (() => {
-                  const pyramidData = createPyramidData(texasData, 'Texas');
+                {texas2024Data && (() => {
+                  const pyramidData = createPyramidData(texas2024Data, 'Texas');
                   if (!pyramidData) return null;
                   return (
                     <Bar 
@@ -437,8 +420,8 @@ export default function UtahMaineAgeGapArticle() {
             <div>
               <h3 className="text-xl font-bold mb-4 text-center">Aging Northeast</h3>
               <div className="h-80">
-                {vermontData && (() => {
-                  const pyramidData = createPyramidData(vermontData, 'Vermont');
+                {vermont2024Data && (() => {
+                  const pyramidData = createPyramidData(vermont2024Data, 'Vermont');
                   if (!pyramidData) return null;
                   return (
                     <Bar 

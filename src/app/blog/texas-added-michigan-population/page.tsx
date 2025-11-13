@@ -16,6 +16,13 @@ import {
   ChartOptions
 } from 'chart.js';
 
+// Import state data directly
+import texasData from '@/data/states/texas.json';
+import floridaData from '@/data/states/florida.json';
+import californiaData from '@/data/states/california.json';
+import michiganData from '@/data/states/michigan.json';
+import indianaData from '@/data/states/indiana.json';
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -28,41 +35,15 @@ ChartJS.register(
 );
 
 export default function TexasAddedMichiganArticle() {
-  const [texasData2000, setTexasData2000] = useState<any>(null);
-  const [texasData2024, setTexasData2024] = useState<any>(null);
-  const [floridaData2000, setFloridaData2000] = useState<any>(null);
-  const [floridaData2024, setFloridaData2024] = useState<any>(null);
-  const [californiaData2000, setCaliforniaData2000] = useState<any>(null);
-  const [californiaData2024, setCaliforniaData2024] = useState<any>(null);
-  const [michiganData, setMichiganData] = useState<any>(null);
-  const [indianaData, setIndianaData] = useState<any>(null);
-
-  useEffect(() => {
-    // Load state data from API
-    async function loadData() {
-      try {
-        const [texas, florida, california, michigan, indiana] = await Promise.all([
-          fetch('/api/states/texas').then(r => r.json()),
-          fetch('/api/states/florida').then(r => r.json()),
-          fetch('/api/states/california').then(r => r.json()),
-          fetch('/api/states/michigan').then(r => r.json()),
-          fetch('/api/states/indiana').then(r => r.json()),
-        ]);
-        
-        setTexasData2000(texas['2000']);
-        setTexasData2024(texas['2024']);
-        setFloridaData2000(florida['2000']);
-        setFloridaData2024(florida['2024']);
-        setCaliforniaData2000(california['2000']);
-        setCaliforniaData2024(california['2024']);
-        setMichiganData(michigan['2024']);
-        setIndianaData(indiana['2024']);
-      } catch (error) {
-        console.error('Error loading state data:', error);
-      }
-    }
-    loadData();
-  }, []);
+  // Use the imported data directly
+  const texas2000Data = texasData.years['2000'];
+  const texas2024Data = texasData.years['2024'];
+  const florida2000Data = floridaData.years['2000'];
+  const florida2024Data = floridaData.years['2024'];
+  const california2000Data = californiaData.years['2000'];
+  const california2024Data = californiaData.years['2024'];
+  const michigan2024Data = michiganData.years['2024'];
+  const indiana2024Data = indianaData.years['2024'];
 
   const createPyramidData = (data: any, title: string) => {
     if (!data) return null;
@@ -358,8 +339,8 @@ export default function TexasAddedMichiganArticle() {
             <div>
               <h3 className="text-xl font-bold mb-4 text-center">Texas 2000</h3>
               <div className="h-80">
-                {texasData2000 && (() => {
-                  const pyramidData = createPyramidData(texasData2000, 'Texas 2000');
+                {texas2000Data && (() => {
+                  const pyramidData = createPyramidData(texas2000Data, 'Texas 2000');
                   if (!pyramidData) return null;
                   return (
                     <Bar 
@@ -384,8 +365,8 @@ export default function TexasAddedMichiganArticle() {
             <div>
               <h3 className="text-xl font-bold mb-4 text-center">Texas 2024</h3>
               <div className="h-80">
-                {texasData2024 && (() => {
-                  const pyramidData = createPyramidData(texasData2024, 'Texas 2024');
+                {texas2024Data && (() => {
+                  const pyramidData = createPyramidData(texas2024Data, 'Texas 2024');
                   if (!pyramidData) return null;
                   return (
                     <Bar 
@@ -419,8 +400,8 @@ export default function TexasAddedMichiganArticle() {
               For Scale: This Is Michigan's Entire Population
             </h3>
             <div className="max-w-md mx-auto h-80">
-              {michiganData && (() => {
-                const pyramidData = createPyramidData(michiganData, 'Michigan 2024');
+              {michigan2024Data && (() => {
+                const pyramidData = createPyramidData(michigan2024Data, 'Michigan 2024');
                 if (!pyramidData) return null;
                 return (
                   <Bar 
@@ -644,8 +625,8 @@ export default function TexasAddedMichiganArticle() {
                 Florida Added 6.8M (= Indiana)
               </h3>
               <div className="h-72">
-                {floridaData2024 && indianaData && (() => {
-                  const pyramidData = createPyramidData(floridaData2024, 'Florida');
+                {florida2024Data && indiana2024Data && (() => {
+                  const pyramidData = createPyramidData(florida2024Data, 'Florida');
                   if (!pyramidData) return null;
                   return (
                     <Bar 
@@ -675,8 +656,8 @@ export default function TexasAddedMichiganArticle() {
                 California Added 5.2M (≈ S. Carolina)
               </h3>
               <div className="h-72">
-                {californiaData2024 && (() => {
-                  const pyramidData = createPyramidData(californiaData2024, 'California');
+                {california2024Data && (() => {
+                  const pyramidData = createPyramidData(california2024Data, 'California');
                   if (!pyramidData) return null;
                   return (
                     <Bar 

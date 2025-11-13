@@ -1,4 +1,33 @@
+'use client';
+
 import Link from 'next/link';
+import { Bar } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ChartOptions
+} from 'chart.js';
+
+// Import country data for examples of each stage
+import nigerData from '@/data/countries/niger.json';           // Stage 1
+import kenyaData from '@/data/countries/kenya.json';           // Stage 2  
+import brazilData from '@/data/countries/brazil.json';         // Stage 3
+import germanyData from '@/data/countries/germany.json';       // Stage 4
+import japanData from '@/data/countries/japan.json';           // Stage 5
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 export const metadata = {
   title: '5 Population Pyramid Stages: Complete Guide to Demographic Transition Model | Population Pyramids',
@@ -7,6 +36,81 @@ export const metadata = {
 };
 
 export default function PopulationPyramidStagesPage() {
+  // Get the latest year data for each country
+  const niger2024Data = nigerData.years['2024'];
+  const kenya2024Data = kenyaData.years['2024'];
+  const brazil2024Data = brazilData.years['2024'];
+  const germany2024Data = germanyData.years['2024'];
+  const japan2024Data = japanData.years['2024'];
+
+  const createPyramidData = (data: any, title: string, stageColor: string) => {
+    if (!data) return null;
+
+    const maxMale = Math.max(...data.ageGroups.map((ag: any) => ag.male));
+    const maxFemale = Math.max(...data.ageGroups.map((ag: any) => ag.female));
+    const maxValue = Math.max(maxMale, maxFemale);
+
+    return {
+      labels: data.ageGroups.map((ag: any) => ag.ageRange).reverse(),
+      datasets: [
+        {
+          label: 'Male',
+          data: data.ageGroups.map((ag: any) => -ag.male).reverse(),
+          backgroundColor: stageColor,
+          borderColor: stageColor,
+          borderWidth: 0.5,
+          barPercentage: 1.0,
+          categoryPercentage: 1.0,
+        },
+        {
+          label: 'Female',
+          data: data.ageGroups.map((ag: any) => ag.female).reverse(),
+          backgroundColor: stageColor.replace('0.8', '0.6'),
+          borderColor: stageColor,
+          borderWidth: 0.5,
+          barPercentage: 1.0,
+          categoryPercentage: 1.0,
+        }
+      ],
+      maxValue: maxValue
+    };
+  };
+
+  const createPyramidOptions = (maxValue?: number): ChartOptions<'bar'> => ({
+    indexAxis: 'y' as const,
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: false
+      },
+      tooltip: {
+        callbacks: {
+          label: function(context: any) {
+            const value = Math.abs(context.parsed.x);
+            return `${context.dataset.label}: ${value.toLocaleString()}`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        stacked: true,
+        min: maxValue ? -maxValue : undefined,
+        max: maxValue ? maxValue : undefined,
+        ticks: {
+          callback: function(value) {
+            return Math.abs(Number(value)).toLocaleString();
+          }
+        }
+      },
+      y: {
+        stacked: true,
+        display: false
+      }
+    }
+  });
+
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
       <header className="mb-8">
@@ -95,6 +199,35 @@ export default function PopulationPyramidStagesPage() {
           The pyramid has an extremely wide base due to high birth rates, but it narrows dramatically with each age group due to high mortality. Very few people survive to old age, creating a sharp, narrow top.
         </p>
 
+        {/* Stage 1 Population Pyramid Example */}
+        <div className="bg-red-50 border border-red-200 rounded-lg p-6 my-8">
+          <h4 className="text-xl font-bold mb-4 text-red-800">Stage 1 Example: Niger (Closest to Historic Stage 1)</h4>
+          <p className="text-red-700 mb-4">
+            While no country today is purely Stage 1, Niger shows the closest characteristics with very high birth rates. Notice the extremely wide base and sharp narrowing typical of Stage 1.
+          </p>
+          <div className="h-96 bg-white p-4 rounded-lg border">
+            {niger2024Data && (() => {
+              const pyramidData = createPyramidData(niger2024Data, 'Niger 2024', 'rgba(239, 68, 68, 0.8)');
+              if (!pyramidData) return null;
+              return (
+                <Bar 
+                  data={pyramidData} 
+                  options={{
+                    ...createPyramidOptions(pyramidData.maxValue),
+                    plugins: {
+                      ...createPyramidOptions(pyramidData.maxValue).plugins,
+                      title: {
+                        display: true,
+                        text: `Niger: Birth Rate 42/1000, Death Rate 9/1000, Growth 3.8%`
+                      }
+                    }
+                  }} 
+                />
+              );
+            })()}
+          </div>
+        </div>
+
         <div className="bg-gray-100 border border-gray-300 rounded-lg p-4 my-6">
           <h4 className="font-bold text-gray-800 mb-2">Historical Examples:</h4>
           <ul className="text-gray-700 space-y-1">
@@ -145,6 +278,35 @@ export default function PopulationPyramidStagesPage() {
           The pyramid maintains a very wide base as birth rates stay high, but the middle sections become broader as more children survive to adulthood. This creates the classic expansive pyramid shape with rapid population growth.
         </p>
 
+        {/* Stage 2 Population Pyramid Example */}
+        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 my-8">
+          <h4 className="text-xl font-bold mb-4 text-yellow-800">Stage 2 Example: Kenya (Early Expanding)</h4>
+          <p className="text-yellow-700 mb-4">
+            Kenya demonstrates classic Stage 2 with high birth rates but much-improved child mortality. Notice the wide base but broader middle sections compared to Stage 1.
+          </p>
+          <div className="h-96 bg-white p-4 rounded-lg border">
+            {kenya2024Data && (() => {
+              const pyramidData = createPyramidData(kenya2024Data, 'Kenya 2024', 'rgba(245, 158, 11, 0.8)');
+              if (!pyramidData) return null;
+              return (
+                <Bar 
+                  data={pyramidData} 
+                  options={{
+                    ...createPyramidOptions(pyramidData.maxValue),
+                    plugins: {
+                      ...createPyramidOptions(pyramidData.maxValue).plugins,
+                      title: {
+                        display: true,
+                        text: `Kenya: Birth Rate 25/1000, Death Rate 5/1000, Growth 2.0%`
+                      }
+                    }
+                  }} 
+                />
+              );
+            })()}
+          </div>
+        </div>
+
         <h2 className="text-2xl font-bold mt-8 mb-4">Stage 3: Late Expanding (Middle Transition)</h2>
 
         <p>
@@ -186,6 +348,35 @@ export default function PopulationPyramidStagesPage() {
           The pyramid begins transitioning from expansive to stationary. The base narrows as birth rates decline, while the middle sections expand as large cohorts from earlier high-birth periods age. This creates a "barrel" or "bell" shape.
         </p>
 
+        {/* Stage 3 Population Pyramid Example */}
+        <div className="bg-green-50 border border-green-200 rounded-lg p-6 my-8">
+          <h4 className="text-xl font-bold mb-4 text-green-800">Stage 3 Example: Brazil (Late Expanding)</h4>
+          <p className="text-green-700 mb-4">
+            Brazil shows Stage 3 characteristics with rapidly declining birth rates. Notice the narrowing base and bulging working-age population - this is the "demographic dividend" period.
+          </p>
+          <div className="h-96 bg-white p-4 rounded-lg border">
+            {brazil2024Data && (() => {
+              const pyramidData = createPyramidData(brazil2024Data, 'Brazil 2024', 'rgba(34, 197, 94, 0.8)');
+              if (!pyramidData) return null;
+              return (
+                <Bar 
+                  data={pyramidData} 
+                  options={{
+                    ...createPyramidOptions(pyramidData.maxValue),
+                    plugins: {
+                      ...createPyramidOptions(pyramidData.maxValue).plugins,
+                      title: {
+                        display: true,
+                        text: `Brazil: Birth Rate 13/1000, Death Rate 7/1000, Growth 0.6%`
+                      }
+                    }
+                  }} 
+                />
+              );
+            })()}
+          </div>
+        </div>
+
         <h2 className="text-2xl font-bold mt-8 mb-4">Stage 4: Low Stationary (Late Transition)</h2>
 
         <p>
@@ -216,6 +407,35 @@ export default function PopulationPyramidStagesPage() {
         <p>
           The pyramid becomes rectangular or cylindrical. Birth rates near replacement level (2.1 children per woman) create relatively equal numbers across age groups. The top begins to widen as more people survive to old age.
         </p>
+
+        {/* Stage 4 Population Pyramid Example */}
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 my-8">
+          <h4 className="text-xl font-bold mb-4 text-blue-800">Stage 4 Example: Germany (Low Stationary)</h4>
+          <p className="text-blue-700 mb-4">
+            Germany exemplifies Stage 4 with very low birth and death rates. Notice the rectangular shape and growing elderly population at the top - the aging society challenge.
+          </p>
+          <div className="h-96 bg-white p-4 rounded-lg border">
+            {germany2024Data && (() => {
+              const pyramidData = createPyramidData(germany2024Data, 'Germany 2024', 'rgba(59, 130, 246, 0.8)');
+              if (!pyramidData) return null;
+              return (
+                <Bar 
+                  data={pyramidData} 
+                  options={{
+                    ...createPyramidOptions(pyramidData.maxValue),
+                    plugins: {
+                      ...createPyramidOptions(pyramidData.maxValue).plugins,
+                      title: {
+                        display: true,
+                        text: `Germany: Birth Rate 9/1000, Death Rate 12/1000, Growth -0.3%`
+                      }
+                    }
+                  }} 
+                />
+              );
+            })()}
+          </div>
+        </div>
 
         <h3 className="text-xl font-semibold mt-6 mb-3">Key Features of Stage 4 Societies:</h3>
         <ul className="list-disc pl-6 space-y-2">
@@ -266,6 +486,35 @@ export default function PopulationPyramidStagesPage() {
         <p>
           The pyramid becomes inverted or constrictive. The base is narrow due to very low birth rates, while the top is wide due to large elderly populations. This creates an upside-down triangle that signals population decline.
         </p>
+
+        {/* Stage 5 Population Pyramid Example */}
+        <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 my-8">
+          <h4 className="text-xl font-bold mb-4 text-purple-800">Stage 5 Example: Japan (Natural Decrease)</h4>
+          <p className="text-purple-700 mb-4">
+            Japan represents Stage 5 with birth rates well below replacement level and negative population growth. Notice the narrow base and very wide top - the inverted pyramid of population decline.
+          </p>
+          <div className="h-96 bg-white p-4 rounded-lg border">
+            {japan2024Data && (() => {
+              const pyramidData = createPyramidData(japan2024Data, 'Japan 2024', 'rgba(147, 51, 234, 0.8)');
+              if (!pyramidData) return null;
+              return (
+                <Bar 
+                  data={pyramidData} 
+                  options={{
+                    ...createPyramidOptions(pyramidData.maxValue),
+                    plugins: {
+                      ...createPyramidOptions(pyramidData.maxValue).plugins,
+                      title: {
+                        display: true,
+                        text: `Japan: Birth Rate 7/1000, Death Rate 11/1000, Growth -0.4%`
+                      }
+                    }
+                  }} 
+                />
+              );
+            })()}
+          </div>
+        </div>
 
         <h2 className="text-2xl font-bold mt-8 mb-4">Timeline: How Long Each Stage Lasts</h2>
 
@@ -551,6 +800,105 @@ export default function PopulationPyramidStagesPage() {
                 <li>• Median age above 35</li>
                 <li>• Stationary/constrictive pyramid</li>
               </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Comparative Population Pyramids Section */}
+        <h2 className="text-2xl font-bold mt-12 mb-6">Complete Journey: All 5 Population Pyramid Stages</h2>
+        <p className="text-lg mb-8">
+          Witness the complete demographic transformation from high mortality/fertility to population decline. Each stage represents a fundamental shift in society, economy, and human experience.
+        </p>
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4 my-12">
+          {/* Stage 1 */}
+          <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+            <h4 className="text-md font-bold text-red-800 mb-2 text-center">Stage 1: Niger</h4>
+            <div className="h-64">
+              {niger2024Data && (() => {
+                const pyramidData = createPyramidData(niger2024Data, 'Niger', 'rgba(239, 68, 68, 0.8)');
+                if (!pyramidData) return null;
+                return <Bar data={pyramidData} options={createPyramidOptions(pyramidData.maxValue)} />;
+              })()}
+            </div>
+            <p className="text-red-700 text-xs text-center mt-2">High birth/death rates<br/>3.8% growth</p>
+          </div>
+
+          {/* Stage 2 */}
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+            <h4 className="text-md font-bold text-yellow-800 mb-2 text-center">Stage 2: Kenya</h4>
+            <div className="h-64">
+              {kenya2024Data && (() => {
+                const pyramidData = createPyramidData(kenya2024Data, 'Kenya', 'rgba(245, 158, 11, 0.8)');
+                if (!pyramidData) return null;
+                return <Bar data={pyramidData} options={createPyramidOptions(pyramidData.maxValue)} />;
+              })()}
+            </div>
+            <p className="text-yellow-700 text-xs text-center mt-2">Death rates fall<br/>2.0% growth</p>
+          </div>
+
+          {/* Stage 3 */}
+          <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+            <h4 className="text-md font-bold text-green-800 mb-2 text-center">Stage 3: Brazil</h4>
+            <div className="h-64">
+              {brazil2024Data && (() => {
+                const pyramidData = createPyramidData(brazil2024Data, 'Brazil', 'rgba(34, 197, 94, 0.8)');
+                if (!pyramidData) return null;
+                return <Bar data={pyramidData} options={createPyramidOptions(pyramidData.maxValue)} />;
+              })()}
+            </div>
+            <p className="text-green-700 text-xs text-center mt-2">Birth rates fall<br/>0.6% growth</p>
+          </div>
+
+          {/* Stage 4 */}
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+            <h4 className="text-md font-bold text-blue-800 mb-2 text-center">Stage 4: Germany</h4>
+            <div className="h-64">
+              {germany2024Data && (() => {
+                const pyramidData = createPyramidData(germany2024Data, 'Germany', 'rgba(59, 130, 246, 0.8)');
+                if (!pyramidData) return null;
+                return <Bar data={pyramidData} options={createPyramidOptions(pyramidData.maxValue)} />;
+              })()}
+            </div>
+            <p className="text-blue-700 text-xs text-center mt-2">Low birth/death rates<br/>-0.3% growth</p>
+          </div>
+
+          {/* Stage 5 */}
+          <div className="bg-purple-50 border border-purple-200 rounded-lg p-3">
+            <h4 className="text-md font-bold text-purple-800 mb-2 text-center">Stage 5: Japan</h4>
+            <div className="h-64">
+              {japan2024Data && (() => {
+                const pyramidData = createPyramidData(japan2024Data, 'Japan', 'rgba(147, 51, 234, 0.8)');
+                if (!pyramidData) return null;
+                return <Bar data={pyramidData} options={createPyramidOptions(pyramidData.maxValue)} />;
+              })()}
+            </div>
+            <p className="text-purple-700 text-xs text-center mt-2">Below replacement<br/>-0.4% decline</p>
+          </div>
+        </div>
+
+        <div className="bg-gradient-to-r from-red-100 via-yellow-100 via-green-100 via-blue-100 to-purple-100 border border-gray-200 rounded-lg p-6 my-8">
+          <h4 className="text-xl font-bold mb-4 text-center">The Complete Demographic Transformation</h4>
+          <div className="grid grid-cols-5 gap-2 text-xs text-center">
+            <div>
+              <span className="font-bold text-red-800">Stage 1 (Niger)</span>
+              <p className="text-red-700">Birth: 42/1000<br/>Death: 9/1000<br/>TFR: 6.8</p>
+            </div>
+            <div>
+              <span className="font-bold text-yellow-800">Stage 2 (Kenya)</span>
+              <p className="text-yellow-700">Birth: 25/1000<br/>Death: 5/1000<br/>TFR: 3.3</p>
+            </div>
+            <div>
+              <span className="font-bold text-green-800">Stage 3 (Brazil)</span>
+              <p className="text-green-700">Birth: 13/1000<br/>Death: 7/1000<br/>TFR: 1.7</p>
+            </div>
+            <div>
+              <span className="font-bold text-blue-800">Stage 4 (Germany)</span>
+              <p className="text-blue-700">Birth: 9/1000<br/>Death: 12/1000<br/>TFR: 1.5</p>
+            </div>
+            <div>
+              <span className="font-bold text-purple-800">Stage 5 (Japan)</span>
+              <p className="text-purple-700">Birth: 7/1000<br/>Death: 11/1000<br/>TFR: 1.3</p>
             </div>
           </div>
         </div>

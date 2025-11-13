@@ -15,6 +15,14 @@ import {
   ChartOptions
 } from 'chart.js';
 
+// Import state data directly
+import alaskaData from '@/data/states/alaska.json';
+import dcData from '@/data/states/district-of-columbia.json';
+import northDakotaData from '@/data/states/north-dakota.json';
+import mississippiData from '@/data/states/mississippi.json';
+import alabamaData from '@/data/states/alabama.json';
+import wyomingData from '@/data/states/wyoming.json';
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -26,38 +34,13 @@ ChartJS.register(
 );
 
 export default function AlaskaGenderRatioArticle() {
-  const [alaskaData, setAlaskaData] = useState<any>(null);
-  const [dcData, setDcData] = useState<any>(null);
-  const [northDakotaData, setNorthDakotaData] = useState<any>(null);
-  const [mississippiData, setMississippiData] = useState<any>(null);
-  const [alabamaData, setAlabamaData] = useState<any>(null);
-  const [wyomingData, setWyomingData] = useState<any>(null);
-
-  useEffect(() => {
-    // Load state data from API
-    async function loadData() {
-      try {
-        const [alaska, dc, nd, ms, al, wy] = await Promise.all([
-          fetch('/api/states/alaska').then(r => r.json()),
-          fetch('/api/states/district-of-columbia').then(r => r.json()),
-          fetch('/api/states/north-dakota').then(r => r.json()),
-          fetch('/api/states/mississippi').then(r => r.json()),
-          fetch('/api/states/alabama').then(r => r.json()),
-          fetch('/api/states/wyoming').then(r => r.json()),
-        ]);
-        
-        setAlaskaData(alaska['2024']);
-        setDcData(dc['2024']);
-        setNorthDakotaData(nd['2024']);
-        setMississippiData(ms['2024']);
-        setAlabamaData(al['2024']);
-        setWyomingData(wy['2024']);
-      } catch (error) {
-        console.error('Error loading state data:', error);
-      }
-    }
-    loadData();
-  }, []);
+  // Use the imported data directly
+  const alaska2024Data = alaskaData.years['2024'];
+  const dc2024Data = dcData.years['2024'];
+  const northDakota2024Data = northDakotaData.years['2024'];
+  const mississippi2024Data = mississippiData.years['2024'];
+  const alabama2024Data = alabamaData.years['2024'];
+  const wyoming2024Data = wyomingData.years['2024'];
 
   const createPyramidData = (data: any, title: string, highlight?: string) => {
     if (!data) return null;
@@ -262,8 +245,8 @@ export default function AlaskaGenderRatioArticle() {
                 Alaska: Too Many Men
               </h3>
               <div className="h-96">
-                {alaskaData ? (() => {
-                  const pyramidData = createPyramidData(alaskaData, 'Alaska 2024', 'male');
+                {alaska2024Data ? (() => {
+                  const pyramidData = createPyramidData(alaska2024Data, 'Alaska 2024', 'male');
                   if (!pyramidData) return null;
                   return (
                     <Bar 
@@ -297,8 +280,8 @@ export default function AlaskaGenderRatioArticle() {
                 DC: Too Many Women
               </h3>
               <div className="h-96">
-                {dcData ? (() => {
-                  const pyramidData = createPyramidData(dcData, 'DC 2024', 'female');
+                {dc2024Data ? (() => {
+                  const pyramidData = createPyramidData(dc2024Data, 'DC 2024', 'female');
                   if (!pyramidData) return null;
                   return (
                     <Bar 
@@ -581,8 +564,8 @@ export default function AlaskaGenderRatioArticle() {
             <div>
               <h3 className="text-lg font-bold mb-4 text-center text-blue-600">Male Surplus West</h3>
               <div className="h-80">
-                {wyomingData && (() => {
-                  const pyramidData = createPyramidData(wyomingData, 'Wyoming');
+                {wyoming2024Data && (() => {
+                  const pyramidData = createPyramidData(wyoming2024Data, 'Wyoming');
                   if (!pyramidData) return null;
                   return (
                     <Bar 
@@ -607,8 +590,8 @@ export default function AlaskaGenderRatioArticle() {
             <div>
               <h3 className="text-lg font-bold mb-4 text-center text-gray-600">Balanced Middle</h3>
               <div className="h-80">
-                {northDakotaData && (() => {
-                  const pyramidData = createPyramidData(northDakotaData, 'North Dakota');
+                {northDakota2024Data && (() => {
+                  const pyramidData = createPyramidData(northDakota2024Data, 'North Dakota');
                   if (!pyramidData) return null;
                   return (
                     <Bar 
@@ -633,8 +616,8 @@ export default function AlaskaGenderRatioArticle() {
             <div>
               <h3 className="text-lg font-bold mb-4 text-center text-pink-600">Female Surplus East</h3>
               <div className="h-80">
-                {mississippiData && (() => {
-                  const pyramidData = createPyramidData(mississippiData, 'Mississippi');
+                {mississippi2024Data && (() => {
+                  const pyramidData = createPyramidData(mississippi2024Data, 'Mississippi');
                   if (!pyramidData) return null;
                   return (
                     <Bar 

@@ -16,6 +16,14 @@ import {
   ChartOptions
 } from 'chart.js';
 
+// Import state data directly
+import nevadaData from '@/data/states/nevada.json';
+import westVirginiaData from '@/data/states/west-virginia.json';
+import texasData from '@/data/states/texas.json';
+import floridaData from '@/data/states/florida.json';
+import utahData from '@/data/states/utah.json';
+import illinoisData from '@/data/states/illinois.json';
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -28,42 +36,15 @@ ChartJS.register(
 );
 
 export default function NevadaWestVirginiaArticle() {
-  const [nevadaData2000, setNevadaData2000] = useState<any>(null);
-  const [nevadaData2024, setNevadaData2024] = useState<any>(null);
-  const [wvData2000, setWvData2000] = useState<any>(null);
-  const [wvData2024, setWvData2024] = useState<any>(null);
-  const [texasData, setTexasData] = useState<any>(null);
-  const [floridaData, setFloridaData] = useState<any>(null);
-  const [utahData, setUtahData] = useState<any>(null);
-  const [illinoisData, setIllinoisData] = useState<any>(null);
-
-  useEffect(() => {
-    // Load state data from API
-    async function loadData() {
-      try {
-        const [nevada, wv, texas, florida, utah, illinois] = await Promise.all([
-          fetch('/api/states/nevada').then(r => r.json()),
-          fetch('/api/states/west-virginia').then(r => r.json()),
-          fetch('/api/states/texas').then(r => r.json()),
-          fetch('/api/states/florida').then(r => r.json()),
-          fetch('/api/states/utah').then(r => r.json()),
-          fetch('/api/states/illinois').then(r => r.json()),
-        ]);
-        
-        setNevadaData2000(nevada['2000']);
-        setNevadaData2024(nevada['2024']);
-        setWvData2000(wv['2000']);
-        setWvData2024(wv['2024']);
-        setTexasData(texas['2024']);
-        setFloridaData(florida['2024']);
-        setUtahData(utah['2024']);
-        setIllinoisData(illinois['2024']);
-      } catch (error) {
-        console.error('Error loading state data:', error);
-      }
-    }
-    loadData();
-  }, []);
+  // Use the imported data directly
+  const nevada2000Data = nevadaData.years['2000'];
+  const nevada2024Data = nevadaData.years['2024'];
+  const wv2000Data = westVirginiaData.years['2000'];
+  const wv2024Data = westVirginiaData.years['2024'];
+  const texas2024Data = texasData.years['2024'];
+  const florida2024Data = floridaData.years['2024'];
+  const utah2024Data = utahData.years['2024'];
+  const illinois2024Data = illinoisData.years['2024'];
 
   const createPyramidData = (data: any, title: string) => {
     if (!data) return null;
@@ -320,8 +301,8 @@ export default function NevadaWestVirginiaArticle() {
                 <div>
                   <h4 className="text-lg font-bold mb-2 text-center">Nevada 2000</h4>
                   <div className="h-80">
-                    {nevadaData2000 && (() => {
-                      const pyramidData = createPyramidData(nevadaData2000, 'Nevada 2000');
+                    {nevada2000Data && (() => {
+                      const pyramidData = createPyramidData(nevada2000Data, 'Nevada 2000');
                       if (!pyramidData) return null;
                       return (
                         <Bar 
@@ -333,7 +314,7 @@ export default function NevadaWestVirginiaArticle() {
                               legend: { display: false },
                               title: {
                                 display: true,
-                                text: `Population: ${(nevadaData2000.totalPopulation / 1000000).toFixed(1)}M`
+                                text: `Population: ${(nevada2000Data.totalPopulation / 1000000).toFixed(1)}M`
                               }
                             }
                           }} 
@@ -346,8 +327,8 @@ export default function NevadaWestVirginiaArticle() {
                 <div>
                   <h4 className="text-lg font-bold mb-2 text-center">Nevada 2024</h4>
                   <div className="h-80">
-                    {nevadaData2024 && (() => {
-                      const pyramidData = createPyramidData(nevadaData2024, 'Nevada 2024');
+                    {nevada2024Data && (() => {
+                      const pyramidData = createPyramidData(nevada2024Data, 'Nevada 2024');
                       if (!pyramidData) return null;
                       return (
                         <Bar 
@@ -359,7 +340,7 @@ export default function NevadaWestVirginiaArticle() {
                               legend: { display: false },
                               title: {
                                 display: true,
-                                text: `Population: ${(nevadaData2024.totalPopulation / 1000000).toFixed(1)}M`
+                                text: `Population: ${(nevada2024Data.totalPopulation / 1000000).toFixed(1)}M`
                               }
                             }
                           }} 
@@ -381,8 +362,8 @@ export default function NevadaWestVirginiaArticle() {
                 <div>
                   <h4 className="text-lg font-bold mb-2 text-center">West Virginia 2000</h4>
                   <div className="h-80">
-                    {wvData2000 && (() => {
-                      const pyramidData = createPyramidData(wvData2000, 'West Virginia 2000');
+                    {wv2000Data && (() => {
+                      const pyramidData = createPyramidData(wv2000Data, 'West Virginia 2000');
                       if (!pyramidData) return null;
                       return (
                         <Bar 
@@ -394,7 +375,7 @@ export default function NevadaWestVirginiaArticle() {
                               legend: { display: false },
                               title: {
                                 display: true,
-                                text: `Population: ${(wvData2000.totalPopulation / 1000000).toFixed(2)}M`
+                                text: `Population: ${(wv2000Data.totalPopulation / 1000000).toFixed(2)}M`
                               }
                             }
                           }} 
@@ -407,8 +388,8 @@ export default function NevadaWestVirginiaArticle() {
                 <div>
                   <h4 className="text-lg font-bold mb-2 text-center">West Virginia 2024</h4>
                   <div className="h-80">
-                    {wvData2024 && (() => {
-                      const pyramidData = createPyramidData(wvData2024, 'West Virginia 2024');
+                    {wv2024Data && (() => {
+                      const pyramidData = createPyramidData(wv2024Data, 'West Virginia 2024');
                       if (!pyramidData) return null;
                       return (
                         <Bar 
@@ -420,7 +401,7 @@ export default function NevadaWestVirginiaArticle() {
                               legend: { display: false },
                               title: {
                                 display: true,
-                                text: `Population: ${(wvData2024.totalPopulation / 1000000).toFixed(2)}M`
+                                text: `Population: ${(wv2024Data.totalPopulation / 1000000).toFixed(2)}M`
                               }
                             }
                           }} 

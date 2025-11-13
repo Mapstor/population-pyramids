@@ -14,6 +14,18 @@ import {
   ChartOptions
 } from 'chart.js';
 
+// Import state data directly
+import utahData from '@/data/states/utah.json';
+import dcData from '@/data/states/district-of-columbia.json';
+import alaskaData from '@/data/states/alaska.json';
+import texasData from '@/data/states/texas.json';
+import northDakotaData from '@/data/states/north-dakota.json';
+import maineData from '@/data/states/maine.json';
+import vermontData from '@/data/states/vermont.json';
+import floridaData from '@/data/states/florida.json';
+import westVirginiaData from '@/data/states/west-virginia.json';
+import newHampshireData from '@/data/states/new-hampshire.json';
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -24,50 +36,17 @@ ChartJS.register(
 );
 
 export default function YouthVsSeniorStatesArticle() {
-  const [utahData, setUtahData] = useState<any>(null);
-  const [dcData, setDcData] = useState<any>(null);
-  const [alaskaData, setAlaskaData] = useState<any>(null);
-  const [texasData, setTexasData] = useState<any>(null);
-  const [northDakotaData, setNorthDakotaData] = useState<any>(null);
-  const [maineData, setMaineData] = useState<any>(null);
-  const [vermontData, setVermontData] = useState<any>(null);
-  const [floridaData, setFloridaData] = useState<any>(null);
-  const [westVirginiaData, setWestVirginiaData] = useState<any>(null);
-  const [newHampshireData, setNewHampshireData] = useState<any>(null);
-
-  useEffect(() => {
-    // Load state data from API
-    async function loadData() {
-      try {
-        const [utah, dc, alaska, texas, nd, maine, vermont, florida, wv, nh] = await Promise.all([
-          fetch('/api/states/utah').then(r => r.json()),
-          fetch('/api/states/district-of-columbia').then(r => r.json()),
-          fetch('/api/states/alaska').then(r => r.json()),
-          fetch('/api/states/texas').then(r => r.json()),
-          fetch('/api/states/north-dakota').then(r => r.json()),
-          fetch('/api/states/maine').then(r => r.json()),
-          fetch('/api/states/vermont').then(r => r.json()),
-          fetch('/api/states/florida').then(r => r.json()),
-          fetch('/api/states/west-virginia').then(r => r.json()),
-          fetch('/api/states/new-hampshire').then(r => r.json()),
-        ]);
-        
-        setUtahData(utah['2024']);
-        setDcData(dc['2024']);
-        setAlaskaData(alaska['2024']);
-        setTexasData(texas['2024']);
-        setNorthDakotaData(nd['2024']);
-        setMaineData(maine['2024']);
-        setVermontData(vermont['2024']);
-        setFloridaData(florida['2024']);
-        setWestVirginiaData(wv['2024']);
-        setNewHampshireData(nh['2024']);
-      } catch (error) {
-        console.error('Error loading state data:', error);
-      }
-    }
-    loadData();
-  }, []);
+  // Use the imported data directly
+  const utah2024Data = utahData.years['2024'];
+  const dc2024Data = dcData.years['2024'];
+  const alaska2024Data = alaskaData.years['2024'];
+  const texas2024Data = texasData.years['2024'];
+  const northDakota2024Data = northDakotaData.years['2024'];
+  const maine2024Data = maineData.years['2024'];
+  const vermont2024Data = vermontData.years['2024'];
+  const florida2024Data = floridaData.years['2024'];
+  const westVirginia2024Data = westVirginiaData.years['2024'];
+  const newHampshire2024Data = newHampshireData.years['2024'];
 
   const createPyramidData = (data: any, title: string) => {
     if (!data) return null;
@@ -276,8 +255,8 @@ export default function YouthVsSeniorStatesArticle() {
                 Utah: America's Youngest
               </h3>
               <div className="h-80">
-                {utahData && (() => {
-                  const pyramidData = createPyramidData(utahData, 'Utah 2024');
+                {utah2024Data && (() => {
+                  const pyramidData = createPyramidData(utah2024Data, 'Utah 2024');
                   if (!pyramidData) return null;
                   return (
                     <Bar 
@@ -304,8 +283,8 @@ export default function YouthVsSeniorStatesArticle() {
                 Maine: America's Oldest
               </h3>
               <div className="h-80">
-                {maineData && (() => {
-                  const pyramidData = createPyramidData(maineData, 'Maine 2024');
+                {maine2024Data && (() => {
+                  const pyramidData = createPyramidData(maine2024Data, 'Maine 2024');
                   if (!pyramidData) return null;
                   return (
                     <Bar 
@@ -439,11 +418,11 @@ export default function YouthVsSeniorStatesArticle() {
             <h3 className="text-2xl font-bold mb-6 text-green-600">The 5 Youngest States</h3>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                { data: utahData, name: 'Utah', age: '32.4' },
-                { data: dcData, name: 'DC', age: '34.4' },
-                { data: alaskaData, name: 'Alaska', age: '35.6' },
-                { data: texasData, name: 'Texas', age: '35.5' },
-                { data: northDakotaData, name: 'North Dakota', age: '35.8' }
+                { data: utah2024Data, name: 'Utah', age: '32.4' },
+                { data: dc2024Data, name: 'DC', age: '34.4' },
+                { data: alaska2024Data, name: 'Alaska', age: '35.6' },
+                { data: texas2024Data, name: 'Texas', age: '35.5' },
+                { data: northDakota2024Data, name: 'North Dakota', age: '35.8' }
               ].map((state, i) => (
                 <div key={i}>
                   <h4 className="text-center font-bold mb-2">{state.name}</h4>
@@ -479,11 +458,11 @@ export default function YouthVsSeniorStatesArticle() {
             <h3 className="text-2xl font-bold mb-6 text-red-600">The 5 Oldest States</h3>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                { data: maineData, name: 'Maine', age: '44.8' },
-                { data: vermontData, name: 'Vermont', age: '43.2' },
-                { data: newHampshireData, name: 'New Hampshire', age: '43.0' },
-                { data: floridaData, name: 'Florida', age: '43.0' },
-                { data: westVirginiaData, name: 'West Virginia', age: '42.8' }
+                { data: maine2024Data, name: 'Maine', age: '44.8' },
+                { data: vermont2024Data, name: 'Vermont', age: '43.2' },
+                { data: newHampshire2024Data, name: 'New Hampshire', age: '43.0' },
+                { data: florida2024Data, name: 'Florida', age: '43.0' },
+                { data: westVirginia2024Data, name: 'West Virginia', age: '42.8' }
               ].map((state, i) => (
                 <div key={i}>
                   <h4 className="text-center font-bold mb-2">{state.name}</h4>

@@ -16,6 +16,13 @@ import {
   ChartOptions
 } from 'chart.js';
 
+// Import state data directly
+import njData from '@/data/states/new-jersey.json';
+import illinoisData from '@/data/states/illinois.json';
+import nyData from '@/data/states/new-york.json';
+import californiaData from '@/data/states/california.json';
+import louisianaData from '@/data/states/louisiana.json';
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -28,35 +35,12 @@ ChartJS.register(
 );
 
 export default function StatesPeopleFleeingArticle() {
-  const [njData, setNjData] = useState<any>(null);
-  const [illinoisData, setIllinoisData] = useState<any>(null);
-  const [nyData, setNyData] = useState<any>(null);
-  const [californiaData, setCaliforniaData] = useState<any>(null);
-  const [louisianaData, setLouisianaData] = useState<any>(null);
-
-  useEffect(() => {
-    // Load state data from API
-    async function loadData() {
-      try {
-        const [nj, illinois, ny, california, louisiana] = await Promise.all([
-          fetch('/api/states/new-jersey').then(r => r.json()),
-          fetch('/api/states/illinois').then(r => r.json()),
-          fetch('/api/states/new-york').then(r => r.json()),
-          fetch('/api/states/california').then(r => r.json()),
-          fetch('/api/states/louisiana').then(r => r.json()),
-        ]);
-        
-        setNjData(nj['2024']);
-        setIllinoisData(illinois['2024']);
-        setNyData(ny['2024']);
-        setCaliforniaData(california['2024']);
-        setLouisianaData(louisiana['2024']);
-      } catch (error) {
-        console.error('Error loading state data:', error);
-      }
-    }
-    loadData();
-  }, []);
+  // Use the imported data directly
+  const nj2024Data = njData.years['2024'];
+  const illinois2024Data = illinoisData.years['2024'];
+  const ny2024Data = nyData.years['2024'];
+  const california2024Data = californiaData.years['2024'];
+  const louisiana2024Data = louisianaData.years['2024'];
 
   const createPyramidData = (data: any, title: string) => {
     if (!data) return null;
@@ -581,11 +565,11 @@ export default function StatesPeopleFleeingArticle() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { data: njData, name: 'New Jersey', rank: '#1', decline: '-1.2%' },
-              { data: illinoisData, name: 'Illinois', rank: '#2', decline: '-0.8%' },
-              { data: louisianaData, name: 'Louisiana', rank: '#3', decline: '-0.7%' },
-              { data: nyData, name: 'New York', rank: '#5', decline: '-0.5%' },
-              { data: californiaData, name: 'California', rank: '#9', decline: '-0.2%' }
+              { data: nj2024Data, name: 'New Jersey', rank: '#1', decline: '-1.2%' },
+              { data: illinois2024Data, name: 'Illinois', rank: '#2', decline: '-0.8%' },
+              { data: louisiana2024Data, name: 'Louisiana', rank: '#3', decline: '-0.7%' },
+              { data: ny2024Data, name: 'New York', rank: '#5', decline: '-0.5%' },
+              { data: california2024Data, name: 'California', rank: '#9', decline: '-0.2%' }
             ].map((state, i) => (
               <div key={i}>
                 <h4 className="text-center font-bold mb-2">

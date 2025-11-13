@@ -19,6 +19,13 @@ import {
   ChartOptions
 } from 'chart.js';
 
+// Import state data directly
+import floridaData from '@/data/states/florida.json';
+import tennesseeData from '@/data/states/tennessee.json';
+import southCarolinaData from '@/data/states/south-carolina.json';
+import delawareData from '@/data/states/delaware.json';
+import nevadaData from '@/data/states/nevada.json';
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -34,35 +41,12 @@ ChartJS.register(
 );
 
 export default function BestStatesRetireArticle() {
-  const [floridaData, setFloridaData] = useState<any>(null);
-  const [tennesseeData, setTennesseeData] = useState<any>(null);
-  const [southCarolinaData, setSouthCarolinaData] = useState<any>(null);
-  const [delawareData, setDelawareData] = useState<any>(null);
-  const [nevadaData, setNevadaData] = useState<any>(null);
-
-  useEffect(() => {
-    // Load state data from API
-    async function loadData() {
-      try {
-        const [florida, tennessee, sc, delaware, nevada] = await Promise.all([
-          fetch('/api/states/florida').then(r => r.json()),
-          fetch('/api/states/tennessee').then(r => r.json()),
-          fetch('/api/states/south-carolina').then(r => r.json()),
-          fetch('/api/states/delaware').then(r => r.json()),
-          fetch('/api/states/nevada').then(r => r.json()),
-        ]);
-        
-        setFloridaData(florida['2024']);
-        setTennesseeData(tennessee['2024']);
-        setSouthCarolinaData(sc['2024']);
-        setDelawareData(delaware['2024']);
-        setNevadaData(nevada['2024']);
-      } catch (error) {
-        console.error('Error loading state data:', error);
-      }
-    }
-    loadData();
-  }, []);
+  // Use the imported data directly
+  const florida2024Data = floridaData.years['2024'];
+  const tennessee2024Data = tennesseeData.years['2024'];
+  const southCarolina2024Data = southCarolinaData.years['2024'];
+  const delaware2024Data = delawareData.years['2024'];
+  const nevada2024Data = nevadaData.years['2024'];
 
   const createPyramidData = (data: any, title: string) => {
     if (!data) return null;
@@ -663,11 +647,11 @@ export default function BestStatesRetireArticle() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { data: delawareData, name: 'Delaware', rank: '#1' },
-              { data: floridaData, name: 'Florida', rank: '#2' },
-              { data: southCarolinaData, name: 'South Carolina', rank: '#3' },
-              { data: nevadaData, name: 'Nevada', rank: '#4' },
-              { data: tennesseeData, name: 'Tennessee', rank: '#5' }
+              { data: delaware2024Data, name: 'Delaware', rank: '#1' },
+              { data: florida2024Data, name: 'Florida', rank: '#2' },
+              { data: southCarolina2024Data, name: 'South Carolina', rank: '#3' },
+              { data: nevada2024Data, name: 'Nevada', rank: '#4' },
+              { data: tennessee2024Data, name: 'Tennessee', rank: '#5' }
             ].map((state, i) => (
               <div key={i}>
                 <h4 className="text-center font-bold mb-2">
