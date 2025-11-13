@@ -95,6 +95,7 @@ export default function OldestCountriesWorld() {
     },
     scales: {
       x: {
+        stacked: true,
         beginAtZero: true,
         ticks: {
           callback: function(value: any) {
@@ -103,6 +104,7 @@ export default function OldestCountriesWorld() {
         },
       },
       y: {
+        stacked: true,
         beginAtZero: true,
       },
     },
