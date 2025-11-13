@@ -48,19 +48,36 @@ export default function YouthVsSeniorStatesArticle() {
   const westVirginia2024Data = westVirginiaData.years['2024'];
   const newHampshire2024Data = newHampshireData.years['2024'];
 
+  const aggregateAgeGroups85Plus = (ageGroups: any[]) => {
+    // Separate age groups before 85 and 85+
+    const under85 = ageGroups.filter(ag => !['85-89', '90-94', '95-99', '100+'].includes(ag.ageRange));
+    const over85 = ageGroups.filter(ag => ['85-89', '90-94', '95-99', '100+'].includes(ag.ageRange));
+    
+    // Aggregate 85+ groups
+    const aggregated85Plus = {
+      ageRange: '85+',
+      male: over85.reduce((sum, ag) => sum + ag.male, 0),
+      female: over85.reduce((sum, ag) => sum + ag.female, 0),
+      total: over85.reduce((sum, ag) => sum + ag.total, 0)
+    };
+    
+    return [...under85, aggregated85Plus];
+  };
+
   const createPyramidData = (data: any, title: string) => {
     if (!data) return null;
 
-    const maxMale = Math.max(...data.ageGroups.map((ag: any) => ag.male));
-    const maxFemale = Math.max(...data.ageGroups.map((ag: any) => ag.female));
+    const aggregatedAgeGroups = aggregateAgeGroups85Plus(data.ageGroups);
+    const maxMale = Math.max(...aggregatedAgeGroups.map((ag: any) => ag.male));
+    const maxFemale = Math.max(...aggregatedAgeGroups.map((ag: any) => ag.female));
     const maxValue = Math.max(maxMale, maxFemale);
 
     return {
-      labels: data.ageGroups.map((ag: any) => ag.ageRange).reverse(),
+      labels: aggregatedAgeGroups.map((ag: any) => ag.ageRange).reverse(),
       datasets: [
         {
           label: 'Male',
-          data: data.ageGroups.map((ag: any) => -ag.male).reverse(),
+          data: aggregatedAgeGroups.map((ag: any) => -ag.male).reverse(),
           backgroundColor: 'rgba(59, 130, 246, 0.8)',
           borderColor: 'rgba(59, 130, 246, 1)',
           borderWidth: 0.5,
@@ -69,7 +86,7 @@ export default function YouthVsSeniorStatesArticle() {
         },
         {
           label: 'Female',
-          data: data.ageGroups.map((ag: any) => ag.female).reverse(),
+          data: aggregatedAgeGroups.map((ag: any) => ag.female).reverse(),
           backgroundColor: 'rgba(236, 72, 153, 0.8)',
           borderColor: 'rgba(236, 72, 153, 1)',
           borderWidth: 0.5,
