@@ -13,6 +13,7 @@ import { generateExpandedFAQ } from '@/lib/expanded-faq';
 import { generateRelatedDemographics } from '@/lib/related-demographics';
 import { generateDemographicGlossary, generateGlossarySummary } from '@/lib/demographic-glossary';
 import { generateUsageGuide, generateUsageSummary } from '@/lib/usage-guide';
+import { classifyDemographicStage, getDemographicStageExplanation } from '@/lib/demographic-stage-classifier';
 import PopulationPyramid from '@/components/PopulationPyramid';
 import TimelinePyramid from '@/components/TimelinePyramid';
 import StatsTable from '@/components/StatsTable';
@@ -129,6 +130,10 @@ export default async function CountryPage({ params }: CountryPageProps) {
       latestYear
     );
     const usageSummary = generateUsageSummary(countryData.countryName, metrics);
+    
+    // Get demographic stage classification
+    const demographicStage = classifyDemographicStage(yearData);
+    const stageExplanation = getDemographicStageExplanation(demographicStage, countryData.countryName);
 
     return (
       <div className="min-h-screen bg-gray-50">
@@ -205,6 +210,48 @@ export default async function CountryPage({ params }: CountryPageProps) {
                     </p>
                   </div>
                 ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Demographic Transition Stage */}
+          <section className="mb-12">
+            <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg shadow-sm p-6 border border-green-200">
+              <div className="flex items-center mb-3">
+                <span className="text-2xl mr-3">📊</span>
+                <h2 className="text-2xl font-bold text-gray-900">
+                  Demographic Transition Stage
+                </h2>
+              </div>
+              
+              <div className="bg-white rounded-lg p-4 border border-green-100">
+                <p className="text-gray-800 leading-relaxed">
+                  {stageExplanation.split('. ').map((sentence, index, array) => {
+                    const isLastSentence = index === array.length - 1;
+                    const trimmedSentence = sentence.trim();
+                    
+                    if (isLastSentence && trimmedSentence.includes('You can read more')) {
+                      const [beforeLink, afterHere] = trimmedSentence.split('You can read more about ');
+                      if (afterHere) {
+                        const [linkText] = afterHere.split(' here');
+                        return (
+                          <span key={index}>
+                            {beforeLink}You can read more about{' '}
+                            <Link 
+                              href={demographicStage.link}
+                              className="text-blue-600 hover:text-blue-800 underline font-medium"
+                            >
+                              {linkText}
+                            </Link>
+                            {' '}here.
+                          </span>
+                        );
+                      }
+                    }
+                    
+                    return <span key={index}>{trimmedSentence}{index < array.length - 1 ? '. ' : ''}</span>;
+                  })}
+                </p>
               </div>
             </div>
           </section>
