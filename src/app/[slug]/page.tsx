@@ -851,9 +851,9 @@ export default async function CountryPage({ params }: CountryPageProps) {
               research, policy making, business strategy, and media reporting.
             </p>
 
-            <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 overflow-hidden">
               {usageGuides.map((guide, index) => (
-                <div key={index} className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-lg p-6 border border-purple-200 hover:shadow-lg transition">
+                <div key={index} className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-lg p-6 border border-purple-200 hover:shadow-lg transition overflow-hidden">
                   <div className="flex items-center mb-4">
                     <span className="text-3xl mr-3">{guide.icon}</span>
                     <div>
@@ -878,7 +878,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                       {guide.applications.slice(0, 3).map((application, appIndex) => (
                         <li key={appIndex} className="text-xs text-gray-700 flex items-start">
                           <span className="text-purple-600 mr-2 flex-shrink-0">•</span>
-                          <span>{application}</span>
+                          <span className="break-words">{application}</span>
                         </li>
                       ))}
                     </ul>
@@ -889,7 +889,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                       <h4 className="font-semibold text-purple-900 mb-1 text-xs">
                         Citation Format:
                       </h4>
-                      <p className="text-xs text-purple-800 font-mono leading-relaxed">
+                      <p className="text-xs text-purple-800 font-mono leading-relaxed break-all">
                         {guide.citation}
                       </p>
                     </div>
@@ -903,7 +903,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                       {guide.tips.slice(0, 2).map((tip, tipIndex) => (
                         <li key={tipIndex} className="text-xs text-blue-800 flex items-start">
                           <span className="text-blue-600 mr-1 flex-shrink-0">→</span>
-                          <span>{tip}</span>
+                          <span className="break-words">{tip}</span>
                         </li>
                       ))}
                     </ul>
