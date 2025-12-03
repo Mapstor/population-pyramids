@@ -178,10 +178,12 @@ export default function KeyMetricsDashboard({
         {/* Fertility Rate */}
         <div className="bg-white rounded-lg p-3">
           <div className="text-xs text-gray-500 mb-1">Fertility Rate</div>
-          <div className="flex items-baseline gap-2">
-            <span className="text-lg font-bold text-blue-600">{fertility1.toFixed(2)}</span>
-            <span className="text-xs text-gray-400">vs</span>
-            <span className="text-lg font-bold text-green-600">{fertility2.toFixed(2)}</span>
+          <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
+            <div className="flex items-baseline gap-2">
+              <span className="text-lg font-bold text-blue-600">{fertility1.toFixed(2)}</span>
+              <span className="text-xs text-gray-400">vs</span>
+              <span className="text-lg font-bold text-green-600">{fertility2.toFixed(2)}</span>
+            </div>
           </div>
           <div className="text-xs text-gray-400 mt-1">
             {fertility2 > fertility1 ? `${country2Name} +${(fertility2 - fertility1).toFixed(2)}` : `${country1Name} +${(fertility1 - fertility2).toFixed(2)}`}
@@ -191,10 +193,12 @@ export default function KeyMetricsDashboard({
         {/* Median Age */}
         <div className="bg-white rounded-lg p-3">
           <div className="text-xs text-gray-500 mb-1">Median Age</div>
-          <div className="flex items-baseline gap-2">
-            <span className="text-lg font-bold text-blue-600">{country1Data.medianAge.toFixed(1)}</span>
-            <span className="text-xs text-gray-400">vs</span>
-            <span className="text-lg font-bold text-green-600">{country2Data.medianAge.toFixed(1)}</span>
+          <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
+            <div className="flex items-baseline gap-2">
+              <span className="text-lg font-bold text-blue-600">{country1Data.medianAge.toFixed(1)}</span>
+              <span className="text-xs text-gray-400">vs</span>
+              <span className="text-lg font-bold text-green-600">{country2Data.medianAge.toFixed(1)}</span>
+            </div>
           </div>
           <div className="text-xs text-gray-400 mt-1">
             {country2Data.medianAge < country1Data.medianAge ? `${country2Name} younger` : `${country1Name} younger`}
@@ -204,10 +208,12 @@ export default function KeyMetricsDashboard({
         {/* Population Density */}
         <div className="bg-white rounded-lg p-3">
           <div className="text-xs text-gray-500 mb-1">Density /km²</div>
-          <div className="flex items-baseline gap-2">
-            <span className="text-lg font-bold text-blue-600">{chinaDensity}</span>
-            <span className="text-xs text-gray-400">vs</span>
-            <span className="text-lg font-bold text-green-600">{indiaDensity}</span>
+          <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
+            <div className="flex items-baseline gap-2">
+              <span className="text-lg font-bold text-blue-600">{chinaDensity}</span>
+              <span className="text-xs text-gray-400">vs</span>
+              <span className="text-lg font-bold text-green-600">{indiaDensity}</span>
+            </div>
           </div>
           <div className="text-xs text-gray-400 mt-1">
             {country2Name} {(indiaDensity / chinaDensity).toFixed(1)}x denser
@@ -217,10 +223,12 @@ export default function KeyMetricsDashboard({
         {/* Working Age */}
         <div className="bg-white rounded-lg p-3">
           <div className="text-xs text-gray-500 mb-1">Working Age %</div>
-          <div className="flex items-baseline gap-2">
-            <span className="text-lg font-bold text-blue-600">{workingAge1Pct}%</span>
-            <span className="text-xs text-gray-400">vs</span>
-            <span className="text-lg font-bold text-green-600">{workingAge2Pct}%</span>
+          <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
+            <div className="flex items-baseline gap-2">
+              <span className="text-lg font-bold text-blue-600">{workingAge1Pct}%</span>
+              <span className="text-xs text-gray-400">vs</span>
+              <span className="text-lg font-bold text-green-600">{workingAge2Pct}%</span>
+            </div>
           </div>
           <div className="text-xs text-gray-400 mt-1">
             Ages 15-64
