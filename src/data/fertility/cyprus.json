@@ -1,0 +1,87 @@
+{
+  "countryCode": "CYP",
+  "countryName": "Cyprus",
+  "slug": "cyprus",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 1.4
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 3.47,
+        "crudebirthRate": 22
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 3.065,
+        "crudebirthRate": 19
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 2.432,
+        "crudebirthRate": 15
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 2.402,
+        "crudebirthRate": 15
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 1.638,
+        "crudebirthRate": 11
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 1.479,
+        "crudebirthRate": 11
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 1.323,
+        "crudebirthRate": 9
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 1.361,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 1.392,
+        "crudebirthRate": 9
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 1.393,
+        "crudebirthRate": 10
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 1.389,
+        "crudebirthRate": 8
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": 2000,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 48,
+      "totalCountries": 195
+    }
+  }
+}

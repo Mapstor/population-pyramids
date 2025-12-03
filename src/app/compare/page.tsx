@@ -517,6 +517,72 @@ export default function ComparePage() {
             </div>
           </div>
         )}
+
+        {/* Featured Comparisons Section */}
+        <div className="mt-16 mb-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+            Featured Country Comparisons
+          </h2>
+          <p className="text-lg text-gray-600 text-center mb-8 max-w-3xl mx-auto">
+            Explore in-depth demographic analysis between major world powers, regional neighbors, and historic rivals.
+          </p>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {[
+              { url: 'china-vs-india', title: 'China vs India', description: 'World\'s most populous rivalry', badge: 'Popular' },
+              { url: 'usa-vs-china', title: 'USA vs China', description: 'Superpower demographic dynamics', badge: 'Trending' },
+              { url: 'usa-vs-india', title: 'USA vs India', description: 'Democracy demographic comparison' },
+              { url: 'usa-vs-russia', title: 'USA vs Russia', description: 'Cold War demographic legacy' },
+              { url: 'usa-vs-brazil', title: 'USA vs Brazil', description: 'Americas powerhouses' },
+              { url: 'usa-vs-indonesia', title: 'USA vs Indonesia', description: 'Pacific powerhouses' },
+              { url: 'india-vs-indonesia', title: 'India vs Indonesia', description: 'Asian giants comparison' },
+              { url: 'india-vs-brazil', title: 'India vs Brazil', description: 'Global South powers' },
+              { url: 'china-vs-brazil', title: 'China vs Brazil', description: 'East-West powerhouses' },
+              { url: 'usa-vs-mexico', title: 'USA vs Mexico', description: 'North American neighbors' },
+              { url: 'usa-vs-uk', title: 'USA vs UK', description: 'Anglo-American alliance' },
+              { url: 'uk-vs-germany', title: 'UK vs Germany', description: 'European powerhouses' },
+              { url: 'uk-vs-france', title: 'UK vs France', description: 'Channel neighbors', badge: 'Brexit Impact' },
+              { url: 'japan-vs-germany', title: 'Japan vs Germany', description: 'Aging superpowers', badge: 'Aging Crisis' },
+              { url: 'india-vs-pakistan', title: 'India vs Pakistan', description: 'Partition legacy' },
+              { url: 'india-vs-bangladesh', title: 'India vs Bangladesh', description: 'Bengal division demographics' }
+            ].map((comparison) => (
+              <Link
+                key={comparison.url}
+                href={`/compare/${comparison.url}`}
+                className="block bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow p-4 border border-gray-200 hover:border-blue-300"
+              >
+                <div className="relative">
+                  {comparison.badge && (
+                    <span className={`absolute -top-2 -right-2 px-2 py-1 text-xs rounded-full font-medium ${
+                      comparison.badge === 'Popular' ? 'bg-green-100 text-green-800' :
+                      comparison.badge === 'Trending' ? 'bg-blue-100 text-blue-800' :
+                      comparison.badge === 'Brexit Impact' ? 'bg-purple-100 text-purple-800' :
+                      comparison.badge === 'Aging Crisis' ? 'bg-red-100 text-red-800' :
+                      'bg-gray-100 text-gray-800'
+                    }`}>
+                      {comparison.badge}
+                    </span>
+                  )}
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2 pr-8">
+                    {comparison.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    {comparison.description}
+                  </p>
+                  <div className="mt-3 text-blue-600 text-sm font-medium">
+                    View Analysis →
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+          
+          <div className="text-center mt-8">
+            <p className="text-gray-600">
+              Each comparison includes detailed demographic analysis, population pyramids, FAQs, and expert insights.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

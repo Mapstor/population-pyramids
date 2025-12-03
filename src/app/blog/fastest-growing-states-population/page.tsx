@@ -154,7 +154,7 @@ export default function FastestGrowingStatesArticle() {
             <Link href="/blog/nevada-west-virginia-population-gap" className="text-blue-600 hover:underline ml-1">
               State Population Differences
             </Link> | 
-            <Link href="/blog/best-states-retire-2025" className="text-blue-600 hover:underline ml-1">
+            <Link href="/blog/best-states-retire" className="text-blue-600 hover:underline ml-1">
               Migration Trends
             </Link>
           </div>
@@ -366,7 +366,7 @@ export default function FastestGrowingStatesArticle() {
               <h3 className="font-semibold text-blue-600">Population Winners & Losers</h3>
               <p className="text-sm text-gray-600 mt-2">Comparing states with the biggest population gains and losses</p>
             </Link>
-            <Link href="/blog/best-states-retire-2025" className="block p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+            <Link href="/blog/best-states-retire" className="block p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
               <h3 className="font-semibold text-green-600">Retirement Migration</h3>
               <p className="text-sm text-gray-600 mt-2">How retirees are driving population growth in certain states</p>
             </Link>

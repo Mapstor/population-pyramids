@@ -1,0 +1,87 @@
+{
+  "countryCode": "MYS",
+  "countryName": "Malaysia",
+  "slug": "malaysia",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 1.55
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 5.836,
+        "crudebirthRate": 32
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 5.035,
+        "crudebirthRate": 31
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 3.804,
+        "crudebirthRate": 22
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 3.304,
+        "crudebirthRate": 20
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 2.942,
+        "crudebirthRate": 17
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 2.391,
+        "crudebirthRate": 14
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 2.008,
+        "crudebirthRate": 13
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 1.68,
+        "crudebirthRate": 9
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 1.555,
+        "crudebirthRate": 10
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 1.55,
+        "crudebirthRate": 10
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 1.55,
+        "crudebirthRate": 9
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": 2015,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 94,
+      "totalCountries": 195
+    }
+  }
+}

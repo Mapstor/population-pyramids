@@ -1,0 +1,87 @@
+{
+  "countryCode": "GTM",
+  "countryName": "Guatemala",
+  "slug": "guatemala",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 2.26
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 6.839,
+        "crudebirthRate": 38
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 6.6,
+        "crudebirthRate": 38
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 5.729,
+        "crudebirthRate": 32
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 5.48,
+        "crudebirthRate": 31
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 4.583,
+        "crudebirthRate": 26
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 3.974,
+        "crudebirthRate": 24
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 3.029,
+        "crudebirthRate": 18
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 2.47,
+        "crudebirthRate": 14
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 2.388,
+        "crudebirthRate": 13
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 2.343,
+        "crudebirthRate": 14
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 2.311,
+        "crudebirthRate": 14
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": null,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 109,
+      "totalCountries": 195
+    }
+  }
+}

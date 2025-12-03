@@ -1,0 +1,87 @@
+{
+  "countryCode": "COL",
+  "countryName": "Colombia",
+  "slug": "colombia",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 1.65
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 6.333,
+        "crudebirthRate": 36
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 5.276,
+        "crudebirthRate": 30
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 3.225,
+        "crudebirthRate": 18
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 2.995,
+        "crudebirthRate": 18
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 2.574,
+        "crudebirthRate": 15
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 2.309,
+        "crudebirthRate": 14
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 1.771,
+        "crudebirthRate": 12
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 1.694,
+        "crudebirthRate": 11
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 1.68,
+        "crudebirthRate": 10
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 1.663,
+        "crudebirthRate": 9
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 1.645,
+        "crudebirthRate": 12
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": 2015,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 25,
+      "totalCountries": 195
+    }
+  }
+}

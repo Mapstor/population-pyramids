@@ -1,0 +1,87 @@
+{
+  "countryCode": "LBR",
+  "countryName": "Liberia",
+  "slug": "liberia",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 3.86
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 6.617,
+        "crudebirthRate": 36
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 6.578,
+        "crudebirthRate": 36
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 6.693,
+        "crudebirthRate": 39
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 6.37,
+        "crudebirthRate": 38
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 5.875,
+        "crudebirthRate": 34
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 5.519,
+        "crudebirthRate": 31
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 4.523,
+        "crudebirthRate": 27
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 4.174,
+        "crudebirthRate": 24
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 4.089,
+        "crudebirthRate": 25
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 4.016,
+        "crudebirthRate": 25
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 3.95,
+        "crudebirthRate": 24
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": null,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 83,
+      "totalCountries": 195
+    }
+  }
+}

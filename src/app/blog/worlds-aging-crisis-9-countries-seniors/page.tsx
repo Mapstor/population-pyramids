@@ -85,7 +85,7 @@ export default async function AgingCrisisArticle() {
         {/* Opening Story */}
         <div className="prose prose-lg max-w-none mb-12">
           <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="text-center">
                 <div className="text-6xl mb-4">👵</div>
                 <h3 className="text-lg font-bold text-gray-900 mb-3">Hiroko, 78, Tokyo</h3>
@@ -129,7 +129,7 @@ export default async function AgingCrisisArticle() {
             </p>
             
             {/* Key Stats Grid */}
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               <div className="text-center p-6 bg-red-50 border border-red-200 rounded-lg">
                 <div className="text-4xl font-bold text-red-600 mb-2">49.0</div>
                 <div className="text-sm text-red-800">Japan's Median Age</div>
@@ -204,7 +204,7 @@ export default async function AgingCrisisArticle() {
           <h2 className="text-3xl font-bold text-gray-900 mb-6">🇯🇵 Japan: The Canary in the Coal Mine</h2>
           
           <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-            <div className="grid lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">A Nation Transformed</h3>
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
@@ -250,7 +250,7 @@ export default async function AgingCrisisArticle() {
           <h2 className="text-3xl font-bold text-gray-900 mb-6">🇰🇷 South Korea: The Speed Champion</h2>
           
           <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-            <div className="grid lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div className="bg-gray-50 rounded-lg p-4">
                 <div style={{ height: '400px' }}>
                   <PopulationPyramid
@@ -301,7 +301,7 @@ export default async function AgingCrisisArticle() {
           <h2 className="text-3xl font-bold text-gray-900 mb-6">🇮🇹 Italy: Where Ancient History Meets Modern Reality</h2>
           
           <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-            <div className="grid lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">When Ancient Civilizations Face Modern Aging</h3>
                 <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
@@ -353,7 +353,7 @@ export default async function AgingCrisisArticle() {
         <section className="mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">The Ripple Effects: What This Means for Humanity</h2>
           
-          <div className="grid md:grid-cols-2 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <div className="bg-white rounded-lg shadow-sm p-6">
               <div className="text-4xl mb-4">💰</div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Economic Earthquakes</h3>
@@ -409,7 +409,7 @@ export default async function AgingCrisisArticle() {
           <h2 className="text-3xl font-bold text-gray-900 mb-6">A Day in 2050: What This World Will Look Like</h2>
           
           <div className="bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded-lg p-8 mb-8">
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-xl font-bold mb-4">🌅 Morning in Tokyo</h3>
                 <p className="text-gray-300 text-sm leading-relaxed mb-4">
@@ -448,7 +448,7 @@ export default async function AgingCrisisArticle() {
               will more than double, reaching 1.6 billion people.
             </p>
             
-            <div className="grid lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <div className="bg-red-50 border border-red-200 rounded-lg p-6">
                 <h4 className="font-bold text-red-900 mb-3">Already Critical (2024)</h4>
                 <div className="space-y-2 text-sm">
@@ -498,7 +498,7 @@ export default async function AgingCrisisArticle() {
         <section className="mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">The Innovation Response: How Countries Are Adapting</h2>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white rounded-lg shadow-sm p-6">
               <div className="flex items-center mb-4">
                 <span className="text-2xl mr-3">🇯🇵</span>
@@ -585,7 +585,7 @@ export default async function AgingCrisisArticle() {
         {/* Related Articles */}
         <section className="mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">Coming Soon</h2>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-white rounded-lg shadow-sm p-6 border-l-4 border-green-500">
               <h3 className="text-lg font-bold text-gray-900 mb-2">
                 Youth Explosion: 8 Countries Where 45% Are Under 15

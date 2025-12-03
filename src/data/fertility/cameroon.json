@@ -1,0 +1,87 @@
+{
+  "countryCode": "CMR",
+  "countryName": "Cameroon",
+  "slug": "cameroon",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 4.25
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 5.796,
+        "crudebirthRate": 35
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 6.197,
+        "crudebirthRate": 36
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 6.564,
+        "crudebirthRate": 39
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 6.362,
+        "crudebirthRate": 37
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 5.514,
+        "crudebirthRate": 33
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 5.421,
+        "crudebirthRate": 30
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 4.841,
+        "crudebirthRate": 27
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 4.557,
+        "crudebirthRate": 27
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 4.468,
+        "crudebirthRate": 28
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 4.397,
+        "crudebirthRate": 25
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 4.322,
+        "crudebirthRate": 26
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": null,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 75,
+      "totalCountries": 195
+    }
+  }
+}

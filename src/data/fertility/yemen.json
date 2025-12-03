@@ -1,0 +1,87 @@
+{
+  "countryCode": "YEM",
+  "countryName": "Yemen",
+  "slug": "yemen",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 4.59
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 8.101,
+        "crudebirthRate": 47
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 8.234,
+        "crudebirthRate": 46
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 8.864,
+        "crudebirthRate": 51
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 8.606,
+        "crudebirthRate": 49
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 6.317,
+        "crudebirthRate": 36
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 5.563,
+        "crudebirthRate": 31
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 4.617,
+        "crudebirthRate": 27
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 4.6,
+        "crudebirthRate": 28
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 4.597,
+        "crudebirthRate": 25
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 4.593,
+        "crudebirthRate": 26
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 4.59,
+        "crudebirthRate": 27
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": null,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 60,
+      "totalCountries": 195
+    }
+  }
+}

@@ -324,7 +324,7 @@ export default function OldestStatesPage() {
 
         <h2 className="text-2xl font-bold mt-8 mb-4">Aging Demographics by Region</h2>
 
-        <div className="grid md:grid-cols-2 gap-6 my-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
           <div className="bg-blue-50 p-4 rounded-lg">
             <h3 className="font-bold text-blue-800 mb-3">Northeast: The Oldest Region</h3>
             <p className="text-sm text-blue-700 mb-2">Average median age: 41.2 years</p>
@@ -436,7 +436,7 @@ export default function OldestStatesPage() {
         <div className="bg-gray-100 border border-gray-300 rounded-lg p-6 my-8">
           <h3 className="text-xl font-bold mb-4">Two Americas Emerging</h3>
           
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <h4 className="font-bold mb-2">Old America (Northeast, Rural Midwest)</h4>
               <ul className="text-sm space-y-1">
@@ -478,7 +478,7 @@ export default function OldestStatesPage() {
 
         <div className="mt-8 p-6 bg-gray-50 rounded-lg border">
           <h3 className="text-lg font-bold mb-3">Explore State Demographics</h3>
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Link href="/states" className="text-blue-600 hover:text-blue-800 underline">
               View all US state demographics →
             </Link>

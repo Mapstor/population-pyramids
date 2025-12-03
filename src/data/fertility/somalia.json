@@ -1,0 +1,87 @@
+{
+  "countryCode": "SOM",
+  "countryName": "Somalia",
+  "slug": "somalia",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 6.02
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 7.261,
+        "crudebirthRate": 42
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 7.182,
+        "crudebirthRate": 40
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 7.327,
+        "crudebirthRate": 42
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 7.44,
+        "crudebirthRate": 41
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 7.645,
+        "crudebirthRate": 43
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 7.527,
+        "crudebirthRate": 44
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 6.975,
+        "crudebirthRate": 39
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 6.453,
+        "crudebirthRate": 37
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 6.353,
+        "crudebirthRate": 38
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 6.255,
+        "crudebirthRate": 36
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 6.132,
+        "crudebirthRate": 35
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": null,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 44,
+      "totalCountries": 195
+    }
+  }
+}

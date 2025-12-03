@@ -38,7 +38,7 @@ export default function PopulationPyramidStagesPage() {
   const germany2024Data = germanyData.years['2024'];
   const japan2024Data = japanData.years['2024'];
 
-  const createPyramidData = (data: any, title: string, stageColor: string) => {
+  const createPyramidData = (data: any, title: string) => {
     if (!data) return null;
 
     const maxMale = Math.max(...data.ageGroups.map((ag: any) => ag.male));
@@ -51,20 +51,22 @@ export default function PopulationPyramidStagesPage() {
         {
           label: 'Male',
           data: data.ageGroups.map((ag: any) => -ag.male).reverse(),
-          backgroundColor: stageColor,
-          borderColor: stageColor,
-          borderWidth: 0.5,
-          barPercentage: 1.0,
+          backgroundColor: 'rgba(59, 130, 246, 0.8)', // Blue for males
+          borderColor: 'rgba(59, 130, 246, 1)',
+          borderWidth: 0,
+          barPercentage: 0.95,
           categoryPercentage: 1.0,
+          barThickness: 'flex',
         },
         {
           label: 'Female',
           data: data.ageGroups.map((ag: any) => ag.female).reverse(),
-          backgroundColor: stageColor.replace('0.8', '0.6'),
-          borderColor: stageColor,
-          borderWidth: 0.5,
-          barPercentage: 1.0,
+          backgroundColor: 'rgba(236, 72, 153, 0.8)', // Pink for females
+          borderColor: 'rgba(236, 72, 153, 1)',
+          borderWidth: 0,
+          barPercentage: 0.95,
           categoryPercentage: 1.0,
+          barThickness: 'flex',
         }
       ],
       maxValue: maxValue
@@ -202,7 +204,7 @@ export default function PopulationPyramidStagesPage() {
           </p>
           <div className="h-96 bg-white p-4 rounded-lg border">
             {niger2024Data && (() => {
-              const pyramidData = createPyramidData(niger2024Data, 'Niger 2024', 'rgba(239, 68, 68, 0.8)');
+              const pyramidData = createPyramidData(niger2024Data, 'Niger 2024');
               if (!pyramidData) return null;
               return (
                 <Bar 
@@ -281,7 +283,7 @@ export default function PopulationPyramidStagesPage() {
           </p>
           <div className="h-96 bg-white p-4 rounded-lg border">
             {kenya2024Data && (() => {
-              const pyramidData = createPyramidData(kenya2024Data, 'Kenya 2024', 'rgba(245, 158, 11, 0.8)');
+              const pyramidData = createPyramidData(kenya2024Data, 'Kenya 2024');
               if (!pyramidData) return null;
               return (
                 <Bar 
@@ -351,7 +353,7 @@ export default function PopulationPyramidStagesPage() {
           </p>
           <div className="h-96 bg-white p-4 rounded-lg border">
             {brazil2024Data && (() => {
-              const pyramidData = createPyramidData(brazil2024Data, 'Brazil 2024', 'rgba(34, 197, 94, 0.8)');
+              const pyramidData = createPyramidData(brazil2024Data, 'Brazil 2024');
               if (!pyramidData) return null;
               return (
                 <Bar 
@@ -411,7 +413,7 @@ export default function PopulationPyramidStagesPage() {
           </p>
           <div className="h-96 bg-white p-4 rounded-lg border">
             {germany2024Data && (() => {
-              const pyramidData = createPyramidData(germany2024Data, 'Germany 2024', 'rgba(59, 130, 246, 0.8)');
+              const pyramidData = createPyramidData(germany2024Data, 'Germany 2024');
               if (!pyramidData) return null;
               return (
                 <Bar 
@@ -490,7 +492,7 @@ export default function PopulationPyramidStagesPage() {
           </p>
           <div className="h-96 bg-white p-4 rounded-lg border">
             {japan2024Data && (() => {
-              const pyramidData = createPyramidData(japan2024Data, 'Japan 2024', 'rgba(147, 51, 234, 0.8)');
+              const pyramidData = createPyramidData(japan2024Data, 'Japan 2024');
               if (!pyramidData) return null;
               return (
                 <Bar 
@@ -811,7 +813,7 @@ export default function PopulationPyramidStagesPage() {
             <h4 className="text-md font-bold text-red-800 mb-2 text-center">Stage 1: Niger</h4>
             <div className="h-64">
               {niger2024Data && (() => {
-                const pyramidData = createPyramidData(niger2024Data, 'Niger', 'rgba(239, 68, 68, 0.8)');
+                const pyramidData = createPyramidData(niger2024Data, 'Niger');
                 if (!pyramidData) return null;
                 return <Bar data={pyramidData} options={createPyramidOptions(pyramidData.maxValue)} />;
               })()}
@@ -824,7 +826,7 @@ export default function PopulationPyramidStagesPage() {
             <h4 className="text-md font-bold text-yellow-800 mb-2 text-center">Stage 2: Kenya</h4>
             <div className="h-64">
               {kenya2024Data && (() => {
-                const pyramidData = createPyramidData(kenya2024Data, 'Kenya', 'rgba(245, 158, 11, 0.8)');
+                const pyramidData = createPyramidData(kenya2024Data, 'Kenya');
                 if (!pyramidData) return null;
                 return <Bar data={pyramidData} options={createPyramidOptions(pyramidData.maxValue)} />;
               })()}
@@ -837,7 +839,7 @@ export default function PopulationPyramidStagesPage() {
             <h4 className="text-md font-bold text-green-800 mb-2 text-center">Stage 3: Brazil</h4>
             <div className="h-64">
               {brazil2024Data && (() => {
-                const pyramidData = createPyramidData(brazil2024Data, 'Brazil', 'rgba(34, 197, 94, 0.8)');
+                const pyramidData = createPyramidData(brazil2024Data, 'Brazil');
                 if (!pyramidData) return null;
                 return <Bar data={pyramidData} options={createPyramidOptions(pyramidData.maxValue)} />;
               })()}
@@ -850,7 +852,7 @@ export default function PopulationPyramidStagesPage() {
             <h4 className="text-md font-bold text-blue-800 mb-2 text-center">Stage 4: Germany</h4>
             <div className="h-64">
               {germany2024Data && (() => {
-                const pyramidData = createPyramidData(germany2024Data, 'Germany', 'rgba(59, 130, 246, 0.8)');
+                const pyramidData = createPyramidData(germany2024Data, 'Germany');
                 if (!pyramidData) return null;
                 return <Bar data={pyramidData} options={createPyramidOptions(pyramidData.maxValue)} />;
               })()}
@@ -863,7 +865,7 @@ export default function PopulationPyramidStagesPage() {
             <h4 className="text-md font-bold text-purple-800 mb-2 text-center">Stage 5: Japan</h4>
             <div className="h-64">
               {japan2024Data && (() => {
-                const pyramidData = createPyramidData(japan2024Data, 'Japan', 'rgba(147, 51, 234, 0.8)');
+                const pyramidData = createPyramidData(japan2024Data, 'Japan');
                 if (!pyramidData) return null;
                 return <Bar data={pyramidData} options={createPyramidOptions(pyramidData.maxValue)} />;
               })()}

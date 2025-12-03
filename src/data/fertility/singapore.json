@@ -1,0 +1,87 @@
+{
+  "countryCode": "SGP",
+  "countryName": "Singapore",
+  "slug": "singapore",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 0.97
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 4.66,
+        "crudebirthRate": 28
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 3.07,
+        "crudebirthRate": 19
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 1.61,
+        "crudebirthRate": 10
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 1.83,
+        "crudebirthRate": 12
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 1.6,
+        "crudebirthRate": 11
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 1.26,
+        "crudebirthRate": 7
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 1.24,
+        "crudebirthRate": 7
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 1.1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 1.12,
+        "crudebirthRate": 9
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 1.04,
+        "crudebirthRate": 7
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 0.97,
+        "crudebirthRate": 7
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": 1985,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 101,
+      "totalCountries": 195
+    }
+  }
+}

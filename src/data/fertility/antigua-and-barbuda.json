@@ -1,0 +1,87 @@
+{
+  "countryCode": "ATG",
+  "countryName": "Antigua and Barbuda",
+  "slug": "antigua-and-barbuda",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 1.6
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 4.416,
+        "crudebirthRate": 24
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 3.628,
+        "crudebirthRate": 22
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 2.151,
+        "crudebirthRate": 14
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 2.249,
+        "crudebirthRate": 13
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 2.196,
+        "crudebirthRate": 15
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 1.832,
+        "crudebirthRate": 12
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 1.567,
+        "crudebirthRate": 11
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 1.569,
+        "crudebirthRate": 9
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 1.58,
+        "crudebirthRate": 11
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 1.58,
+        "crudebirthRate": 10
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 1.578,
+        "crudebirthRate": 11
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": 2005,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 156,
+      "totalCountries": 195
+    }
+  }
+}

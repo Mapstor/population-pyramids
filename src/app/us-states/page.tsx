@@ -150,7 +150,7 @@ export default function USStatesPage() {
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Featured Analysis</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <Link 
-              href="/blog/15-fastest-growing-states-2024"
+              href="/blog/fastest-growing-states"
               className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition group"
             >
               <div className="h-3 bg-gradient-to-r from-green-500 to-emerald-600"></div>
@@ -168,7 +168,7 @@ export default function USStatesPage() {
             </Link>
             
             <Link 
-              href="/blog/10-states-people-fleeing-2024"
+              href="/blog/states-people-fleeing"
               className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition group"
             >
               <div className="h-3 bg-gradient-to-r from-red-500 to-pink-600"></div>

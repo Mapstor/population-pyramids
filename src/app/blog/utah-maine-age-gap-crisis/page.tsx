@@ -183,7 +183,7 @@ export default function UtahMaineAgeGapArticle() {
         {/* Key Stats Box */}
         <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-12">
           <h2 className="font-bold text-lg mb-4">Key Statistics</h2>
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <span className="font-semibold">Utah:</span> Median age 32.4 | 31.5% under 18 | 11.4% over 65
             </div>
@@ -209,7 +209,7 @@ export default function UtahMaineAgeGapArticle() {
             more like a mushroom as retirees outnumber children nearly 2-to-1.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <div>
               <h3 className="text-xl font-bold mb-4 text-center">
                 <Link href="/states/utah" className="hover:text-blue-600">Utah Population Pyramid 2024</Link>
@@ -287,7 +287,7 @@ export default function UtahMaineAgeGapArticle() {
               retirement communities.
             </p>
             
-            <div className="grid sm:grid-cols-2 gap-6 my-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 my-8">
               <div className="bg-green-50 p-6 rounded-lg">
                 <h3 className="font-bold text-green-900 mb-3">Utah's Youth Dividend</h3>
                 <ul className="space-y-2 text-green-800">
@@ -381,7 +381,7 @@ export default function UtahMaineAgeGapArticle() {
             Look at how neighboring states cluster together in age profiles:
           </p>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div>
               <h3 className="text-xl font-bold mb-4 text-center">Young Mountain West</h3>
               <div className="h-80">
@@ -477,7 +477,7 @@ export default function UtahMaineAgeGapArticle() {
           <div className="space-y-6">
             <div className="bg-white p-6 rounded-lg shadow-lg">
               <h3 className="text-xl font-bold mb-4 text-blue-600">Children Per 1,000 People</h3>
-              <div className="grid sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <p className="text-3xl font-bold">315</p>
                   <p className="text-gray-600">Utah children under 18 per 1,000 residents</p>
@@ -494,7 +494,7 @@ export default function UtahMaineAgeGapArticle() {
 
             <div className="bg-white p-6 rounded-lg shadow-lg">
               <h3 className="text-xl font-bold mb-4 text-red-600">Seniors Per 1,000 People</h3>
-              <div className="grid sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <p className="text-3xl font-bold">114</p>
                   <p className="text-gray-600">Utah residents over 65 per 1,000</p>
@@ -514,7 +514,7 @@ export default function UtahMaineAgeGapArticle() {
               <p className="text-lg mb-4">
                 For every 100 working-age adults (18-64):
               </p>
-              <div className="grid sm:grid-cols-2 gap-6 text-center">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-center">
                 <div>
                   <p className="text-3xl font-bold">68</p>
                   <p>dependents in Utah</p>
@@ -587,7 +587,7 @@ export default function UtahMaineAgeGapArticle() {
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-6">Explore More State Demographics</h2>
           
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <Link 
               href="/states/utah" 
               className="block p-6 bg-white rounded-lg shadow hover:shadow-lg transition"

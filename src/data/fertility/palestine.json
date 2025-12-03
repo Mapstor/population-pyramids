@@ -1,0 +1,72 @@
+{
+  "countryCode": "PSE",
+  "countryName": "Palestine",
+  "slug": "palestine",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 3.3
+    },
+    "historical": [
+      {
+        "year": 1990,
+        "totalFertilityRate": 6.809,
+        "crudebirthRate": 38
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 5.457,
+        "crudebirthRate": 33
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 4.867,
+        "crudebirthRate": 29
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 3.977,
+        "crudebirthRate": 24
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 3.511,
+        "crudebirthRate": 21
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 3.442,
+        "crudebirthRate": 20
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 3.375,
+        "crudebirthRate": 21
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 3.311,
+        "crudebirthRate": 20
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": null,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 103,
+      "totalCountries": 195
+    }
+  }
+}

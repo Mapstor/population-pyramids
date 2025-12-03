@@ -37,18 +37,24 @@ const Stage4DemographicTransition = () => {
     labels: countryData.ageGroups.map((ag: any) => ag.ageRange).reverse(),
     datasets: [
       {
-        label: `${title} - Male`,
+        label: 'Male',
         data: countryData.ageGroups.map((ag: any) => -ag.male).reverse(),
-        backgroundColor: color,
-        borderColor: color,
-        borderWidth: 1,
+        backgroundColor: 'rgba(59, 130, 246, 0.8)', // Blue for males
+        borderColor: 'rgba(59, 130, 246, 1)',
+        borderWidth: 0,
+        barPercentage: 0.95,
+        categoryPercentage: 1.0,
+        barThickness: 'flex',
       },
       {
-        label: `${title} - Female`,
+        label: 'Female',
         data: countryData.ageGroups.map((ag: any) => ag.female).reverse(),
-        backgroundColor: color,
-        borderColor: color,
-        borderWidth: 1,
+        backgroundColor: 'rgba(236, 72, 153, 0.8)', // Pink for females
+        borderColor: 'rgba(236, 72, 153, 1)',
+        borderWidth: 0,
+        barPercentage: 0.95,
+        categoryPercentage: 1.0,
+        barThickness: 'flex',
       },
     ],
   });
@@ -59,16 +65,27 @@ const Stage4DemographicTransition = () => {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: 'top' as const,
+        display: false
       },
       title: {
         display: true,
         text: 'Population by Age and Gender (thousands)',
       },
+      tooltip: {
+        callbacks: {
+          label: function(context: any) {
+            const value = Math.abs(context.parsed.x);
+            if (context.dataset.label?.includes('Surplus')) {
+              return `${context.dataset.label}: ${value.toLocaleString()}`;
+            }
+            return `${context.dataset.label}: ${value.toLocaleString()}`;
+          }
+        }
+      }
     },
     scales: {
       x: {
-        beginAtZero: true,
+        stacked: true,
         ticks: {
           callback: function(value: any) {
             return Math.abs(value).toLocaleString();
@@ -76,16 +93,9 @@ const Stage4DemographicTransition = () => {
         },
       },
       y: {
-        beginAtZero: true,
+        stacked: true,
       },
-    },
-    tooltips: {
-      callbacks: {
-        label: function(context: any) {
-          return `${context.dataset.label}: ${Math.abs(context.raw).toLocaleString()}`;
-        },
-      },
-    },
+    }
   };
 
   return (

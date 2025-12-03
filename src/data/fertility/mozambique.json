@@ -1,0 +1,87 @@
+{
+  "countryCode": "MOZ",
+  "countryName": "Mozambique",
+  "slug": "mozambique",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 4.69
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 6.544,
+        "crudebirthRate": 38
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 6.699,
+        "crudebirthRate": 40
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 6.43,
+        "crudebirthRate": 38
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 6.319,
+        "crudebirthRate": 35
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 5.83,
+        "crudebirthRate": 33
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 5.5,
+        "crudebirthRate": 32
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 5.245,
+        "crudebirthRate": 30
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 4.959,
+        "crudebirthRate": 30
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 4.905,
+        "crudebirthRate": 27
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 4.84,
+        "crudebirthRate": 27
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 4.763,
+        "crudebirthRate": 29
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": null,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 185,
+      "totalCountries": 195
+    }
+  }
+}

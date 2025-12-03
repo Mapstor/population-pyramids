@@ -175,10 +175,10 @@ export default function NigerYouthExplosionArticle() {
             human history:
           </p>
 
-          <div class="grid md:grid-cols-2 gap-6 my-8">
-            <div class="bg-green-50 p-6 rounded-lg">
-              <h4 class="font-bold text-green-800 mb-3">📚 The Education Challenge</h4>
-              <ul class="space-y-2 text-green-700 text-sm">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+            <div className="bg-green-50 p-6 rounded-lg">
+              <h4 className="font-bold text-green-800 mb-3">📚 The Education Challenge</h4>
+              <ul className="space-y-2 text-green-700 text-sm">
                 <li>• 13.6 million people need education (50.1% of population)</li>
                 <li>• New schools must open faster than population growth</li>
                 <li>• Teacher shortage: need 200,000+ new teachers</li>
@@ -186,9 +186,9 @@ export default function NigerYouthExplosionArticle() {
                 <li>• Many kids attend school in shifts</li>
               </ul>
             </div>
-            <div class="bg-yellow-50 p-6 rounded-lg">
-              <h4 class="font-bold text-yellow-800 mb-3">⚡ The Opportunity</h4>
-              <ul class="space-y-2 text-yellow-700 text-sm">
+            <div className="bg-yellow-50 p-6 rounded-lg">
+              <h4 className="font-bold text-yellow-800 mb-3">⚡ The Opportunity</h4>
+              <ul className="space-y-2 text-yellow-700 text-sm">
                 <li>• Largest potential workforce in Niger's history</li>
                 <li>• Digital native generation coming of age</li>
                 <li>• Innovation through youth entrepreneurship</li>
@@ -206,9 +206,9 @@ export default function NigerYouthExplosionArticle() {
             more new workers than the entire current population of Belgium.
           </p>
 
-          <div class="bg-orange-50 border border-orange-200 p-6 rounded-lg my-8">
-            <h4 class="font-bold text-orange-800 mb-3">🏗️ The Job Creation Emergency</h4>
-            <div class="space-y-3 text-orange-700">
+          <div className="bg-orange-50 border border-orange-200 p-6 rounded-lg my-8">
+            <h4 className="font-bold text-orange-800 mb-3">🏗️ The Job Creation Emergency</h4>
+            <div className="space-y-3 text-orange-700">
               <p>
                 <strong>The Math:</strong> Niger needs to create 900,000+ new jobs annually just 
                 to keep pace with population growth—more than most countries create in a decade.
@@ -232,9 +232,9 @@ export default function NigerYouthExplosionArticle() {
             reshaping the global age map:
           </p>
 
-          <div class="bg-white rounded-lg shadow-sm p-6 my-8">
-            <h3 class="text-xl font-bold text-gray-900 mb-4">World's Youngest Countries by Median Age (2024)</h3>
-            <div class="space-y-4">
+          <div className="bg-white rounded-lg shadow-sm p-6 my-8">
+            <h3 className="text-xl font-bold text-gray-900 mb-4">World's Youngest Countries by Median Age (2024)</h3>
+            <div className="space-y-4">
               {[
                 { country: "Niger", flag: "🇳🇪", medianAge: "16.5", under15: "50.1%", under25: "67.2%" },
                 { country: "Chad", flag: "🇹🇩", medianAge: "16.8", under15: "47.8%", under25: "65.1%" },
@@ -245,15 +245,15 @@ export default function NigerYouthExplosionArticle() {
                 { country: "Burundi", flag: "🇧🇮", medianAge: "17.3", under15: "45.8%", under25: "64.1%" },
                 { country: "Angola", flag: "🇦🇴", medianAge: "18.6", under15: "46.0%", under25: "62.8%" }
               ].map((country, index) => (
-                <div key={index} class="flex items-center justify-between p-4 border border-gray-200 rounded">
-                  <div class="flex items-center space-x-3">
-                    <span class="text-2xl">{country.flag}</span>
-                    <span class="font-medium text-gray-900">{country.country}</span>
+                <div key={index} className="flex items-center justify-between p-4 border border-gray-200 rounded">
+                  <div className="flex items-center space-x-3">
+                    <span className="text-2xl">{country.flag}</span>
+                    <span className="font-medium text-gray-900">{country.country}</span>
                   </div>
-                  <div class="text-right">
-                    <div class="font-bold text-green-600 text-lg">{country.medianAge} years</div>
-                    <div class="text-sm text-gray-600">{country.under15} under 15</div>
-                    <div class="text-xs text-gray-500">{country.under25} under 25</div>
+                  <div className="text-right">
+                    <div className="font-bold text-green-600 text-lg">{country.medianAge} years</div>
+                    <div className="text-sm text-gray-600">{country.under15} under 15</div>
+                    <div className="text-xs text-gray-500">{country.under25} under 25</div>
                   </div>
                 </div>
               ))}
@@ -274,12 +274,12 @@ export default function NigerYouthExplosionArticle() {
             Several countries have successfully transformed youth explosions into economic miracles:
           </p>
 
-          <div class="bg-purple-50 p-6 rounded-lg my-8">
-            <h4 class="font-bold text-purple-800 mb-4">🏆 Countries That Nailed the Youth Dividend</h4>
-            <div class="grid md:grid-cols-2 gap-4">
+          <div className="bg-purple-50 p-6 rounded-lg my-8">
+            <h4 className="font-bold text-purple-800 mb-4">🏆 Countries That Nailed the Youth Dividend</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <h5 class="font-semibold text-purple-700 mb-2">🇰🇷 South Korea (1960s-1990s)</h5>
-                <ul class="text-purple-600 text-sm space-y-1">
+                <h5 className="font-semibold text-purple-700 mb-2">🇰🇷 South Korea (1960s-1990s)</h5>
+                <ul className="text-purple-600 text-sm space-y-1">
                   <li>• Youth bulge fueled "Miracle on the Han River"</li>
                   <li>• GDP per capita rose 100x in 40 years</li>
                   <li>• Massive investment in education and manufacturing</li>
@@ -287,8 +287,8 @@ export default function NigerYouthExplosionArticle() {
                 </ul>
               </div>
               <div>
-                <h5 class="font-semibold text-purple-700 mb-2">🇻🇳 Vietnam (1980s-2010s)</h5>
-                <ul class="text-purple-600 text-sm space-y-1">
+                <h5 className="font-semibold text-purple-700 mb-2">🇻🇳 Vietnam (1980s-2010s)</h5>
+                <ul className="text-purple-600 text-sm space-y-1">
                   <li>• Young workforce attracted global manufacturing</li>
                   <li>• Poverty rate fell from 58% to under 3%</li>
                   <li>• Became major electronics exporter</li>
@@ -305,24 +305,24 @@ export default function NigerYouthExplosionArticle() {
             must happen simultaneously:
           </p>
 
-          <div class="space-y-6 my-8">
-            <div class="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-r-lg">
-              <h4 class="font-bold text-blue-800 mb-3">🎓 Education Revolution</h4>
-              <p class="text-blue-700 text-sm">
+          <div className="space-y-6 my-8">
+            <div className="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-r-lg">
+              <h4 className="font-bold text-blue-800 mb-3">🎓 Education Revolution</h4>
+              <p className="text-blue-700 text-sm">
                 Niger must achieve universal primary education and dramatically expand secondary 
                 education. Current literacy rates of 37% won't cut it in a modern economy.
               </p>
             </div>
-            <div class="bg-green-50 border-l-4 border-green-400 p-6 rounded-r-lg">
-              <h4 class="font-bold text-green-800 mb-3">💼 Job Creation at Scale</h4>
-              <p class="text-green-700 text-sm">
+            <div className="bg-green-50 border-l-4 border-green-400 p-6 rounded-r-lg">
+              <h4 className="font-bold text-green-800 mb-3">💼 Job Creation at Scale</h4>
+              <p className="text-green-700 text-sm">
                 The country needs labor-intensive industries—manufacturing, agriculture, services—
                 that can absorb millions of young workers quickly.
               </p>
             </div>
-            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-lg">
-              <h4 class="font-bold text-yellow-800 mb-3">🏥 Health & Family Planning</h4>
-              <p class="text-yellow-700 text-sm">
+            <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-lg">
+              <h4 className="font-bold text-yellow-800 mb-3">🏥 Health & Family Planning</h4>
+              <p className="text-yellow-700 text-sm">
                 Fertility rates need to gradually decline to manageable levels while maintaining 
                 the temporary advantage of a large working-age population.
               </p>
@@ -345,20 +345,20 @@ export default function NigerYouthExplosionArticle() {
             young, mobile workers seeking opportunities:
           </p>
 
-          <div class="bg-gray-50 p-6 rounded-lg my-8">
-            <h4 class="font-bold text-gray-800 mb-4">🌍 Africa's Youth Tsunami by 2050</h4>
-            <div class="grid md:grid-cols-3 gap-4">
-              <div class="text-center">
-                <div class="text-3xl font-bold text-green-600">600M</div>
-                <div class="text-sm text-gray-600">Young Africans entering job market</div>
+          <div className="bg-gray-50 p-6 rounded-lg my-8">
+            <h4 className="font-bold text-gray-800 mb-4">🌍 Africa's Youth Tsunami by 2050</h4>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-green-600">600M</div>
+                <div className="text-sm text-gray-600">Young Africans entering job market</div>
               </div>
-              <div class="text-center">
-                <div class="text-3xl font-bold text-blue-600">40%</div>
-                <div class="text-sm text-gray-600">Of world's youth will be African</div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-blue-600">40%</div>
+                <div className="text-sm text-gray-600">Of world's youth will be African</div>
               </div>
-              <div class="text-center">
-                <div class="text-3xl font-bold text-purple-600">2.5B</div>
-                <div class="text-sm text-gray-600">Total African population by 2050</div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-purple-600">2.5B</div>
+                <div className="text-sm text-gray-600">Total African population by 2050</div>
               </div>
             </div>
           </div>
@@ -373,51 +373,51 @@ export default function NigerYouthExplosionArticle() {
 
           <h3>Niger vs Japan: Two Worlds</h3>
 
-          <div class="grid md:grid-cols-2 gap-6 my-8">
-            <div class="bg-green-50 p-6 rounded-lg border border-green-200">
-              <h4 class="font-bold text-green-800 mb-3 flex items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+            <div className="bg-green-50 p-6 rounded-lg border border-green-200">
+              <h4 className="font-bold text-green-800 mb-3 flex items-center">
                 🇳🇪 Niger: The Baby Country
               </h4>
-              <div class="space-y-2 text-green-700 text-sm">
-                <div class="flex justify-between">
-                  <span>Median age:</span><span class="font-bold">16.5 years</span>
+              <div className="space-y-2 text-green-700 text-sm">
+                <div className="flex justify-between">
+                  <span>Median age:</span><span className="font-bold">16.5 years</span>
                 </div>
-                <div class="flex justify-between">
-                  <span>Under 15:</span><span class="font-bold">50.1%</span>
+                <div className="flex justify-between">
+                  <span>Under 15:</span><span className="font-bold">50.1%</span>
                 </div>
-                <div class="flex justify-between">
-                  <span>Over 65:</span><span class="font-bold">2.4%</span>
+                <div className="flex justify-between">
+                  <span>Over 65:</span><span className="font-bold">2.4%</span>
                 </div>
-                <div class="flex justify-between">
-                  <span>Over 80:</span><span class="font-bold">0.3%</span>
+                <div className="flex justify-between">
+                  <span>Over 80:</span><span className="font-bold">0.3%</span>
                 </div>
-                <div class="mt-3 p-3 bg-white rounded border">
-                  <div class="text-xs text-green-600">
+                <div className="mt-3 p-3 bg-white rounded border">
+                  <div className="text-xs text-green-600">
                     <strong>Reality:</strong> More babies than grandparents. 
                     Playgrounds outnumber nursing homes 50:1.
                   </div>
                 </div>
               </div>
             </div>
-            <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
-              <h4 class="font-bold text-blue-800 mb-3 flex items-center">
+            <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
+              <h4 className="font-bold text-blue-800 mb-3 flex items-center">
                 🇯🇵 Japan: The Elder Country
               </h4>
-              <div class="space-y-2 text-blue-700 text-sm">
-                <div class="flex justify-between">
-                  <span>Median age:</span><span class="font-bold">50.4 years</span>
+              <div className="space-y-2 text-blue-700 text-sm">
+                <div className="flex justify-between">
+                  <span>Median age:</span><span className="font-bold">50.4 years</span>
                 </div>
-                <div class="flex justify-between">
-                  <span>Under 15:</span><span class="font-bold">11.4%</span>
+                <div className="flex justify-between">
+                  <span>Under 15:</span><span className="font-bold">11.4%</span>
                 </div>
-                <div class="flex justify-between">
-                  <span>Over 65:</span><span class="font-bold">29.6%</span>
+                <div className="flex justify-between">
+                  <span>Over 65:</span><span className="font-bold">29.6%</span>
                 </div>
-                <div class="flex justify-between">
-                  <span>Over 80:</span><span class="font-bold">8.9%</span>
+                <div className="flex justify-between">
+                  <span>Over 80:</span><span className="font-bold">8.9%</span>
                 </div>
-                <div class="mt-3 p-3 bg-white rounded border">
-                  <div class="text-xs text-blue-600">
+                <div className="mt-3 p-3 bg-white rounded border">
+                  <div className="text-xs text-blue-600">
                     <strong>Reality:</strong> More great-grandparents than toddlers. 
                     Adult diaper sales exceed baby diapers 3:1.
                   </div>
@@ -436,38 +436,38 @@ export default function NigerYouthExplosionArticle() {
 
           <h3>Three Possible Futures for Niger</h3>
 
-          <div class="space-y-6 my-8">
-            <div class="bg-green-50 p-6 rounded-lg border border-green-200">
-              <h4 class="font-bold text-green-800 mb-3">🚀 The Success Scenario</h4>
-              <p class="text-green-700 text-sm mb-3">
+          <div className="space-y-6 my-8">
+            <div className="bg-green-50 p-6 rounded-lg border border-green-200">
+              <h4 className="font-bold text-green-800 mb-3">🚀 The Success Scenario</h4>
+              <p className="text-green-700 text-sm mb-3">
                 Niger successfully invests in education, attracts labor-intensive industries, 
                 and creates millions of jobs for its youth explosion.
               </p>
-              <div class="text-green-600 text-xs">
+              <div className="text-green-600 text-xs">
                 <strong>Outcome:</strong> Economic miracle, poverty reduction, regional stability<br/>
                 <strong>Timeline:</strong> 2025-2050<br/>
                 <strong>Likelihood:</strong> Moderate—requires massive international cooperation
               </div>
             </div>
-            <div class="bg-yellow-50 p-6 rounded-lg border border-yellow-200">
-              <h4 class="font-bold text-yellow-800 mb-3">⚖️ The Mixed Scenario</h4>
-              <p class="text-yellow-700 text-sm mb-3">
+            <div className="bg-yellow-50 p-6 rounded-lg border border-yellow-200">
+              <h4 className="font-bold text-yellow-800 mb-3">⚖️ The Mixed Scenario</h4>
+              <p className="text-yellow-700 text-sm mb-3">
                 Some progress on education and jobs, but not enough to fully absorb youth bulge. 
                 Partial success with significant emigration.
               </p>
-              <div class="text-yellow-600 text-xs">
+              <div className="text-yellow-600 text-xs">
                 <strong>Outcome:</strong> Modest growth, continued poverty, large-scale migration<br/>
                 <strong>Timeline:</strong> 2025-2045<br/>
                 <strong>Likelihood:</strong> High—most probable current trajectory
               </div>
             </div>
-            <div class="bg-red-50 p-6 rounded-lg border border-red-200">
-              <h4 class="font-bold text-red-800 mb-3">⚠️ The Crisis Scenario</h4>
-              <p class="text-red-700 text-sm mb-3">
+            <div className="bg-red-50 p-6 rounded-lg border border-red-200">
+              <h4 className="font-bold text-red-800 mb-3">⚠️ The Crisis Scenario</h4>
+              <p className="text-red-700 text-sm mb-3">
                 Failure to create opportunities leads to mass unemployment, social unrest, 
                 and a "lost generation" of underutilized young people.
               </p>
-              <div class="text-red-600 text-xs">
+              <div className="text-red-600 text-xs">
                 <strong>Outcome:</strong> Social instability, forced migration, regional conflict<br/>
                 <strong>Timeline:</strong> 2025-2040<br/>
                 <strong>Likelihood:</strong> Moderate—without major policy intervention
@@ -483,9 +483,9 @@ export default function NigerYouthExplosionArticle() {
             Niger grapples with the opposite problem: too many young people, too fast.
           </p>
 
-          <div class="bg-blue-50 border border-blue-200 p-6 rounded-lg my-8">
-            <h4 class="font-bold text-blue-800 mb-3">🎓 Lessons for the World</h4>
-            <div class="space-y-3 text-blue-700">
+          <div className="bg-blue-50 border border-blue-200 p-6 rounded-lg my-8">
+            <h4 className="font-bold text-blue-800 mb-3">🎓 Lessons for the World</h4>
+            <div className="space-y-3 text-blue-700">
               <p>
                 <strong>Demographics Drive Everything:</strong> Age structure shapes economics, 
                 politics, and social dynamics more than most people realize.
@@ -526,22 +526,22 @@ export default function NigerYouthExplosionArticle() {
             age-structure imbalances in history.
           </p>
 
-          <div class="bg-gradient-to-r from-green-500 to-blue-600 text-white p-8 rounded-lg my-12">
-            <h3 class="text-xl font-bold mb-4">Explore More Shocking Demographics</h3>
-            <p class="mb-6">
+          <div className="bg-gradient-to-r from-green-500 to-blue-600 text-white p-8 rounded-lg my-12">
+            <h3 className="text-xl font-bold mb-4">Explore More Shocking Demographics</h3>
+            <p className="mb-6">
               Niger's youth explosion is just one of many mind-blowing demographic realities reshaping our world. 
               Discover more countries where the numbers tell incredible stories.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <Link 
                 href="/blog/country-2-5-men-for-every-woman-dating-crisis"
-                class="px-6 py-3 bg-white text-blue-600 rounded-lg hover:bg-blue-50 transition font-semibold text-center"
+                className="px-6 py-3 bg-white text-blue-600 rounded-lg hover:bg-blue-50 transition font-semibold text-center"
               >
                 Read: Gender Ratio Crisis
               </Link>
               <Link 
                 href="/countries"
-                class="px-6 py-3 bg-transparent border-2 border-white text-white rounded-lg hover:bg-white hover:text-blue-600 transition font-semibold text-center"
+                className="px-6 py-3 bg-transparent border-2 border-white text-white rounded-lg hover:bg-white hover:text-blue-600 transition font-semibold text-center"
               >
                 Explore All Countries
               </Link>
@@ -551,19 +551,19 @@ export default function NigerYouthExplosionArticle() {
         </article>
 
         {/* Author & Date */}
-        <div class="border-t border-gray-200 pt-8 mt-12">
-          <div class="flex items-center justify-between">
+        <div className="border-t border-gray-200 pt-8 mt-12">
+          <div className="flex items-center justify-between">
             <div>
-              <p class="text-sm text-gray-600">
+              <p className="text-sm text-gray-600">
                 Published on November 5, 2024 • Based on UN World Population Prospects 2024 Revision
               </p>
-              <p class="text-sm text-gray-600 mt-1">
+              <p className="text-sm text-gray-600 mt-1">
                 Last updated: November 2024 • Next update: January 2025
               </p>
             </div>
             <Link 
               href="/blog"
-              class="text-blue-600 hover:text-blue-800 font-medium"
+              className="text-blue-600 hover:text-blue-800 font-medium"
             >
               ← Back to Blog
             </Link>

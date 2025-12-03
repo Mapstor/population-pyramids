@@ -1,0 +1,87 @@
+{
+  "countryCode": "UKR",
+  "countryName": "Ukraine",
+  "slug": "ukraine",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 0.98
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 1.943,
+        "crudebirthRate": 12
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 2.078,
+        "crudebirthRate": 14
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 2.033,
+        "crudebirthRate": 14
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 1.845,
+        "crudebirthRate": 12
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 1.108,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 1.221,
+        "crudebirthRate": 10
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 1.387,
+        "crudebirthRate": 10
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 1.208,
+        "crudebirthRate": 7
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 1.148,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 0.897,
+        "crudebirthRate": 6
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 0.977,
+        "crudebirthRate": 7
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": 1965,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 39,
+      "totalCountries": 195
+    }
+  }
+}

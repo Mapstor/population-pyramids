@@ -1,0 +1,87 @@
+{
+  "countryCode": "TON",
+  "countryName": "Tonga",
+  "slug": "tonga",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 3.1
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 6.408,
+        "crudebirthRate": 37
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 6.071,
+        "crudebirthRate": 36
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 5.344,
+        "crudebirthRate": 31
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 4.929,
+        "crudebirthRate": 28
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 4.159,
+        "crudebirthRate": 24
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 4.195,
+        "crudebirthRate": 25
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 3.54,
+        "crudebirthRate": 22
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 3.234,
+        "crudebirthRate": 19
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 3.198,
+        "crudebirthRate": 18
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 3.171,
+        "crudebirthRate": 19
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 3.129,
+        "crudebirthRate": 18
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": null,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 45,
+      "totalCountries": 195
+    }
+  }
+}

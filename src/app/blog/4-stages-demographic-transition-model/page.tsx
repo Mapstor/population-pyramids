@@ -36,7 +36,7 @@ export default function FourStagesDemographicTransitionPage() {
   const brazil2024Data = brazilData.years['2024'];
   const germany2024Data = germanyData.years['2024'];
 
-  const createPyramidData = (data: any, title: string, stageColor: string) => {
+  const createPyramidData = (data: any, title: string) => {
     if (!data) return null;
 
     const maxMale = Math.max(...data.ageGroups.map((ag: any) => ag.male));
@@ -49,20 +49,22 @@ export default function FourStagesDemographicTransitionPage() {
         {
           label: 'Male',
           data: data.ageGroups.map((ag: any) => -ag.male).reverse(),
-          backgroundColor: stageColor,
-          borderColor: stageColor,
-          borderWidth: 0.5,
-          barPercentage: 1.0,
+          backgroundColor: 'rgba(59, 130, 246, 0.8)', // Blue for males
+          borderColor: 'rgba(59, 130, 246, 1)',
+          borderWidth: 0,
+          barPercentage: 0.95,
           categoryPercentage: 1.0,
+          barThickness: 'flex',
         },
         {
           label: 'Female',
           data: data.ageGroups.map((ag: any) => ag.female).reverse(),
-          backgroundColor: stageColor.replace('0.8', '0.6'),
-          borderColor: stageColor,
-          borderWidth: 0.5,
-          barPercentage: 1.0,
+          backgroundColor: 'rgba(236, 72, 153, 0.8)', // Pink for females
+          borderColor: 'rgba(236, 72, 153, 1)',
+          borderWidth: 0,
+          barPercentage: 0.95,
           categoryPercentage: 1.0,
+          barThickness: 'flex',
         }
       ],
       maxValue: maxValue
@@ -131,7 +133,7 @@ export default function FourStagesDemographicTransitionPage() {
 
         <div className="bg-gradient-to-r from-red-100 via-yellow-100 via-green-100 to-blue-100 border border-gray-200 rounded-lg p-6 mb-8">
           <h3 className="text-xl font-bold mb-4 text-gray-900">The Classic 4-Stage Model</h3>
-          <div className="grid md:grid-cols-4 gap-3 text-sm">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-3 text-sm">
             <div className="bg-red-50 p-3 rounded border">
               <h4 className="font-bold text-red-800">Stage 1</h4>
               <p className="text-red-700">High Stationary</p>
@@ -193,7 +195,7 @@ export default function FourStagesDemographicTransitionPage() {
 
         <h3 className="text-xl font-semibold mt-6 mb-3">Why Birth and Death Rates Were So High:</h3>
 
-        <div className="grid md:grid-cols-2 gap-6 my-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div className="bg-red-50 p-4 rounded-lg">
             <h4 className="font-bold text-red-800 mb-2">High Death Rates Caused By:</h4>
             <ul className="text-red-700 space-y-1 text-sm">
@@ -232,7 +234,7 @@ export default function FourStagesDemographicTransitionPage() {
           </p>
           <div className="h-96 bg-white p-4 rounded-lg border">
             {niger2024Data && (() => {
-              const pyramidData = createPyramidData(niger2024Data, 'Niger 2024', 'rgba(239, 68, 68, 0.8)');
+              const pyramidData = createPyramidData(niger2024Data, 'Niger 2024');
               if (!pyramidData) return null;
               return (
                 <Bar 
@@ -310,7 +312,7 @@ export default function FourStagesDemographicTransitionPage() {
           </p>
           <div className="h-96 bg-white p-4 rounded-lg border">
             {kenya2024Data && (() => {
-              const pyramidData = createPyramidData(kenya2024Data, 'Kenya 2024', 'rgba(245, 158, 11, 0.8)');
+              const pyramidData = createPyramidData(kenya2024Data, 'Kenya 2024');
               if (!pyramidData) return null;
               return (
                 <Bar 
@@ -385,7 +387,7 @@ export default function FourStagesDemographicTransitionPage() {
           </p>
           <div className="h-96 bg-white p-4 rounded-lg border">
             {brazil2024Data && (() => {
-              const pyramidData = createPyramidData(brazil2024Data, 'Brazil 2024', 'rgba(34, 197, 94, 0.8)');
+              const pyramidData = createPyramidData(brazil2024Data, 'Brazil 2024');
               if (!pyramidData) return null;
               return (
                 <Bar 
@@ -450,7 +452,7 @@ export default function FourStagesDemographicTransitionPage() {
           </p>
           <div className="h-96 bg-white p-4 rounded-lg border">
             {germany2024Data && (() => {
-              const pyramidData = createPyramidData(germany2024Data, 'Germany 2024', 'rgba(59, 130, 246, 0.8)');
+              const pyramidData = createPyramidData(germany2024Data, 'Germany 2024');
               if (!pyramidData) return null;
               return (
                 <Bar 
@@ -520,7 +522,7 @@ export default function FourStagesDemographicTransitionPage() {
 
         <h2 className="text-2xl font-bold mt-8 mb-4">Economic Implications of Each Stage</h2>
 
-        <div className="grid md:grid-cols-4 gap-4 my-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 my-8">
           <div className="bg-red-50 p-4 rounded-lg border">
             <h3 className="font-bold text-red-800 mb-2">Stage 1</h3>
             <p className="text-sm text-red-700 mb-2"><strong>Economy:</strong></p>
@@ -695,13 +697,13 @@ export default function FourStagesDemographicTransitionPage() {
           See how dramatically population structures change through the demographic transition. Each stage has a distinctive pyramid shape that reflects underlying birth and death rate patterns.
         </p>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 my-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-12">
           {/* Stage 1 */}
           <div className="bg-red-50 border border-red-200 rounded-lg p-4">
             <h4 className="text-lg font-bold text-red-800 mb-2 text-center">Stage 1: Niger</h4>
             <div className="h-80">
               {niger2024Data && (() => {
-                const pyramidData = createPyramidData(niger2024Data, 'Niger', 'rgba(239, 68, 68, 0.8)');
+                const pyramidData = createPyramidData(niger2024Data, 'Niger');
                 if (!pyramidData) return null;
                 return <Bar data={pyramidData} options={createPyramidOptions(pyramidData.maxValue)} />;
               })()}
@@ -714,7 +716,7 @@ export default function FourStagesDemographicTransitionPage() {
             <h4 className="text-lg font-bold text-yellow-800 mb-2 text-center">Stage 2: Kenya</h4>
             <div className="h-80">
               {kenya2024Data && (() => {
-                const pyramidData = createPyramidData(kenya2024Data, 'Kenya', 'rgba(245, 158, 11, 0.8)');
+                const pyramidData = createPyramidData(kenya2024Data, 'Kenya');
                 if (!pyramidData) return null;
                 return <Bar data={pyramidData} options={createPyramidOptions(pyramidData.maxValue)} />;
               })()}
@@ -727,7 +729,7 @@ export default function FourStagesDemographicTransitionPage() {
             <h4 className="text-lg font-bold text-green-800 mb-2 text-center">Stage 3: Brazil</h4>
             <div className="h-80">
               {brazil2024Data && (() => {
-                const pyramidData = createPyramidData(brazil2024Data, 'Brazil', 'rgba(34, 197, 94, 0.8)');
+                const pyramidData = createPyramidData(brazil2024Data, 'Brazil');
                 if (!pyramidData) return null;
                 return <Bar data={pyramidData} options={createPyramidOptions(pyramidData.maxValue)} />;
               })()}
@@ -740,7 +742,7 @@ export default function FourStagesDemographicTransitionPage() {
             <h4 className="text-lg font-bold text-blue-800 mb-2 text-center">Stage 4: Germany</h4>
             <div className="h-80">
               {germany2024Data && (() => {
-                const pyramidData = createPyramidData(germany2024Data, 'Germany', 'rgba(59, 130, 246, 0.8)');
+                const pyramidData = createPyramidData(germany2024Data, 'Germany');
                 if (!pyramidData) return null;
                 return <Bar data={pyramidData} options={createPyramidOptions(pyramidData.maxValue)} />;
               })()}
@@ -751,7 +753,7 @@ export default function FourStagesDemographicTransitionPage() {
 
         <div className="bg-gradient-to-r from-red-100 via-yellow-100 via-green-100 to-blue-100 border border-gray-200 rounded-lg p-6 my-8">
           <h4 className="text-xl font-bold mb-4 text-center">The Demographic Transformation</h4>
-          <div className="grid md:grid-cols-4 gap-4 text-sm text-center">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm text-center">
             <div>
               <span className="font-bold text-red-800">Stage 1 (Niger)</span>
               <p className="text-red-700">Birth: 42/1000<br/>Death: 9/1000<br/>Growth: 3.8%</p>
@@ -777,7 +779,7 @@ export default function FourStagesDemographicTransitionPage() {
 
         <div className="mt-8 p-6 bg-gray-50 rounded-lg border">
           <h3 className="text-lg font-bold mb-3">Explore Related Concepts</h3>
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Link href="/blog/population-pyramid-stages-demographic-transition" className="text-blue-600 hover:text-blue-800 underline">
               Learn about 5 stages of demographic transition →
             </Link>

@@ -1,0 +1,87 @@
+{
+  "countryCode": "LBY",
+  "countryName": "Libya",
+  "slug": "libya",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 2.31
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 7.823,
+        "crudebirthRate": 45
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 8.048,
+        "crudebirthRate": 46
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 6.328,
+        "crudebirthRate": 36
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 4.776,
+        "crudebirthRate": 28
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 2.906,
+        "crudebirthRate": 19
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 2.765,
+        "crudebirthRate": 17
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 2.711,
+        "crudebirthRate": 17
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 2.507,
+        "crudebirthRate": 14
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 2.462,
+        "crudebirthRate": 15
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 2.402,
+        "crudebirthRate": 14
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 2.355,
+        "crudebirthRate": 16
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": null,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 119,
+      "totalCountries": 195
+    }
+  }
+}

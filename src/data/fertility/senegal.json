@@ -1,0 +1,87 @@
+{
+  "countryCode": "SEN",
+  "countryName": "Senegal",
+  "slug": "senegal",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 3.74
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 7.19,
+        "crudebirthRate": 40
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 7.262,
+        "crudebirthRate": 43
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 7.013,
+        "crudebirthRate": 40
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 6.396,
+        "crudebirthRate": 37
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 5.498,
+        "crudebirthRate": 32
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 5.133,
+        "crudebirthRate": 30
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 4.751,
+        "crudebirthRate": 27
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 4.003,
+        "crudebirthRate": 25
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 3.936,
+        "crudebirthRate": 24
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 3.864,
+        "crudebirthRate": 24
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 3.818,
+        "crudebirthRate": 23
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": null,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 82,
+      "totalCountries": 195
+    }
+  }
+}

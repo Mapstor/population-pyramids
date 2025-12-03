@@ -26,6 +26,16 @@ export const countryNeighbors: Record<string, string[]> = {
   'spain': ['france', 'portugal', 'italy', 'morocco'],
   'united-kingdom': ['ireland', 'france', 'netherlands', 'belgium', 'norway'],
   
+  // Nordic Countries
+  'finland': ['sweden', 'norway', 'estonia', 'russia'],
+  'sweden': ['norway', 'finland', 'denmark'],
+  'norway': ['sweden', 'finland', 'denmark'],
+  'denmark': ['sweden', 'norway', 'germany'],
+  'iceland': ['norway', 'denmark', 'united-kingdom'],
+  'estonia': ['finland', 'latvia', 'lithuania', 'russia'],
+  'latvia': ['estonia', 'lithuania', 'russia'],
+  'lithuania': ['latvia', 'estonia', 'poland', 'russia'],
+  
   // Asia
   'china': ['india', 'russia', 'mongolia', 'kazakhstan', 'japan'],
   'india': ['china', 'pakistan', 'bangladesh', 'nepal', 'sri-lanka'],
@@ -70,6 +80,7 @@ export const regionalGroups: Record<string, string[]> = {
   'sub-saharan-africa': ['nigeria', 'ethiopia', 'democratic-republic-of-the-congo', 'tanzania', 'south-africa', 'kenya', 'uganda', 'ghana', 'mozambique', 'madagascar'],
   'north-africa': ['egypt', 'algeria', 'sudan', 'morocco', 'tunisia', 'libya'],
   'western-europe': ['germany', 'france', 'united-kingdom', 'italy', 'spain', 'netherlands', 'belgium', 'greece', 'portugal', 'austria'],
+  'nordic-baltic': ['sweden', 'norway', 'denmark', 'finland', 'iceland', 'estonia', 'latvia', 'lithuania'],
   'eastern-europe': ['russia', 'poland', 'ukraine', 'romania', 'czech-republic', 'hungary', 'belarus', 'bulgaria', 'slovakia', 'croatia'],
   'east-asia': ['china', 'japan', 'south-korea', 'north-korea', 'mongolia'],
   'south-asia': ['india', 'pakistan', 'bangladesh', 'sri-lanka', 'nepal', 'afghanistan', 'bhutan', 'maldives'],

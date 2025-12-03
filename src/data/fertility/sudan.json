@@ -1,0 +1,87 @@
+{
+  "countryCode": "SDN",
+  "countryName": "Sudan",
+  "slug": "sudan",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 4.3
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 6.84,
+        "crudebirthRate": 38
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 6.986,
+        "crudebirthRate": 39
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 6.279,
+        "crudebirthRate": 37
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 6.074,
+        "crudebirthRate": 35
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 5.596,
+        "crudebirthRate": 32
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 5.397,
+        "crudebirthRate": 33
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 4.898,
+        "crudebirthRate": 29
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 4.542,
+        "crudebirthRate": 28
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 4.457,
+        "crudebirthRate": 26
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 4.384,
+        "crudebirthRate": 25
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 4.323,
+        "crudebirthRate": 25
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": null,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 146,
+      "totalCountries": 195
+    }
+  }
+}

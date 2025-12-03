@@ -61,20 +61,22 @@ export default function Stage2DemographicTransitionPage() {
         {
           label: 'Male',
           data: data.ageGroups.map((ag: any) => -ag.male).reverse(),
-          backgroundColor: color,
-          borderColor: color,
-          borderWidth: 0.5,
-          barPercentage: 1.0,
+          backgroundColor: 'rgba(59, 130, 246, 0.8)', // Blue for males
+          borderColor: 'rgba(59, 130, 246, 1)',
+          borderWidth: 0,
+          barPercentage: 0.95,
           categoryPercentage: 1.0,
+          barThickness: 'flex',
         },
         {
           label: 'Female',
           data: data.ageGroups.map((ag: any) => ag.female).reverse(),
-          backgroundColor: color.replace('0.8', '0.6'),
-          borderColor: color,
-          borderWidth: 0.5,
-          barPercentage: 1.0,
+          backgroundColor: 'rgba(236, 72, 153, 0.8)', // Pink for females
+          borderColor: 'rgba(236, 72, 153, 1)',
+          borderWidth: 0,
+          barPercentage: 0.95,
           categoryPercentage: 1.0,
+          barThickness: 'flex',
         }
       ],
       maxValue: maxValue
@@ -97,6 +99,9 @@ export default function Stage2DemographicTransitionPage() {
         callbacks: {
           label: function(context: any) {
             const value = Math.abs(context.parsed.x);
+            if (context.dataset.label?.includes('Surplus')) {
+              return `${context.dataset.label}: ${value.toLocaleString()}`;
+            }
             return `${context.dataset.label}: ${value.toLocaleString()}`;
           }
         }
@@ -147,7 +152,7 @@ export default function Stage2DemographicTransitionPage() {
 
         <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-8">
           <h3 className="text-xl font-bold mb-4 text-yellow-800">Stage 2 Key Characteristics</h3>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <h4 className="font-bold text-yellow-700 mb-2">Vital Statistics</h4>
               <ul className="text-yellow-700 space-y-1 text-sm">
@@ -179,7 +184,7 @@ export default function Stage2DemographicTransitionPage() {
           Stage 2 begins when death rates start declining significantly while birth rates remain high. This creates rapid population growth and the characteristic expanding pyramid shape. Several factors typically trigger this transition:
         </p>
 
-        <div className="grid md:grid-cols-3 gap-6 my-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
           <div className="bg-green-50 border border-green-200 rounded-lg p-6">
             <h3 className="text-lg font-bold text-green-800 mb-3">Medical Advances</h3>
             <ul className="text-green-700 space-y-1 text-sm">
@@ -218,7 +223,7 @@ export default function Stage2DemographicTransitionPage() {
           Today's Stage 2 countries are primarily in Sub-Saharan Africa and conflict-affected regions. These countries show the classic expanding pyramid pattern and face the opportunities and challenges of rapid population growth.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-8 my-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-12">
           {/* Kenya */}
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
             <h3 className="text-xl font-bold mb-4 text-yellow-800">1. Kenya: East African Success Story</h3>
@@ -324,7 +329,7 @@ export default function Stage2DemographicTransitionPage() {
 
         <h3 className="text-xl font-semibold mt-8 mb-4">Stage 2 vs Stage 1: The Death Rate Revolution</h3>
         <div className="bg-gradient-to-r from-yellow-50 to-red-50 border border-gray-200 rounded-lg p-6 mb-8">
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <h4 className="text-lg font-bold text-yellow-800 mb-3 text-center">Stage 2: Kenya</h4>
               <div className="h-80 bg-white p-3 rounded-lg border">
@@ -364,7 +369,7 @@ export default function Stage2DemographicTransitionPage() {
 
         <h3 className="text-xl font-semibold mt-8 mb-4">Stage 2 vs Stage 3: Birth Rates Begin to Decline</h3>
         <div className="bg-gradient-to-r from-yellow-50 to-green-50 border border-gray-200 rounded-lg p-6 mb-8">
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <h4 className="text-lg font-bold text-yellow-800 mb-3 text-center">Stage 2: Uganda</h4>
               <div className="h-80 bg-white p-3 rounded-lg border">
@@ -404,7 +409,7 @@ export default function Stage2DemographicTransitionPage() {
 
         <h3 className="text-xl font-semibold mt-8 mb-4">Stage 2 vs Stage 4: Complete Demographic Transition</h3>
         <div className="bg-gradient-to-r from-yellow-50 to-blue-50 border border-gray-200 rounded-lg p-6 mb-8">
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <h4 className="text-lg font-bold text-yellow-800 mb-3 text-center">Stage 2: Tanzania</h4>
               <div className="h-80 bg-white p-3 rounded-lg border">
@@ -444,7 +449,7 @@ export default function Stage2DemographicTransitionPage() {
 
         <h3 className="text-xl font-semibold mt-8 mb-4">Stage 2 vs Stage 5: Growth vs Decline Extremes</h3>
         <div className="bg-gradient-to-r from-yellow-50 to-purple-50 border border-gray-200 rounded-lg p-6 mb-8">
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <h4 className="text-lg font-bold text-yellow-800 mb-3 text-center">Stage 2: Afghanistan</h4>
               <div className="h-80 bg-white p-3 rounded-lg border">
@@ -490,7 +495,7 @@ export default function Stage2DemographicTransitionPage() {
 
         <div className="bg-orange-50 border border-orange-200 rounded-lg p-6 my-8">
           <h3 className="text-xl font-bold mb-4 text-orange-800">Historical Population Explosions</h3>
-          <div className="grid md:grid-cols-3 gap-6 text-sm">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
             <div>
               <h4 className="font-bold text-orange-700 mb-2">Europe 1750-1900</h4>
               <ul className="text-orange-600 space-y-1">
@@ -530,7 +535,7 @@ export default function Stage2DemographicTransitionPage() {
           While rapid population growth can fuel economic development, it also creates significant challenges that countries must address to successfully transition to Stage 3.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-8 my-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-8">
           <div className="bg-red-50 border border-red-200 rounded-lg p-6">
             <h3 className="text-lg font-bold text-red-800 mb-3">Challenges & Pressures</h3>
             <ul className="text-red-700 space-y-2 text-sm">
@@ -565,7 +570,7 @@ export default function Stage2DemographicTransitionPage() {
 
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 my-8">
           <h3 className="text-xl font-bold mb-4 text-blue-800">Stage 2 Policy Priorities</h3>
-          <div className="grid md:grid-cols-4 gap-6 text-sm">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-sm">
             <div>
               <h4 className="font-bold text-blue-700 mb-2">Education Investment</h4>
               <ul className="text-blue-600 space-y-1">
@@ -617,7 +622,7 @@ export default function Stage2DemographicTransitionPage() {
 
         <div className="bg-green-50 border border-green-200 rounded-lg p-6 my-8">
           <h3 className="text-xl font-bold mb-4 text-green-800">Stage 2 to Stage 3 Transition Triggers</h3>
-          <div className="grid md:grid-cols-3 gap-6 text-sm">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
             <div>
               <h4 className="font-bold text-green-700 mb-2">Economic Changes</h4>
               <ul className="text-green-600 space-y-1">
@@ -698,7 +703,7 @@ export default function Stage2DemographicTransitionPage() {
 
         <div className="mt-8 p-6 bg-gray-50 rounded-lg border">
           <h3 className="text-lg font-bold mb-3">Continue Your Demographic Journey</h3>
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Link href="/blog/stage-1-demographic-transition" className="text-blue-600 hover:text-blue-800 underline">
               ← Stage 1: High Stationary
             </Link>

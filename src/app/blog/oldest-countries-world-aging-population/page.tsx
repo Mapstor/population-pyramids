@@ -63,18 +63,24 @@ export default function OldestCountriesWorld() {
       labels: aggregatedAgeGroups.map((ag: any) => ag.ageRange).reverse(),
       datasets: [
         {
-          label: `${title} - Male`,
+          label: 'Male',
           data: aggregatedAgeGroups.map((ag: any) => -ag.male).reverse(),
-          backgroundColor: color,
-          borderColor: color,
-          borderWidth: 3,
+          backgroundColor: 'rgba(59, 130, 246, 0.8)', // Blue for males
+          borderColor: 'rgba(59, 130, 246, 1)',
+          borderWidth: 0,
+          barPercentage: 0.95,
+          categoryPercentage: 1.0,
+          barThickness: 'flex',
         },
         {
-          label: `${title} - Female`,
+          label: 'Female',
           data: aggregatedAgeGroups.map((ag: any) => ag.female).reverse(),
-          backgroundColor: color,
-          borderColor: color,
-          borderWidth: 3,
+          backgroundColor: 'rgba(236, 72, 153, 0.8)', // Pink for females
+          borderColor: 'rgba(236, 72, 153, 1)',
+          borderWidth: 0,
+          barPercentage: 0.95,
+          categoryPercentage: 1.0,
+          barThickness: 'flex',
         },
       ],
     };

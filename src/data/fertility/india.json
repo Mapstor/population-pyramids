@@ -1,0 +1,88 @@
+{
+  "countryCode": "IND",
+  "countryName": "India",
+  "slug": "india",
+  "fertilityData": {
+    "current": {
+      "year": 2023,
+      "totalFertilityRate": 1.975,
+      "crudebirthRate": 13
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 5.941,
+        "crudebirthRate": 35
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 5.624,
+        "crudebirthRate": 31
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 4.432,
+        "crudebirthRate": 27
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 4.045,
+        "crudebirthRate": 24
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 3.35,
+        "crudebirthRate": 19
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 2.958,
+        "crudebirthRate": 18
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 2.289,
+        "crudebirthRate": 14
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 2.047,
+        "crudebirthRate": 12
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 2.014,
+        "crudebirthRate": 13
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 1.994,
+        "crudebirthRate": 13
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 1.975,
+        "crudebirthRate": 13
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": 2020,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 174,
+      "totalCountries": 195
+    }
+  }
+}

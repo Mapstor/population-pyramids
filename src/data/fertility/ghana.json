@@ -1,0 +1,87 @@
+{
+  "countryCode": "GHA",
+  "countryName": "Ghana",
+  "slug": "ghana",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 3.40
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 6.88,
+        "crudebirthRate": 39
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 6.952,
+        "crudebirthRate": 39
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 6.119,
+        "crudebirthRate": 34
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 5.737,
+        "crudebirthRate": 34
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 4.827,
+        "crudebirthRate": 27
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 4.496,
+        "crudebirthRate": 26
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 3.982,
+        "crudebirthRate": 23
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 3.541,
+        "crudebirthRate": 22
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 3.492,
+        "crudebirthRate": 20
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 3.434,
+        "crudebirthRate": 20
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 3.397,
+        "crudebirthRate": 20
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": null,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 42,
+      "totalCountries": 195
+    }
+  }
+}

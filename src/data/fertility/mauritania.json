@@ -1,0 +1,87 @@
+{
+  "countryCode": "MRT",
+  "countryName": "Mauritania",
+  "slug": "mauritania",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 4.6
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 6.444,
+        "crudebirthRate": 37
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 6.677,
+        "crudebirthRate": 37
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 6.423,
+        "crudebirthRate": 38
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 6.175,
+        "crudebirthRate": 36
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 5.456,
+        "crudebirthRate": 32
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 5.376,
+        "crudebirthRate": 30
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 5.211,
+        "crudebirthRate": 30
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 4.912,
+        "crudebirthRate": 29
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 4.848,
+        "crudebirthRate": 28
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 4.77,
+        "crudebirthRate": 29
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 4.697,
+        "crudebirthRate": 27
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": null,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 13,
+      "totalCountries": 195
+    }
+  }
+}

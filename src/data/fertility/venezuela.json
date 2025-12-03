@@ -1,0 +1,87 @@
+{
+  "countryCode": "VEN",
+  "countryName": "Venezuela",
+  "slug": "venezuela",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 2.08
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 5.977,
+        "crudebirthRate": 35
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 5.321,
+        "crudebirthRate": 31
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 3.794,
+        "crudebirthRate": 22
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 3.448,
+        "crudebirthRate": 20
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 2.79,
+        "crudebirthRate": 16
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 2.629,
+        "crudebirthRate": 16
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 2.253,
+        "crudebirthRate": 13
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 2.116,
+        "crudebirthRate": 14
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 2.105,
+        "crudebirthRate": 13
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 2.088,
+        "crudebirthRate": 12
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 2.079,
+        "crudebirthRate": 13
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": 2022,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 15,
+      "totalCountries": 195
+    }
+  }
+}

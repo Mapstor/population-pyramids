@@ -1,0 +1,87 @@
+{
+  "countryCode": "ARM",
+  "countryName": "Armenia",
+  "slug": "armenia",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 1.9
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 3.988,
+        "crudebirthRate": 24
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 3.328,
+        "crudebirthRate": 21
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 2.644,
+        "crudebirthRate": 16
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 2.708,
+        "crudebirthRate": 17
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 1.3,
+        "crudebirthRate": 9
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 1.3,
+        "crudebirthRate": 9
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 1.6,
+        "crudebirthRate": 10
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 1.7,
+        "crudebirthRate": 10
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 1.7,
+        "crudebirthRate": 10
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 1.7,
+        "crudebirthRate": 12
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 1.9,
+        "crudebirthRate": 11
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": 2000,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 43,
+      "totalCountries": 195
+    }
+  }
+}

@@ -47,20 +47,22 @@ export default function FourVsFiveStagesPage() {
         {
           label: 'Male',
           data: data.ageGroups.map((ag: any) => -ag.male).reverse(),
-          backgroundColor: color,
-          borderColor: color,
-          borderWidth: 0.5,
-          barPercentage: 1.0,
+          backgroundColor: 'rgba(59, 130, 246, 0.8)', // Blue for males
+          borderColor: 'rgba(59, 130, 246, 1)',
+          borderWidth: 0,
+          barPercentage: 0.95,
           categoryPercentage: 1.0,
+          barThickness: 'flex',
         },
         {
           label: 'Female',
           data: data.ageGroups.map((ag: any) => ag.female).reverse(),
-          backgroundColor: color.replace('0.8', '0.6'),
-          borderColor: color,
-          borderWidth: 0.5,
-          barPercentage: 1.0,
+          backgroundColor: 'rgba(236, 72, 153, 0.8)', // Pink for females
+          borderColor: 'rgba(236, 72, 153, 1)',
+          borderWidth: 0,
+          barPercentage: 0.95,
           categoryPercentage: 1.0,
+          barThickness: 'flex',
         }
       ],
       maxValue: maxValue

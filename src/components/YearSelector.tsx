@@ -87,7 +87,7 @@ export default function YearSelector({
       </div>
 
       <div className="mt-4 flex flex-wrap gap-2">
-        {[2024, 2020, 2010, 2000, 1990, 1980, 1970].map(quickYear => (
+        {[2025, 2020, 2010, 2000, 1990, 1980, 1950].map(quickYear => (
           availableYears.includes(quickYear) && (
             <button
               key={quickYear}

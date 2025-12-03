@@ -1,0 +1,87 @@
+{
+  "countryCode": "WSM",
+  "countryName": "Samoa",
+  "slug": "samoa",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 3.8
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 7.653,
+        "crudebirthRate": 44
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 7.338,
+        "crudebirthRate": 42
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 5.489,
+        "crudebirthRate": 32
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 5.007,
+        "crudebirthRate": 28
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 4.523,
+        "crudebirthRate": 26
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 4.322,
+        "crudebirthRate": 24
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 4.344,
+        "crudebirthRate": 26
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 4.002,
+        "crudebirthRate": 22
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 3.94,
+        "crudebirthRate": 23
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 3.883,
+        "crudebirthRate": 22
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 3.829,
+        "crudebirthRate": 22
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": null,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 73,
+      "totalCountries": 195
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "countryCode": "CIV",
+  "countryName": "Côte d'Ivoire",
+  "slug": "cote-divoire",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 4.3
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 7.841,
+        "crudebirthRate": 45
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 7.936,
+        "crudebirthRate": 44
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 7.273,
+        "crudebirthRate": 41
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 6.719,
+        "crudebirthRate": 37
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 5.773,
+        "crudebirthRate": 33
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 5.499,
+        "crudebirthRate": 31
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 4.97,
+        "crudebirthRate": 30
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 4.461,
+        "crudebirthRate": 26
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 4.411,
+        "crudebirthRate": 25
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 4.349,
+        "crudebirthRate": 25
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 4.283,
+        "crudebirthRate": 25
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": null,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 190,
+      "totalCountries": 195
+    }
+  }
+}

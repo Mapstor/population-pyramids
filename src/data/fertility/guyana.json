@@ -1,0 +1,87 @@
+{
+  "countryCode": "GUY",
+  "countryName": "Guyana",
+  "slug": "guyana",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 2.4
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 6.135,
+        "crudebirthRate": 34
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 5.411,
+        "crudebirthRate": 30
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 3.47,
+        "crudebirthRate": 21
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 3.181,
+        "crudebirthRate": 18
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 3.057,
+        "crudebirthRate": 19
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 2.648,
+        "crudebirthRate": 17
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 2.667,
+        "crudebirthRate": 17
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 2.491,
+        "crudebirthRate": 15
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 2.462,
+        "crudebirthRate": 14
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 2.437,
+        "crudebirthRate": 16
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 2.412,
+        "crudebirthRate": 14
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": null,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 192,
+      "totalCountries": 195
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "countryCode": "SYC",
+  "countryName": "Seychelles",
+  "slug": "seychelles",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 2.0
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 5.716,
+        "crudebirthRate": 34
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 5.307,
+        "crudebirthRate": 31
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 3.091,
+        "crudebirthRate": 18
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 2.607,
+        "crudebirthRate": 16
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 2.08,
+        "crudebirthRate": 12
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 2.2,
+        "crudebirthRate": 14
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 2.31,
+        "crudebirthRate": 13
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 2.29,
+        "crudebirthRate": 13
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 2.46,
+        "crudebirthRate": 16
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 2.01,
+        "crudebirthRate": 11
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 2.02,
+        "crudebirthRate": 13
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": 2022,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 121,
+      "totalCountries": 195
+    }
+  }
+}

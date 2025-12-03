@@ -1,0 +1,87 @@
+{
+  "countryCode": "ARG",
+  "countryName": "Argentina",
+  "slug": "argentina",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 1.50
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 3.005,
+        "crudebirthRate": 18
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 3.085,
+        "crudebirthRate": 17
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 3.066,
+        "crudebirthRate": 18
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 3.034,
+        "crudebirthRate": 17
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 2.591,
+        "crudebirthRate": 15
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 2.426,
+        "crudebirthRate": 14
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 2.35,
+        "crudebirthRate": 15
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 1.601,
+        "crudebirthRate": 12
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 1.585,
+        "crudebirthRate": 10
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 1.482,
+        "crudebirthRate": 10
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 1.5,
+        "crudebirthRate": 11
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": 2020,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 52,
+      "totalCountries": 195
+    }
+  }
+}

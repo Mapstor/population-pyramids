@@ -1,0 +1,87 @@
+{
+  "countryCode": "MKD",
+  "countryName": "North Macedonia",
+  "slug": "north-macedonia",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 1.5
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 3.516,
+        "crudebirthRate": 22
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 3.012,
+        "crudebirthRate": 19
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 2.252,
+        "crudebirthRate": 15
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 2.269,
+        "crudebirthRate": 15
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 1.863,
+        "crudebirthRate": 12
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 1.5,
+        "crudebirthRate": 11
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 1.49,
+        "crudebirthRate": 9
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 1.31,
+        "crudebirthRate": 10
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 1.6,
+        "crudebirthRate": 9
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 1.6,
+        "crudebirthRate": 12
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 1.5,
+        "crudebirthRate": 11
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": 2000,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 70,
+      "totalCountries": 195
+    }
+  }
+}

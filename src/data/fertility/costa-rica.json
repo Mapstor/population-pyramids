@@ -1,0 +1,87 @@
+{
+  "countryCode": "CRI",
+  "countryName": "Costa Rica",
+  "slug": "costa-rica",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 1.31
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 5.96,
+        "crudebirthRate": 34
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 4.585,
+        "crudebirthRate": 28
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 3.511,
+        "crudebirthRate": 20
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 3.167,
+        "crudebirthRate": 19
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 2.413,
+        "crudebirthRate": 15
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 2.038,
+        "crudebirthRate": 13
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 1.797,
+        "crudebirthRate": 11
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 1.448,
+        "crudebirthRate": 10
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 1.353,
+        "crudebirthRate": 9
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 1.335,
+        "crudebirthRate": 9
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 1.33,
+        "crudebirthRate": 8
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": 2005,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 48,
+      "totalCountries": 195
+    }
+  }
+}

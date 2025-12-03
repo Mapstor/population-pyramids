@@ -117,6 +117,18 @@ export default function TimelinePyramid({
       legend: {
         display: true,
         position: 'top',
+        align: 'center',
+        usePointStyle: true,
+        labels: {
+          padding: 20,
+          boxWidth: 12,
+          boxHeight: 12,
+          useBorderRadius: true,
+          borderRadius: 6
+        },
+        // Force center alignment with custom positioning
+        maxWidth: undefined,
+        fullSize: false
       },
       title: {
         display: false,
@@ -177,9 +189,20 @@ export default function TimelinePyramid({
       </div>
 
       {/* Chart */}
-      <div style={{ height: `${height}px` }} className="bg-white rounded-lg mb-4">
+      <div style={{ height: `${height}px` }} className="bg-white rounded-lg mb-4 timeline-pyramid-container">
         <Bar data={chartData} options={options} />
       </div>
+      <style jsx>{`
+        .timeline-pyramid-container :global(.chartjs-legend) {
+          justify-content: center !important;
+          display: flex !important;
+        }
+        .timeline-pyramid-container :global(.chartjs-legend ul) {
+          margin: 0 auto !important;
+          display: flex !important;
+          justify-content: center !important;
+        }
+      `}</style>
 
       {/* Controls */}
       <div className="space-y-4">
@@ -228,7 +251,7 @@ export default function TimelinePyramid({
 
         {/* Quick Jump Buttons */}
         <div className="flex flex-wrap gap-2 justify-center">
-          {[minYear, 1980, 1990, 2000, 2010, 2020, maxYear].map(year => (
+          {[1950, 1980, 1990, 2000, 2010, 2020, 2025].map(year => (
             availableYears.includes(year) && (
               <button
                 key={year}

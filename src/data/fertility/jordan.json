@@ -1,0 +1,87 @@
+{
+  "countryCode": "JOR",
+  "countryName": "Jordan",
+  "slug": "jordan",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 2.64
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 7.932,
+        "crudebirthRate": 44
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 8.181,
+        "crudebirthRate": 46
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 6.534,
+        "crudebirthRate": 38
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 5.544,
+        "crudebirthRate": 31
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 3.864,
+        "crudebirthRate": 24
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 3.653,
+        "crudebirthRate": 22
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 3.141,
+        "crudebirthRate": 20
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 2.791,
+        "crudebirthRate": 17
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 2.735,
+        "crudebirthRate": 16
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 2.679,
+        "crudebirthRate": 17
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 2.639,
+        "crudebirthRate": 16
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": null,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 125,
+      "totalCountries": 195
+    }
+  }
+}

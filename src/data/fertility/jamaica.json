@@ -1,0 +1,87 @@
+{
+  "countryCode": "JAM",
+  "countryName": "Jamaica",
+  "slug": "jamaica",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 1.4
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 5.719,
+        "crudebirthRate": 34
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 5.349,
+        "crudebirthRate": 32
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 3.212,
+        "crudebirthRate": 18
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 2.955,
+        "crudebirthRate": 17
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 2.345,
+        "crudebirthRate": 15
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 2.148,
+        "crudebirthRate": 13
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 1.508,
+        "crudebirthRate": 9
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 1.383,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 1.378,
+        "crudebirthRate": 10
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 1.372,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 1.358,
+        "crudebirthRate": 8
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": 2015,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 3,
+      "totalCountries": 195
+    }
+  }
+}

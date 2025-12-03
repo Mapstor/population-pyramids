@@ -343,7 +343,7 @@ export default async function StatePage({ params }: StatePageProps) {
                     relatedArticles.push({
                       title: "15 Fastest Growing States in 2024",
                       description: `${stateData.stateName} ranks among America's fastest-growing states, attracting thousands with its economic opportunities and lifestyle benefits.`,
-                      link: "/blog/15-fastest-growing-states-2024"
+                      link: "/blog/fastest-growing-states"
                     });
                   }
                   
@@ -353,7 +353,7 @@ export default async function StatePage({ params }: StatePageProps) {
                     relatedArticles.push({
                       title: "10 States People Are Fleeing in 2024",
                       description: `Discover why residents are leaving ${stateData.stateName} and where they're heading in the great American migration.`,
-                      link: "/blog/10-states-people-fleeing-2024"
+                      link: "/blog/states-people-fleeing"
                     });
                   }
                   
@@ -363,7 +363,7 @@ export default async function StatePage({ params }: StatePageProps) {
                     relatedArticles.push({
                       title: "Best States to Retire 2025",
                       description: `See why ${stateData.stateName} is attracting retirees with its tax advantages, climate, and cost of living benefits.`,
-                      link: "/blog/best-states-retire-2025"
+                      link: "/blog/best-states-retire"
                     });
                   }
                   
@@ -406,12 +406,12 @@ export default async function StatePage({ params }: StatePageProps) {
                     relatedArticles.push({
                       title: "15 Fastest Growing States in 2024",
                       description: "Discover which states are experiencing explosive growth and how your state compares in the national migration patterns.",
-                      link: "/blog/15-fastest-growing-states-2024"
+                      link: "/blog/fastest-growing-states"
                     });
                     relatedArticles.push({
                       title: "Best States to Retire 2025",
                       description: "Compare retirement destinations across America based on taxes, healthcare, climate, and cost of living.",
-                      link: "/blog/best-states-retire-2025"
+                      link: "/blog/best-states-retire"
                     });
                   }
                   

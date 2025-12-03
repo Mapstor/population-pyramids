@@ -86,19 +86,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       
       // US States Articles
       {
-        url: `${baseUrl}/blog/15-fastest-growing-states-2024`,
+        url: `${baseUrl}/blog/fastest-growing-states`,
         lastModified: new Date('2024-11-11'),
         changeFrequency: 'weekly' as const,
         priority: 0.8,
       },
       {
-        url: `${baseUrl}/blog/10-states-people-fleeing-2024`,
+        url: `${baseUrl}/blog/states-people-fleeing`,
         lastModified: new Date('2024-11-11'),
         changeFrequency: 'weekly' as const,
         priority: 0.8,
       },
       {
-        url: `${baseUrl}/blog/best-states-retire-2025`,
+        url: `${baseUrl}/blog/best-states-retire`,
         lastModified: new Date('2024-11-11'),
         changeFrequency: 'weekly' as const,
         priority: 0.8,
@@ -154,7 +154,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.9,
       },
       {
-        url: `${baseUrl}/blog/africa-population-explosion-2024`,
+        url: `${baseUrl}/blog/africa-population-explosion`,
         lastModified: new Date('2024-11-10'),
         changeFrequency: 'weekly' as const,
         priority: 0.8,
@@ -227,6 +227,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       },
     ];
 
+    // Comparison pages - all 16 country comparisons
+    const comparisonPages = [
+      'china-vs-india',
+      'usa-vs-china', 
+      'usa-vs-india',
+      'usa-vs-russia',
+      'usa-vs-brazil',
+      'usa-vs-indonesia',
+      'india-vs-indonesia',
+      'india-vs-brazil',
+      'china-vs-brazil',
+      'usa-vs-mexico',
+      'usa-vs-uk',
+      'uk-vs-germany',
+      'uk-vs-france',
+      'japan-vs-germany',
+      'india-vs-pakistan',
+      'india-vs-bangladesh'
+    ].map((comparison) => ({
+      url: `${baseUrl}/compare/${comparison}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    }));
+
     // Dynamic country pages
     const countryPages = countries.map((country) => ({
       url: `${baseUrl}/${country.slug}`,
@@ -243,7 +268,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     }));
 
-    return [...staticPages, ...blogArticles, ...countryPages, ...statePages];
+    return [...staticPages, ...blogArticles, ...comparisonPages, ...countryPages, ...statePages];
   } catch (error) {
     console.error('Error generating sitemap:', error);
     

@@ -1,0 +1,87 @@
+{
+  "countryCode": "ERI",
+  "countryName": "Eritrea",
+  "slug": "eritrea",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 3.7
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 6.494,
+        "crudebirthRate": 36
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 6.541,
+        "crudebirthRate": 39
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 6.587,
+        "crudebirthRate": 38
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 6.338,
+        "crudebirthRate": 35
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 5.397,
+        "crudebirthRate": 30
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 4.934,
+        "crudebirthRate": 28
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 4.217,
+        "crudebirthRate": 25
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 3.933,
+        "crudebirthRate": 23
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 3.867,
+        "crudebirthRate": 22
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 3.786,
+        "crudebirthRate": 21
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 3.713,
+        "crudebirthRate": 23
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": null,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 20,
+      "totalCountries": 195
+    }
+  }
+}

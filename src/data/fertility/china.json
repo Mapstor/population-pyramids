@@ -1,0 +1,87 @@
+{
+  "countryCode": "CHN",
+  "countryName": "China",
+  "slug": "china",
+  "fertilityData": {
+    "current": {
+      "year": 2024,
+      "totalFertilityRate": 1.0
+    },
+    "historical": [
+      {
+        "year": 1965,
+        "totalFertilityRate": 6.605,
+        "crudebirthRate": 39
+      },
+      {
+        "year": 1970,
+        "totalFertilityRate": 6.085,
+        "crudebirthRate": 34
+      },
+      {
+        "year": 1985,
+        "totalFertilityRate": 2.633,
+        "crudebirthRate": 17
+      },
+      {
+        "year": 1990,
+        "totalFertilityRate": 2.514,
+        "crudebirthRate": 16
+      },
+      {
+        "year": 2000,
+        "totalFertilityRate": 1.628,
+        "crudebirthRate": 11
+      },
+      {
+        "year": 2005,
+        "totalFertilityRate": 1.624,
+        "crudebirthRate": 12
+      },
+      {
+        "year": 2015,
+        "totalFertilityRate": 1.67,
+        "crudebirthRate": 9
+      },
+      {
+        "year": 2020,
+        "totalFertilityRate": 1.236,
+        "crudebirthRate": 9
+      },
+      {
+        "year": 2021,
+        "totalFertilityRate": 1.117,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2022,
+        "totalFertilityRate": 1.034,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2023,
+        "totalFertilityRate": 0.999,
+        "crudebirthRate": 7
+      }
+    ],
+    "projections": [
+      {
+        "year": 2030,
+        "totalFertilityRate": 1,
+        "crudebirthRate": 8
+      },
+      {
+        "year": 2050,
+        "totalFertilityRate": 0.8,
+        "crudebirthRate": 6
+      }
+    ],
+    "replacementLevel": 2.1,
+    "belowReplacementSince": 2000,
+    "worldComparison": {
+      "worldAverage": 2.3,
+      "rank": 72,
+      "totalCountries": 195
+    }
+  }
+}
