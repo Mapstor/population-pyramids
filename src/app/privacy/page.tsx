@@ -88,6 +88,23 @@ export default function PrivacyPage() {
             </section>
 
             <section>
+              <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-3 sm:mb-4">Advertising</h2>
+              <p>
+                This Site is affiliated with CMI Marketing, Inc., d/b/a Raptive ("Raptive") for the purposes 
+                of placing advertising on the Site, and Raptive will collect and use certain data for advertising 
+                purposes. To learn more about Raptive's data usage, click here:{' '}
+                <a 
+                  href="https://raptive.com/creator-advertising-privacy-statement/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  https://raptive.com/creator-advertising-privacy-statement/
+                </a>
+              </p>
+            </section>
+
+            <section>
               <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-3 sm:mb-4">Information Sharing and Disclosure</h2>
               <p>
                 We do not sell, trade, rent, or otherwise transfer your information to third parties. 
