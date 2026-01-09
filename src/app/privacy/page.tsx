@@ -90,7 +90,7 @@ export default function PrivacyPage() {
             <section>
               <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-3 sm:mb-4">Advertising</h2>
               <p>
-                This Site is affiliated with CMI Marketing, Inc., d/b/a Raptive ("Raptive") for the purposes 
+                CMI Marketing, Inc., d/b/a Raptive ("Raptive") is a service provider of this Site for the purposes 
                 of placing advertising on the Site, and Raptive will collect and use certain data for advertising 
                 purposes. To learn more about Raptive's data usage, click here:{' '}
                 <a 
