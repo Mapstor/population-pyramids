@@ -137,7 +137,11 @@ export async function getCountriesWithPopulationChange(): Promise<Array<{
       const countryData = await import(`@/data/population/${country.slug}.json`);
       const data = countryData.default as CountryPopulationData;
       
-      const pop2024 = data.years['2024']?.totalPopulation || 0;
+      // Special handling for Vatican City which only has 2023 data
+      const latestYearData = country.slug === 'vatican-city' ? data.years['2023'] : data.years['2024'];
+      const latestYear = country.slug === 'vatican-city' ? 2023 : 2024;
+      
+      const pop2024 = latestYearData?.totalPopulation || 0;
       const pop2000 = data.years['2000']?.totalPopulation || 0;
       const pop1990 = data.years['1990']?.totalPopulation || 0;
       
@@ -145,12 +149,12 @@ export async function getCountriesWithPopulationChange(): Promise<Array<{
       const populationChangePercent = pop2000 > 0 ? ((pop2024 - pop2000) / pop2000) * 100 : 0;
       
       // Median age data
-      const medianAge2024 = data.years['2024']?.medianAge || 0;
+      const medianAge2024 = latestYearData?.medianAge || 0;
       const medianAge2000 = data.years['2000']?.medianAge || 0;
       const medianAgeChange = medianAge2024 - medianAge2000;
       
-      // Calculate age structure percentages for 2024
-      const data2024 = data.years['2024'];
+      // Calculate age structure percentages for latest year
+      const data2024 = latestYearData;
       let youthPercent2024 = 0;
       let elderlyPercent2024 = 0;
       let dependencyRatio2024 = 0;

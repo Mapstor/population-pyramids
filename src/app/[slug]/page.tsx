@@ -1678,6 +1678,11 @@ export default async function CountryPage({ params }: CountryPageProps) {
       </div>
     );
   } catch (error) {
-    notFound();
+    // Only return 404 for actual "country not found" errors
+    if (error instanceof Error && error.message.includes('Country data not found')) {
+      notFound();
+    }
+    // For other errors, throw them so we can see what went wrong
+    throw error;
   }
 }

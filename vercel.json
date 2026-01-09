@@ -3,5 +3,12 @@
   "buildCommand": "rm -rf .next && npm run build",
   "env": {
     "NODE_OPTIONS": "--max-old-space-size=8192"
-  }
+  },
+  "redirects": [
+    {
+      "source": "/ads.txt",
+      "destination": "https://ads.adthrive.com/sites/6945a10f5d76f536610a0994/ads.txt",
+      "statusCode": 301
+    }
+  ]
 }
