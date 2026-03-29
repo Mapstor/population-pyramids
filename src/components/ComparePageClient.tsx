@@ -45,6 +45,9 @@ export default function ComparePageClient({ countries }: ComparePageClientProps)
   const handleCompare = async () => {
     if (selectedCountry1 && selectedCountry2) {
       setLoading(true);
+      setShowComparison(false);
+      setComparisonData(null);
+      
       try {
         // Load data for both countries
         const [data1, data2] = await Promise.all([
@@ -52,28 +55,41 @@ export default function ComparePageClient({ countries }: ComparePageClientProps)
           loadCountryData(selectedCountry2)
         ]);
         
-        if (data1 && data2) {
+        if (data1 && data2 && data1.years && data2.years) {
           // Get 2024 data for comparison
           const year2024_1 = data1.years['2024'];
           const year2024_2 = data2.years['2024'];
           
-          const metrics1 = calculateMetrics(year2024_1);
-          const metrics2 = calculateMetrics(year2024_2);
-          
-          setComparisonData({
-            country1: countries.find(c => c.slug === selectedCountry1),
-            country2: countries.find(c => c.slug === selectedCountry2),
-            data1: year2024_1,
-            data2: year2024_2,
-            metrics1,
-            metrics2,
-            populationData1: data1,
-            populationData2: data2
-          });
-          setShowComparison(true);
+          // Validate the data has required fields
+          if (year2024_1 && year2024_2 && 
+              year2024_1.ageGroups && year2024_2.ageGroups &&
+              year2024_1.totalPopulation && year2024_2.totalPopulation) {
+            
+            const metrics1 = calculateMetrics(year2024_1);
+            const metrics2 = calculateMetrics(year2024_2);
+            
+            setComparisonData({
+              country1: countries.find(c => c.slug === selectedCountry1),
+              country2: countries.find(c => c.slug === selectedCountry2),
+              data1: year2024_1,
+              data2: year2024_2,
+              metrics1,
+              metrics2,
+              populationData1: data1,
+              populationData2: data2
+            });
+            setShowComparison(true);
+          } else {
+            console.error('Invalid data structure for one or both countries');
+            alert('Unable to load comparison data. Please try different countries.');
+          }
+        } else {
+          console.error('Failed to load data for one or both countries');
+          alert('Unable to load country data. Please try again.');
         }
       } catch (error) {
         console.error('Error loading comparison data:', error);
+        alert('An error occurred while loading the comparison. Please try again.');
       } finally {
         setLoading(false);
       }
@@ -292,8 +308,8 @@ export default function ComparePageClient({ countries }: ComparePageClientProps)
             <div className="bg-white rounded-xl shadow-lg p-6">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Population Pyramids Comparison</h3>
               <SideBySidePyramids
-                data1={comparisonData.data1}
-                data2={comparisonData.data2}
+                country1Data={comparisonData.data1}
+                country2Data={comparisonData.data2}
                 country1Name={comparisonData.country1.name}
                 country2Name={comparisonData.country2.name}
                 year="2024"
