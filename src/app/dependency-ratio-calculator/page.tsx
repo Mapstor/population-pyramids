@@ -459,7 +459,7 @@ function DependencyCalculator() {
               {/* Results */}
               {customCalculations && (
                 <div className="space-y-6">
-                  <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-200">
+                  <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-4 sm:p-6 border border-blue-200">
                     <h3 className="font-bold text-lg mb-4">📊 Calculated Dependency Ratios</h3>
                     <div className="grid md:grid-cols-3 gap-4 mb-6">
                       <div className="bg-white p-4 rounded-lg shadow-sm">
@@ -512,7 +512,7 @@ function DependencyCalculator() {
                   {/* Visual Analysis for Custom Calculation */}
                   <div className="grid lg:grid-cols-2 gap-6 mt-6">
                     {/* Bar Chart Comparison */}
-                    <div className="bg-white border border-gray-200 rounded-xl p-6">
+                    <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-6">
                       <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
                         <span className="text-2xl">📊</span> Dependency Ratio Breakdown
                       </h3>
@@ -566,12 +566,12 @@ function DependencyCalculator() {
                     </div>
 
                     {/* Detailed Analysis Table */}
-                    <div className="bg-white border border-gray-200 rounded-xl p-6">
+                    <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-6">
                       <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
                         <span className="text-2xl">📋</span> Detailed Analysis
                       </h3>
-                      <div className="overflow-hidden">
-                        <table className="w-full text-sm">
+                      <div className="overflow-x-auto -mx-6 px-6">
+                        <table className="min-w-full text-sm">
                           <thead>
                             <tr className="border-b border-gray-200">
                               <th className="text-left py-3 px-2 font-semibold text-gray-700">Metric</th>
@@ -670,7 +670,7 @@ function DependencyCalculator() {
               {countryData && (
                 <div className="space-y-6">
                   {/* Country Header */}
-                  <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl p-6">
+                  <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl p-4 sm:p-6">
                     <h3 className="text-2xl font-bold mb-2">
                       {getCountryFlag(countryData.country.code)} {countryData.country.name}
                     </h3>
@@ -683,7 +683,7 @@ function DependencyCalculator() {
 
                   {/* Main Metrics */}
                   <div className="grid md:grid-cols-3 gap-4">
-                    <div className="bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-blue-200 p-6 rounded-xl">
+                    <div className="bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-blue-200 p-4 sm:p-6 rounded-xl">
                       <h3 className="font-semibold text-gray-700 mb-2 flex items-center gap-2">
                         <span className="text-2xl">📊</span> Total Dependency Ratio
                       </h3>
@@ -704,7 +704,7 @@ function DependencyCalculator() {
                         </p>
                       </div>
                     </div>
-                    <div className="bg-gradient-to-br from-green-50 to-green-100 border-2 border-green-200 p-6 rounded-xl">
+                    <div className="bg-gradient-to-br from-green-50 to-green-100 border-2 border-green-200 p-4 sm:p-6 rounded-xl">
                       <h3 className="font-semibold text-gray-700 mb-2 flex items-center gap-2">
                         <span className="text-2xl">👶</span> Youth Dependency Ratio
                       </h3>
@@ -723,7 +723,7 @@ function DependencyCalculator() {
                         </p>
                       </div>
                     </div>
-                    <div className="bg-gradient-to-br from-orange-50 to-orange-100 border-2 border-orange-200 p-6 rounded-xl">
+                    <div className="bg-gradient-to-br from-orange-50 to-orange-100 border-2 border-orange-200 p-4 sm:p-6 rounded-xl">
                       <h3 className="font-semibold text-gray-700 mb-2 flex items-center gap-2">
                         <span className="text-2xl">👴</span> Old-Age Dependency Ratio
                       </h3>
@@ -747,7 +747,7 @@ function DependencyCalculator() {
                   {/* Population Visualization & Detailed Metrics Table */}
                   <div className="grid lg:grid-cols-2 gap-6">
                     {/* Donut Chart for Population Breakdown */}
-                    <div className="bg-white border border-gray-200 rounded-xl p-6">
+                    <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-6">
                       <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
                         <span className="text-2xl">📊</span> Population Distribution
                       </h3>
@@ -801,12 +801,12 @@ function DependencyCalculator() {
                     </div>
 
                     {/* Detailed Metrics Table */}
-                    <div className="bg-white border border-gray-200 rounded-xl p-6">
+                    <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-6">
                       <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
                         <span className="text-2xl">📋</span> Detailed Metrics Summary
                       </h3>
-                      <div className="overflow-hidden">
-                        <table className="w-full text-sm">
+                      <div className="overflow-x-auto -mx-6 px-6">
+                        <table className="min-w-full text-sm">
                           <thead>
                             <tr className="border-b border-gray-200">
                               <th className="text-left py-3 px-2 font-semibold text-gray-700">Metric</th>
@@ -1126,8 +1126,8 @@ function DependencyCalculator() {
                     <h3 className="font-bold text-xl mb-6 flex items-center gap-2">
                       <span className="text-2xl">🔄</span> Detailed Comparison
                     </h3>
-                    <div className="overflow-x-auto">
-                      <table className="w-full text-sm">
+                    <div className="overflow-x-auto -mx-6 px-6">
+                      <table className="min-w-full text-sm">
                         <thead>
                           <tr className="border-b-2 border-gray-200">
                             <th className="text-left py-4 px-3 font-semibold text-gray-700">Metric</th>
@@ -1230,7 +1230,7 @@ function DependencyCalculator() {
                   {/* Visual Comparison Charts */}
                   <div className="grid lg:grid-cols-2 gap-6">
                     {/* Side-by-Side Bar Chart */}
-                    <div className="bg-white border border-gray-200 rounded-xl p-6">
+                    <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-6">
                       <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
                         <span className="text-2xl">📊</span> Dependency Ratio Comparison
                       </h3>
@@ -1285,7 +1285,7 @@ function DependencyCalculator() {
                     </div>
 
                     {/* Population Structure Comparison */}
-                    <div className="bg-white border border-gray-200 rounded-xl p-6">
+                    <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-6">
                       <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
                         <span className="text-2xl">🎂</span> Population Structure
                       </h3>
