@@ -1,11 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isToolsDropdownOpen, setIsToolsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
   const isActivePage = (path: string) => {
@@ -13,6 +15,25 @@ export default function Header() {
     if (path !== '/' && pathname.startsWith(path)) return true;
     return false;
   };
+
+  const isToolsActive = () => {
+    const toolPaths = ['/compare', '/dependency-ratio-calculator', '/generation-age-ranges-calculator', '/population-growth-rate-calculator'];
+    return toolPaths.some(path => pathname.startsWith(path));
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsToolsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -77,16 +98,80 @@ export default function Header() {
             >
               Blog
             </Link>
-            <Link 
-              href="/compare" 
-              className={`px-5 py-2.5 text-sm font-semibold rounded-full transition-all duration-200 ${
-                isActivePage('/compare') 
-                  ? 'bg-blue-600 text-white shadow-md' 
-                  : 'text-gray-700 hover:text-blue-600 hover:bg-white hover:shadow-sm'
-              }`}
-            >
-              Compare
-            </Link>
+            {/* Tools Dropdown */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setIsToolsDropdownOpen(!isToolsDropdownOpen)}
+                className={`px-5 py-2.5 text-sm font-semibold rounded-full transition-all duration-200 flex items-center gap-1 ${
+                  isToolsActive() 
+                    ? 'bg-blue-600 text-white shadow-md' 
+                    : 'text-gray-700 hover:text-blue-600 hover:bg-white hover:shadow-sm'
+                }`}
+              >
+                Tools
+                <svg 
+                  className={`w-4 h-4 transition-transform ${isToolsDropdownOpen ? 'rotate-180' : ''}`} 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              
+              {isToolsDropdownOpen && (
+                <div className="absolute top-full mt-2 w-72 bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden z-50">
+                  <Link
+                    href="/compare"
+                    className="block px-4 py-3 hover:bg-blue-50 transition-colors border-b border-gray-100"
+                    onClick={() => setIsToolsDropdownOpen(false)}
+                  >
+                    <div className="font-semibold text-gray-900">🔄 Compare Countries</div>
+                    <div className="text-xs text-gray-600 mt-1">Side-by-side population pyramid comparison</div>
+                  </Link>
+                  <Link
+                    href="/population-growth-rate-calculator"
+                    className="block px-4 py-3 hover:bg-blue-50 transition-colors border-b border-gray-100"
+                    onClick={() => setIsToolsDropdownOpen(false)}
+                  >
+                    <div className="font-semibold text-gray-900">📈 Growth Rate Calculator</div>
+                    <div className="text-xs text-gray-600 mt-1">Calculate population growth rates by country</div>
+                  </Link>
+                  <Link
+                    href="/dependency-ratio-calculator"
+                    className="block px-4 py-3 hover:bg-blue-50 transition-colors border-b border-gray-100"
+                    onClick={() => setIsToolsDropdownOpen(false)}
+                  >
+                    <div className="font-semibold text-gray-900">👥 Dependency Ratio Calculator</div>
+                    <div className="text-xs text-gray-600 mt-1">Analyze age dependency ratios</div>
+                  </Link>
+                  <Link
+                    href="/generation-age-ranges-calculator"
+                    className="block px-4 py-3 hover:bg-blue-50 transition-colors border-b border-gray-100"
+                    onClick={() => setIsToolsDropdownOpen(false)}
+                  >
+                    <div className="font-semibold text-gray-900">🎯 Generation Age Ranges</div>
+                    <div className="text-xs text-gray-600 mt-1">Find generational cohort age ranges</div>
+                  </Link>
+                  <Link
+                    href="/male-to-female-ratio"
+                    className="block px-4 py-3 hover:bg-blue-50 transition-colors border-b border-gray-100"
+                    onClick={() => setIsToolsDropdownOpen(false)}
+                  >
+                    <div className="font-semibold text-gray-900">⚖️ Gender Ratio Calculator</div>
+                    <div className="text-xs text-gray-600 mt-1">Male to female ratio by country</div>
+                  </Link>
+                  <Link
+                    href="/median-age-by-country"
+                    className="block px-4 py-3 hover:bg-blue-50 transition-colors"
+                    onClick={() => setIsToolsDropdownOpen(false)}
+                  >
+                    <div className="font-semibold text-gray-900">🌐 Median Age Explorer</div>
+                    <div className="text-xs text-gray-600 mt-1">Oldest & youngest populations</div>
+                  </Link>
+                </div>
+              )}
+            </div>
             <Link 
               href="/about" 
               className={`px-5 py-2.5 text-sm font-semibold rounded-full transition-all duration-200 ${
@@ -156,17 +241,56 @@ export default function Header() {
               >
                 Blog
               </Link>
-              <Link 
-                href="/compare" 
-                className={`mx-2 px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-200 ${
-                  isActivePage('/compare') 
-                    ? 'bg-blue-600 text-white shadow-md' 
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-white hover:shadow-sm border border-transparent hover:border-blue-100'
-                }`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Compare
-              </Link>
+              {/* Tools Section in Mobile */}
+              <div className="mx-2 mb-2">
+                <div className="px-4 py-2 text-sm font-semibold text-gray-900 bg-gray-100 rounded-t-xl">
+                  Tools
+                </div>
+                <div className="bg-white rounded-b-xl border border-gray-200 border-t-0">
+                  <Link 
+                    href="/compare" 
+                    className="block px-4 py-3 text-sm hover:bg-blue-50 transition-colors border-b border-gray-100"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    🔄 Compare Countries
+                  </Link>
+                  <Link 
+                    href="/population-growth-rate-calculator" 
+                    className="block px-4 py-3 text-sm hover:bg-blue-50 transition-colors border-b border-gray-100"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    📈 Growth Rate Calculator
+                  </Link>
+                  <Link 
+                    href="/dependency-ratio-calculator" 
+                    className="block px-4 py-3 text-sm hover:bg-blue-50 transition-colors border-b border-gray-100"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    👥 Dependency Ratio
+                  </Link>
+                  <Link 
+                    href="/generation-age-ranges-calculator" 
+                    className="block px-4 py-3 text-sm hover:bg-blue-50 transition-colors border-b border-gray-100"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    🎯 Generation Ages
+                  </Link>
+                  <Link 
+                    href="/male-to-female-ratio" 
+                    className="block px-4 py-3 text-sm hover:bg-blue-50 transition-colors border-b border-gray-100"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    ⚖️ Gender Ratio
+                  </Link>
+                  <Link 
+                    href="/median-age-by-country" 
+                    className="block px-4 py-3 text-sm hover:bg-blue-50 transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    🌐 Median Age
+                  </Link>
+                </div>
+              </div>
               <Link 
                 href="/about" 
                 className={`mx-2 px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-200 ${

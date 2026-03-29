@@ -10,25 +10,88 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const countries = await loadCountries();
     const states = await loadStates();
     
-    // Static pages
+    // Static pages with optimized priorities
     const staticPages = [
+      // Core Pages - Highest Priority
       {
         url: baseUrl,
         lastModified: new Date(),
-        changeFrequency: 'weekly' as const,
+        changeFrequency: 'daily' as const,
         priority: 1.0,
+      },
+      {
+        url: `${baseUrl}/countries`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.95,
+      },
+      {
+        url: `${baseUrl}/states`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.95,
+      },
+      
+      // High-Value Calculator Tools (High Traffic Potential)
+      {
+        url: `${baseUrl}/median-age-by-country`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.95, // 7K/mo search volume
+      },
+      {
+        url: `${baseUrl}/male-to-female-ratio`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.95, // 13K/mo search volume
+      },
+      {
+        url: `${baseUrl}/population-growth-rate-calculator`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.9,
+      },
+      {
+        url: `${baseUrl}/dependency-ratio-calculator`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.85,
+      },
+      {
+        url: `${baseUrl}/generation-age-ranges-calculator`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.85,
+      },
+      
+      // Interactive Tools
+      {
+        url: `${baseUrl}/compare`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.85,
+      },
+      
+      // Content Pages
+      {
+        url: `${baseUrl}/blog`,
+        lastModified: new Date(),
+        changeFrequency: 'daily' as const,
+        priority: 0.9,
       },
       {
         url: `${baseUrl}/about`,
         lastModified: new Date(),
         changeFrequency: 'monthly' as const,
-        priority: 0.8,
+        priority: 0.7,
       },
+      
+      // Legal Pages - Lower Priority
       {
         url: `${baseUrl}/contact`,
         lastModified: new Date(),
         changeFrequency: 'monthly' as const,
-        priority: 0.6,
+        priority: 0.5,
       },
       {
         url: `${baseUrl}/privacy`,
@@ -41,30 +104,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: new Date(),
         changeFrequency: 'yearly' as const,
         priority: 0.3,
-      },
-      {
-        url: `${baseUrl}/blog`,
-        lastModified: new Date(),
-        changeFrequency: 'daily' as const,
-        priority: 0.9,
-      },
-      {
-        url: `${baseUrl}/countries`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly' as const,
-        priority: 0.8,
-      },
-      {
-        url: `${baseUrl}/states`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly' as const,
-        priority: 0.9,
-      },
-      {
-        url: `${baseUrl}/compare`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly' as const,
-        priority: 0.7,
       },
     ];
     
