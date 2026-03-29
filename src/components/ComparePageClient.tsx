@@ -1,7 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import SideBySidePyramids from '@/components/SideBySidePyramids';
+import { loadCountryData } from '@/lib/data-loader';
+import { calculateMetrics } from '@/lib/calculations';
 
 interface Country {
   slug: string;
@@ -20,6 +23,9 @@ export default function ComparePageClient({ countries }: ComparePageClientProps)
   const [selectedCountry2, setSelectedCountry2] = useState<string>('');
   const [searchTerm1, setSearchTerm1] = useState('');
   const [searchTerm2, setSearchTerm2] = useState('');
+  const [comparisonData, setComparisonData] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
+  const [showComparison, setShowComparison] = useState(false);
 
   // Filter countries based on search
   const filteredCountries1 = countries.filter(country => 
@@ -36,11 +42,41 @@ export default function ComparePageClient({ countries }: ComparePageClientProps)
   const sortedCountries1 = [...filteredCountries1].sort((a, b) => b.population2024 - a.population2024);
   const sortedCountries2 = [...filteredCountries2].sort((a, b) => b.population2024 - a.population2024);
 
-  const handleCompare = () => {
+  const handleCompare = async () => {
     if (selectedCountry1 && selectedCountry2) {
-      // Create the comparison URL
-      const comparisonSlug = `${selectedCountry1}-vs-${selectedCountry2}`;
-      window.location.href = `/compare/${comparisonSlug}`;
+      setLoading(true);
+      try {
+        // Load data for both countries
+        const [data1, data2] = await Promise.all([
+          loadCountryData(selectedCountry1),
+          loadCountryData(selectedCountry2)
+        ]);
+        
+        if (data1 && data2) {
+          // Get 2024 data for comparison
+          const year2024_1 = data1.years['2024'];
+          const year2024_2 = data2.years['2024'];
+          
+          const metrics1 = calculateMetrics(year2024_1);
+          const metrics2 = calculateMetrics(year2024_2);
+          
+          setComparisonData({
+            country1: countries.find(c => c.slug === selectedCountry1),
+            country2: countries.find(c => c.slug === selectedCountry2),
+            data1: year2024_1,
+            data2: year2024_2,
+            metrics1,
+            metrics2,
+            populationData1: data1,
+            populationData2: data2
+          });
+          setShowComparison(true);
+        }
+      } catch (error) {
+        console.error('Error loading comparison data:', error);
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -149,10 +185,20 @@ export default function ComparePageClient({ countries }: ComparePageClientProps)
         {canCompare ? (
           <button
             onClick={handleCompare}
-            className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-colors shadow-lg"
+            disabled={loading}
+            className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-colors shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <span className="mr-2">📊</span>
-            Compare Selected Countries
+            {loading ? (
+              <>
+                <span className="animate-spin mr-2">⏳</span>
+                Loading Comparison...
+              </>
+            ) : (
+              <>
+                <span className="mr-2">📊</span>
+                Compare Selected Countries
+              </>
+            )}
           </button>
         ) : (
           <p className="text-gray-500">
@@ -177,6 +223,93 @@ export default function ComparePageClient({ countries }: ComparePageClientProps)
                 vs {suggestion.name}
               </button>
             ))}
+          </div>
+        </div>
+      )}
+      
+      {/* Comparison Results */}
+      {showComparison && comparisonData && (
+        <div className="mt-12 space-y-8">
+          <div className="border-t-4 border-blue-500 pt-8">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+              {comparisonData.country1.name} vs {comparisonData.country2.name}
+            </h2>
+            
+            {/* Key Metrics */}
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                  <span className="mr-2">{getCountryFlag(comparisonData.country1.code)}</span>
+                  {comparisonData.country1.name}
+                </h3>
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Population:</span>
+                    <span className="font-semibold">{(comparisonData.data1.totalPopulation / 1000000).toFixed(1)}M</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Median Age:</span>
+                    <span className="font-semibold">{comparisonData.metrics1.medianAge.toFixed(1)} years</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Growth Rate:</span>
+                    <span className="font-semibold">{comparisonData.metrics1.growthRate?.toFixed(2) || 'N/A'}%</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Sex Ratio:</span>
+                    <span className="font-semibold">{comparisonData.metrics1.sexRatio.toFixed(1)} M/100F</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                  <span className="mr-2">{getCountryFlag(comparisonData.country2.code)}</span>
+                  {comparisonData.country2.name}
+                </h3>
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Population:</span>
+                    <span className="font-semibold">{(comparisonData.data2.totalPopulation / 1000000).toFixed(1)}M</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Median Age:</span>
+                    <span className="font-semibold">{comparisonData.metrics2.medianAge.toFixed(1)} years</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Growth Rate:</span>
+                    <span className="font-semibold">{comparisonData.metrics2.growthRate?.toFixed(2) || 'N/A'}%</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Sex Ratio:</span>
+                    <span className="font-semibold">{comparisonData.metrics2.sexRatio.toFixed(1)} M/100F</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Population Pyramids */}
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Population Pyramids Comparison</h3>
+              <SideBySidePyramids
+                data1={comparisonData.data1}
+                data2={comparisonData.data2}
+                country1Name={comparisonData.country1.name}
+                country2Name={comparisonData.country2.name}
+                year="2024"
+              />
+            </div>
+            
+            {/* View Full Comparison Link */}
+            <div className="text-center mt-8">
+              <Link
+                href={`/compare/${selectedCountry1}-vs-${selectedCountry2}`}
+                className="inline-flex items-center px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-lg transition-colors"
+              >
+                <span className="mr-2">📈</span>
+                View Detailed Analysis
+              </Link>
+            </div>
           </div>
         </div>
       )}
