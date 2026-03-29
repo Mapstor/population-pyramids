@@ -33,6 +33,7 @@ export default function ComparisonFAQ({
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const formatNumber = (num: number) => {
+    if (!num && num !== 0) return '0';
     if (num >= 1_000_000_000) return `${(num / 1_000_000_000).toFixed(2)} billion`;
     if (num >= 1_000_000) return `${(num / 1_000_000).toFixed(1)} million`;
     return num.toLocaleString();

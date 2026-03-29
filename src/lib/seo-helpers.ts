@@ -7,20 +7,37 @@ export function formatNumber(num: number): string {
 export function generateCountryMetadata(
   countryName: string,
   year: number,
-  totalPopulation: number
+  totalPopulation: number,
+  dailyBirths?: number,
+  birthRate?: number
 ): Metadata {
-  const title = `${countryName} Population Pyramid ${year} - Demographics & Age Distribution`;
-  const description = `Interactive population pyramid for ${countryName} in ${year}. Total population: ${formatNumber(totalPopulation)}. View age distribution by gender, demographic trends, and compare with other countries.`;
+  const titleSuffix = dailyBirths ? ` | ${dailyBirths.toLocaleString()} Daily Births` : '';
+  const title = `${countryName} Population Pyramid ${year} - Demographics & Birth Statistics${titleSuffix}`;
+  const birthInfo = dailyBirths ? ` ${dailyBirths.toLocaleString()} babies born daily (birth rate: ${birthRate} per 1,000).` : '';
+  const description = `Interactive population pyramid for ${countryName} in ${year}. Total population: ${formatNumber(totalPopulation)}.${birthInfo} View age distribution, birth statistics, demographic trends.`;
+  
+  const baseKeywords = [
+    `${countryName.toLowerCase()} population pyramid`,
+    `${countryName.toLowerCase()} demographics`,
+    `${countryName.toLowerCase()} age distribution`,
+    `${countryName.toLowerCase()} population ${year}`
+  ];
+  
+  const birthKeywords = dailyBirths ? [
+    `how many babies born in ${countryName.toLowerCase()} per day`,
+    `${countryName.toLowerCase()} births per day`,
+    `${countryName.toLowerCase()} daily birth rate`,
+    `${countryName.toLowerCase()} birth statistics`,
+    `${countryName.toLowerCase()} births per hour`,
+    `${countryName.toLowerCase()} annual births`,
+    `babies born in ${countryName.toLowerCase()}`,
+    `${countryName.toLowerCase()} birth rate ${year}`
+  ] : [];
   
   return {
     title,
     description,
-    keywords: [
-      `${countryName.toLowerCase()} population pyramid`,
-      `${countryName.toLowerCase()} demographics`,
-      `${countryName.toLowerCase()} age distribution`,
-      `${countryName.toLowerCase()} population ${year}`
-    ],
+    keywords: [...baseKeywords, ...birthKeywords],
     openGraph: {
       title,
       description,

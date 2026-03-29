@@ -224,13 +224,24 @@ export async function generateMetadata({ params }: { params: { comparison: strin
 // Server-side data loading function
 async function loadComparisonData(country1Slug: string, country2Slug: string) {
   try {
-    // Load both country data and fertility files
+    // Load both country data and fertility files with better error handling
     const [data1Module, data2Module, fertility1Module, fertility2Module] = await Promise.all([
-      import(`@/data/population/${country1Slug}.json`),
-      import(`@/data/population/${country2Slug}.json`),
+      import(`@/data/population/${country1Slug}.json`).catch(() => {
+        console.error(`Failed to load population data for ${country1Slug}`);
+        return null;
+      }),
+      import(`@/data/population/${country2Slug}.json`).catch(() => {
+        console.error(`Failed to load population data for ${country2Slug}`);
+        return null;
+      }),
       import(`@/data/fertility/${country1Slug}.json`).catch(() => null),
       import(`@/data/fertility/${country2Slug}.json`).catch(() => null)
     ]);
+    
+    // If either country data is missing, return null
+    if (!data1Module || !data2Module) {
+      return null;
+    }
     
     return {
       country1Data: data1Module.default as CountryData,

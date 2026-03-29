@@ -135,24 +135,23 @@ export default function AnimatedComparisonPyramids({
     ]
   });
 
-  // Find max value across all years for consistent scaling
-  const getAllMaxValues = () => {
+  // Find max value for each country independently across all years
+  const getAllMaxValues = (countryData: CountryData) => {
     let maxVal = 0;
     availableYears.forEach(year => {
-      const data1 = country1Data.years[year];
-      const data2 = country2Data.years[year];
-      if (data1 && data2) {
-        const max1 = Math.max(...data1.ageGroups.map(ag => Math.max(ag.male, ag.female)));
-        const max2 = Math.max(...data2.ageGroups.map(ag => Math.max(ag.male, ag.female)));
-        maxVal = Math.max(maxVal, max1, max2);
+      const data = countryData.years[year];
+      if (data) {
+        const max = Math.max(...data.ageGroups.map(ag => Math.max(ag.male, ag.female)));
+        maxVal = Math.max(maxVal, max);
       }
     });
     return maxVal * 1.1;
   };
 
-  const maxValue = getAllMaxValues();
+  const maxValue1 = getAllMaxValues(country1Data);
+  const maxValue2 = getAllMaxValues(country2Data);
 
-  const createOptions = (title: string): ChartOptions<'bar'> => ({
+  const createOptions = (title: string, maxValue: number): ChartOptions<'bar'> => ({
     indexAxis: 'y' as const,
     responsive: true,
     maintainAspectRatio: false,
@@ -257,13 +256,13 @@ export default function AnimatedComparisonPyramids({
         <div className="h-[500px]">
           <Bar 
             data={createPyramidData(currentYear1Data)} 
-            options={createOptions(country1Name)}
+            options={createOptions(country1Name, maxValue1)}
           />
         </div>
         <div className="h-[500px]">
           <Bar 
             data={createPyramidData(currentYear2Data)} 
-            options={createOptions(country2Name)}
+            options={createOptions(country2Name, maxValue2)}
           />
         </div>
       </div>

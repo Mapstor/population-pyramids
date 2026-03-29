@@ -43,16 +43,6 @@ export const COMPARISON_PAIRS: ComparisonPair[] = [
     description: 'World\'s oldest and largest democracies face different demographic futures. Young India vs aging America.',
     category: 'superpower'
   },
-  {
-    slug: 'eu-vs-usa',
-    country1: 'european-union',
-    country2: 'united-states',
-    country1Name: 'European Union',
-    country2Name: 'United States',
-    title: 'EU vs USA: Transatlantic Demographics',
-    description: 'Compare population trends across the Atlantic. Different approaches to immigration and fertility.',
-    category: 'economic'
-  },
 
   // === REGIONAL RIVALS & NEIGHBORS ===
   

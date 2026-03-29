@@ -9,6 +9,16 @@
       "source": "/ads.txt",
       "destination": "https://ads.adthrive.com/sites/6945a10f5d76f536610a0994/ads.txt",
       "statusCode": 301
+    },
+    {
+      "source": "/states/:state/:year(1950|1980|1990|2000|2010|2020|2025)",
+      "destination": "/states/:state",
+      "statusCode": 301
+    },
+    {
+      "source": "/:country((?!api|about|blog|compare|contact|countries|privacy|search|states|terms|us-states|_next|public|favicon)[^/]+)/:year(1950|1980|1990|2000|2010|2020|2025)",
+      "destination": "/:country",
+      "statusCode": 301
     }
   ]
 }

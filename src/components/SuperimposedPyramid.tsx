@@ -24,7 +24,18 @@ export default function SuperimposedPyramid({
 
   // Create superimposed data
   const createSuperimposedData = () => {
-    const labels = country1Data.ageGroups.map(ag => ag.ageRange).reverse();
+    // Validate data
+    if (!country1Data?.ageGroups || !country2Data?.ageGroups) {
+      console.error('Missing age groups data in SuperimposedPyramid');
+      return { labels: [], datasets: [] };
+    }
+    
+    // Ensure both countries have the same number of age groups
+    const minLength = Math.min(country1Data.ageGroups.length, country2Data.ageGroups.length);
+    const ageGroups1 = country1Data.ageGroups.slice(0, minLength);
+    const ageGroups2 = country2Data.ageGroups.slice(0, minLength);
+    
+    const labels = ageGroups1.map(ag => ag.ageRange).reverse();
     
     // Always show difference view
     if (true) {
@@ -34,8 +45,10 @@ export default function SuperimposedPyramid({
         datasets: [
           {
             label: `${country1Name} > ${country2Name} (Male)`,
-            data: country1Data.ageGroups.map((ag, i) => {
-              const diff = ag.male - country2Data.ageGroups[i].male;
+            data: ageGroups1.map((ag, i) => {
+              const ag2 = ageGroups2[i];
+              if (!ag2 || typeof ag.male !== 'number' || typeof ag2.male !== 'number') return 0;
+              const diff = ag.male - ag2.male;
               return diff > 0 ? -diff : 0;
             }).reverse(),
             backgroundColor: 'rgba(59, 130, 246, 0.6)',
@@ -44,8 +57,10 @@ export default function SuperimposedPyramid({
           },
           {
             label: `${country2Name} > ${country1Name} (Male)`,
-            data: country1Data.ageGroups.map((ag, i) => {
-              const diff = country2Data.ageGroups[i].male - ag.male;
+            data: ageGroups1.map((ag, i) => {
+              const ag2 = ageGroups2[i];
+              if (!ag2 || typeof ag.male !== 'number' || typeof ag2.male !== 'number') return 0;
+              const diff = ag2.male - ag.male;
               return diff > 0 ? -diff : 0;
             }).reverse(),
             backgroundColor: 'rgba(34, 197, 94, 0.6)',
@@ -54,8 +69,10 @@ export default function SuperimposedPyramid({
           },
           {
             label: `${country1Name} > ${country2Name} (Female)`,
-            data: country1Data.ageGroups.map((ag, i) => {
-              const diff = ag.female - country2Data.ageGroups[i].female;
+            data: ageGroups1.map((ag, i) => {
+              const ag2 = ageGroups2[i];
+              if (!ag2 || typeof ag.female !== 'number' || typeof ag2.female !== 'number') return 0;
+              const diff = ag.female - ag2.female;
               return diff > 0 ? diff : 0;
             }).reverse(),
             backgroundColor: 'rgba(236, 72, 153, 0.6)',
@@ -64,8 +81,10 @@ export default function SuperimposedPyramid({
           },
           {
             label: `${country2Name} > ${country1Name} (Female)`,
-            data: country1Data.ageGroups.map((ag, i) => {
-              const diff = country2Data.ageGroups[i].female - ag.female;
+            data: ageGroups1.map((ag, i) => {
+              const ag2 = ageGroups2[i];
+              if (!ag2 || typeof ag.female !== 'number' || typeof ag2.female !== 'number') return 0;
+              const diff = ag2.female - ag.female;
               return diff > 0 ? diff : 0;
             }).reverse(),
             backgroundColor: 'rgba(251, 146, 60, 0.6)',
@@ -81,8 +100,10 @@ export default function SuperimposedPyramid({
         datasets: [
           {
             label: `${country1Name} has more (Male)`,
-            data: country1Data.ageGroups.map((ag, i) => {
-              const diff = ag.male - country2Data.ageGroups[i].male;
+            data: ageGroups1.map((ag, i) => {
+              const ag2 = ageGroups2[i];
+              if (!ag2 || typeof ag.male !== 'number' || typeof ag2.male !== 'number') return 0;
+              const diff = ag.male - ag2.male;
               return diff > 0 ? -diff : 0; // Show positive difference on left (negative values)
             }).reverse(),
             backgroundColor: 'rgba(59, 130, 246, 0.8)',
@@ -93,8 +114,10 @@ export default function SuperimposedPyramid({
           },
           {
             label: `${country2Name} has more (Male)`,
-            data: country1Data.ageGroups.map((ag, i) => {
-              const diff = country2Data.ageGroups[i].male - ag.male;
+            data: ageGroups1.map((ag, i) => {
+              const ag2 = ageGroups2[i];
+              if (!ag2 || typeof ag.male !== 'number' || typeof ag2.male !== 'number') return 0;
+              const diff = ag2.male - ag.male;
               return diff > 0 ? -diff : 0; // Show positive difference on left (negative values)
             }).reverse(),
             backgroundColor: 'rgba(34, 197, 94, 0.8)',
@@ -105,8 +128,10 @@ export default function SuperimposedPyramid({
           },
           {
             label: `${country1Name} has more (Female)`,
-            data: country1Data.ageGroups.map((ag, i) => {
-              const diff = ag.female - country2Data.ageGroups[i].female;
+            data: ageGroups1.map((ag, i) => {
+              const ag2 = ageGroups2[i];
+              if (!ag2 || typeof ag.female !== 'number' || typeof ag2.female !== 'number') return 0;
+              const diff = ag.female - ag2.female;
               return diff > 0 ? diff : 0; // Show positive difference on right (positive values)
             }).reverse(),
             backgroundColor: 'rgba(59, 130, 246, 0.8)',
@@ -117,8 +142,10 @@ export default function SuperimposedPyramid({
           },
           {
             label: `${country2Name} has more (Female)`,
-            data: country1Data.ageGroups.map((ag, i) => {
-              const diff = country2Data.ageGroups[i].female - ag.female;
+            data: ageGroups1.map((ag, i) => {
+              const ag2 = ageGroups2[i];
+              if (!ag2 || typeof ag.female !== 'number' || typeof ag2.female !== 'number') return 0;
+              const diff = ag2.female - ag.female;
               return diff > 0 ? diff : 0; // Show positive difference on right (positive values)
             }).reverse(),
             backgroundColor: 'rgba(34, 197, 94, 0.8)',
@@ -132,10 +159,17 @@ export default function SuperimposedPyramid({
     }
   };
 
-  const maxValue = Math.max(
-    ...country1Data.ageGroups.map(ag => Math.max(ag.male, ag.female)),
-    ...country2Data.ageGroups.map(ag => Math.max(ag.male, ag.female))
-  ) * 1.1;
+  // Validate and calculate max value
+  const maxValue = country1Data?.ageGroups && country2Data?.ageGroups
+    ? Math.max(
+        ...country1Data.ageGroups
+          .filter(ag => ag && typeof ag.male === 'number' && typeof ag.female === 'number')
+          .map(ag => Math.max(ag.male, ag.female)),
+        ...country2Data.ageGroups
+          .filter(ag => ag && typeof ag.male === 'number' && typeof ag.female === 'number')
+          .map(ag => Math.max(ag.male, ag.female))
+      ) * 1.1
+    : 1000000;
 
   const options: ChartOptions<'bar'> = {
     indexAxis: 'y' as const,
@@ -229,8 +263,16 @@ export default function SuperimposedPyramid({
   };
 
   // Calculate areas where one significantly exceeds the other
-  const significantDifferences = country1Data.ageGroups.map((ag, i) => {
+  const minLength = Math.min(
+    country1Data?.ageGroups?.length || 0,
+    country2Data?.ageGroups?.length || 0
+  );
+  const significantDifferences = country1Data?.ageGroups && country2Data?.ageGroups
+    ? country1Data.ageGroups.slice(0, minLength).map((ag, i) => {
     const ag2 = country2Data.ageGroups[i];
+    if (!ag2 || !ag || typeof ag.male !== 'number' || typeof ag2.male !== 'number') {
+      return null;
+    }
     const maleDiff = ((ag.male - ag2.male) / ag2.male) * 100;
     const femaleDiff = ((ag.female - ag2.female) / ag2.female) * 100;
     const totalDiff = ((ag.total - ag2.total) / ag2.total) * 100;
@@ -249,7 +291,8 @@ export default function SuperimposedPyramid({
       maleAbsDiff,
       femaleAbsDiff
     };
-  }).filter(d => Math.abs(d.totalDiff) > 20); // More than 20% difference
+  }).filter(d => d !== null && Math.abs(d.totalDiff) > 20) // More than 20% difference
+    : [];
 
   return (
     <div className="space-y-6">
@@ -326,7 +369,7 @@ export default function SuperimposedPyramid({
       {/* Significant differences */}
       {significantDifferences.length > 0 && (
         <div className="bg-yellow-50 p-4 rounded-lg">
-          <h4 className="font-semibold mb-3">Notable Differences (>20% variance):</h4>
+          <h4 className="font-semibold mb-3">Notable Differences (&gt;20% variance):</h4>
           <div className="text-sm space-y-2">
             {significantDifferences.map(d => {
               const formatNumber = (num: number) => {

@@ -39,13 +39,35 @@ export default function SideBySidePyramids({
 }: SideBySidePyramidsProps) {
   
   const createPyramidData = (data: YearData, countryName: string) => {
+    // Validate ageGroups exists and has valid data
+    if (!data.ageGroups || !Array.isArray(data.ageGroups)) {
+      console.error(`Invalid age groups data for ${countryName}`);
+      return {
+        labels: [],
+        datasets: []
+      };
+    }
+    
+    // Filter out any invalid age groups
+    const validAgeGroups = data.ageGroups.filter(ag => 
+      ag && typeof ag.male === 'number' && typeof ag.female === 'number'
+    );
+    
+    if (validAgeGroups.length === 0) {
+      console.error(`No valid age groups found for ${countryName}`);
+      return {
+        labels: [],
+        datasets: []
+      };
+    }
+    
     return {
-      labels: data.ageGroups.map(ag => ag.ageRange).reverse(),
+      labels: validAgeGroups.map(ag => ag.ageRange).reverse(),
       datasets: [
         // Base male bars (up to the minimum)
         {
           label: 'Male',
-          data: data.ageGroups.map(ag => -Math.min(ag.male, ag.female)).reverse(),
+          data: validAgeGroups.map(ag => -Math.min(ag.male, ag.female)).reverse(),
           backgroundColor: 'rgba(59, 130, 246, 0.8)',
           borderColor: 'rgba(59, 130, 246, 1)',
           borderWidth: 0,
@@ -55,7 +77,7 @@ export default function SideBySidePyramids({
         // Male surplus (only if males > females)
         {
           label: '',
-          data: data.ageGroups.map(ag => {
+          data: validAgeGroups.map(ag => {
             const surplus = ag.male - ag.female;
             return surplus > 0 ? -surplus : 0;
           }).reverse(),
@@ -68,7 +90,7 @@ export default function SideBySidePyramids({
         // Base female bars (up to the minimum)
         {
           label: 'Female',
-          data: data.ageGroups.map(ag => Math.min(ag.male, ag.female)).reverse(),
+          data: validAgeGroups.map(ag => Math.min(ag.male, ag.female)).reverse(),
           backgroundColor: 'rgba(236, 72, 153, 0.8)',
           borderColor: 'rgba(236, 72, 153, 1)',
           borderWidth: 0,
@@ -78,7 +100,7 @@ export default function SideBySidePyramids({
         // Female surplus (only if females > males)
         {
           label: '',
-          data: data.ageGroups.map(ag => {
+          data: validAgeGroups.map(ag => {
             const surplus = ag.female - ag.male;
             return surplus > 0 ? surplus : 0;
           }).reverse(),
@@ -155,19 +177,27 @@ export default function SideBySidePyramids({
     }
   });
 
-  // Find max value for consistent scaling
-  const maxValue1 = Math.max(
-    ...country1Data.ageGroups.map(ag => Math.max(ag.male, ag.female))
-  );
-  const maxValue2 = Math.max(
-    ...country2Data.ageGroups.map(ag => Math.max(ag.male, ag.female))
-  );
-  const maxValue = Math.max(maxValue1, maxValue2) * 1.1; // Add 10% padding
+  // Find max value for each pyramid independently (with validation)
+  const maxValue1 = country1Data.ageGroups && Array.isArray(country1Data.ageGroups) 
+    ? Math.max(
+        ...country1Data.ageGroups
+          .filter(ag => ag && typeof ag.male === 'number' && typeof ag.female === 'number')
+          .map(ag => Math.max(ag.male, ag.female))
+      ) * 1.1 // Add 10% padding
+    : 1000000; // Default fallback value
+    
+  const maxValue2 = country2Data.ageGroups && Array.isArray(country2Data.ageGroups)
+    ? Math.max(
+        ...country2Data.ageGroups
+          .filter(ag => ag && typeof ag.male === 'number' && typeof ag.female === 'number')
+          .map(ag => Math.max(ag.male, ag.female))
+      ) * 1.1 // Add 10% padding
+    : 1000000; // Default fallback value
 
   const pyramid1Data = createPyramidData(country1Data, country1Name);
   const pyramid2Data = createPyramidData(country2Data, country2Name);
-  const options1 = createOptions(`${country1Name} - ${year}`, maxValue);
-  const options2 = createOptions(`${country2Name} - ${year}`, maxValue);
+  const options1 = createOptions(`${country1Name} - ${year}`, maxValue1);
+  const options2 = createOptions(`${country2Name} - ${year}`, maxValue2);
 
   // Calculate population percentages for comparison
   const total1 = country1Data.totalPopulation;

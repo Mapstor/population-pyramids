@@ -15,8 +15,6 @@ import { generateDemographicGlossary, generateGlossarySummary } from '@/lib/demo
 import { generateUsageGuide, generateUsageSummary } from '@/lib/usage-guide';
 import { classifyDemographicStage, getDemographicStageExplanation } from '@/lib/demographic-stage-classifier';
 import { loadFertilityData, calculateFertilityMetrics, getFertilityAnalysis } from '@/lib/fertility-loader';
-import { generateBirthStatisticsSchema } from '@/lib/birth-statistics-schema';
-import { getTopComparisonsForCountryOptimized } from '@/lib/country-comparison-links';
 import FertilityChart from '@/components/FertilityChart';
 import BirthStatistics from '@/components/BirthStatistics';
 import PopulationPyramid from '@/components/PopulationPyramid';
@@ -53,18 +51,10 @@ export async function generateMetadata({ params }: CountryPageProps) {
     const latestYear = Math.max(...availableYears);
     const yearData = countryData.years[latestYear.toString()];
     
-    // Load fertility data for birth statistics in metadata
-    const fertilityData = await loadFertilityData(countrySlug);
-    const dailyBirths = fertilityData ? 
-      Math.round((yearData.totalPopulation * (fertilityData.fertilityData.historical.find(d => d.year === fertilityData.fertilityData.current.year)?.crudebirthRate || fertilityData.fertilityData.historical[fertilityData.fertilityData.historical.length - 1]?.crudebirthRate || 11)) / 1000 / 365) : undefined;
-    const birthRate = fertilityData?.fertilityData.historical.find(d => d.year === fertilityData.fertilityData.current.year)?.crudebirthRate || fertilityData?.fertilityData.historical[fertilityData.fertilityData.historical.length - 1]?.crudebirthRate;
-    
     return generateCountryMetadata(
       countryData.countryName,
       latestYear,
-      yearData.totalPopulation,
-      dailyBirths,
-      birthRate
+      yearData.totalPopulation
     );
   } catch {
     return {
@@ -85,9 +75,6 @@ export default async function CountryPage({ params }: CountryPageProps) {
     
     // Load fertility data if available
     const fertilityData = await loadFertilityData(countrySlug);
-    
-    // Get top comparison links for this country
-    const topComparisons = getTopComparisonsForCountryOptimized(countrySlug);
     
     // Generate all content
     const content = generateCountryContent(
@@ -154,44 +141,8 @@ export default async function CountryPage({ params }: CountryPageProps) {
     const demographicStage = classifyDemographicStage(yearData);
     const stageExplanation = getDemographicStageExplanation(demographicStage, countryData.countryName);
 
-    // Calculate birth statistics for schema
-    const dailyBirths = fertilityData ? 
-      Math.round((yearData.totalPopulation * (fertilityData.fertilityData.historical.find(d => d.year === fertilityData.fertilityData.current.year)?.crudebirthRate || fertilityData.fertilityData.historical[fertilityData.fertilityData.historical.length - 1]?.crudebirthRate || 11)) / 1000 / 365) : 0;
-    const annualBirths = dailyBirths * 365;
-    const birthRate = fertilityData?.fertilityData.historical.find(d => d.year === fertilityData.fertilityData.current.year)?.crudebirthRate || fertilityData?.fertilityData.historical[fertilityData.fertilityData.historical.length - 1]?.crudebirthRate || 0;
-    const fertilityRate = fertilityData?.fertilityData.current.totalFertilityRate || 0;
-
-    // Generate schema markup
-    const birthSchemas = dailyBirths > 0 ? generateBirthStatisticsSchema(
-      countryData.countryName,
-      countrySlug,
-      dailyBirths,
-      annualBirths,
-      birthRate,
-      fertilityRate,
-      yearData.totalPopulation,
-      latestYear
-    ) : null;
-
     return (
       <div className="min-h-screen bg-gray-50">
-        {/* Schema Markup for SEO */}
-        {birthSchemas && (
-          <>
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify(birthSchemas.birthDatasetSchema) }}
-            />
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify(birthSchemas.birthFAQSchema) }}
-            />
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify(birthSchemas.breadcrumbSchema) }}
-            />
-          </>
-        )}
         <div className="max-w-7xl mx-auto px-4 py-8">
           {/* Breadcrumbs */}
           <nav className="mb-8 text-sm">
@@ -255,7 +206,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
           </div>
 
           {/* PRIMARY PYRAMID - Current Year */}
-          <section id="pyramid" className="mb-8">
+          <section id="pyramid" className="mb-12">
             <PopulationPyramid
               data={yearData}
               countryName={countryData.countryName}
@@ -265,7 +216,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
           </section>
 
           {/* Demographics Facts */}
-          <section className="mb-8">
+          <section className="mb-12">
             <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
                 {countryData.countryName} Demographics
@@ -287,58 +238,9 @@ export default async function CountryPage({ params }: CountryPageProps) {
             </div>
           </section>
 
-          {/* Popular Comparisons Section */}
-          {topComparisons.length > 0 && (
-            <section className="mb-8">
-              <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                  Compare {countryData.countryName} Demographics
-                </h2>
-                <p className="text-gray-600 mb-4">
-                  Explore how {countryData.countryName}'s population structure compares with other countries:
-                </p>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
-                  {topComparisons.map((comparison) => (
-                    <Link
-                      key={comparison.slug}
-                      href={`/compare/${comparison.slug}`}
-                      className="flex items-center justify-between p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors group"
-                    >
-                      <div className="flex items-center gap-3">
-                        <span className="text-2xl">🔄</span>
-                        <div>
-                          <div className="font-semibold text-gray-900 group-hover:text-blue-700">
-                            {countryData.countryName} {comparison.label}
-                          </div>
-                          <div className="text-sm text-gray-600">
-                            {comparison.description}
-                          </div>
-                        </div>
-                      </div>
-                      <svg className="w-5 h-5 text-gray-400 group-hover:text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </Link>
-                  ))}
-                </div>
-                <div className="mt-4 pt-4 border-t border-gray-200">
-                  <Link
-                    href="/compare"
-                    className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
-                  >
-                    View all country comparisons
-                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </Link>
-                </div>
-              </div>
-            </section>
-          )}
-
           {/* Vatican City Special Section */}
           {countrySlug === 'vatican-city' && (
-            <section className="mb-8">
+            <section className="mb-12">
               <div className="bg-gradient-to-r from-yellow-50 via-white to-yellow-50 rounded-lg shadow-md p-8 border-2 border-yellow-200">
                 <div className="flex items-center mb-6">
                   <span className="text-4xl mr-4">🇻🇦</span>
@@ -431,7 +333,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
 
           {/* TIMELINE PYRAMID - Interactive Animation - Skip for Vatican City */}
           {countrySlug !== 'vatican-city' && (
-            <section id="timeline" className="mb-8">
+            <section id="timeline" className="mb-12">
               <TimelinePyramid
                 countryData={countryData}
                 countryName={countryData.countryName}
@@ -509,7 +411,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
 
           {/* Sex Ratio Section - Prominent for SEO */}
           {(
-            <section id="sex-ratio" className="mb-8">
+            <section id="sex-ratio" className="mb-12">
               <div className="bg-gradient-to-r from-blue-50 to-pink-50 rounded-lg shadow-sm p-6 border border-purple-200">
                 <div className="flex items-center mb-4">
                   <span className="text-3xl mr-3">⚖️</span>
@@ -612,7 +514,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
 
           {/* Median Age Section - Prominent for SEO */}
           {(
-            <section id="median-age" className="mb-8">
+            <section id="median-age" className="mb-12">
               <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-lg shadow-sm p-6 border border-amber-200">
                 <div className="flex items-center mb-4">
                   <span className="text-3xl mr-3">📊</span>
@@ -728,7 +630,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
 
           {/* Complete Age Distribution & Youth Demographics - Merged Section */}
           {(
-            <section id="age-distribution" className="mb-8">
+            <section id="age-distribution" className="mb-12">
               <div className="bg-gradient-to-r from-green-50 to-orange-50 rounded-lg shadow-sm p-6 border border-green-200">
                 <div className="flex items-center mb-4">
                   <span className="text-3xl mr-3">📊</span>
@@ -883,7 +785,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
           )}
 
           {/* Demographic Transition Stage */}
-          <section id="demographic-stage" className="mb-8">
+          <section id="demographic-stage" className="mb-12">
             <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg shadow-sm p-6 border border-green-200">
               <div className="flex items-center mb-3">
                 <span className="text-2xl mr-3">📊</span>
@@ -926,7 +828,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
 
           {/* Fertility Rate Section - SEO Optimized */}
           {fertilityData && (
-            <section id="fertility-rate" className="mb-8">
+            <section id="fertility-rate" className="mb-12">
               <div className="bg-gradient-to-r from-red-50 to-pink-50 rounded-lg shadow-sm p-6 border border-red-200">
                 <div className="flex items-center mb-4">
                   <span className="text-3xl mr-3">👶</span>
@@ -1271,7 +1173,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
           </section>
 
           {/* Stats Table */}
-          <section id="stats" className="mb-8">
+          <section id="stats" className="mb-12">
             <StatsTable 
               data={yearData} 
               metrics={metrics} 
@@ -1282,7 +1184,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
 
 
           {/* Demographic Charts */}
-          <section className="mb-8">
+          <section className="mb-12">
             <DemographicCharts
               countryName={countryData.countryName}
               countryData={countryData}
