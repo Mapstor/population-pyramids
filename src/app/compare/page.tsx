@@ -3,6 +3,7 @@ import Link from 'next/link';
 import ComparePageClient from '@/components/ComparePageClient';
 import countries from '@/data/countries.json';
 import { COMPARISON_PAIRS } from '@/lib/comparison-pairs';
+import { getComparePageData, groupCountriesByRegion } from '@/lib/compare-data';
 
 export const metadata: Metadata = {
   title: 'Compare Population Pyramids - Side-by-Side Country Demographics',
@@ -137,6 +138,10 @@ const REGIONAL_COMPARISONS = {
 };
 
 export default async function ComparePage() {
+  // Get server-side data for SSR
+  const { defaultComparison, allCountries } = await getComparePageData();
+  const groupedCountries = groupCountriesByRegion(allCountries);
+  
   // Pre-process countries data for the client component
   const countriesData = countries.map(country => ({
     slug: country.slug,
@@ -152,12 +157,12 @@ export default async function ComparePage() {
       <div className="bg-gradient-to-br from-blue-600 to-purple-700 text-white">
         <div className="max-w-7xl mx-auto px-4 py-16">
           <h1 className="text-5xl font-bold mb-4">
-            Compare Population Pyramids
+            Compare Population Pyramids: Side-by-Side Country Demographics
           </h1>
           <p className="text-xl opacity-90 max-w-3xl">
             Explore demographic differences between countries with side-by-side population pyramids. 
             Compare age structures, sex ratios, and demographic trends for any two countries using 
-            the latest UN World Population Prospects data.
+            the latest UN World Population Prospects data. Start with India vs China below or select any two countries.
           </p>
         </div>
       </div>
@@ -177,6 +182,133 @@ export default async function ComparePage() {
                 {comparison.label}
               </Link>
             ))}
+          </div>
+        </div>
+
+        {/* Default Comparison - Server Rendered for SEO */}
+        <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            Featured Comparison: {defaultComparison.comparisonType}
+          </h2>
+          
+          {/* Country Overview Cards */}
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                <span className="mr-2">{defaultComparison.country1.flag}</span>
+                {defaultComparison.country1.name}
+              </h3>
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Population:</span>
+                  <span className="font-semibold">{(defaultComparison.country1.totalPopulation / 1000000).toFixed(0)}M</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Median Age:</span>
+                  <span className="font-semibold">{defaultComparison.country1.medianAge.toFixed(1)} years</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Growth Rate:</span>
+                  <span className="font-semibold">{defaultComparison.country1.growthRate.toFixed(2)}%</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Sex Ratio:</span>
+                  <span className="font-semibold">{defaultComparison.country1.sexRatio.toFixed(1)} M/100F</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                <span className="mr-2">{defaultComparison.country2.flag}</span>
+                {defaultComparison.country2.name}
+              </h3>
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Population:</span>
+                  <span className="font-semibold">{(defaultComparison.country2.totalPopulation / 1000000).toFixed(0)}M</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Median Age:</span>
+                  <span className="font-semibold">{defaultComparison.country2.medianAge.toFixed(1)} years</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Growth Rate:</span>
+                  <span className="font-semibold">{defaultComparison.country2.growthRate.toFixed(2)}%</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Sex Ratio:</span>
+                  <span className="font-semibold">{defaultComparison.country2.sexRatio.toFixed(1)} M/100F</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Demographics Table */}
+          <div className="bg-gray-50 rounded-xl p-6 mb-6">
+            <h3 className="text-lg font-bold text-gray-900 mb-4">Age Structure Comparison (2024)</h3>
+            <div className="overflow-x-auto">
+              <table className="min-w-full">
+                <thead>
+                  <tr className="bg-gray-100">
+                    <th className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Age Group</th>
+                    <th className="px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">{defaultComparison.country1.name}</th>
+                    <th className="px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">{defaultComparison.country2.name}</th>
+                    <th className="px-3 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Difference</th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {defaultComparison.country1.ageGroups.map((ageGroup, index) => {
+                    const country2AgeGroup = defaultComparison.country2.ageGroups[index];
+                    const country1Percent = (ageGroup.total / defaultComparison.country1.totalPopulation) * 100;
+                    const country2Percent = (country2AgeGroup.total / defaultComparison.country2.totalPopulation) * 100;
+                    const difference = country1Percent - country2Percent;
+                    
+                    return (
+                      <tr key={ageGroup.ageGroup}>
+                        <td className="px-3 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                          {ageGroup.ageGroup}
+                        </td>
+                        <td className="px-3 py-2 whitespace-nowrap text-sm text-gray-600 text-right">
+                          {country1Percent.toFixed(1)}%
+                        </td>
+                        <td className="px-3 py-2 whitespace-nowrap text-sm text-gray-600 text-right">
+                          {country2Percent.toFixed(1)}%
+                        </td>
+                        <td className={`px-3 py-2 whitespace-nowrap text-sm text-center font-medium ${
+                          difference > 0 ? 'text-blue-600' : difference < 0 ? 'text-purple-600' : 'text-gray-500'
+                        }`}>
+                          {difference > 0 ? '+' : ''}{difference.toFixed(1)}pp
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          {/* Key Insights */}
+          <div className="bg-green-50 rounded-xl p-6 mb-6">
+            <h3 className="text-lg font-bold text-gray-900 mb-4">Key Insights</h3>
+            <div className="space-y-2">
+              {defaultComparison.insights.map((insight, index) => (
+                <div key={index} className="flex items-start">
+                  <span className="text-green-500 mr-3 mt-0.5">✓</span>
+                  <span className="text-gray-700">{insight}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <div className="text-center">
+            <Link
+              href={`/compare/${defaultComparison.country1.slug}-vs-${defaultComparison.country2.slug}`}
+              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-colors shadow-lg"
+            >
+              <span className="mr-2">📊</span>
+              View Full Comparison & Population Pyramids
+            </Link>
           </div>
         </div>
 
@@ -347,6 +479,47 @@ export default async function ComparePage() {
             with projections through 2100. Each visualization includes detailed metrics like median age, 
             dependency ratios, and sex ratios to provide comprehensive demographic insights.
           </p>
+        </div>
+
+        {/* All Countries Directory - Server Rendered for SEO */}
+        <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Browse All 195 Countries by Region</h2>
+          <p className="text-gray-600 mb-6">
+            Select any two countries from our complete directory to create custom population pyramid comparisons. 
+            All countries include latest UN demographic data with age structures, sex ratios, and population trends.
+          </p>
+          
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6">
+            {Object.entries(groupedCountries).map(([region, regionCountries]) => (
+              <div key={region} className="border border-gray-200 rounded-lg p-4">
+                <h3 className="font-semibold text-gray-900 mb-3 flex items-center">
+                  <span className="mr-2">{getRegionEmoji(region)}</span>
+                  {region} ({regionCountries.length})
+                </h3>
+                <div className="space-y-1 max-h-64 overflow-y-auto">
+                  {regionCountries.map((country) => (
+                    <div key={country.slug} className="text-sm">
+                      <Link
+                        href={`/${country.slug}`}
+                        className="flex items-center justify-between text-gray-600 hover:text-blue-600 py-1 transition-colors"
+                      >
+                        <span className="flex items-center">
+                          <span className="mr-2">{country.flag}</span>
+                          {country.name}
+                        </span>
+                        <span className="text-xs text-gray-400">
+                          {country.population > 1000000 
+                            ? `${(country.population / 1000000).toFixed(0)}M`
+                            : `${(country.population / 1000).toFixed(0)}K`
+                          }
+                        </span>
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
