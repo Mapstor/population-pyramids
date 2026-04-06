@@ -28,8 +28,72 @@ export const metadata: Metadata = {
 };
 
 export default function FertilityApocalypseArticle() {
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Fertility Apocalypse: Countries Where People Have Stopped Having Babies",
+    "description": "South Korea: 0.72 births per woman. Singapore: 1.04. Taiwan: 0.87. Entire societies are choosing not to reproduce. Discover the countries facing fertility collapse and the end of traditional family structures.",
+    "image": "https://populationpyramids.org/blog/fertility-apocalypse-og.png",
+    "datePublished": "2024-11-05",
+    "dateModified": "2024-11-05",
+    "author": {
+      "@type": "Organization",
+      "name": "Population Pyramids",
+      "url": "https://populationpyramids.org"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Population Pyramids",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://populationpyramids.org/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://populationpyramids.org/blog/fertility-apocalypse-countries-stopped-having-babies"
+    },
+    "articleSection": "Demographics",
+    "keywords": "fertility crisis, birth rates, demographic collapse, population decline, fertility rates, family planning, reproductive trends"
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://populationpyramids.org"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://populationpyramids.org/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Fertility Apocalypse",
+        "item": "https://populationpyramids.org/blog/fertility-apocalypse-countries-stopped-having-babies"
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* JSON-LD Schema Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <nav className="mb-8">

@@ -2,117 +2,152 @@ import Link from 'next/link';
 import { getMedianAgeData } from '@/lib/median-age-data';
 import MedianAgeInteractiveTool from './MedianAgeInteractiveTool';
 
-// JSON-LD Schema for SEO
+// JSON-LD Schema for SEO with @graph structure
 function generateStructuredData(worldData: any, countries: any[], oldestCountries: any[], youngestCountries: any[], usData: any) {
-  const faqStructuredData = {
+  // Combined schema using @graph
+  const graphSchema = {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
+    "@graph": [
       {
-        "@type": "Question",
-        "name": "What is median age?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Median age is the age that divides a population into two numerically equal groups — half are younger, half are older. It is the single best indicator of whether a population is young or old. The world's median age is currently ${worldData?.medianAge.toFixed(1)} years.`
-        }
+        "@type": "WebApplication",
+        "@id": "https://populationpyramids.org/median-age-by-country#webapp",
+        "name": "Median Age by Country Explorer",
+        "url": "https://populationpyramids.org/median-age-by-country",
+        "applicationCategory": "ReferenceApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "Interactive tool to explore median ages by country with comprehensive population age breakdowns and demographic analysis",
+        "featureList": [
+          "195 countries ranked by median age",
+          "Interactive age distribution charts",
+          "Population comparisons",
+          "Regional demographic insights",
+          "Youth vs elderly population analysis"
+        ],
+        "screenshot": "https://populationpyramids.org/og-median-age.png",
+        "applicationSubCategory": "Demographics Tool",
+        "inLanguage": "en-US"
       },
       {
-        "@type": "Question",
-        "name": "What is the median age in the United States?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `The median age in the United States is ${usData?.medianAge.toFixed(1)} years, ranking #${usData ? countries.indexOf(usData) + 1 : 'N/A'} of 195 countries. Approximately ${usData?.youthPercent.toFixed(1)}% of Americans are under 15 and ${usData?.elderlyPercent.toFixed(1)}% are over 65.`
-        }
+        "@type": "Dataset",
+        "@id": "https://populationpyramids.org/median-age-by-country#dataset",
+        "name": "Global Median Age Data 2025",
+        "description": "Comprehensive median age statistics and age distribution data for all 195 countries from UN World Population Prospects",
+        "url": "https://populationpyramids.org/median-age-by-country",
+        "creator": {
+          "@type": "Organization",
+          "name": "United Nations Department of Economic and Social Affairs",
+          "url": "https://population.un.org/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "PopulationPyramids.org",
+          "url": "https://populationpyramids.org"
+        },
+        "distribution": {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://populationpyramids.org/api/median-ages"
+        },
+        "temporalCoverage": "1950/2025",
+        "spatialCoverage": {
+          "@type": "Place",
+          "name": "World"
+        },
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "variableMeasured": [
+          {
+            "@type": "PropertyValue",
+            "name": "Median Age",
+            "description": "The age that divides a population into two equal halves"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "Youth Percentage",
+            "description": "Percentage of population under 15 years old"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "Elderly Percentage",
+            "description": "Percentage of population over 65 years old"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "Working Age Percentage",
+            "description": "Percentage of population aged 15-64"
+          }
+        ]
       },
       {
-        "@type": "Question",
-        "name": "Which country has the highest median age?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `${oldestCountries[0]?.name} has the world's highest median age at ${oldestCountries[0]?.medianAge.toFixed(1)} years. The top 5 oldest countries by median age are: ${oldestCountries.slice(0, 5).map(c => `${c.name} (${c.medianAge.toFixed(1)})`).join(', ')}.`
-        }
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://populationpyramids.org/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Median Age by Country",
+            "item": "https://populationpyramids.org/median-age-by-country"
+          }
+        ]
       },
       {
-        "@type": "Question",
-        "name": "Which country has the youngest population?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `${youngestCountries[0]?.name} has the world's lowest median age at ${youngestCountries[0]?.medianAge.toFixed(1)} years. ${youngestCountries[0]?.youthPercent.toFixed(1)}% of its population is under 15 years old.`
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the median age of the world?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `The global median age is ${worldData?.medianAge.toFixed(1)} years. This has increased from approximately 24 years in 1950 as populations worldwide age due to declining fertility and increasing life expectancy.`
-        }
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is median age?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `Median age is the age that divides a population into two numerically equal groups — half are younger, half are older. It is the single best indicator of whether a population is young or old. The world's median age is currently ${worldData?.medianAge.toFixed(1)} years.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the median age in the United States?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `The median age in the United States is ${usData?.medianAge.toFixed(1)} years, ranking #${usData ? countries.indexOf(usData) + 1 : 'N/A'} of 195 countries. Approximately ${usData?.youthPercent.toFixed(1)}% of Americans are under 15 and ${usData?.elderlyPercent.toFixed(1)}% are over 65.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which country has the highest median age?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `${oldestCountries[0]?.name} has the world's highest median age at ${oldestCountries[0]?.medianAge.toFixed(1)} years. The top 5 oldest countries by median age are: ${oldestCountries.slice(0, 5).map(c => `${c.name} (${c.medianAge.toFixed(1)})`).join(', ')}.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which country has the youngest population?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `${youngestCountries[0]?.name} has the world's lowest median age at ${youngestCountries[0]?.medianAge.toFixed(1)} years. ${youngestCountries[0]?.youthPercent.toFixed(1)}% of its population is under 15 years old.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the median age of the world?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `The global median age is ${worldData?.medianAge.toFixed(1)} years. This has increased from approximately 24 years in 1950 as populations worldwide age due to declining fertility and increasing life expectancy.`
+            }
+          }
+        ]
       }
     ]
   };
 
-  const webAppStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Median Age Explorer",
-    "applicationCategory": "EducationalApplication",
-    "operatingSystem": "Any",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "description": "Interactive tool to explore median ages by country with population age breakdowns"
-  };
-
-  const datasetStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "Dataset",
-    "name": "Global Median Age Data 2026",
-    "description": "Median age statistics and age distribution for all countries from UN World Population Prospects",
-    "creator": {
-      "@type": "Organization",
-      "name": "United Nations",
-      "url": "https://population.un.org/"
-    },
-    "distribution": {
-      "@type": "DataDownload",
-      "encodingFormat": "application/json",
-      "contentUrl": "https://populationpyramids.org/api/median-ages"
-    },
-    "temporalCoverage": "1950/2025",
-    "spatialCoverage": {
-      "@type": "Place",
-      "name": "World"
-    },
-    "license": "https://creativecommons.org/licenses/by/4.0/"
-  };
-
-  const breadcrumbStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://populationpyramids.org/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Median Age by Country",
-        "item": "https://populationpyramids.org/median-age-by-country"
-      }
-    ]
-  };
-
-  return {
-    faqStructuredData,
-    webAppStructuredData,
-    datasetStructuredData,
-    breadcrumbStructuredData
-  };
+  return graphSchema;
 }
 
 export default async function MedianAgeByCountryPage() {
@@ -124,30 +159,13 @@ export default async function MedianAgeByCountryPage() {
   const usData = countries.find(c => c.slug === 'united-states');
 
   // Generate structured data
-  const {
-    faqStructuredData,
-    webAppStructuredData,
-    datasetStructuredData,
-    breadcrumbStructuredData
-  } = generateStructuredData(worldData, countries, oldestCountries, youngestCountries, usData);
+  const structuredData = generateStructuredData(worldData, countries, oldestCountries, youngestCountries, usData);
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppStructuredData) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetStructuredData) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       
       <div className="min-h-screen bg-gray-50">
