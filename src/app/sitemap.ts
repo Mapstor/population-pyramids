@@ -1,9 +1,10 @@
 import { MetadataRoute } from 'next';
 import { loadCountries } from '@/lib/data-loader';
 import { loadStates } from '@/lib/state-data-loader';
+import { COMPARISON_PAIRS } from '@/lib/comparison-pairs';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://populationpyramids.org';
+  const baseUrl = 'https://www.populationpyramids.org';
   
   try {
     // Load countries and states for dynamic routes
@@ -72,6 +73,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.85,
       },
       
+      // Additional Tools
+      {
+        url: `${baseUrl}/search`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.8,
+      },
+      {
+        url: `${baseUrl}/generations`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.8,
+      },
+      {
+        url: `${baseUrl}/us-states`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.8,
+      },
+      
       // Content Pages
       {
         url: `${baseUrl}/blog`,
@@ -107,7 +128,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       },
     ];
     
-    // Blog articles - comprehensive list
+    // Blog articles - comprehensive list matching actual files
     const blogArticles = [
       // Demographics Education Articles (NEW)
       {
@@ -121,6 +142,56 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: new Date('2024-11-12'),
         changeFrequency: 'monthly' as const,
         priority: 0.9,
+      },
+      
+      // Demographic Transition Model Articles
+      {
+        url: `${baseUrl}/blog/4-stages-demographic-transition-model`,
+        lastModified: new Date('2024-11-12'),
+        changeFrequency: 'monthly' as const,
+        priority: 0.9,
+      },
+      {
+        url: `${baseUrl}/blog/4-vs-5-stages-demographic-transition-model`,
+        lastModified: new Date('2024-11-12'),
+        changeFrequency: 'monthly' as const,
+        priority: 0.9,
+      },
+      {
+        url: `${baseUrl}/blog/5-stages-demographic-transition-complete-model`,
+        lastModified: new Date('2024-11-12'),
+        changeFrequency: 'monthly' as const,
+        priority: 0.9,
+      },
+      {
+        url: `${baseUrl}/blog/stage-1-demographic-transition`,
+        lastModified: new Date('2024-11-12'),
+        changeFrequency: 'monthly' as const,
+        priority: 0.85,
+      },
+      {
+        url: `${baseUrl}/blog/stage-2-demographic-transition`,
+        lastModified: new Date('2024-11-12'),
+        changeFrequency: 'monthly' as const,
+        priority: 0.85,
+      },
+      {
+        url: `${baseUrl}/blog/stage-3-demographic-transition`,
+        lastModified: new Date('2024-11-12'),
+        changeFrequency: 'monthly' as const,
+        priority: 0.85,
+      },
+      {
+        url: `${baseUrl}/blog/stage-4-demographic-transition`,
+        lastModified: new Date('2024-11-12'),
+        changeFrequency: 'monthly' as const,
+        priority: 0.85,
+      },
+      {
+        url: `${baseUrl}/blog/stage-5-demographic-transition`,
+        lastModified: new Date('2024-11-12'),
+        changeFrequency: 'monthly' as const,
+        priority: 0.85,
       },
       
       // US States Articles
@@ -193,12 +264,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.9,
       },
       {
-        url: `${baseUrl}/blog/africa-population-explosion`,
-        lastModified: new Date('2024-11-10'),
-        changeFrequency: 'weekly' as const,
-        priority: 0.8,
-      },
-      {
         url: `${baseUrl}/blog/baby-boom-echo-how-1990s-events-shape-today`,
         lastModified: new Date('2024-11-09'),
         changeFrequency: 'weekly' as const,
@@ -264,31 +329,46 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: 'weekly' as const,
         priority: 0.7,
       },
+      
+      // Missing Articles Found in Actual Files
+      {
+        url: `${baseUrl}/blog/fastest-growing-states-population`,
+        lastModified: new Date('2024-11-11'),
+        changeFrequency: 'weekly' as const,
+        priority: 0.8,
+      },
+      {
+        url: `${baseUrl}/blog/fastest-growing-states-population/fastest-growing-states-population-2024`,
+        lastModified: new Date('2024-11-11'),
+        changeFrequency: 'weekly' as const,
+        priority: 0.7,
+      },
+      {
+        url: `${baseUrl}/blog/oldest-countries-world-aging-population`,
+        lastModified: new Date('2024-11-10'),
+        changeFrequency: 'weekly' as const,
+        priority: 0.8,
+      },
+      {
+        url: `${baseUrl}/blog/oldest-states-in-us-aging-population`,
+        lastModified: new Date('2024-11-10'),
+        changeFrequency: 'weekly' as const,
+        priority: 0.8,
+      },
+      {
+        url: `${baseUrl}/blog/youngest-states-in-us-youth-population`,
+        lastModified: new Date('2024-11-10'),
+        changeFrequency: 'weekly' as const,
+        priority: 0.8,
+      },
     ];
 
-    // Comparison pages - all 16 country comparisons
-    const comparisonPages = [
-      'china-vs-india',
-      'usa-vs-china', 
-      'usa-vs-india',
-      'usa-vs-russia',
-      'usa-vs-brazil',
-      'usa-vs-indonesia',
-      'india-vs-indonesia',
-      'india-vs-brazil',
-      'china-vs-brazil',
-      'usa-vs-mexico',
-      'usa-vs-uk',
-      'uk-vs-germany',
-      'uk-vs-france',
-      'japan-vs-germany',
-      'india-vs-pakistan',
-      'india-vs-bangladesh'
-    ].map((comparison) => ({
-      url: `${baseUrl}/compare/${comparison}`,
+    // Comparison pages - all available comparison pairs  
+    const comparisonPages = COMPARISON_PAIRS.map((pair) => ({
+      url: `${baseUrl}/compare/${pair.slug}`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
-      priority: 0.8,
+      priority: pair.category === 'superpower' ? 0.9 : 0.8,
     }));
 
     // Dynamic country pages
@@ -311,34 +391,35 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   } catch (error) {
     console.error('Error generating sitemap:', error);
     
-    // Fallback minimal sitemap
+    // Fallback minimal sitemap with www domain
+    const fallbackBaseUrl = 'https://www.populationpyramids.org';
     return [
       {
-        url: baseUrl,
+        url: fallbackBaseUrl,
         lastModified: new Date(),
         changeFrequency: 'weekly' as const,
         priority: 1.0,
       },
       {
-        url: `${baseUrl}/about`,
+        url: `${fallbackBaseUrl}/about`,
         lastModified: new Date(),
         changeFrequency: 'monthly' as const,
         priority: 0.8,
       },
       {
-        url: `${baseUrl}/blog`,
+        url: `${fallbackBaseUrl}/blog`,
         lastModified: new Date(),
         changeFrequency: 'weekly' as const,
         priority: 0.9,
       },
       {
-        url: `${baseUrl}/countries`,
+        url: `${fallbackBaseUrl}/countries`,
         lastModified: new Date(),
         changeFrequency: 'weekly' as const,
         priority: 0.8,
       },
       {
-        url: `${baseUrl}/states`,
+        url: `${fallbackBaseUrl}/states`,
         lastModified: new Date(),
         changeFrequency: 'weekly' as const,
         priority: 0.9,

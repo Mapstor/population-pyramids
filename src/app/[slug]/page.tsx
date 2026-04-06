@@ -16,6 +16,7 @@ import { generateUsageGuide, generateUsageSummary } from '@/lib/usage-guide';
 import { classifyDemographicStage, getDemographicStageExplanation } from '@/lib/demographic-stage-classifier';
 import { loadFertilityData, calculateFertilityMetrics, getFertilityAnalysis } from '@/lib/fertility-loader';
 import { generateBirthStatisticsSchema } from '@/lib/birth-statistics-schema';
+import { generateCountrySchemaPackage } from '@/lib/population-dataset-schema';
 import { getTopComparisonsForCountryOptimized } from '@/lib/country-comparison-links';
 import FertilityChart from '@/components/FertilityChart';
 import BirthStatistics from '@/components/BirthStatistics';
@@ -173,9 +174,34 @@ export default async function CountryPage({ params }: CountryPageProps) {
       latestYear
     ) : null;
 
+    // Generate comprehensive population dataset schema
+    const populationSchemas = generateCountrySchemaPackage(
+      countryData.countryName,
+      countrySlug,
+      yearData,
+      countryData,
+      latestYear,
+      fertilityData,
+      {
+        includeDetailed: true,
+        includeBreadcrumbs: true,
+        includeWebApplication: true
+      }
+    );
+
     return (
       <div className="min-h-screen bg-gray-50">
         {/* Schema Markup for SEO */}
+        {/* Population Dataset Schema */}
+        {populationSchemas.map((schema, index) => (
+          <script
+            key={`population-schema-${index}`}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          />
+        ))}
+        
+        {/* Birth Statistics Schema */}
         {birthSchemas && (
           <>
             <script
@@ -185,10 +211,6 @@ export default async function CountryPage({ params }: CountryPageProps) {
             <script
               type="application/ld+json"
               dangerouslySetInnerHTML={{ __html: JSON.stringify(birthSchemas.birthFAQSchema) }}
-            />
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify(birthSchemas.breadcrumbSchema) }}
             />
           </>
         )}
