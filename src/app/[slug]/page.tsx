@@ -10,11 +10,11 @@ import { generateExpertAnalysis } from '@/lib/expert-analysis';
 import { getHistoricalEvents } from '@/lib/historical-events';
 import { generateDemographicFacts } from '@/lib/demographic-facts';
 import { generateExpandedFAQ } from '@/lib/expanded-faq';
-import { generateRelatedDemographics } from '@/lib/related-demographics';
 import { generateDemographicGlossary, generateGlossarySummary } from '@/lib/demographic-glossary';
 import { generateUsageGuide, generateUsageSummary } from '@/lib/usage-guide';
 import { classifyDemographicStage, getDemographicStageExplanation } from '@/lib/demographic-stage-classifier';
 import { loadFertilityData, calculateFertilityMetrics, getFertilityAnalysis } from '@/lib/fertility-loader';
+import { hasValue } from '@/lib/render-guards';
 import { generateBirthStatisticsSchema } from '@/lib/birth-statistics-schema';
 import { generateCountrySchemaPackage } from '@/lib/population-dataset-schema';
 import { getTopComparisonsForCountryOptimized } from '@/lib/country-comparison-links';
@@ -56,9 +56,11 @@ export async function generateMetadata({ params }: CountryPageProps) {
     
     // Load fertility data for birth statistics in metadata
     const fertilityData = await loadFertilityData(countrySlug);
-    const dailyBirths = fertilityData ? 
-      Math.round((yearData.totalPopulation * (fertilityData.fertilityData.historical.find(d => d.year === fertilityData.fertilityData.current.year)?.crudebirthRate || fertilityData.fertilityData.historical[fertilityData.fertilityData.historical.length - 1]?.crudebirthRate || 11)) / 1000 / 365) : undefined;
-    const birthRate = fertilityData?.fertilityData.historical.find(d => d.year === fertilityData.fertilityData.current.year)?.crudebirthRate || fertilityData?.fertilityData.historical[fertilityData.fertilityData.historical.length - 1]?.crudebirthRate;
+    const crudebirthRateForMetadata = fertilityData?.fertilityData.historical.find(d => d.year === fertilityData.fertilityData.current.year)?.crudebirthRate || 
+                                      fertilityData?.fertilityData.historical[fertilityData.fertilityData.historical.length - 1]?.crudebirthRate;
+    const dailyBirths = (fertilityData && crudebirthRateForMetadata) ? 
+      Math.round((yearData.totalPopulation * crudebirthRateForMetadata) / 1000 / 365) : undefined;
+    const birthRate = crudebirthRateForMetadata;
     
     return generateCountryMetadata(
       countryData.countryName,
@@ -89,6 +91,20 @@ export default async function CountryPage({ params }: CountryPageProps) {
     
     // Get top comparison links for this country
     const topComparisons = getTopComparisonsForCountryOptimized(countrySlug);
+    
+    // Calculate youth demographics for display
+    const under25Population = yearData.ageGroups
+      .filter(ag => ['0-4', '5-9', '10-14', '15-19', '20-24'].includes(ag.ageRange))
+      .reduce((sum, ag) => sum + ag.total, 0);
+    const under25Percentage = (under25Population / yearData.totalPopulation) * 100;
+    
+    const youngAdultPopulation = yearData.ageGroups
+      .filter(ag => ['15-19', '20-24'].includes(ag.ageRange))
+      .reduce((sum, ag) => sum + ag.total, 0);
+    const youngAdultPercentage = (youngAdultPopulation / yearData.totalPopulation) * 100;
+    
+    // Log values for verification
+    console.log(`[${countryData.countryName}] Under-25: ${under25Percentage.toFixed(1)}%, Young Adults: ${youngAdultPercentage.toFixed(1)}%`);
     
     // Generate all content
     const content = generateCountryContent(
@@ -126,14 +142,6 @@ export default async function CountryPage({ params }: CountryPageProps) {
       countryData,
       latestYear
     );
-    const relatedDemographics = generateRelatedDemographics(
-      countryData.countryName,
-      countrySlug,
-      yearData,
-      metrics,
-      countryData,
-      latestYear
-    );
     const glossaryTerms = generateDemographicGlossary(
       countryData.countryName,
       yearData,
@@ -156,11 +164,13 @@ export default async function CountryPage({ params }: CountryPageProps) {
     const stageExplanation = getDemographicStageExplanation(demographicStage, countryData.countryName);
 
     // Calculate birth statistics for schema
-    const dailyBirths = fertilityData ? 
-      Math.round((yearData.totalPopulation * (fertilityData.fertilityData.historical.find(d => d.year === fertilityData.fertilityData.current.year)?.crudebirthRate || fertilityData.fertilityData.historical[fertilityData.fertilityData.historical.length - 1]?.crudebirthRate || 11)) / 1000 / 365) : 0;
-    const annualBirths = dailyBirths * 365;
-    const birthRate = fertilityData?.fertilityData.historical.find(d => d.year === fertilityData.fertilityData.current.year)?.crudebirthRate || fertilityData?.fertilityData.historical[fertilityData.fertilityData.historical.length - 1]?.crudebirthRate || 0;
-    const fertilityRate = fertilityData?.fertilityData.current.totalFertilityRate || 0;
+    const crudebirthRateForSchema = fertilityData?.fertilityData.historical.find(d => d.year === fertilityData.fertilityData.current.year)?.crudebirthRate || 
+                                    fertilityData?.fertilityData.historical[fertilityData.fertilityData.historical.length - 1]?.crudebirthRate;
+    const dailyBirths = (fertilityData && crudebirthRateForSchema) ? 
+      Math.round((yearData.totalPopulation * crudebirthRateForSchema) / 1000 / 365) : null;
+    const annualBirths = dailyBirths ? dailyBirths * 365 : null;
+    const birthRate = crudebirthRateForSchema || null;
+    const fertilityRate = fertilityData?.fertilityData.current.totalFertilityRate || null;
 
     // Generate schema markup
     const birthSchemas = dailyBirths > 0 ? generateBirthStatisticsSchema(
@@ -622,15 +632,19 @@ export default async function CountryPage({ params }: CountryPageProps) {
           )}
 
           {/* Birth Statistics Section - NEW */}
-          {fertilityData && (
-            <BirthStatistics
-              countryName={countryData.countryName}
-              countrySlug={countrySlug}
-              population={yearData.totalPopulation}
-              crudeBirthRate={fertilityData.fertilityData.historical.find(d => d.year === fertilityData.fertilityData.current.year)?.crudebirthRate || fertilityData.fertilityData.historical[fertilityData.fertilityData.historical.length - 1]?.crudebirthRate || 11}
-              fertilityData={fertilityData.fertilityData}
-            />
-          )}
+          {fertilityData && (() => {
+            const crudebirthRateForComponent = fertilityData.fertilityData.historical.find(d => d.year === fertilityData.fertilityData.current.year)?.crudebirthRate || 
+                                               fertilityData.fertilityData.historical[fertilityData.fertilityData.historical.length - 1]?.crudebirthRate;
+            return crudebirthRateForComponent ? (
+              <BirthStatistics
+                countryName={countryData.countryName}
+                countrySlug={countrySlug}
+                population={yearData.totalPopulation}
+                crudeBirthRate={crudebirthRateForComponent}
+                fertilityData={fertilityData.fertilityData}
+              />
+            ) : null;
+          })()}
 
           {/* Median Age Section - Prominent for SEO */}
           {(
@@ -778,8 +792,8 @@ export default async function CountryPage({ params }: CountryPageProps) {
                     </div>
                     <div className="bg-orange-50 rounded-lg p-4 text-center border border-orange-200">
                       <div className="text-sm text-orange-900 font-medium mb-1">Under 25</div>
-                      <div className="text-2xl font-bold text-orange-700 mb-1">42.4%</div>
-                      <div className="text-xs text-orange-500">615,000,000</div>
+                      <div className="text-2xl font-bold text-orange-700 mb-1">{under25Percentage.toFixed(1)}%</div>
+                      <div className="text-xs text-orange-500">{under25Population.toLocaleString()}</div>
                     </div>
                     <div className="bg-green-50 rounded-lg p-4 text-center border border-green-200">
                       <div className="text-sm text-green-900 font-medium mb-1">Working Age</div>
@@ -860,8 +874,8 @@ export default async function CountryPage({ params }: CountryPageProps) {
                         <span className="text-lg mr-2">💼</span> Youth Economic Impact
                       </h3>
                       <ul className="text-sm text-yellow-700 space-y-1">
-                        <li>• <strong>42.4% under 25:</strong> Massive young consumer market</li>
-                        <li>• <strong>17.8% young adults (15-24):</strong> Prime workforce entry</li>
+                        <li>• <strong>{under25Percentage.toFixed(1)}% under 25:</strong> {under25Percentage > 40 ? 'Massive' : under25Percentage > 30 ? 'Substantial' : under25Percentage > 20 ? 'Moderate' : 'Limited'} young consumer market</li>
+                        <li>• <strong>{youngAdultPercentage.toFixed(1)}% young adults (15-24):</strong> {youngAdultPercentage > 15 ? 'Prime' : youngAdultPercentage > 10 ? 'Growing' : 'Limited'} workforce entry</li>
                         <li>• Innovation and entrepreneurship potential</li>
                         <li>• Technology adoption and digital economy drivers</li>
                       </ul>
@@ -882,7 +896,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
 
                   <div className="mt-4 text-sm text-gray-600 bg-gray-50 rounded-lg p-3">
                     <p>
-                      This detailed age distribution reveals {countryData.countryName}'s demographic advantages: a large youth population (42.4% under 25) creating economic opportunities, a substantial working-age population (68.4%) driving productivity, and manageable elderly dependency (7.4% over 65). 
+                      This detailed age distribution reveals {countryData.countryName}'s demographic {under25Percentage > 35 ? 'advantages' : 'characteristics'}: {under25Percentage > 40 ? 'a large' : under25Percentage > 30 ? 'a substantial' : under25Percentage > 20 ? 'a moderate' : 'a limited'} youth population ({under25Percentage.toFixed(1)}% under 25) {under25Percentage > 35 ? 'creating economic opportunities' : 'shaping economic dynamics'}, {metrics.workingAgePercentage > 65 ? 'a substantial' : metrics.workingAgePercentage > 55 ? 'a moderate' : 'a limited'} working-age population ({metrics.workingAgePercentage.toFixed(1)}%) driving productivity, and {metrics.elderlyPercentage < 10 ? 'manageable' : metrics.elderlyPercentage < 20 ? 'growing' : 'significant'} elderly dependency ({metrics.elderlyPercentage.toFixed(1)}% over 65). 
                       Understanding each age group's needs enables targeted policy development for education, employment, healthcare, and social services.
                     </p>
                   </div>
@@ -961,13 +975,17 @@ export default async function CountryPage({ params }: CountryPageProps) {
                   {/* Left Side - Data Summary */}
                   <div className="bg-white rounded-lg p-5 border border-red-100">
                     <div className="mb-6">
-                      <p className="text-2xl font-bold text-gray-900 mb-2">
-                        {countryData.countryName} Total Fertility Rate: <span className="text-red-700 text-3xl">{fertilityData.fertilityData.current.totalFertilityRate?.toFixed(2) || 'N/A'}</span> children per woman
-                      </p>
+                      {hasValue(fertilityData.fertilityData.current.totalFertilityRate) && (
+                        <p className="text-2xl font-bold text-gray-900 mb-2">
+                          {countryData.countryName} Total Fertility Rate: <span className="text-red-700 text-3xl">{fertilityData.fertilityData.current.totalFertilityRate.toFixed(2)}</span> children per woman
+                        </p>
+                      )}
                       <p className="text-gray-600">
-                        {(fertilityData.fertilityData.current.totalFertilityRate || 0) < fertilityData.fertilityData.replacementLevel ? 
-                          `Below replacement level fertility - contributing to population aging and demographic transition` :
-                          `Above replacement level fertility - supporting population growth`
+                        {fertilityData.fertilityData.current.totalFertilityRate ? 
+                          (fertilityData.fertilityData.current.totalFertilityRate < fertilityData.fertilityData.replacementLevel ? 
+                            `Below replacement level fertility - contributing to population aging and demographic transition` :
+                            `Above replacement level fertility - supporting population growth`) :
+                          `Fertility data unavailable for this country`
                         }
                       </p>
                     </div>
@@ -1057,10 +1075,14 @@ export default async function CountryPage({ params }: CountryPageProps) {
                       <span className="text-lg mr-2">📊</span> Demographic Impact
                     </h3>
                     <ul className="text-sm text-blue-700 space-y-1">
-                      <li>• <strong>Population Growth:</strong> {(fertilityData.fertilityData.current.totalFertilityRate || 0) < 2.1 ? 'Declining momentum' : 'Continuing growth'}</li>
-                      <li>• <strong>Age Structure:</strong> {(fertilityData.fertilityData.current.totalFertilityRate || 0) < 2.0 ? 'Aging population' : 'Young population'}</li>
-                      <li>• <strong>Workforce:</strong> {(fertilityData.fertilityData.current.totalFertilityRate || 0) < 1.8 ? 'Shrinking future workforce' : 'Stable workforce pipeline'}</li>
-                      <li>• <strong>Economic Impact:</strong> {(fertilityData.fertilityData.current.totalFertilityRate || 0) < 2.1 ? 'Pension system pressure' : 'Economic growth potential'}</li>
+                      <li>• <strong>Population Growth:</strong> {fertilityData.fertilityData.current.totalFertilityRate ? 
+                        (fertilityData.fertilityData.current.totalFertilityRate < 2.1 ? 'Declining momentum' : 'Continuing growth') : 'Data unavailable'}</li>
+                      <li>• <strong>Age Structure:</strong> {fertilityData.fertilityData.current.totalFertilityRate ? 
+                        (fertilityData.fertilityData.current.totalFertilityRate < 2.0 ? 'Aging population' : 'Young population') : 'Data unavailable'}</li>
+                      <li>• <strong>Workforce:</strong> {fertilityData.fertilityData.current.totalFertilityRate ? 
+                        (fertilityData.fertilityData.current.totalFertilityRate < 1.8 ? 'Shrinking future workforce' : 'Stable workforce pipeline') : 'Data unavailable'}</li>
+                      <li>• <strong>Economic Impact:</strong> {fertilityData.fertilityData.current.totalFertilityRate ? 
+                        (fertilityData.fertilityData.current.totalFertilityRate < 2.1 ? 'Pension system pressure' : 'Economic growth potential') : 'Data unavailable'}</li>
                     </ul>
                   </div>
 
@@ -1070,8 +1092,10 @@ export default async function CountryPage({ params }: CountryPageProps) {
                     </h3>
                     <ul className="text-sm text-green-700 space-y-1">
                       <li>• <strong>World Average:</strong> {fertilityData.fertilityData.worldComparison.worldAverage} children per woman</li>
-                      <li>• <strong>Comparison:</strong> {(fertilityData.fertilityData.current.totalFertilityRate || 0) < fertilityData.fertilityData.worldComparison.worldAverage ? 'Below' : 'Above'} global average</li>
-                      <li>• <strong>Development Stage:</strong> {(fertilityData.fertilityData.current.totalFertilityRate || 0) < 2.1 ? 'Post-demographic transition' : 'Demographic transition'}</li>
+                      <li>• <strong>Comparison:</strong> {fertilityData.fertilityData.current.totalFertilityRate ? 
+                        (fertilityData.fertilityData.current.totalFertilityRate < fertilityData.fertilityData.worldComparison.worldAverage ? 'Below' : 'Above') + ' global average' : 'Data unavailable'}</li>
+                      <li>• <strong>Development Stage:</strong> {fertilityData.fertilityData.current.totalFertilityRate ? 
+                        (fertilityData.fertilityData.current.totalFertilityRate < 2.1 ? 'Post-demographic transition' : 'Demographic transition') : 'Data unavailable'}</li>
                       <li>• <strong>Future Projections:</strong> {fertilityData.fertilityData.projections.length > 0 ? `${fertilityData.fertilityData.projections[0].totalFertilityRate} by ${fertilityData.fertilityData.projections[0].year}` : 'Continued decline expected'}</li>
                     </ul>
                   </div>
@@ -1085,7 +1109,8 @@ export default async function CountryPage({ params }: CountryPageProps) {
                   </div>
                   <p className="text-sm text-yellow-700">
                     <strong>📅 Next Update:</strong> {countryData.countryName} fertility rate 2026 data will be released with UN World Population Prospects 2026 revision. 
-                    Current projections suggest {(fertilityData.fertilityData.current.totalFertilityRate || 0) < 2.0 ? 'continued decline' : 'stabilization'} in birth rates, 
+                    {fertilityData.fertilityData.current.totalFertilityRate && 
+                      `Current projections suggest ${fertilityData.fertilityData.current.totalFertilityRate < 2.0 ? 'continued decline' : 'stabilization'} in birth rates,`} 
                     impacting long-term demographic planning and economic policies.
                   </p>
                 </div>
@@ -1528,81 +1553,6 @@ export default async function CountryPage({ params }: CountryPageProps) {
             </div>
           </section>
 
-          {/* Related Demographics Section */}
-          <section className="bg-white rounded-lg shadow-sm p-8 mb-8">
-            <div className="flex items-center mb-6">
-              <span className="text-3xl mr-3">📋</span>
-              <h2 className="text-3xl font-bold text-gray-900">
-                Other Demographic Indicators for {countryData.countryName}
-              </h2>
-            </div>
-            <p className="text-gray-600 mb-8">
-              Beyond age structure and population size, these additional demographic indicators provide comprehensive 
-              context for understanding {countryData.countryName}'s development patterns and social trends.
-            </p>
-
-            <div className="space-y-8">
-              {relatedDemographics.indicators.map((indicator, index) => (
-                <div key={index} className="border-l-4 border-blue-400 bg-blue-50 p-6 rounded-r-lg">
-                  <div className="flex items-center mb-4">
-                    <span className="text-2xl mr-3">{indicator.icon}</span>
-                    <h3 className="text-xl font-bold text-gray-900">
-                      {indicator.title}
-                    </h3>
-                  </div>
-                  
-                  <p className="text-gray-700 leading-relaxed mb-4">
-                    {indicator.content}
-                  </p>
-
-                  <div className="bg-white rounded-lg p-4 border border-blue-200">
-                    <h4 className="font-semibold text-blue-900 mb-3 flex items-center">
-                      <span className="text-lg mr-2">🔗</span>
-                      Authoritative Sources
-                    </h4>
-                    <div className="space-y-2">
-                      {indicator.sources.map((source, sourceIndex) => (
-                        <div key={sourceIndex} className="flex items-start">
-                          <span className="text-blue-600 mr-2">•</span>
-                          <div>
-                            <a
-                              href={source.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-blue-600 hover:text-blue-800 font-medium text-sm"
-                            >
-                              {source.name} →
-                            </a>
-                            <p className="text-gray-600 text-xs mt-1">
-                              {source.description}
-                            </p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Summary */}
-            <div className="mt-8 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg p-6">
-              <div className="flex items-center mb-3">
-                <span className="text-2xl mr-3">🎯</span>
-                <h3 className="text-xl font-bold">Comprehensive Demographic Context</h3>
-              </div>
-              <p className="leading-relaxed">
-                {relatedDemographics.summary}
-              </p>
-            </div>
-
-            <div className="mt-6 text-sm text-gray-600 italic">
-              <p>
-                * Data estimates based on demographic patterns and regional trends. 
-                For precise current statistics, consult the linked authoritative sources.
-              </p>
-            </div>
-          </section>
 
           {/* Glossary Section */}
           <section className="bg-white rounded-lg shadow-sm p-8 mb-8">

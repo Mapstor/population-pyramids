@@ -10,7 +10,7 @@ import { generateExpertAnalysis } from '@/lib/expert-analysis';
 import { getHistoricalEvents } from '@/lib/historical-events';
 import { generateDemographicFacts } from '@/lib/demographic-facts';
 import { generateExpandedFAQ } from '@/lib/expanded-faq';
-import { generateRelatedDemographics } from '@/lib/related-demographics';
+// import { generateRelatedDemographics } from '@/lib/related-demographics';
 import { generateDemographicGlossary, generateGlossarySummary } from '@/lib/demographic-glossary';
 import { generateUsageGuide, generateUsageSummary } from '@/lib/usage-guide';
 import PopulationPyramid from '@/components/PopulationPyramid';
