@@ -1,4 +1,5 @@
 import type { YearData, DemographicMetrics, CountryPopulationData } from '@/types/population';
+import { formatPopulationProse } from '@/lib/number-format';
 
 interface DemographicFact {
   icon: string;
@@ -50,7 +51,7 @@ export function generateDemographicFacts(
     if (growthMultiple >= 3) {
       facts.push({
         icon: '📈',
-        text: `${countryName}'s population has ${growthMultiple >= 4 ? 'quadrupled' : growthMultiple >= 3.5 ? 'more than tripled' : 'tripled'} since 1970, growing from ${(data1970.totalPopulation / 1000000).toFixed(1)} million to ${(yearData.totalPopulation / 1000000).toFixed(1)} million people`,
+        text: `${countryName}'s population has ${growthMultiple >= 4 ? 'quadrupled' : growthMultiple >= 3.5 ? 'more than tripled' : 'tripled'} since 1970, growing from ${formatPopulationProse(data1970.totalPopulation)} to ${formatPopulationProse(yearData.totalPopulation)} people`,
         category: 'growth'
       });
     } else if (growthMultiple >= 2) {
@@ -189,7 +190,7 @@ export function generateDemographicFacts(
   } else if (populationInMillions < 1) {
     facts.push({
       icon: '🏝️',
-      text: `${countryName}'s entire population of ${(yearData.totalPopulation / 1000).toFixed(0)},000 could fit in a large sports stadium`,
+      text: `${countryName}'s entire population of ${formatPopulationProse(yearData.totalPopulation)} could fit in a large sports stadium`,
       category: 'comparison'
     });
   }

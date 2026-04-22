@@ -1,4 +1,5 @@
 import type { YearData, DemographicMetrics, CountryPopulationData } from '@/types/population';
+import { formatPopulationProse } from '@/lib/number-format';
 
 interface ContentSections {
   understanding: string;
@@ -58,11 +59,11 @@ function generateAgeDistributionSection(
   metrics: DemographicMetrics,
   yearData: YearData
 ): string {
-  return `The age distribution of ${countryName}'s population reveals important demographic characteristics. The youth population (ages 0-14) comprises ${metrics.youthPercentage.toFixed(1)}% of the total, representing approximately ${(metrics.youthPopulation / 1000000).toFixed(1)} million individuals. This proportion of young people has significant implications for education systems, future labor force size, and long-term demographic momentum.
+  return `The age distribution of ${countryName}'s population reveals important demographic characteristics. The youth population (ages 0-14) comprises ${metrics.youthPercentage.toFixed(1)}% of the total, representing approximately ${formatPopulationProse(metrics.youthPopulation)} individuals. This proportion of young people has significant implications for education systems, future labor force size, and long-term demographic momentum.
 
-The working-age population (ages 15-64) accounts for ${metrics.workingAgePercentage.toFixed(1)}% of ${countryName}'s total population, totaling about ${(metrics.workingAgePopulation / 1000000).toFixed(1)} million people. This segment of the population is crucial for economic productivity, as it represents the primary labor force and tax base that supports both younger and older dependents.
+The working-age population (ages 15-64) accounts for ${metrics.workingAgePercentage.toFixed(1)}% of ${countryName}'s total population, totaling about ${formatPopulationProse(metrics.workingAgePopulation)} people. This segment of the population is crucial for economic productivity, as it represents the primary labor force and tax base that supports both younger and older dependents.
 
-The elderly population (ages 65 and above) makes up ${metrics.elderlyPercentage.toFixed(1)}% of the total, with approximately ${(metrics.elderlyPopulation / 1000000).toFixed(1)} million senior citizens. The proportion and growth rate of this age group has important implications for healthcare systems, pension programs, and social services. The median age of ${yearData.medianAge.toFixed(1)} years provides a useful summary statistic, indicating that half of ${countryName}'s population is younger than this age and half is older.`;
+The elderly population (ages 65 and above) makes up ${metrics.elderlyPercentage.toFixed(1)}% of the total, with approximately ${formatPopulationProse(metrics.elderlyPopulation)} senior citizens. The proportion and growth rate of this age group has important implications for healthcare systems, pension programs, and social services. The median age of ${yearData.medianAge.toFixed(1)} years provides a useful summary statistic, indicating that half of ${countryName}'s population is younger than this age and half is older.`;
 }
 
 function generateHistoricalSection(

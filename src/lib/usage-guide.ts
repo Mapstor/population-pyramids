@@ -1,4 +1,5 @@
 import type { YearData, DemographicMetrics, CountryPopulationData } from '@/types/population';
+import { formatPopulationProse } from '@/lib/number-format';
 
 interface AudienceGuide {
   audience: string;
@@ -89,7 +90,7 @@ export function generateUsageGuide(
       description: `Leverage demographic insights for market research, customer segmentation, product development, and expansion planning. ${countryName}'s demographic profile reveals ${isYoungPopulation ? 'emerging consumer markets' : 'mature market characteristics'} with specific opportunities.`,
       applications: [
         `Target marketing: ${isYoungPopulation ? 'Focus on youth-oriented products and services for large under-25 population' : 'Develop senior-focused offerings for aging demographics'}`,
-        `Market sizing: ${populationInMillions.toFixed(1)} million potential customers with ${metrics.workingAgePercentage.toFixed(1)}% in prime earning years`,
+        `Market sizing: ${formatPopulationProse(yearData.totalPopulation)} potential customers with ${metrics.workingAgePercentage.toFixed(1)}% in prime earning years`,
         `Location planning: ${metrics.youthPercentage > 25 ? 'Education and youth services show high demand' : 'Healthcare and senior services represent growth sectors'}`,
         `Workforce planning: ${metrics.workingAgePercentage > 65 ? 'Abundant labor supply available' : 'Plan for potential labor constraints'}`,
         `Investment decisions: ${hasHighGrowth ? 'High growth potential with expanding consumer base' : 'Stable market with predictable demand patterns'}`

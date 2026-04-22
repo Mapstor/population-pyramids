@@ -74,3 +74,24 @@ export function formatTablePercentage(num: number): string {
   if (num === 0) return '—';
   return formatPercentage(num, 2);
 }
+
+// Compact form for stat cards, tables, headlines
+export function formatPopulationCompact(pop: number): string {
+  if (pop == null || isNaN(pop)) return '';
+  if (pop >= 1_000_000_000) return (pop / 1_000_000_000).toFixed(2) + 'B';
+  if (pop >= 10_000_000) return (pop / 1_000_000).toFixed(1) + 'M';
+  if (pop >= 1_000_000) return (pop / 1_000_000).toFixed(2) + 'M';
+  if (pop >= 1_000) return pop.toLocaleString('en-US');
+  return pop.toString();
+}
+
+// Prose-friendly form for inline sentences ("totaling about X people")
+// ACCEPTS RAW INTEGER POPULATION (e.g. 496, 12031, 1463865536)
+export function formatPopulationProse(pop: number): string {
+  if (pop == null || isNaN(pop)) return '';
+  if (pop >= 1_000_000_000) return (pop / 1_000_000_000).toFixed(2) + ' billion';
+  if (pop >= 10_000_000) return (pop / 1_000_000).toFixed(1) + ' million';
+  if (pop >= 1_000_000) return (pop / 1_000_000).toFixed(2) + ' million';
+  if (pop >= 1_000) return pop.toLocaleString('en-US');
+  return pop.toString();
+}
