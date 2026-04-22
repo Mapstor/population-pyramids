@@ -921,14 +921,24 @@ function generateDemographicAnalysis(
   const popDiff = data1.totalPopulation - data2.totalPopulation;
   const popRatio = data1.totalPopulation / data2.totalPopulation;
   
-  paragraphs.push(
-    `In 2025, ${comparisonData.country1Name} has a population of ${formatPopulation(data1.totalPopulation)}, ` +
-    `while ${comparisonData.country2Name} has ${formatPopulation(data2.totalPopulation)}. ` +
-    `This represents a difference of ${formatPopulation(Math.abs(popDiff))}, with ${popDiff > 0 ? comparisonData.country1Name : comparisonData.country2Name} ` +
-    `having ${Math.abs(popRatio > 1 ? popRatio : 1/popRatio).toFixed(1)} times the population of the other. ` +
-    `${comparisonData.country1Name} ranks #${rank1 || 'N/A'} globally by population size, ` +
-    `while ${comparisonData.country2Name} ranks #${rank2 || 'N/A'}.`
-  );
+  if (rank1 && rank2) {
+    paragraphs.push(
+      `In 2025, ${comparisonData.country1Name} has a population of ${formatPopulation(data1.totalPopulation)}, ` +
+      `while ${comparisonData.country2Name} has ${formatPopulation(data2.totalPopulation)}. ` +
+      `This represents a difference of ${formatPopulation(Math.abs(popDiff))}, with ${popDiff > 0 ? comparisonData.country1Name : comparisonData.country2Name} ` +
+      `having ${Math.abs(popRatio > 1 ? popRatio : 1/popRatio).toFixed(1)} times the population of the other. ` +
+      `${comparisonData.country1Name} ranks #${rank1} globally by population size, ` +
+      `while ${comparisonData.country2Name} ranks #${rank2}.`
+    );
+  } else {
+    // Omit ranking sentence when either rank is missing
+    paragraphs.push(
+      `In 2025, ${comparisonData.country1Name} has a population of ${formatPopulation(data1.totalPopulation)}, ` +
+      `while ${comparisonData.country2Name} has ${formatPopulation(data2.totalPopulation)}. ` +
+      `This represents a difference of ${formatPopulation(Math.abs(popDiff))}, with ${popDiff > 0 ? comparisonData.country1Name : comparisonData.country2Name} ` +
+      `having ${Math.abs(popRatio > 1 ? popRatio : 1/popRatio).toFixed(1)} times the population of the other.`
+    );
+  }
   
   // Age structure comparison
   const ageDiff = data1.medianAge - data2.medianAge;

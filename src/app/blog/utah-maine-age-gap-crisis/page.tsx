@@ -227,6 +227,7 @@ export default function UtahMaineAgeGapArticle() {
                           ...createPyramidOptions(pyramidData.maxValue, utah2024Data.totalPopulation).plugins,
                           title: {
                             display: true,
+                            // CAT C: Chart title - N/A fallback appropriate for dynamic chart data
                             text: `Median Age: ${utah2024Data.medianAge?.toFixed(1) || 'N/A'} years`
                           }
                         }
