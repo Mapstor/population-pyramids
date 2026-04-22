@@ -82,9 +82,12 @@ const historicalEvents: Record<string, Record<string, string[]>> = {
 };
 
 function getDecadeEvents(countrySlug: string, decade: string): string[] {
+  // Per verified-or-omitted: return only country-specific events.
+  // 7 enhanced countries (angola, china, germany, india, japan, nigeria) 
+  // receive real historical narratives. 188 unenhanced countries receive no generic fallback prose.
+  // Phase 1.5 may add real per-country events for more countries via UN/academic sources.
   const countryEvents = historicalEvents[countrySlug]?.[decade] || [];
-  const globalEvents = historicalEvents['global'][decade] || [];
-  return [...countryEvents, ...globalEvents.slice(0, 2)]; // Include 2 global events
+  return countryEvents;
 }
 
 function calculateDecadeChange(start: number, end: number): string {
