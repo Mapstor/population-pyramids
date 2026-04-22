@@ -47,12 +47,6 @@ export function generateDemographicGlossary(
       example: `${metrics.pyramidType === 'expansive' ? 'Expansive pyramids like ' + countryName + "'s predict continued population growth and create opportunities for economic development if properly managed." : metrics.pyramidType === 'constrictive' ? 'Constrictive pyramids like ' + countryName + "'s indicate population stabilization or decline, requiring policies to address aging challenges." : 'Stationary pyramids like ' + countryName + "'s suggest demographic equilibrium with stable population growth patterns."}`
     },
     {
-      term: 'Total Fertility Rate',
-      definition: 'The average number of children a woman would have in her lifetime based on current birth rates.',
-      context: `${countryName}'s estimated fertility rate of ${metrics.youthPercentage > 35 ? '5.0+' : metrics.youthPercentage > 25 ? '3.2' : metrics.youthPercentage > 20 ? '2.1' : '1.6'} children per woman ${(metrics.youthPercentage > 25 ? 3.5 : 1.8) > 2.1 ? 'likely exceeds replacement level, driving population growth' : 'likely falls below replacement level of 2.1, leading toward population decline'}.`,
-      example: `${(metrics.youthPercentage > 25 ? 3.5 : 1.8) > 4 ? 'High fertility rates like ' + countryName + "'s support rapid population growth but challenge resource allocation and development planning." : (metrics.youthPercentage > 25 ? 3.5 : 1.8) < 1.5 ? 'Ultra-low fertility like ' + countryName + "'s threatens long-term population sustainability and economic growth." : 'Moderate fertility rates like ' + countryName + "'s balance population stability with manageable growth patterns."}`
-    },
-    {
       term: 'Youth Bulge',
       definition: 'A demographic pattern where a large proportion of the population consists of children and young adults.',
       context: `${countryName} ${metrics.youthPercentage > 30 ? 'exhibits a significant youth bulge with ' + metrics.youthPercentage.toFixed(1) + '% under 15, creating both opportunities and challenges' : 'has a moderate youth population of ' + metrics.youthPercentage.toFixed(1) + '% under 15, suggesting balanced demographic development'}.`,
@@ -67,7 +61,7 @@ export function generateDemographicGlossary(
     {
       term: 'Demographic Transition',
       definition: 'The shift from high birth and death rates to low birth and death rates as countries develop economically.',
-      context: `${countryName} appears to be in ${metrics.medianAge < 25 ? 'early demographic transition with high fertility and declining mortality' : metrics.medianAge > 40 ? 'late or post-transition phases with low fertility and mortality' : 'mid-transition with declining fertility and continued mortality improvements'}.`,
+      context: `${countryName} shows demographic characteristics typical of ${metrics.medianAge < 25 ? 'early transition phases' : metrics.medianAge > 40 ? 'advanced transition phases' : 'mid-transition development'}.`,
       example: `${metrics.medianAge < 25 ? 'Early transition countries like ' + countryName + ' experience rapid population growth requiring substantial infrastructure and service expansion.' : 'Post-transition countries like ' + countryName + ' face aging challenges and potential population decline requiring different policy approaches.'}`
     },
     {
@@ -76,6 +70,11 @@ export function generateDemographicGlossary(
       context: `${countryName}'s working-age population comprises ${metrics.workingAgePercentage.toFixed(1)}% of total population, ${metrics.workingAgePercentage > 65 ? 'providing excellent conditions for economic growth and development' : metrics.workingAgePercentage < 55 ? 'creating challenges with fewer productive workers supporting more dependents' : 'offering balanced demographic structure for sustainable development'}.`,
       example: `${metrics.workingAgePercentage > 70 ? 'Large working-age populations like ' + countryName + "'s create demographic dividends through increased productivity and reduced dependency burdens." : 'Smaller working-age populations like ' + countryName + "'s require productivity enhancements and efficient resource allocation to maintain economic growth."}`
     },
+    // TODO Phase 1.5: dividend phase thresholds below are not sourced.
+    // Add academic citation (e.g., Bloom & Williamson 2003, or UN Population
+    // Division working papers) or rework classification against sourced thresholds.
+    // Current thresholds are approximate demographic-literature framing, not fabricated
+    // values, but the classification boundaries need citation.
     {
       term: 'Demographic Dividend',
       definition: 'Economic growth potential created when the working-age population grows relative to dependents.',
