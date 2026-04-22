@@ -177,7 +177,7 @@ export default function PopulationGrowthContent() {
                   </p>
                   <p className="font-semibold">
                     {country.doublingTime ? `${country.doublingTime} years` : 
-                     country.peakPopulation || 'N/A'}
+                     country.peakPopulation || 'Still growing'}
                   </p>
                 </div>
               </div>

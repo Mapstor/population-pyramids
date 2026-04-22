@@ -8,6 +8,7 @@ import TimelinePyramid from '@/components/TimelinePyramid';
 import StatsTable from '@/components/StatsTable';
 import StateComparisonSection from '@/components/StateComparisonSection';
 import { Metadata } from 'next';
+import { hasValue } from '@/lib/render-guards';
 
 export const dynamicParams = false;
 export const revalidate = false;
@@ -247,7 +248,8 @@ export default async function StatePage({ params }: StatePageProps) {
                   <div className="space-y-1">
                     <div className="flex justify-between text-xs">
                       <span className="text-gray-600">Youth Dep.</span>
-                      <span className="font-semibold">{metrics.youthDependencyRatio ? metrics.youthDependencyRatio.toFixed(1) : 'N/A'} per 100</span>
+                      {/* CAT C: N/A fallback for table structure integrity; state data shouldn't null in practice */}
+                      <span className="font-semibold">{metrics.childDependencyRatio ? metrics.childDependencyRatio.toFixed(1) : 'N/A'} per 100</span>
                     </div>
                     <div className="flex justify-between text-xs">
                       <span className="text-gray-600">Old-age Dep.</span>
@@ -255,7 +257,8 @@ export default async function StatePage({ params }: StatePageProps) {
                     </div>
                     <div className="flex justify-between text-xs">
                       <span className="text-gray-600">Total Dep.</span>
-                      <span className="font-semibold">{metrics.totalDependencyRatio ? metrics.totalDependencyRatio.toFixed(1) : 'N/A'} per 100</span>
+                      {/* CAT C: N/A fallback for table structure integrity; state data shouldn't null in practice */}
+                      <span className="font-semibold">{metrics.dependencyRatio ? metrics.dependencyRatio.toFixed(1) : 'N/A'} per 100</span>
                     </div>
                     <div className="flex justify-between text-xs pt-1 border-t">
                       <span className="text-gray-600">Support Ratio</span>
@@ -460,21 +463,26 @@ export default async function StatePage({ params }: StatePageProps) {
               {/* Age Structure Deep Dive */}
               <div className="mb-8">
                 <h3 className="text-xl font-semibold text-gray-800 mb-4">Age Structure and Dependency Ratios</h3>
+                {hasValue(yearData.medianAge) && (
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    The median age of {yearData.medianAge} years places {stateData.stateName} {
+                      yearData.medianAge > 38.5 ? 'above' : 'below'
+                    } the national median, indicating a {
+                      yearData.medianAge > 40 ? 'relatively older' : 
+                      yearData.medianAge > 35 ? 'middle-aged' : 
+                      'relatively younger'
+                    } population profile.
+                  </p>
+                )}
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  The median age of {yearData.medianAge || 'N/A'} years places {stateData.stateName} {
-                    yearData.medianAge > 38.5 ? 'above' : 'below'
-                  } the national median, indicating a {
-                    yearData.medianAge > 40 ? 'relatively older' : 
-                    yearData.medianAge > 35 ? 'middle-aged' : 
-                    'relatively younger'
-                  } population profile. The youth dependency ratio stands at {metrics.youthDependencyRatio ? metrics.youthDependencyRatio.toFixed(1) : 'N/A'}, 
-                  meaning there are approximately {metrics.youthDependencyRatio ? metrics.youthDependencyRatio.toFixed(0) : 'N/A'} children and teenagers for every 100 working-age adults. 
+                  The youth dependency ratio stands at {metrics.childDependencyRatio.toFixed(1)}, 
+                  meaning there are approximately {metrics.childDependencyRatio.toFixed(0)} children and teenagers for every 100 working-age adults. 
                   Meanwhile, the old-age dependency ratio is {metrics.oldAgeDependencyRatio ? metrics.oldAgeDependencyRatio.toFixed(1) : 'N/A'}, indicating {metrics.oldAgeDependencyRatio ? metrics.oldAgeDependencyRatio.toFixed(0) : 'N/A'} seniors 
                   for every 100 working-age residents.
                 </p>
                 <p className="text-gray-700 leading-relaxed">
-                  The total dependency ratio of {metrics.totalDependencyRatio ? metrics.totalDependencyRatio.toFixed(1) : 'N/A'} suggests that each working-age person in {stateData.stateName} 
-                  theoretically supports {metrics.totalDependencyRatio ? (metrics.totalDependencyRatio / 100).toFixed(2) : 'N/A'} dependents. This ratio is crucial for understanding 
+                  The total dependency ratio of {metrics.dependencyRatio.toFixed(1)} suggests that each working-age person in {stateData.stateName} 
+                  theoretically supports {(metrics.dependencyRatio / 100).toFixed(2)} dependents. This ratio is crucial for understanding 
                   the economic burden on the productive population and has direct implications for tax policy, social services funding, 
                   and workforce development strategies.
                 </p>
@@ -554,15 +562,17 @@ export default async function StatePage({ params }: StatePageProps) {
                   {((Math.pow(yearData.totalPopulation / stateData.years['2000'].totalPopulation, 1/24) - 1) * 100).toFixed(2)}%, 
                   {(Math.pow(yearData.totalPopulation / stateData.years['2000'].totalPopulation, 1/24) - 1) > 0.007 ? 'exceeding' : 'trailing'} the national average.
                 </p>
-                <p className="text-gray-700 leading-relaxed">
-                  The median age shift from {stateData.years['2000'].medianAge} years in 2000 to {yearData.medianAge || 'N/A'} years 
-                  in {latestYear} reflects broader demographic transitions. This {yearData.medianAge - stateData.years['2000'].medianAge > 0 ? 'increase' : 'change'} of{' '}
-                  {yearData.medianAge && stateData.years['2000'].medianAge ? Math.abs(yearData.medianAge - stateData.years['2000'].medianAge).toFixed(1) : 'N/A'} years indicates{' '}
-                  {yearData.medianAge - stateData.years['2000'].medianAge > 3 ? 'significant population aging' :
-                   yearData.medianAge - stateData.years['2000'].medianAge > 1 ? 'moderate aging trends' :
-                   'relative age stability'}. These patterns result from the complex interplay of birth rates, death rates, 
-                  and migration flows that shape {stateData.stateName}'s demographic landscape.
-                </p>
+                {hasValue(yearData.medianAge) && hasValue(stateData.years['2000'].medianAge) && (
+                  <p className="text-gray-700 leading-relaxed">
+                    The median age shift from {stateData.years['2000'].medianAge} years in 2000 to {yearData.medianAge} years 
+                    in {latestYear} reflects broader demographic transitions. This {yearData.medianAge - stateData.years['2000'].medianAge > 0 ? 'increase' : 'change'} of{' '}
+                    {Math.abs(yearData.medianAge - stateData.years['2000'].medianAge).toFixed(1)} years indicates{' '}
+                    {yearData.medianAge - stateData.years['2000'].medianAge > 3 ? 'significant population aging' :
+                     yearData.medianAge - stateData.years['2000'].medianAge > 1 ? 'moderate aging trends' :
+                     'relative age stability'}. These patterns result from the complex interplay of birth rates, death rates, 
+                    and migration flows that shape {stateData.stateName}'s demographic landscape.
+                  </p>
+                )}
               </div>
 
               {/* Economic and Social Implications */}
