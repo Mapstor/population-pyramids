@@ -56,7 +56,7 @@ export default function BirthStatistics({
 
   // Calculate historical comparisons
   const historicalData = fertilityData.historical || [];
-  const currentYear = fertilityData.current?.year || 2024;
+  const currentYear = fertilityData.current?.year || new Date().getFullYear();
   const currentTFR = fertilityData.current?.totalFertilityRate || 0;
   
   // Peak birth rate year

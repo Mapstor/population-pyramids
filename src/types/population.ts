@@ -56,4 +56,5 @@ export interface DemographicMetrics {
   potentialSupportRatio: number;
   agingIndex: number;
   pyramidType: 'expansive' | 'constrictive' | 'stationary';
+  growthRate?: number | null;
 }

@@ -1,6 +1,7 @@
 import { loadCountryData, loadCountries } from './data-loader';
 import { calculateMetrics } from './calculations';
 import { getCountryFlag } from './country-flags';
+import { calculateGrowthRate } from './comparison-metrics';
 
 export interface CompareCountryData {
   slug: string;
@@ -90,8 +91,8 @@ export async function getComparePageData(): Promise<{
     totalPopulation: year2024_1.totalPopulation,
     medianAge: metrics1.medianAge,
     sexRatio: metrics1.sexRatio,
-    growthRate: metrics1.growthRate || 0.8,
-    youthDependencyRatio: metrics1.youthDependencyRatio,
+    growthRate: calculateGrowthRate(data1, 2024),
+    youthDependencyRatio: metrics1.childDependencyRatio,
     oldAgeDependencyRatio: metrics1.oldAgeDependencyRatio,
     ageGroups: convertAgeGroups(year2024_1.ageGroups)
   };
@@ -105,8 +106,8 @@ export async function getComparePageData(): Promise<{
     totalPopulation: year2024_2.totalPopulation,
     medianAge: metrics2.medianAge,
     sexRatio: metrics2.sexRatio,
-    growthRate: metrics2.growthRate || 0.1,
-    youthDependencyRatio: metrics2.youthDependencyRatio,
+    growthRate: calculateGrowthRate(data2, 2024),
+    youthDependencyRatio: metrics2.childDependencyRatio,
     oldAgeDependencyRatio: metrics2.oldAgeDependencyRatio,
     ageGroups: convertAgeGroups(year2024_2.ageGroups)
   };

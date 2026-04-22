@@ -14,6 +14,7 @@ import {
 } from 'chart.js';
 import type { ChartOptions } from 'chart.js';
 import type { FertilityData } from '@/lib/fertility-loader';
+import { hasValue } from '@/lib/render-guards';
 
 ChartJS.register(
   CategoryScale,
@@ -43,7 +44,8 @@ export default function FertilityChart({
 
   // Create realistic year-by-year projections based on historical trends
   const lastHistoricalYear = Math.max(...historicalData.map(d => d.year));
-  const lastHistoricalTfr = historicalData.find(d => d.year === lastHistoricalYear)?.totalFertilityRate || 2.0;
+  const lastHistoricalTfrData = historicalData.find(d => d.year === lastHistoricalYear);
+  const lastHistoricalTfr = lastHistoricalTfrData?.totalFertilityRate;
   
   // Calculate recent trend from last 10 years of data for more realistic projection
   const recentData = historicalData.filter(d => d.year >= lastHistoricalYear - 10).sort((a, b) => a.year - b.year);
@@ -69,25 +71,28 @@ export default function FertilityChart({
   // Generate smooth projections with gradual leveling
   const projections = [];
   
-  for (let year = lastHistoricalYear + 1; year <= 2050; year++) {
-    const yearsFromStart = year - lastHistoricalYear;
-    
-    // Apply declining decline rate (levels off over time)
-    const declineMultiplier = Math.exp(-yearsFromStart * 0.05); // Exponential decay of decline rate
-    const adjustedDecline = yearlyDecline * declineMultiplier;
-    
-    // Calculate TFR with minimum floor
-    let projectedTfr = lastHistoricalTfr + (adjustedDecline * yearsFromStart);
-    
-    // Set realistic floor - countries rarely go below 1.0 for extended periods
-    const floor = Math.max(0.9, lastHistoricalTfr * 0.5);
-    projectedTfr = Math.max(floor, projectedTfr);
-    
-    projections.push({
-      year,
-      totalFertilityRate: projectedTfr,
-      crudebirthRate: Math.round(Math.max(6, projectedTfr * 5.5))
-    });
+  // Only generate projections if we have historical TFR data
+  if (lastHistoricalTfr) {
+    for (let year = lastHistoricalYear + 1; year <= 2050; year++) {
+      const yearsFromStart = year - lastHistoricalYear;
+      
+      // Apply declining decline rate (levels off over time)
+      const declineMultiplier = Math.exp(-yearsFromStart * 0.05); // Exponential decay of decline rate
+      const adjustedDecline = yearlyDecline * declineMultiplier;
+      
+      // Calculate TFR with minimum floor
+      let projectedTfr = lastHistoricalTfr + (adjustedDecline * yearsFromStart);
+      
+      // Set realistic floor - countries rarely go below 1.0 for extended periods
+      const floor = Math.max(0.9, lastHistoricalTfr * 0.5);
+      projectedTfr = Math.max(floor, projectedTfr);
+      
+      projections.push({
+        year,
+        totalFertilityRate: projectedTfr,
+        crudebirthRate: Math.round(Math.max(6, projectedTfr * 5.5))
+      });
+    }
   }
 
   // Combine historical and projection data
@@ -265,15 +270,18 @@ export default function FertilityChart({
               {historicalYears[historicalTfr.indexOf(Math.max(...historicalTfr))]}
             </div>
           </div>
-          <div className="bg-gray-50 rounded-lg p-3">
-            <div className="font-medium text-gray-900">Current TFR</div>
-            <div className="text-lg font-bold text-gray-700">
-              {fertilityData.fertilityData.current.totalFertilityRate?.toFixed(2) || 'N/A'}
+          {hasValue(fertilityData.fertilityData.current.totalFertilityRate) && (
+            <div className="bg-gray-50 rounded-lg p-3">
+              <div className="font-medium text-gray-900">Current TFR</div>
+              <div className="text-lg font-bold text-gray-700">
+                {fertilityData.fertilityData.current.totalFertilityRate.toFixed(2)}
+              </div>
+              <div className="text-xs text-gray-600">
+                {fertilityData.fertilityData.current.year}
+              </div>
             </div>
-            <div className="text-xs text-gray-600">
-              {fertilityData.fertilityData.current.year}
-            </div>
-          </div>
+          )}
+          {/* CAT C: Chart stat card - N/A fallback appropriate when projection calculation fails */}
           <div className="bg-pink-50 rounded-lg p-3">
             <div className="font-medium text-pink-900">Projected 2050</div>
             <div className="text-lg font-bold text-pink-700">

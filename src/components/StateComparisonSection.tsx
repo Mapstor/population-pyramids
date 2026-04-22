@@ -330,7 +330,7 @@ export default function StateComparisonSection({
             
             // Calculate metrics
             const metrics = {
-              medianAge: yearData?.medianAge || 0,
+              medianAge: yearData?.medianAge || null,
               elderlyPercentage: yearData?.ageGroups
                 .filter((ag: any) => {
                   const ageStart = parseInt(ag.ageRange.split('-')[0]) || 100;
@@ -405,6 +405,7 @@ export default function StateComparisonSection({
               />
               <div className="text-center mt-2">
                 <p className="text-xs font-semibold text-gray-700">{state.name}</p>
+                {/* CAT C: Table display context - N/A fallback appropriate when comparison state fails to load */}
                 <p className="text-xs text-gray-600">Pop: {state.data?.totalPopulation.toLocaleString() || 'N/A'}</p>
               </div>
             </Link>
@@ -429,6 +430,7 @@ export default function StateComparisonSection({
               <tr className="bg-blue-50 font-semibold">
                 <td className="px-4 py-2 text-blue-700">{currentState.stateName}</td>
                 <td className="px-4 py-2 text-right">{currentYearData.totalPopulation.toLocaleString()}</td>
+                {/* CAT C: Table cell - N/A fallback appropriate for missing state metrics */}
                 <td className="px-4 py-2 text-right">{currentMetrics.medianAge?.toFixed(1) || 'N/A'}</td>
                 <td className="px-4 py-2 text-right">{currentMetrics.youthPercentage.toFixed(1)}%</td>
                 <td className="px-4 py-2 text-right">{currentMetrics.elderlyPercentage.toFixed(1)}%</td>
@@ -454,9 +456,13 @@ export default function StateComparisonSection({
                       {state.name}
                     </Link>
                   </td>
+                  {/* CAT C: Table cell - N/A fallback appropriate when comparison state data fails to load */}
                   <td className="px-4 py-2 text-right">{state.data?.totalPopulation.toLocaleString() || 'N/A'}</td>
+                  {/* CAT C: Table cell - N/A fallback appropriate for missing comparison metrics */}
                   <td className="px-4 py-2 text-right">{state.metrics?.medianAge?.toFixed(1) || 'N/A'}</td>
+                  {/* CAT C: Table cell - N/A fallback appropriate for missing comparison metrics */}
                   <td className="px-4 py-2 text-right">{state.metrics?.youthPercentage?.toFixed(1) || 'N/A'}%</td>
+                  {/* CAT C: Table cell - N/A fallback appropriate for missing comparison metrics */}
                   <td className="px-4 py-2 text-right">{state.metrics?.elderlyPercentage?.toFixed(1) || 'N/A'}%</td>
                   <td className="px-4 py-2 text-right">
                     {state.metrics?.growthRate !== undefined ? (

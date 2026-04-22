@@ -5,6 +5,7 @@ import Link from 'next/link';
 import SideBySidePyramids from '@/components/SideBySidePyramids';
 import { loadCountryData } from '@/lib/data-loader';
 import { calculateMetrics } from '@/lib/calculations';
+import { hasValue } from '@/lib/render-guards';
 
 interface Country {
   slug: string;
@@ -267,10 +268,12 @@ export default function ComparePageClient({ countries }: ComparePageClientProps)
                     <span className="text-gray-600">Median Age:</span>
                     <span className="font-semibold">{comparisonData.metrics1.medianAge.toFixed(1)} years</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Growth Rate:</span>
-                    <span className="font-semibold">{comparisonData.metrics1.growthRate?.toFixed(2) || 'N/A'}%</span>
-                  </div>
+                  {hasValue(comparisonData.metrics1.growthRate) && (
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Growth Rate:</span>
+                      <span className="font-semibold">{comparisonData.metrics1.growthRate.toFixed(2)}%</span>
+                    </div>
+                  )}
                   <div className="flex justify-between">
                     <span className="text-gray-600">Sex Ratio:</span>
                     <span className="font-semibold">{comparisonData.metrics1.sexRatio.toFixed(1)} M/100F</span>
@@ -292,10 +295,12 @@ export default function ComparePageClient({ countries }: ComparePageClientProps)
                     <span className="text-gray-600">Median Age:</span>
                     <span className="font-semibold">{comparisonData.metrics2.medianAge.toFixed(1)} years</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Growth Rate:</span>
-                    <span className="font-semibold">{comparisonData.metrics2.growthRate?.toFixed(2) || 'N/A'}%</span>
-                  </div>
+                  {hasValue(comparisonData.metrics2.growthRate) && (
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Growth Rate:</span>
+                      <span className="font-semibold">{comparisonData.metrics2.growthRate.toFixed(2)}%</span>
+                    </div>
+                  )}
                   <div className="flex justify-between">
                     <span className="text-gray-600">Sex Ratio:</span>
                     <span className="font-semibold">{comparisonData.metrics2.sexRatio.toFixed(1)} M/100F</span>
