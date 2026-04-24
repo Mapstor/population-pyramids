@@ -1,9 +1,10 @@
+import { cache } from 'react';
 import type { Country } from '@/types/country';
 import type { CountryPopulationData } from '@/types/population';
 import type { AgeGroup } from '@/types/population';
 
 // Load all countries
-export async function loadCountries(): Promise<Country[]> {
+export const loadCountries = cache(async (): Promise<Country[]> => {
   try {
     const countries = await import('@/data/countries.json');
     return countries.default as Country[];
@@ -11,10 +12,10 @@ export async function loadCountries(): Promise<Country[]> {
     console.error('Failed to load countries:', error);
     throw new Error('Failed to load countries data');
   }
-}
+});
 
-// Load specific country population data
-export async function loadCountryData(slug: string): Promise<CountryPopulationData> {
+// Load specific country population data - cached per unique slug
+export const loadCountryData = cache(async (slug: string): Promise<CountryPopulationData> => {
   try {
     const data = await import(`@/data/population/${slug}.json`);
     return data.default as CountryPopulationData;
@@ -22,7 +23,7 @@ export async function loadCountryData(slug: string): Promise<CountryPopulationDa
     console.error(`Failed to load data for ${slug}:`, error);
     throw new Error(`Country data not found: ${slug}`);
   }
-}
+});
 
 // Load population data by country code (temporary for current structure)
 export async function loadCountryPopulation(countryCode: string): Promise<import('@/types/population').YearData[]> {

@@ -27,6 +27,7 @@ import DemographicCharts from '@/components/DemographicCharts';
 import RegionalComparison from '@/components/RegionalComparison';
 import DecadeBreakdown from '@/components/DecadeBreakdown';
 import ShareButtons from '@/components/ShareButtons';
+import { getCountryNeighbors, getRegionalCountries } from '@/lib/country-neighbors';
 
 export const dynamicParams = false;
 export const revalidate = false;
@@ -85,6 +86,39 @@ export default async function CountryPage({ params }: CountryPageProps) {
     const latestYear = Math.max(...availableYears);
     const yearData = countryData.years[latestYear.toString()];
     const metrics = calculateMetrics(yearData);
+    
+    // Load neighbor country data for RegionalComparison
+    let neighborSlugs = getCountryNeighbors(countrySlug);
+    if (neighborSlugs.length === 0) {
+      neighborSlugs = getRegionalCountries(countrySlug);
+    }
+    // REVISION 2b: Filter out self-references
+    neighborSlugs = neighborSlugs.filter(slug => slug !== countrySlug).slice(0, 4);
+    
+    const neighborCountries = await Promise.all(
+      neighborSlugs.map(async (slug) => {
+        try {
+          const neighborData = await loadCountryData(slug);
+          const neighborYearData = neighborData.years[latestYear.toString()];
+          const neighborMetrics = neighborYearData ? calculateMetrics(neighborYearData) : null;
+          
+          return {
+            slug,
+            name: neighborData.countryName,
+            data: neighborYearData || null,
+            metrics: neighborMetrics
+          };
+        } catch (error) {
+          console.error(`Failed to load neighbor data for ${slug}:`, error);
+          return {
+            slug,
+            name: slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+            data: null,
+            metrics: null
+          };
+        }
+      })
+    );
     
     // Load fertility data if available
     const fertilityData = await loadFertilityData(countrySlug);
@@ -1432,6 +1466,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                 data: yearData,
                 metrics: metrics
               }}
+              neighborCountries={neighborCountries}
               year={latestYear}
             />
           </section>

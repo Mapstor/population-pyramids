@@ -1,40 +1,9 @@
-'use client';
+// Server Component - no 'use client' directive
 
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Bar } from 'react-chartjs-2';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-} from 'chart.js';
-import type { YearData, DemographicMetrics, CountryPopulationData } from '@/types/population';
-import { getCountryNeighbors, getRegionalCountries } from '@/lib/country-neighbors';
-import { loadCountryData } from '@/lib/data-loader';
-import { calculateMetrics } from '@/lib/calculations';
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
-
-interface RegionalComparisonProps {
-  currentCountry: {
-    slug: string;
-    name: string;
-    data: YearData;
-    metrics: DemographicMetrics;
-  };
-  year: number;
-}
+import RegionalMiniPyramid from './RegionalMiniPyramid';
+import { formatPopulationCompact } from '@/lib/number-format';
+import type { YearData, DemographicMetrics } from '@/types/population';
 
 interface ComparisonCountry {
   slug: string;
@@ -43,70 +12,32 @@ interface ComparisonCountry {
   metrics: DemographicMetrics | null;
 }
 
-export default function RegionalComparison({ currentCountry, year }: RegionalComparisonProps) {
-  const [comparisonCountries, setComparisonCountries] = useState<ComparisonCountry[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+interface RegionalComparisonProps {
+  currentCountry: {
+    slug: string;
+    name: string;
+    data: YearData;
+    metrics: DemographicMetrics;
+  };
+  neighborCountries: ComparisonCountry[];
+  year: number;
+}
 
-  useEffect(() => {
-    async function loadNeighborData() {
-      setIsLoading(true);
-      
-      // Get neighbor countries (try neighbors first, then regional)
-      let neighborSlugs = getCountryNeighbors(currentCountry.slug);
-      if (neighborSlugs.length === 0) {
-        neighborSlugs = getRegionalCountries(currentCountry.slug);
-      }
-      
-      // Limit to 4 countries for clean layout
-      neighborSlugs = neighborSlugs.slice(0, 4);
-      
-      const comparisons: ComparisonCountry[] = [];
-      
-      for (const slug of neighborSlugs) {
-        try {
-          const countryData = await loadCountryData(slug);
-          const yearData = countryData.years[year.toString()];
-          const metrics = yearData ? calculateMetrics(yearData) : null;
-          
-          comparisons.push({
-            slug,
-            name: countryData.countryName,
-            data: yearData || null,
-            metrics: metrics
-          });
-        } catch (error) {
-          console.error(`Failed to load data for ${slug}:`, error);
-          comparisons.push({
-            slug,
-            name: slug.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase()),
-            data: null,
-            metrics: null
-          });
-        }
-      }
-      
-      setComparisonCountries(comparisons);
-      setIsLoading(false);
-    }
-
-    loadNeighborData();
-  }, [currentCountry.slug, year]);
-
-  if (isLoading) {
-    return (
-      <div className="bg-white rounded-lg shadow-sm p-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">
-          How Does {currentCountry.name} Compare to Its Neighbors?
-        </h2>
-        <div className="text-gray-500">Loading regional comparison...</div>
-      </div>
-    );
+export default function RegionalComparison({ 
+  currentCountry, 
+  neighborCountries,
+  year 
+}: RegionalComparisonProps) {
+  
+  // REVISION 2a: Hide component if no neighbors
+  if (neighborCountries.length === 0) {
+    return null;
   }
-
-  // Generate comparison insights
+  
+  // Generate comparison insights (server-side)
   const generateInsights = () => {
-    const validCountries = comparisonCountries.filter(c => c.metrics);
-    if (validCountries.length === 0) return '';
+    const validCountries = neighborCountries.filter(c => c.metrics);
+    if (validCountries.length === 0) return 'No regional comparison data available.';
 
     const insights: string[] = [];
     
@@ -135,104 +66,63 @@ export default function RegionalComparison({ currentCountry, year }: RegionalCom
     return insights.slice(0, 2).join('. ') + '.';
   };
 
-  // Create mini pyramid charts
-  const createMiniChart = (country: ComparisonCountry, isCurrentCountry = false) => {
-    if (!country.data) return null;
-
-    const chartData = {
-      labels: country.data.ageGroups.map(ag => ag.ageRange).reverse(),
-      datasets: [
-        {
-          label: 'Male',
-          data: country.data.ageGroups.map(ag => -ag.male).reverse(),
-          backgroundColor: isCurrentCountry ? 'rgba(34, 197, 94, 0.8)' : 'rgba(59, 130, 246, 0.8)',
-          borderColor: isCurrentCountry ? 'rgba(34, 197, 94, 1)' : 'rgba(59, 130, 246, 1)',
-          borderWidth: 1,
-        },
-        {
-          label: 'Female',
-          data: country.data.ageGroups.map(ag => ag.female).reverse(),
-          backgroundColor: isCurrentCountry ? 'rgba(251, 146, 60, 0.8)' : 'rgba(236, 72, 153, 0.8)',
-          borderColor: isCurrentCountry ? 'rgba(251, 146, 60, 1)' : 'rgba(236, 72, 153, 1)',
-          borderWidth: 1,
-        }
-      ]
-    };
-
-    const options = {
-      indexAxis: 'y' as const,
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false },
-        title: { display: false },
-        tooltip: { enabled: false }
-      },
-      scales: {
-        x: {
-          stacked: true,
-          display: false,
-        },
-        y: {
-          stacked: true,
-          display: false,
-        }
-      }
-    };
-
-    return <Bar data={chartData} options={options} />;
-  };
-
   return (
     <div className="bg-white rounded-lg shadow-sm p-8">
       <h2 className="text-3xl font-bold text-gray-900 mb-4">
         How Does {currentCountry.name} Compare to Its Neighbors?
       </h2>
       
-      {/* Insights */}
+      {/* Insights - Server Rendered */}
       <div className="mb-8 p-4 bg-blue-50 rounded-lg border border-blue-200">
         <p className="text-gray-700 leading-relaxed">
           {generateInsights()}
         </p>
       </div>
 
-      {/* Mini Pyramids Grid */}
+      {/* Mini Pyramids Grid - Server Rendered Structure */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mb-8">
         {/* Current Country (highlighted) */}
         <div className="bg-green-50 border-2 border-green-200 rounded-lg p-4">
           <div className="h-32 mb-3">
-            {createMiniChart({ 
-              slug: currentCountry.slug, 
-              name: currentCountry.name, 
-              data: currentCountry.data, 
-              metrics: currentCountry.metrics 
-            }, true)}
+            <RegionalMiniPyramid 
+              ageGroups={currentCountry.data.ageGroups}
+              countryName={currentCountry.name}
+              isHighlighted={true}
+            />
           </div>
           <h3 className="font-bold text-sm text-center text-green-800 mb-1">
             {currentCountry.name}
           </h3>
           <div className="text-xs text-center text-green-600">
-            <div>Pop: {(currentCountry.data.totalPopulation / 1000000).toFixed(1)}M</div>
+            {/* REVISION 1: Use formatPopulationCompact */}
+            <div>Pop: {formatPopulationCompact(currentCountry.data.totalPopulation)}</div>
             <div>Age: {currentCountry.metrics.medianAge.toFixed(1)}</div>
           </div>
         </div>
 
-        {/* Comparison Countries */}
-        {comparisonCountries.map((country) => (
+        {/* Neighbor Countries */}
+        {neighborCountries.map((country) => (
           <Link 
             key={country.slug} 
             href={`/${country.slug}`}
             className="block bg-gray-50 border border-gray-200 rounded-lg p-4 hover:bg-gray-100 transition"
           >
             <div className="h-32 mb-3">
-              {createMiniChart(country)}
+              {country.data && (
+                <RegionalMiniPyramid 
+                  ageGroups={country.data.ageGroups}
+                  countryName={country.name}
+                  isHighlighted={false}
+                />
+              )}
             </div>
             <h3 className="font-semibold text-sm text-center text-gray-800 mb-1">
               {country.name}
             </h3>
             {country.data && country.metrics ? (
               <div className="text-xs text-center text-gray-600">
-                <div>Pop: {(country.data.totalPopulation / 1000000).toFixed(1)}M</div>
+                {/* REVISION 1: Use formatPopulationCompact */}
+                <div>Pop: {formatPopulationCompact(country.data.totalPopulation)}</div>
                 <div>Age: {country.metrics.medianAge.toFixed(1)}</div>
               </div>
             ) : (
@@ -242,7 +132,7 @@ export default function RegionalComparison({ currentCountry, year }: RegionalCom
         ))}
       </div>
 
-      {/* Comparison Table */}
+      {/* Comparison Table - Fully Server Rendered */}
       <div className="overflow-x-auto">
         <table className="w-full border border-gray-200 rounded-lg">
           <thead className="bg-gray-50">
@@ -280,8 +170,8 @@ export default function RegionalComparison({ currentCountry, year }: RegionalCom
               </td>
             </tr>
 
-            {/* Comparison Countries */}
-            {comparisonCountries.map((country) => (
+            {/* Neighbor Countries */}
+            {neighborCountries.map((country) => (
               <tr key={country.slug} className="hover:bg-gray-50">
                 <td className="px-4 py-3">
                   <Link 
@@ -312,9 +202,12 @@ export default function RegionalComparison({ currentCountry, year }: RegionalCom
                     </td>
                   </>
                 ) : (
-                  <td colSpan={5} className="px-4 py-3 text-center text-gray-400">
-                    Data not available
-                  </td>
+                  <>
+                    {/* REVISION 2c: CAT C - Data not available merged cells */}
+                    <td colSpan={5} className="px-4 py-3 text-center text-gray-400">
+                      Data not available
+                    </td>
+                  </>
                 )}
               </tr>
             ))}
