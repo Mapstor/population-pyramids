@@ -40,6 +40,37 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: 'weekly' as const,
         priority: 0.95, // 7K/mo search volume
       },
+      // Country Rankings — Phase 3.1
+      {
+        url: `${baseUrl}/most-populated-countries`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.95, // ~200K aggregate volume across variants
+      },
+      {
+        url: `${baseUrl}/largest-countries`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.95, // ~200K aggregate volume — "largest/biggest countries" cluster
+      },
+      {
+        url: `${baseUrl}/smallest-countries`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.9, // ~100K aggregate volume
+      },
+      {
+        url: `${baseUrl}/top-10-most-populated-countries`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.85, // ~30K aggregate volume — "top 10..." cluster
+      },
+      {
+        url: `${baseUrl}/top-10-largest-countries`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.85, // ~15K aggregate volume — "top 10 largest/biggest..." cluster
+      },
       {
         url: `${baseUrl}/male-to-female-ratio`,
         lastModified: new Date(),
