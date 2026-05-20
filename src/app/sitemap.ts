@@ -40,6 +40,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: 'weekly' as const,
         priority: 0.95, // 7K/mo search volume
       },
+      {
+        url: `${baseUrl}/life-expectancy-by-country`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.95, // ~160K aggregate volume across variants
+      },
       // Country Rankings — Phase 3.1
       {
         url: `${baseUrl}/most-populated-countries`,

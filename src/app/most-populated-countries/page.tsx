@@ -798,6 +798,7 @@ export default async function MostPopulatedCountriesPage() {
               <li><Link href="/largest-countries" className="text-blue-700 hover:text-blue-900 font-medium">→ Largest Countries by Area</Link></li>
               <li><Link href="/smallest-countries" className="text-blue-700 hover:text-blue-900 font-medium">→ Smallest Countries</Link></li>
               <li><Link href="/top-10-largest-countries" className="text-blue-700 hover:text-blue-900 font-medium">→ Top 10 Largest by Area</Link></li>
+              <li><Link href="/life-expectancy-by-country" className="text-blue-700 hover:text-blue-900 font-medium">→ Life Expectancy by Country</Link></li>
               <li><Link href="/median-age-by-country" className="text-blue-700 hover:text-blue-900 font-medium">→ Median Age by Country</Link></li>
               <li><Link href="/compare" className="text-blue-700 hover:text-blue-900 font-medium">→ Compare Any Two Countries</Link></li>
             </ul>

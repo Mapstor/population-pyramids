@@ -227,7 +227,16 @@ export default async function CountriesPage() {
               >
                 <div className="font-semibold text-gray-900 mb-1">Median Age by Country</div>
                 <div className="text-sm text-gray-600">
-                  World's oldest and youngest populations. Monaco and Japan lead; African nations are youngest.
+                  World&apos;s oldest and youngest populations. Monaco and Japan lead; African nations are youngest.
+                </div>
+              </Link>
+              <Link
+                href="/life-expectancy-by-country"
+                className="block border border-gray-200 rounded-lg p-4 hover:border-blue-500 hover:bg-blue-50 transition"
+              >
+                <div className="font-semibold text-gray-900 mb-1">Life Expectancy by Country</div>
+                <div className="text-sm text-gray-600">
+                  All 195 countries ranked by life expectancy at birth. Monaco at 86.5 yrs leads; Nigeria at 54.6 trails. UN WPP 2024 data with male/female breakdown and 2050 projections.
                 </div>
               </Link>
               <Link

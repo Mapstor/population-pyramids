@@ -221,6 +221,11 @@ export default function USStatesPageServer() {
               </Link>
             </li>
             <li>
+              <Link href="/life-expectancy-by-country" className="text-blue-700 hover:text-blue-900 font-medium">
+                → Life Expectancy by Country
+              </Link>
+            </li>
+            <li>
               <Link href="/united-states" className="text-blue-700 hover:text-blue-900 font-medium">
                 → United States Population Pyramid
               </Link>
