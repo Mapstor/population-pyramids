@@ -1,0 +1,98 @@
+{
+  "country": "Japan",
+  "slug": "japan",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 84.9,
+    "male": 81.8,
+    "female": 87.9
+  },
+  "rank": {
+    "position": 3,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 59.3
+    },
+    {
+      "year": 1960,
+      "total": 67.7
+    },
+    {
+      "year": 1970,
+      "total": 72
+    },
+    {
+      "year": 1980,
+      "total": 76.1
+    },
+    {
+      "year": 1990,
+      "total": 79
+    },
+    {
+      "year": 2000,
+      "total": 81.2
+    },
+    {
+      "year": 2010,
+      "total": 82.9
+    },
+    {
+      "year": 2015,
+      "total": 83.9
+    },
+    {
+      "year": 2020,
+      "total": 84.7
+    },
+    {
+      "year": 2023,
+      "total": 84.7
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 84.9
+    },
+    {
+      "year": 2030,
+      "total": 85.7
+    },
+    {
+      "year": 2050,
+      "total": 88.4
+    },
+    {
+      "year": 2100,
+      "total": 94.4
+    }
+  ],
+  "neighbors": [
+    {
+      "name": "South Korea",
+      "slug": "south-korea",
+      "value": 84.4
+    },
+    {
+      "name": "China",
+      "slug": "china",
+      "value": 78
+    },
+    {
+      "name": "Russia",
+      "slug": "russia",
+      "value": 73.3
+    }
+  ]
+}

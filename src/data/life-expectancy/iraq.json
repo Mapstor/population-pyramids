@@ -1,0 +1,82 @@
+{
+  "country": "Iraq",
+  "slug": "iraq",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 72.4,
+    "male": 70.5,
+    "female": 74.2
+  },
+  "rank": {
+    "position": 111,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 37.4
+    },
+    {
+      "year": 1960,
+      "total": 51.5
+    },
+    {
+      "year": 1970,
+      "total": 60.5
+    },
+    {
+      "year": 1980,
+      "total": 60.9
+    },
+    {
+      "year": 1990,
+      "total": 57.6
+    },
+    {
+      "year": 2000,
+      "total": 64.9
+    },
+    {
+      "year": 2010,
+      "total": 68.1
+    },
+    {
+      "year": 2015,
+      "total": 70
+    },
+    {
+      "year": 2020,
+      "total": 69.7
+    },
+    {
+      "year": 2023,
+      "total": 72.3
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 72.4
+    },
+    {
+      "year": 2030,
+      "total": 73.1
+    },
+    {
+      "year": 2050,
+      "total": 75.3
+    },
+    {
+      "year": 2100,
+      "total": 81.6
+    }
+  ],
+  "neighbors": []
+}

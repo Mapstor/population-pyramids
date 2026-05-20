@@ -1,0 +1,98 @@
+{
+  "country": "Peru",
+  "slug": "peru",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 77.9,
+    "male": 75.6,
+    "female": 80.3
+  },
+  "rank": {
+    "position": 57,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 46
+    },
+    {
+      "year": 1960,
+      "total": 50.6
+    },
+    {
+      "year": 1970,
+      "total": 47.7
+    },
+    {
+      "year": 1980,
+      "total": 60
+    },
+    {
+      "year": 1990,
+      "total": 64
+    },
+    {
+      "year": 2000,
+      "total": 69.8
+    },
+    {
+      "year": 2010,
+      "total": 72.9
+    },
+    {
+      "year": 2015,
+      "total": 75.7
+    },
+    {
+      "year": 2020,
+      "total": 73.8
+    },
+    {
+      "year": 2023,
+      "total": 77.7
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 77.9
+    },
+    {
+      "year": 2030,
+      "total": 79
+    },
+    {
+      "year": 2050,
+      "total": 82.3
+    },
+    {
+      "year": 2100,
+      "total": 88.4
+    }
+  ],
+  "neighbors": [
+    {
+      "name": "Brazil",
+      "slug": "brazil",
+      "value": 76
+    },
+    {
+      "name": "Colombia",
+      "slug": "colombia",
+      "value": 77.9
+    },
+    {
+      "name": "Ecuador",
+      "slug": "ecuador",
+      "value": 77.6
+    }
+  ]
+}

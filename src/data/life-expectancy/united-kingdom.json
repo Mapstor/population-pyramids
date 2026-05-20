@@ -1,0 +1,98 @@
+{
+  "country": "United Kingdom",
+  "slug": "united-kingdom",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 81.4,
+    "male": 79.5,
+    "female": 83.3
+  },
+  "rank": {
+    "position": 35,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 68.6
+    },
+    {
+      "year": 1960,
+      "total": 71
+    },
+    {
+      "year": 1970,
+      "total": 71.9
+    },
+    {
+      "year": 1980,
+      "total": 73.6
+    },
+    {
+      "year": 1990,
+      "total": 75.7
+    },
+    {
+      "year": 2000,
+      "total": 77.8
+    },
+    {
+      "year": 2010,
+      "total": 80.4
+    },
+    {
+      "year": 2015,
+      "total": 80.9
+    },
+    {
+      "year": 2020,
+      "total": 80.4
+    },
+    {
+      "year": 2023,
+      "total": 81.3
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 81.4
+    },
+    {
+      "year": 2030,
+      "total": 82.4
+    },
+    {
+      "year": 2050,
+      "total": 85.1
+    },
+    {
+      "year": 2100,
+      "total": 90.6
+    }
+  ],
+  "neighbors": [
+    {
+      "name": "Ireland",
+      "slug": "ireland",
+      "value": 82.6
+    },
+    {
+      "name": "France",
+      "slug": "france",
+      "value": 83.5
+    },
+    {
+      "name": "Netherlands",
+      "slug": "netherlands",
+      "value": 82.3
+    }
+  ]
+}

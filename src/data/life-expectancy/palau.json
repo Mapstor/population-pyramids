@@ -1,0 +1,82 @@
+{
+  "country": "Palau",
+  "slug": "palau",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 69.4,
+    "male": 67.3,
+    "female": 71.9
+  },
+  "rank": {
+    "position": 135,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 52.7
+    },
+    {
+      "year": 1960,
+      "total": 54.9
+    },
+    {
+      "year": 1970,
+      "total": 57.7
+    },
+    {
+      "year": 1980,
+      "total": 61.9
+    },
+    {
+      "year": 1990,
+      "total": 62.8
+    },
+    {
+      "year": 2000,
+      "total": 64.5
+    },
+    {
+      "year": 2010,
+      "total": 68.3
+    },
+    {
+      "year": 2015,
+      "total": 69.1
+    },
+    {
+      "year": 2020,
+      "total": 68.7
+    },
+    {
+      "year": 2023,
+      "total": 69.3
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 69.4
+    },
+    {
+      "year": 2030,
+      "total": 70
+    },
+    {
+      "year": 2050,
+      "total": 72.3
+    },
+    {
+      "year": 2100,
+      "total": 78.7
+    }
+  ],
+  "neighbors": []
+}

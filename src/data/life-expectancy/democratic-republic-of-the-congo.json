@@ -1,0 +1,98 @@
+{
+  "country": "Democratic Republic of the Congo",
+  "slug": "democratic-republic-of-the-congo",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 62.1,
+    "male": 60,
+    "female": 64.2
+  },
+  "rank": {
+    "position": 183,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 38.2
+    },
+    {
+      "year": 1960,
+      "total": 40.8
+    },
+    {
+      "year": 1970,
+      "total": 43.3
+    },
+    {
+      "year": 1980,
+      "total": 45.5
+    },
+    {
+      "year": 1990,
+      "total": 48.5
+    },
+    {
+      "year": 2000,
+      "total": 51.9
+    },
+    {
+      "year": 2010,
+      "total": 56.4
+    },
+    {
+      "year": 2015,
+      "total": 58.7
+    },
+    {
+      "year": 2020,
+      "total": 60.4
+    },
+    {
+      "year": 2023,
+      "total": 61.9
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 62.1
+    },
+    {
+      "year": 2030,
+      "total": 63
+    },
+    {
+      "year": 2050,
+      "total": 66
+    },
+    {
+      "year": 2100,
+      "total": 71.9
+    }
+  ],
+  "neighbors": [
+    {
+      "name": "Angola",
+      "slug": "angola",
+      "value": 64.8
+    },
+    {
+      "name": "Zambia",
+      "slug": "zambia",
+      "value": 66.5
+    },
+    {
+      "name": "Tanzania",
+      "slug": "tanzania",
+      "value": 67.2
+    }
+  ]
+}

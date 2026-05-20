@@ -1,0 +1,98 @@
+{
+  "country": "Mexico",
+  "slug": "mexico",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 75.3,
+    "male": 72.4,
+    "female": 78
+  },
+  "rank": {
+    "position": 84,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 43.8
+    },
+    {
+      "year": 1960,
+      "total": 53.6
+    },
+    {
+      "year": 1970,
+      "total": 58.9
+    },
+    {
+      "year": 1980,
+      "total": 64.3
+    },
+    {
+      "year": 1990,
+      "total": 69
+    },
+    {
+      "year": 2000,
+      "total": 72.6
+    },
+    {
+      "year": 2010,
+      "total": 73.7
+    },
+    {
+      "year": 2015,
+      "total": 74.4
+    },
+    {
+      "year": 2020,
+      "total": 70.4
+    },
+    {
+      "year": 2023,
+      "total": 75.1
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 75.3
+    },
+    {
+      "year": 2030,
+      "total": 76.4
+    },
+    {
+      "year": 2050,
+      "total": 79.8
+    },
+    {
+      "year": 2100,
+      "total": 86.8
+    }
+  ],
+  "neighbors": [
+    {
+      "name": "United States",
+      "slug": "united-states",
+      "value": 79.5
+    },
+    {
+      "name": "Guatemala",
+      "slug": "guatemala",
+      "value": 72.7
+    },
+    {
+      "name": "Belize",
+      "slug": "belize",
+      "value": 73.7
+    }
+  ]
+}

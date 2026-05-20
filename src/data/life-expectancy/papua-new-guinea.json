@@ -1,0 +1,82 @@
+{
+  "country": "Papua New Guinea",
+  "slug": "papua-new-guinea",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 66.3,
+    "male": 63.8,
+    "female": 69.2
+  },
+  "rank": {
+    "position": 163,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 39.4
+    },
+    {
+      "year": 1960,
+      "total": 45.8
+    },
+    {
+      "year": 1970,
+      "total": 52.1
+    },
+    {
+      "year": 1980,
+      "total": 57.4
+    },
+    {
+      "year": 1990,
+      "total": 59.8
+    },
+    {
+      "year": 2000,
+      "total": 61.6
+    },
+    {
+      "year": 2010,
+      "total": 63.1
+    },
+    {
+      "year": 2015,
+      "total": 64.5
+    },
+    {
+      "year": 2020,
+      "total": 65.1
+    },
+    {
+      "year": 2023,
+      "total": 66.1
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 66.3
+    },
+    {
+      "year": 2030,
+      "total": 67
+    },
+    {
+      "year": 2050,
+      "total": 69.2
+    },
+    {
+      "year": 2100,
+      "total": 74.8
+    }
+  ],
+  "neighbors": []
+}

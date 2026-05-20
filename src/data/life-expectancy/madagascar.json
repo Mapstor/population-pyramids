@@ -1,0 +1,82 @@
+{
+  "country": "Madagascar",
+  "slug": "madagascar",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 63.8,
+    "male": 62.1,
+    "female": 65.6
+  },
+  "rank": {
+    "position": 174,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 39.7
+    },
+    {
+      "year": 1960,
+      "total": 43.3
+    },
+    {
+      "year": 1970,
+      "total": 47.9
+    },
+    {
+      "year": 1980,
+      "total": 50
+    },
+    {
+      "year": 1990,
+      "total": 52.1
+    },
+    {
+      "year": 2000,
+      "total": 58
+    },
+    {
+      "year": 2010,
+      "total": 62.6
+    },
+    {
+      "year": 2015,
+      "total": 63.4
+    },
+    {
+      "year": 2020,
+      "total": 62.7
+    },
+    {
+      "year": 2023,
+      "total": 63.6
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 63.8
+    },
+    {
+      "year": 2030,
+      "total": 65
+    },
+    {
+      "year": 2050,
+      "total": 68.3
+    },
+    {
+      "year": 2100,
+      "total": 74.7
+    }
+  ],
+  "neighbors": []
+}

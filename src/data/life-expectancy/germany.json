@@ -1,0 +1,98 @@
+{
+  "country": "Germany",
+  "slug": "germany",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 81.5,
+    "male": 79.2,
+    "female": 83.9
+  },
+  "rank": {
+    "position": 34,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 66.8
+    },
+    {
+      "year": 1960,
+      "total": 69.3
+    },
+    {
+      "year": 1970,
+      "total": 70.7
+    },
+    {
+      "year": 1980,
+      "total": 73.1
+    },
+    {
+      "year": 1990,
+      "total": 75.3
+    },
+    {
+      "year": 2000,
+      "total": 78.1
+    },
+    {
+      "year": 2010,
+      "total": 80.1
+    },
+    {
+      "year": 2015,
+      "total": 80.6
+    },
+    {
+      "year": 2020,
+      "total": 81
+    },
+    {
+      "year": 2023,
+      "total": 81.4
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 81.5
+    },
+    {
+      "year": 2030,
+      "total": 82.5
+    },
+    {
+      "year": 2050,
+      "total": 85.2
+    },
+    {
+      "year": 2100,
+      "total": 90.8
+    }
+  ],
+  "neighbors": [
+    {
+      "name": "France",
+      "slug": "france",
+      "value": 83.5
+    },
+    {
+      "name": "Poland",
+      "slug": "poland",
+      "value": 78.8
+    },
+    {
+      "name": "Netherlands",
+      "slug": "netherlands",
+      "value": 82.3
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "country": "Ghana",
+  "slug": "ghana",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 65.7,
+    "male": 63.3,
+    "female": 68.2
+  },
+  "rank": {
+    "position": 167,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 43.1
+    },
+    {
+      "year": 1960,
+      "total": 46.9
+    },
+    {
+      "year": 1970,
+      "total": 47.9
+    },
+    {
+      "year": 1980,
+      "total": 51.1
+    },
+    {
+      "year": 1990,
+      "total": 55.4
+    },
+    {
+      "year": 2000,
+      "total": 58.1
+    },
+    {
+      "year": 2010,
+      "total": 61.3
+    },
+    {
+      "year": 2015,
+      "total": 63.2
+    },
+    {
+      "year": 2020,
+      "total": 64.3
+    },
+    {
+      "year": 2023,
+      "total": 65.5
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 65.7
+    },
+    {
+      "year": 2030,
+      "total": 66.8
+    },
+    {
+      "year": 2050,
+      "total": 70
+    },
+    {
+      "year": 2100,
+      "total": 77.1
+    }
+  ],
+  "neighbors": [
+    {
+      "name": "Nigeria",
+      "slug": "nigeria",
+      "value": 54.6
+    },
+    {
+      "name": "Burkina Faso",
+      "slug": "burkina-faso",
+      "value": 61.3
+    }
+  ]
+}

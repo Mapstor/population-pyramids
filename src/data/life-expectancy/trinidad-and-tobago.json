@@ -1,0 +1,82 @@
+{
+  "country": "Trinidad and Tobago",
+  "slug": "trinidad-and-tobago",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 73.6,
+    "male": 70.5,
+    "female": 76.8
+  },
+  "rank": {
+    "position": 100,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 57
+    },
+    {
+      "year": 1960,
+      "total": 62.5
+    },
+    {
+      "year": 1970,
+      "total": 64.9
+    },
+    {
+      "year": 1980,
+      "total": 66.5
+    },
+    {
+      "year": 1990,
+      "total": 67.6
+    },
+    {
+      "year": 2000,
+      "total": 68.6
+    },
+    {
+      "year": 2010,
+      "total": 71.8
+    },
+    {
+      "year": 2015,
+      "total": 72.9
+    },
+    {
+      "year": 2020,
+      "total": 72.6
+    },
+    {
+      "year": 2023,
+      "total": 73.5
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 73.6
+    },
+    {
+      "year": 2030,
+      "total": 74.4
+    },
+    {
+      "year": 2050,
+      "total": 77.3
+    },
+    {
+      "year": 2100,
+      "total": 84.1
+    }
+  ],
+  "neighbors": []
+}

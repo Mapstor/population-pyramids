@@ -1,0 +1,98 @@
+{
+  "country": "Uganda",
+  "slug": "uganda",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 68.5,
+    "male": 65.5,
+    "female": 71.4
+  },
+  "rank": {
+    "position": 144,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 39.7
+    },
+    {
+      "year": 1960,
+      "total": 45.6
+    },
+    {
+      "year": 1970,
+      "total": 49.6
+    },
+    {
+      "year": 1980,
+      "total": 43.5
+    },
+    {
+      "year": 1990,
+      "total": 47.6
+    },
+    {
+      "year": 2000,
+      "total": 49.6
+    },
+    {
+      "year": 2010,
+      "total": 60
+    },
+    {
+      "year": 2015,
+      "total": 63.8
+    },
+    {
+      "year": 2020,
+      "total": 66.4
+    },
+    {
+      "year": 2023,
+      "total": 68.3
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 68.5
+    },
+    {
+      "year": 2030,
+      "total": 69.8
+    },
+    {
+      "year": 2050,
+      "total": 73.4
+    },
+    {
+      "year": 2100,
+      "total": 81.1
+    }
+  ],
+  "neighbors": [
+    {
+      "name": "Kenya",
+      "slug": "kenya",
+      "value": 63.8
+    },
+    {
+      "name": "Tanzania",
+      "slug": "tanzania",
+      "value": 67.2
+    },
+    {
+      "name": "Rwanda",
+      "slug": "rwanda",
+      "value": 68
+    }
+  ]
+}

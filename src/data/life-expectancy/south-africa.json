@@ -1,0 +1,98 @@
+{
+  "country": "South Africa",
+  "slug": "south-africa",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 66.3,
+    "male": 62.8,
+    "female": 69.8
+  },
+  "rank": {
+    "position": 161,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 43.1
+    },
+    {
+      "year": 1960,
+      "total": 52.6
+    },
+    {
+      "year": 1970,
+      "total": 55.7
+    },
+    {
+      "year": 1980,
+      "total": 60
+    },
+    {
+      "year": 1990,
+      "total": 62.9
+    },
+    {
+      "year": 2000,
+      "total": 58.4
+    },
+    {
+      "year": 2010,
+      "total": 58.9
+    },
+    {
+      "year": 2015,
+      "total": 64.1
+    },
+    {
+      "year": 2020,
+      "total": 65.2
+    },
+    {
+      "year": 2023,
+      "total": 66.1
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 66.3
+    },
+    {
+      "year": 2030,
+      "total": 67.3
+    },
+    {
+      "year": 2050,
+      "total": 70.3
+    },
+    {
+      "year": 2100,
+      "total": 77.3
+    }
+  ],
+  "neighbors": [
+    {
+      "name": "Namibia",
+      "slug": "namibia",
+      "value": 67.5
+    },
+    {
+      "name": "Botswana",
+      "slug": "botswana",
+      "value": 69.3
+    },
+    {
+      "name": "Zimbabwe",
+      "slug": "zimbabwe",
+      "value": 63.1
+    }
+  ]
+}

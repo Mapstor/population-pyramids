@@ -1,0 +1,82 @@
+{
+  "country": "Myanmar",
+  "slug": "myanmar",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 67.1,
+    "male": 64,
+    "female": 70.4
+  },
+  "rank": {
+    "position": 155,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 35.7
+    },
+    {
+      "year": 1960,
+      "total": 44.1
+    },
+    {
+      "year": 1970,
+      "total": 50.5
+    },
+    {
+      "year": 1980,
+      "total": 54.4
+    },
+    {
+      "year": 1990,
+      "total": 57.2
+    },
+    {
+      "year": 2000,
+      "total": 60.4
+    },
+    {
+      "year": 2010,
+      "total": 63.5
+    },
+    {
+      "year": 2015,
+      "total": 65.3
+    },
+    {
+      "year": 2020,
+      "total": 66.6
+    },
+    {
+      "year": 2023,
+      "total": 66.9
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 67.1
+    },
+    {
+      "year": 2030,
+      "total": 68.3
+    },
+    {
+      "year": 2050,
+      "total": 71.6
+    },
+    {
+      "year": 2100,
+      "total": 79.1
+    }
+  ],
+  "neighbors": []
+}

@@ -1,0 +1,82 @@
+{
+  "country": "Timor-Leste",
+  "slug": "timor-leste",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 67.9,
+    "male": 66.3,
+    "female": 69.7
+  },
+  "rank": {
+    "position": 146,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 29.2
+    },
+    {
+      "year": 1960,
+      "total": 32.4
+    },
+    {
+      "year": 1970,
+      "total": 37.4
+    },
+    {
+      "year": 1980,
+      "total": 30.2
+    },
+    {
+      "year": 1990,
+      "total": 45.2
+    },
+    {
+      "year": 2000,
+      "total": 58.1
+    },
+    {
+      "year": 2010,
+      "total": 63.7
+    },
+    {
+      "year": 2015,
+      "total": 65.3
+    },
+    {
+      "year": 2020,
+      "total": 66.9
+    },
+    {
+      "year": 2023,
+      "total": 67.7
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 67.9
+    },
+    {
+      "year": 2030,
+      "total": 69.1
+    },
+    {
+      "year": 2050,
+      "total": 72.4
+    },
+    {
+      "year": 2100,
+      "total": 79
+    }
+  ],
+  "neighbors": []
+}

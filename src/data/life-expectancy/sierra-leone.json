@@ -1,0 +1,82 @@
+{
+  "country": "Sierra Leone",
+  "slug": "sierra-leone",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 62,
+    "male": 60.2,
+    "female": 63.7
+  },
+  "rank": {
+    "position": 184,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 28.9
+    },
+    {
+      "year": 1960,
+      "total": 33.1
+    },
+    {
+      "year": 1970,
+      "total": 38.6
+    },
+    {
+      "year": 1980,
+      "total": 42.8
+    },
+    {
+      "year": 1990,
+      "total": 43.7
+    },
+    {
+      "year": 2000,
+      "total": 44.8
+    },
+    {
+      "year": 2010,
+      "total": 51.9
+    },
+    {
+      "year": 2015,
+      "total": 55.5
+    },
+    {
+      "year": 2020,
+      "total": 59.7
+    },
+    {
+      "year": 2023,
+      "total": 61.8
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 62
+    },
+    {
+      "year": 2030,
+      "total": 63
+    },
+    {
+      "year": 2050,
+      "total": 66
+    },
+    {
+      "year": 2100,
+      "total": 72
+    }
+  ],
+  "neighbors": []
+}

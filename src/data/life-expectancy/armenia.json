@@ -1,0 +1,82 @@
+{
+  "country": "Armenia",
+  "slug": "armenia",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 75.8,
+    "male": 71.6,
+    "female": 79.6
+  },
+  "rank": {
+    "position": 79,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 54.6
+    },
+    {
+      "year": 1960,
+      "total": 59.1
+    },
+    {
+      "year": 1970,
+      "total": 62.8
+    },
+    {
+      "year": 1980,
+      "total": 65.4
+    },
+    {
+      "year": 1990,
+      "total": 67.7
+    },
+    {
+      "year": 2000,
+      "total": 70.8
+    },
+    {
+      "year": 2010,
+      "total": 72.9
+    },
+    {
+      "year": 2015,
+      "total": 74.2
+    },
+    {
+      "year": 2020,
+      "total": 68.9
+    },
+    {
+      "year": 2023,
+      "total": 75.7
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 75.8
+    },
+    {
+      "year": 2030,
+      "total": 76.8
+    },
+    {
+      "year": 2050,
+      "total": 80
+    },
+    {
+      "year": 2100,
+      "total": 86.6
+    }
+  ],
+  "neighbors": []
+}

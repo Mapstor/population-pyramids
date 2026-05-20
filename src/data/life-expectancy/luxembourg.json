@@ -1,0 +1,82 @@
+{
+  "country": "Luxembourg",
+  "slug": "luxembourg",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 82.4,
+    "male": 80.7,
+    "female": 83.9
+  },
+  "rank": {
+    "position": 24,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 65.5
+    },
+    {
+      "year": 1960,
+      "total": 68.8
+    },
+    {
+      "year": 1970,
+      "total": 69.2
+    },
+    {
+      "year": 1980,
+      "total": 72.4
+    },
+    {
+      "year": 1990,
+      "total": 75
+    },
+    {
+      "year": 2000,
+      "total": 77.3
+    },
+    {
+      "year": 2010,
+      "total": 80.1
+    },
+    {
+      "year": 2015,
+      "total": 81.3
+    },
+    {
+      "year": 2020,
+      "total": 81.4
+    },
+    {
+      "year": 2023,
+      "total": 82.2
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 82.4
+    },
+    {
+      "year": 2030,
+      "total": 83.2
+    },
+    {
+      "year": 2050,
+      "total": 85.8
+    },
+    {
+      "year": 2100,
+      "total": 91.1
+    }
+  ],
+  "neighbors": []
+}

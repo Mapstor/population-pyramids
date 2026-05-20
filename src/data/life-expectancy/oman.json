@@ -1,0 +1,82 @@
+{
+  "country": "Oman",
+  "slug": "oman",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 80.2,
+    "male": 78.7,
+    "female": 82
+  },
+  "rank": {
+    "position": 41,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 29.3
+    },
+    {
+      "year": 1960,
+      "total": 35.4
+    },
+    {
+      "year": 1970,
+      "total": 46.6
+    },
+    {
+      "year": 1980,
+      "total": 59.6
+    },
+    {
+      "year": 1990,
+      "total": 69
+    },
+    {
+      "year": 2000,
+      "total": 73.6
+    },
+    {
+      "year": 2010,
+      "total": 77.2
+    },
+    {
+      "year": 2015,
+      "total": 79.3
+    },
+    {
+      "year": 2020,
+      "total": 77.8
+    },
+    {
+      "year": 2023,
+      "total": 80
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 80.2
+    },
+    {
+      "year": 2030,
+      "total": 81.4
+    },
+    {
+      "year": 2050,
+      "total": 84.9
+    },
+    {
+      "year": 2100,
+      "total": 90.4
+    }
+  ],
+  "neighbors": []
+}

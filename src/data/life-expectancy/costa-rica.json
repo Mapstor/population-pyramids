@@ -1,0 +1,82 @@
+{
+  "country": "Costa Rica",
+  "slug": "costa-rica",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 81,
+    "male": 78.4,
+    "female": 83.6
+  },
+  "rank": {
+    "position": 39,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 57.5
+    },
+    {
+      "year": 1960,
+      "total": 63.5
+    },
+    {
+      "year": 1970,
+      "total": 66.8
+    },
+    {
+      "year": 1980,
+      "total": 73
+    },
+    {
+      "year": 1990,
+      "total": 76.1
+    },
+    {
+      "year": 2000,
+      "total": 77.3
+    },
+    {
+      "year": 2010,
+      "total": 79.4
+    },
+    {
+      "year": 2015,
+      "total": 80.4
+    },
+    {
+      "year": 2020,
+      "total": 79.7
+    },
+    {
+      "year": 2023,
+      "total": 80.8
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 81
+    },
+    {
+      "year": 2030,
+      "total": 82.1
+    },
+    {
+      "year": 2050,
+      "total": 85.3
+    },
+    {
+      "year": 2100,
+      "total": 91.2
+    }
+  ],
+  "neighbors": []
+}

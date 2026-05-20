@@ -1,0 +1,82 @@
+{
+  "country": "Chad",
+  "slug": "chad",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 55.2,
+    "male": 53.4,
+    "female": 57.2
+  },
+  "rank": {
+    "position": 194,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 35.2
+    },
+    {
+      "year": 1960,
+      "total": 39.2
+    },
+    {
+      "year": 1970,
+      "total": 41.4
+    },
+    {
+      "year": 1980,
+      "total": 43.5
+    },
+    {
+      "year": 1990,
+      "total": 45.1
+    },
+    {
+      "year": 2000,
+      "total": 47.9
+    },
+    {
+      "year": 2010,
+      "total": 50.1
+    },
+    {
+      "year": 2015,
+      "total": 51.3
+    },
+    {
+      "year": 2020,
+      "total": 53.1
+    },
+    {
+      "year": 2023,
+      "total": 55.1
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 55.2
+    },
+    {
+      "year": 2030,
+      "total": 56.2
+    },
+    {
+      "year": 2050,
+      "total": 59.2
+    },
+    {
+      "year": 2100,
+      "total": 65.3
+    }
+  ],
+  "neighbors": []
+}

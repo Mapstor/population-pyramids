@@ -1,0 +1,82 @@
+{
+  "country": "Gambia",
+  "slug": "gambia",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 66.1,
+    "male": 64.4,
+    "female": 67.8
+  },
+  "rank": {
+    "position": 165,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 31.2
+    },
+    {
+      "year": 1960,
+      "total": 34.6
+    },
+    {
+      "year": 1970,
+      "total": 39.5
+    },
+    {
+      "year": 1980,
+      "total": 45
+    },
+    {
+      "year": 1990,
+      "total": 51.3
+    },
+    {
+      "year": 2000,
+      "total": 56.9
+    },
+    {
+      "year": 2010,
+      "total": 61.2
+    },
+    {
+      "year": 2015,
+      "total": 63
+    },
+    {
+      "year": 2020,
+      "total": 64.4
+    },
+    {
+      "year": 2023,
+      "total": 65.9
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 66.1
+    },
+    {
+      "year": 2030,
+      "total": 67.2
+    },
+    {
+      "year": 2050,
+      "total": 70.2
+    },
+    {
+      "year": 2100,
+      "total": 76.5
+    }
+  ],
+  "neighbors": []
+}

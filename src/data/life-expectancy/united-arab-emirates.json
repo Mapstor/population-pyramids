@@ -1,0 +1,98 @@
+{
+  "country": "United Arab Emirates",
+  "slug": "united-arab-emirates",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 83.1,
+    "male": 82.2,
+    "female": 84.3
+  },
+  "rank": {
+    "position": 17,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 42.1
+    },
+    {
+      "year": 1960,
+      "total": 50.7
+    },
+    {
+      "year": 1970,
+      "total": 60.8
+    },
+    {
+      "year": 1980,
+      "total": 68.2
+    },
+    {
+      "year": 1990,
+      "total": 71.1
+    },
+    {
+      "year": 2000,
+      "total": 76.3
+    },
+    {
+      "year": 2010,
+      "total": 81.9
+    },
+    {
+      "year": 2015,
+      "total": 82.1
+    },
+    {
+      "year": 2020,
+      "total": 81.9
+    },
+    {
+      "year": 2023,
+      "total": 82.9
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 83.1
+    },
+    {
+      "year": 2030,
+      "total": 84
+    },
+    {
+      "year": 2050,
+      "total": 86.6
+    },
+    {
+      "year": 2100,
+      "total": 91.6
+    }
+  ],
+  "neighbors": [
+    {
+      "name": "Saudi Arabia",
+      "slug": "saudi-arabia",
+      "value": 79
+    },
+    {
+      "name": "Oman",
+      "slug": "oman",
+      "value": 80.2
+    },
+    {
+      "name": "Qatar",
+      "slug": "qatar",
+      "value": 82.5
+    }
+  ]
+}

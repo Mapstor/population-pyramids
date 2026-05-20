@@ -1,0 +1,98 @@
+{
+  "country": "Israel",
+  "slug": "israel",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 82.7,
+    "male": 80.7,
+    "female": 84.7
+  },
+  "rank": {
+    "position": 19,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 69.9
+    },
+    {
+      "year": 1960,
+      "total": 69.8
+    },
+    {
+      "year": 1970,
+      "total": 71.2
+    },
+    {
+      "year": 1980,
+      "total": 73.7
+    },
+    {
+      "year": 1990,
+      "total": 78
+    },
+    {
+      "year": 2000,
+      "total": 79.2
+    },
+    {
+      "year": 2010,
+      "total": 82
+    },
+    {
+      "year": 2015,
+      "total": 82.3
+    },
+    {
+      "year": 2020,
+      "total": 82.7
+    },
+    {
+      "year": 2023,
+      "total": 82.4
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 82.7
+    },
+    {
+      "year": 2030,
+      "total": 83.5
+    },
+    {
+      "year": 2050,
+      "total": 86.1
+    },
+    {
+      "year": 2100,
+      "total": 91.5
+    }
+  ],
+  "neighbors": [
+    {
+      "name": "Egypt",
+      "slug": "egypt",
+      "value": 71.8
+    },
+    {
+      "name": "Jordan",
+      "slug": "jordan",
+      "value": 78
+    },
+    {
+      "name": "Lebanon",
+      "slug": "lebanon",
+      "value": 77.9
+    }
+  ]
+}

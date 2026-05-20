@@ -1,0 +1,82 @@
+{
+  "country": "Singapore",
+  "slug": "singapore",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 83.9,
+    "male": 81.4,
+    "female": 86.4
+  },
+  "rank": {
+    "position": 9,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 54.1
+    },
+    {
+      "year": 1960,
+      "total": 65.3
+    },
+    {
+      "year": 1970,
+      "total": 68.5
+    },
+    {
+      "year": 1980,
+      "total": 71.5
+    },
+    {
+      "year": 1990,
+      "total": 74.6
+    },
+    {
+      "year": 2000,
+      "total": 77.8
+    },
+    {
+      "year": 2010,
+      "total": 81.6
+    },
+    {
+      "year": 2015,
+      "total": 82.7
+    },
+    {
+      "year": 2020,
+      "total": 83.7
+    },
+    {
+      "year": 2023,
+      "total": 83.7
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 83.9
+    },
+    {
+      "year": 2030,
+      "total": 84.7
+    },
+    {
+      "year": 2050,
+      "total": 87.1
+    },
+    {
+      "year": 2100,
+      "total": 92.7
+    }
+  ],
+  "neighbors": []
+}

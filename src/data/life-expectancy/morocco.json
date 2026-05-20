@@ -1,0 +1,98 @@
+{
+  "country": "Morocco",
+  "slug": "morocco",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 75.5,
+    "male": 73.3,
+    "female": 77.8
+  },
+  "rank": {
+    "position": 82,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 38.8
+    },
+    {
+      "year": 1960,
+      "total": 41.7
+    },
+    {
+      "year": 1970,
+      "total": 48.7
+    },
+    {
+      "year": 1980,
+      "total": 55.2
+    },
+    {
+      "year": 1990,
+      "total": 62.4
+    },
+    {
+      "year": 2000,
+      "total": 66.8
+    },
+    {
+      "year": 2010,
+      "total": 70.8
+    },
+    {
+      "year": 2015,
+      "total": 72.9
+    },
+    {
+      "year": 2020,
+      "total": 73.1
+    },
+    {
+      "year": 2023,
+      "total": 75.3
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 75.5
+    },
+    {
+      "year": 2030,
+      "total": 76.5
+    },
+    {
+      "year": 2050,
+      "total": 79.8
+    },
+    {
+      "year": 2100,
+      "total": 86.2
+    }
+  ],
+  "neighbors": [
+    {
+      "name": "Algeria",
+      "slug": "algeria",
+      "value": 76.5
+    },
+    {
+      "name": "Tunisia",
+      "slug": "tunisia",
+      "value": 76.7
+    },
+    {
+      "name": "Spain",
+      "slug": "spain",
+      "value": 83.8
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "country": "Serbia",
+  "slug": "serbia",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 76.9,
+    "male": 73.7,
+    "female": 80.2
+  },
+  "rank": {
+    "position": 68,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 55.1
+    },
+    {
+      "year": 1960,
+      "total": 65.7
+    },
+    {
+      "year": 1970,
+      "total": 69.7
+    },
+    {
+      "year": 1980,
+      "total": 71.1
+    },
+    {
+      "year": 1990,
+      "total": 72.2
+    },
+    {
+      "year": 2000,
+      "total": 72.3
+    },
+    {
+      "year": 2010,
+      "total": 74.4
+    },
+    {
+      "year": 2015,
+      "total": 75.7
+    },
+    {
+      "year": 2020,
+      "total": 74.5
+    },
+    {
+      "year": 2023,
+      "total": 76.8
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 76.9
+    },
+    {
+      "year": 2030,
+      "total": 78.1
+    },
+    {
+      "year": 2050,
+      "total": 81.5
+    },
+    {
+      "year": 2100,
+      "total": 88.3
+    }
+  ],
+  "neighbors": []
+}

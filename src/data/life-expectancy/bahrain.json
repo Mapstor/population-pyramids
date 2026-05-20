@@ -1,0 +1,82 @@
+{
+  "country": "Bahrain",
+  "slug": "bahrain",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 81.4,
+    "male": 80.9,
+    "female": 82.1
+  },
+  "rank": {
+    "position": 36,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 38.6
+    },
+    {
+      "year": 1960,
+      "total": 50.6
+    },
+    {
+      "year": 1970,
+      "total": 64.4
+    },
+    {
+      "year": 1980,
+      "total": 70.7
+    },
+    {
+      "year": 1990,
+      "total": 72.6
+    },
+    {
+      "year": 2000,
+      "total": 74.7
+    },
+    {
+      "year": 2010,
+      "total": 78.6
+    },
+    {
+      "year": 2015,
+      "total": 80.3
+    },
+    {
+      "year": 2020,
+      "total": 78.7
+    },
+    {
+      "year": 2023,
+      "total": 81.3
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 81.4
+    },
+    {
+      "year": 2030,
+      "total": 82.4
+    },
+    {
+      "year": 2050,
+      "total": 85.2
+    },
+    {
+      "year": 2100,
+      "total": 90.5
+    }
+  ],
+  "neighbors": []
+}

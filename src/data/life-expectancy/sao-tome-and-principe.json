@@ -1,0 +1,82 @@
+{
+  "country": "Sao Tome and Principe",
+  "slug": "sao-tome-and-principe",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 69.9,
+    "male": 66.4,
+    "female": 73.9
+  },
+  "rank": {
+    "position": 133,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 39.1
+    },
+    {
+      "year": 1960,
+      "total": 43.6
+    },
+    {
+      "year": 1970,
+      "total": 56.3
+    },
+    {
+      "year": 1980,
+      "total": 59.4
+    },
+    {
+      "year": 1990,
+      "total": 60.7
+    },
+    {
+      "year": 2000,
+      "total": 61.2
+    },
+    {
+      "year": 2010,
+      "total": 63.9
+    },
+    {
+      "year": 2015,
+      "total": 66
+    },
+    {
+      "year": 2020,
+      "total": 68
+    },
+    {
+      "year": 2023,
+      "total": 69.7
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 69.9
+    },
+    {
+      "year": 2030,
+      "total": 71
+    },
+    {
+      "year": 2050,
+      "total": 74.2
+    },
+    {
+      "year": 2100,
+      "total": 81.6
+    }
+  ],
+  "neighbors": []
+}

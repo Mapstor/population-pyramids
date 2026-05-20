@@ -1,0 +1,82 @@
+{
+  "country": "Mali",
+  "slug": "mali",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 60.7,
+    "male": 59.3,
+    "female": 62.2
+  },
+  "rank": {
+    "position": 189,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 28.7
+    },
+    {
+      "year": 1960,
+      "total": 30.5
+    },
+    {
+      "year": 1970,
+      "total": 33.4
+    },
+    {
+      "year": 1980,
+      "total": 40.3
+    },
+    {
+      "year": 1990,
+      "total": 46.5
+    },
+    {
+      "year": 2000,
+      "total": 50.6
+    },
+    {
+      "year": 2010,
+      "total": 56
+    },
+    {
+      "year": 2015,
+      "total": 57.9
+    },
+    {
+      "year": 2020,
+      "total": 58.9
+    },
+    {
+      "year": 2023,
+      "total": 60.4
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 60.7
+    },
+    {
+      "year": 2030,
+      "total": 61.9
+    },
+    {
+      "year": 2050,
+      "total": 65.4
+    },
+    {
+      "year": 2100,
+      "total": 71.5
+    }
+  ],
+  "neighbors": []
+}

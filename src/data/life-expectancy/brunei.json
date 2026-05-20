@@ -1,0 +1,82 @@
+{
+  "country": "Brunei",
+  "slug": "brunei",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 75.5,
+    "male": 73.5,
+    "female": 77.7
+  },
+  "rank": {
+    "position": 81,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 50.6
+    },
+    {
+      "year": 1960,
+      "total": 58.7
+    },
+    {
+      "year": 1970,
+      "total": 64.5
+    },
+    {
+      "year": 1980,
+      "total": 69
+    },
+    {
+      "year": 1990,
+      "total": 71.6
+    },
+    {
+      "year": 2000,
+      "total": 74
+    },
+    {
+      "year": 2010,
+      "total": 74.8
+    },
+    {
+      "year": 2015,
+      "total": 74.9
+    },
+    {
+      "year": 2020,
+      "total": 75.1
+    },
+    {
+      "year": 2023,
+      "total": 75.3
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 75.5
+    },
+    {
+      "year": 2030,
+      "total": 76.5
+    },
+    {
+      "year": 2050,
+      "total": 79.6
+    },
+    {
+      "year": 2100,
+      "total": 86.5
+    }
+  ],
+  "neighbors": []
+}

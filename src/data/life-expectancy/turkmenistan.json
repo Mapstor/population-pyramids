@@ -1,0 +1,82 @@
+{
+  "country": "Turkmenistan",
+  "slug": "turkmenistan",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 70.2,
+    "male": 67,
+    "female": 73
+  },
+  "rank": {
+    "position": 131,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 48.1
+    },
+    {
+      "year": 1960,
+      "total": 52.1
+    },
+    {
+      "year": 1970,
+      "total": 56
+    },
+    {
+      "year": 1980,
+      "total": 60.2
+    },
+    {
+      "year": 1990,
+      "total": 63.9
+    },
+    {
+      "year": 2000,
+      "total": 64.9
+    },
+    {
+      "year": 2010,
+      "total": 68.6
+    },
+    {
+      "year": 2015,
+      "total": 69.1
+    },
+    {
+      "year": 2020,
+      "total": 68.8
+    },
+    {
+      "year": 2023,
+      "total": 70.1
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 70.2
+    },
+    {
+      "year": 2030,
+      "total": 71
+    },
+    {
+      "year": 2050,
+      "total": 73.6
+    },
+    {
+      "year": 2100,
+      "total": 80.5
+    }
+  ],
+  "neighbors": []
+}

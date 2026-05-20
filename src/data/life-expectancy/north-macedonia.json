@@ -1,0 +1,82 @@
+{
+  "country": "North Macedonia",
+  "slug": "north-macedonia",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 77.5,
+    "male": 75.3,
+    "female": 79.7
+  },
+  "rank": {
+    "position": 64,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 50.6
+    },
+    {
+      "year": 1960,
+      "total": 60.5
+    },
+    {
+      "year": 1970,
+      "total": 65
+    },
+    {
+      "year": 1980,
+      "total": 69.1
+    },
+    {
+      "year": 1990,
+      "total": 71.3
+    },
+    {
+      "year": 2000,
+      "total": 72.6
+    },
+    {
+      "year": 2010,
+      "total": 75
+    },
+    {
+      "year": 2015,
+      "total": 75.6
+    },
+    {
+      "year": 2020,
+      "total": 74.5
+    },
+    {
+      "year": 2023,
+      "total": 77.4
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 77.5
+    },
+    {
+      "year": 2030,
+      "total": 78.4
+    },
+    {
+      "year": 2050,
+      "total": 81.3
+    },
+    {
+      "year": 2100,
+      "total": 87.5
+    }
+  ],
+  "neighbors": []
+}

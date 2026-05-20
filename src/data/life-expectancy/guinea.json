@@ -1,0 +1,82 @@
+{
+  "country": "Guinea",
+  "slug": "guinea",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 60.9,
+    "male": 59.7,
+    "female": 62.1
+  },
+  "rank": {
+    "position": 188,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 35.6
+    },
+    {
+      "year": 1960,
+      "total": 36.6
+    },
+    {
+      "year": 1970,
+      "total": 39.1
+    },
+    {
+      "year": 1980,
+      "total": 42.8
+    },
+    {
+      "year": 1990,
+      "total": 47.3
+    },
+    {
+      "year": 2000,
+      "total": 52.4
+    },
+    {
+      "year": 2010,
+      "total": 56.4
+    },
+    {
+      "year": 2015,
+      "total": 57.9
+    },
+    {
+      "year": 2020,
+      "total": 59.4
+    },
+    {
+      "year": 2023,
+      "total": 60.7
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 60.9
+    },
+    {
+      "year": 2030,
+      "total": 61.9
+    },
+    {
+      "year": 2050,
+      "total": 64.7
+    },
+    {
+      "year": 2100,
+      "total": 70.6
+    }
+  ],
+  "neighbors": []
+}

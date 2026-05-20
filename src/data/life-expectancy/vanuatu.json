@@ -1,0 +1,82 @@
+{
+  "country": "Vanuatu",
+  "slug": "vanuatu",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 71.7,
+    "male": 69.6,
+    "female": 74.1
+  },
+  "rank": {
+    "position": 120,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 43.9
+    },
+    {
+      "year": 1960,
+      "total": 49.8
+    },
+    {
+      "year": 1970,
+      "total": 55.3
+    },
+    {
+      "year": 1980,
+      "total": 61.3
+    },
+    {
+      "year": 1990,
+      "total": 66.7
+    },
+    {
+      "year": 2000,
+      "total": 68.6
+    },
+    {
+      "year": 2010,
+      "total": 69.6
+    },
+    {
+      "year": 2015,
+      "total": 70.2
+    },
+    {
+      "year": 2020,
+      "total": 70.4
+    },
+    {
+      "year": 2023,
+      "total": 71.5
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 71.7
+    },
+    {
+      "year": 2030,
+      "total": 72.7
+    },
+    {
+      "year": 2050,
+      "total": 75.8
+    },
+    {
+      "year": 2100,
+      "total": 83
+    }
+  ],
+  "neighbors": []
+}

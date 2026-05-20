@@ -1,0 +1,82 @@
+{
+  "country": "Vatican City",
+  "slug": "vatican-city",
+  "lastUpdated": "2026-05-20",
+  "source": "UN World Population Prospects 2024 Revision",
+  "current": {
+    "year": 2024,
+    "total": 83.1,
+    "male": 81,
+    "female": 85.2
+  },
+  "rank": {
+    "position": 16,
+    "outOf": 195
+  },
+  "worldAverage": {
+    "total": 73.3,
+    "male": 70.7,
+    "female": 76
+  },
+  "historical": [
+    {
+      "year": 1950,
+      "total": 65.9
+    },
+    {
+      "year": 1960,
+      "total": 69.2
+    },
+    {
+      "year": 1970,
+      "total": 71.5
+    },
+    {
+      "year": 1980,
+      "total": 74.1
+    },
+    {
+      "year": 1990,
+      "total": 76.9
+    },
+    {
+      "year": 2000,
+      "total": 79.3
+    },
+    {
+      "year": 2010,
+      "total": 81.5
+    },
+    {
+      "year": 2015,
+      "total": 82.5
+    },
+    {
+      "year": 2020,
+      "total": 83
+    },
+    {
+      "year": 2023,
+      "total": 83
+    }
+  ],
+  "projections": [
+    {
+      "year": 2024,
+      "total": 83.1
+    },
+    {
+      "year": 2030,
+      "total": 84
+    },
+    {
+      "year": 2050,
+      "total": 86.6
+    },
+    {
+      "year": 2100,
+      "total": 92
+    }
+  ],
+  "neighbors": []
+}
