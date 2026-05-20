@@ -17,9 +17,12 @@ export interface CountryMapDatum {
   densityPerKm2: number;
   region: string;
   areaKm2: number;
+  lifeExpectancy?: number;
+  lifeExpectancyMale?: number;
+  lifeExpectancyFemale?: number;
 }
 
-type Mode = 'population' | 'area';
+type Mode = 'population' | 'area' | 'life-expectancy';
 
 interface Props {
   features: MapFeature[];
@@ -59,6 +62,16 @@ const AREA_LEGEND = [
   { label: '>10M km²', color: '#064e3b' },
 ];
 
+const LE_LEGEND = [
+  { label: 'No data', color: '#e5e7eb' },
+  { label: '<60 yrs', color: '#7f1d1d' },
+  { label: '60–65', color: '#c2410c' },
+  { label: '65–72', color: '#ea580c' },
+  { label: '72–78', color: '#facc15' },
+  { label: '78–82', color: '#84cc16' },
+  { label: '82+ yrs', color: '#15803d' },
+];
+
 function getPopFill(pop: number | undefined): string {
   if (!pop || pop <= 0) return '#e5e7eb';
   if (pop >= 1_000_000_000) return '#1e3a8a';
@@ -77,6 +90,16 @@ function getAreaFill(km2: number | undefined): string {
   if (km2 >= 500_000) return '#10b981';
   if (km2 >= 100_000) return '#34d399';
   return '#a7f3d0';
+}
+
+function getLEFill(le: number | undefined): string {
+  if (!le || le <= 0) return '#e5e7eb';
+  if (le >= 82) return '#15803d';
+  if (le >= 78) return '#84cc16';
+  if (le >= 72) return '#facc15';
+  if (le >= 65) return '#ea580c';
+  if (le >= 60) return '#c2410c';
+  return '#7f1d1d';
 }
 
 function formatDensity(d: number): string {
@@ -142,10 +165,18 @@ export default function WorldPopulationMap({
     tipPlacement = ((flipY ? 't' : 'b') + (flipX ? 'l' : 'r')) as 'br' | 'bl' | 'tr' | 'tl';
   }
 
-  const legend = mode === 'area' ? AREA_LEGEND : POP_LEGEND;
-  const legendLabel = mode === 'area' ? 'Land area:' : 'Population:';
-  const badgeFill = mode === 'area' ? '#064e3b' : '#1e3a8a';
-  const badgeRing = mode === 'area' ? '#ecfdf5' : '#dbeafe';
+  const legend =
+    mode === 'area' ? AREA_LEGEND : mode === 'life-expectancy' ? LE_LEGEND : POP_LEGEND;
+  const legendLabel =
+    mode === 'area'
+      ? 'Land area:'
+      : mode === 'life-expectancy'
+      ? 'Life expectancy:'
+      : 'Population:';
+  const badgeFill =
+    mode === 'area' ? '#064e3b' : mode === 'life-expectancy' ? '#15803d' : '#1e3a8a';
+  const badgeRing =
+    mode === 'area' ? '#ecfdf5' : mode === 'life-expectancy' ? '#f0fdf4' : '#dbeafe';
 
   return (
     <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
@@ -184,6 +215,8 @@ export default function WorldPopulationMap({
                 fill = '#e5e7eb';
               } else if (mode === 'area') {
                 fill = getAreaFill(d?.areaKm2);
+              } else if (mode === 'life-expectancy') {
+                fill = getLEFill(d?.lifeExpectancy);
               } else {
                 fill = getPopFill(d?.population2024);
               }
@@ -260,6 +293,8 @@ export default function WorldPopulationMap({
                   background:
                     mode === 'area'
                       ? 'linear-gradient(90deg, #065f46, #10b981)'
+                      : mode === 'life-expectancy'
+                      ? 'linear-gradient(90deg, #15803d, #84cc16)'
                       : 'linear-gradient(90deg, #1e3a8a, #4f46e5)',
                 }}
               >
@@ -273,6 +308,13 @@ export default function WorldPopulationMap({
                             .sort((a, b) => b.areaKm2 - a.areaKm2)
                             .findIndex((d2) => d2.slug === data.slug) + 1
                         } by area`
+                      : mode === 'life-expectancy' && data.lifeExpectancy
+                      ? `#${
+                          Object.values(dataByAlpha)
+                            .filter((d2) => d2.lifeExpectancy != null)
+                            .sort((a, b) => (b.lifeExpectancy ?? 0) - (a.lifeExpectancy ?? 0))
+                            .findIndex((d2) => d2.slug === data.slug) + 1
+                        } by life expectancy`
                       : `#${
                           Object.values(dataByAlpha)
                             .sort((a, b) => b.population2024 - a.population2024)
@@ -300,6 +342,18 @@ export default function WorldPopulationMap({
                         {((data.areaKm2 / computedWorldLandArea) * 100).toFixed(2)}% of world land · CIA Factbook
                       </div>
                     </div>
+                  ) : mode === 'life-expectancy' && data.lifeExpectancy != null ? (
+                    <div className="rounded p-2" style={{ backgroundColor: '#f0fdf4' }}>
+                      <div className="text-[10px] font-bold uppercase tracking-wider text-green-900">
+                        Life expectancy 2024
+                      </div>
+                      <div className="text-xl font-bold text-green-900 leading-tight">
+                        {data.lifeExpectancy.toFixed(1)} <span className="text-sm">yrs</span>
+                      </div>
+                      <div className="text-[10px] text-green-800 mt-0.5">
+                        M {data.lifeExpectancyMale?.toFixed(1) ?? '—'} · F {data.lifeExpectancyFemale?.toFixed(1) ?? '—'} · UN WPP 2024
+                      </div>
+                    </div>
                   ) : (
                     <div className="bg-blue-50 rounded p-2">
                       <div className="text-[10px] font-bold uppercase tracking-wider text-blue-900">
@@ -315,7 +369,39 @@ export default function WorldPopulationMap({
                   )}
 
                   <div className="grid grid-cols-3 gap-1.5 text-xs">
-                    {mode === 'area' ? (
+                    {mode === 'life-expectancy' && data.lifeExpectancy != null ? (
+                      <>
+                        <div className="bg-gray-50 rounded p-1.5 text-center">
+                          <div className="text-[9px] text-gray-500 uppercase tracking-wider">
+                            Gender gap
+                          </div>
+                          <div className="font-semibold text-gray-900">
+                            {data.lifeExpectancyFemale != null && data.lifeExpectancyMale != null
+                              ? `+${(data.lifeExpectancyFemale - data.lifeExpectancyMale).toFixed(1)}`
+                              : '—'}
+                          </div>
+                          <div className="text-[8px] text-gray-500">F − M yrs</div>
+                        </div>
+                        <div className="bg-gray-50 rounded p-1.5 text-center">
+                          <div className="text-[9px] text-gray-500 uppercase tracking-wider">
+                            Population
+                          </div>
+                          <div className="font-semibold text-gray-900 text-[11px]">
+                            {data.population2024 >= 1_000_000
+                              ? `${(data.population2024 / 1_000_000).toFixed(0)}M`
+                              : data.population2024.toLocaleString()}
+                          </div>
+                        </div>
+                        <div className="bg-gray-50 rounded p-1.5 text-center">
+                          <div className="text-[9px] text-gray-500 uppercase tracking-wider">
+                            Region
+                          </div>
+                          <div className="font-semibold text-gray-900 text-[11px] leading-tight">
+                            {data.region}
+                          </div>
+                        </div>
+                      </>
+                    ) : mode === 'area' ? (
                       <>
                         <div className="bg-gray-50 rounded p-1.5 text-center">
                           <div className="text-[9px] text-gray-500 uppercase tracking-wider">

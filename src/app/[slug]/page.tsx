@@ -14,6 +14,7 @@ import { generateDemographicGlossary, generateGlossarySummary } from '@/lib/demo
 import { generateUsageGuide, generateUsageSummary } from '@/lib/usage-guide';
 import { classifyDemographicStage, getDemographicStageExplanation } from '@/lib/demographic-stage-classifier';
 import { loadFertilityData, calculateFertilityMetrics, getFertilityAnalysis } from '@/lib/fertility-loader';
+import { loadLifeExpectancyData } from '@/lib/life-expectancy-loader';
 import { hasValue } from '@/lib/render-guards';
 import { generateBirthStatisticsSchema } from '@/lib/birth-statistics-schema';
 import { generateCountrySchemaPackage } from '@/lib/population-dataset-schema';
@@ -25,6 +26,7 @@ import TimelinePyramid from '@/components/TimelinePyramid';
 import StatsTable from '@/components/StatsTable';
 import DemographicCharts from '@/components/DemographicCharts';
 import RegionalComparison from '@/components/RegionalComparison';
+import LifeExpectancySection from '@/components/LifeExpectancySection';
 import DecadeBreakdown from '@/components/DecadeBreakdown';
 import ShareButtons from '@/components/ShareButtons';
 import { getCountryNeighbors, getRegionalCountries } from '@/lib/country-neighbors';
@@ -122,7 +124,10 @@ export default async function CountryPage({ params }: CountryPageProps) {
     
     // Load fertility data if available
     const fertilityData = await loadFertilityData(countrySlug);
-    
+
+    // Load life expectancy data if available (per-country JSON in src/data/life-expectancy/)
+    const lifeExpectancyData = await loadLifeExpectancyData(countrySlug);
+
     // Get top comparison links for this country
     const topComparisons = getTopComparisonsForCountryOptimized(countrySlug);
     
@@ -1371,6 +1376,14 @@ export default async function CountryPage({ params }: CountryPageProps) {
               currentMetrics={metrics}
             />
           </section>
+
+          {/* Life Expectancy — renders only if per-country data exists */}
+          {lifeExpectancyData && (
+            <LifeExpectancySection
+              data={lifeExpectancyData}
+              countrySlug={countrySlug}
+            />
+          )}
 
           {/* Future Trends */}
           <section className="bg-white rounded-lg shadow-sm p-8 mb-8">
