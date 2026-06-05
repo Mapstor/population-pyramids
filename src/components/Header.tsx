@@ -17,7 +17,20 @@ export default function Header() {
   };
 
   const isToolsActive = () => {
-    const toolPaths = ['/compare', '/dependency-ratio-calculator', '/generation-age-ranges-calculator', '/population-growth-rate-calculator'];
+    const toolPaths = [
+      '/compare',
+      '/dependency-ratio-calculator',
+      '/generation-age-ranges-calculator',
+      '/population-growth-rate-calculator',
+      '/population-when-you-were-born',
+      '/life-expectancy-by-country',
+      '/fertility-rate-by-country',
+      '/population-density-by-country',
+      '/population-projection-by-country',
+      '/population-pyramid-maker',
+      '/male-to-female-ratio',
+      '/median-age-by-country',
+    ];
     return toolPaths.some(path => pathname.startsWith(path));
   };
 
@@ -121,6 +134,54 @@ export default function Header() {
               
               {isToolsDropdownOpen && (
                 <div className="absolute top-full mt-2 w-72 bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden z-50">
+                  <Link
+                    href="/population-when-you-were-born"
+                    className="block px-4 py-3 hover:bg-blue-50 transition-colors border-b border-gray-100"
+                    onClick={() => setIsToolsDropdownOpen(false)}
+                  >
+                    <div className="font-semibold text-gray-900">🌍 Population When You Were Born</div>
+                    <div className="text-xs text-gray-600 mt-1">World pop the day you were born vs today</div>
+                  </Link>
+                  <Link
+                    href="/life-expectancy-by-country"
+                    className="block px-4 py-3 hover:bg-blue-50 transition-colors border-b border-gray-100"
+                    onClick={() => setIsToolsDropdownOpen(false)}
+                  >
+                    <div className="font-semibold text-gray-900">🔮 Life Expectancy Calculator</div>
+                    <div className="text-xs text-gray-600 mt-1">How long will I live? Rankings + calculator</div>
+                  </Link>
+                  <Link
+                    href="/fertility-rate-by-country"
+                    className="block px-4 py-3 hover:bg-blue-50 transition-colors border-b border-gray-100"
+                    onClick={() => setIsToolsDropdownOpen(false)}
+                  >
+                    <div className="font-semibold text-gray-900">👶 Fertility Rate Calculator</div>
+                    <div className="text-xs text-gray-600 mt-1">TFR + birth rate · below-replacement tracker</div>
+                  </Link>
+                  <Link
+                    href="/population-density-by-country"
+                    className="block px-4 py-3 hover:bg-blue-50 transition-colors border-b border-gray-100"
+                    onClick={() => setIsToolsDropdownOpen(false)}
+                  >
+                    <div className="font-semibold text-gray-900">🏙️ Population Density Calculator</div>
+                    <div className="text-xs text-gray-600 mt-1">Most & least crowded countries · "what if" comparisons</div>
+                  </Link>
+                  <Link
+                    href="/population-pyramid-maker"
+                    className="block px-4 py-3 hover:bg-blue-50 transition-colors border-b border-gray-100"
+                    onClick={() => setIsToolsDropdownOpen(false)}
+                  >
+                    <div className="font-semibold text-gray-900">🛠️ Population Pyramid Maker</div>
+                    <div className="text-xs text-gray-600 mt-1">Generate custom pyramids · PNG/SVG download</div>
+                  </Link>
+                  <Link
+                    href="/population-projection-by-country"
+                    className="block px-4 py-3 hover:bg-blue-50 transition-colors border-b border-gray-100"
+                    onClick={() => setIsToolsDropdownOpen(false)}
+                  >
+                    <div className="font-semibold text-gray-900">🔮 Population Projection 2050 / 2100</div>
+                    <div className="text-xs text-gray-600 mt-1">UN projection · every country to 2100 · peak year</div>
+                  </Link>
                   <Link
                     href="/compare"
                     className="block px-4 py-3 hover:bg-blue-50 transition-colors border-b border-gray-100"
@@ -247,8 +308,50 @@ export default function Header() {
                   Tools
                 </div>
                 <div className="bg-white rounded-b-xl border border-gray-200 border-t-0">
-                  <Link 
-                    href="/compare" 
+                  <Link
+                    href="/population-when-you-were-born"
+                    className="block px-4 py-3 text-sm hover:bg-blue-50 transition-colors border-b border-gray-100"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    🌍 Population When You Were Born
+                  </Link>
+                  <Link
+                    href="/life-expectancy-by-country"
+                    className="block px-4 py-3 text-sm hover:bg-blue-50 transition-colors border-b border-gray-100"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    🔮 Life Expectancy
+                  </Link>
+                  <Link
+                    href="/fertility-rate-by-country"
+                    className="block px-4 py-3 text-sm hover:bg-blue-50 transition-colors border-b border-gray-100"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    👶 Fertility Rate
+                  </Link>
+                  <Link
+                    href="/population-density-by-country"
+                    className="block px-4 py-3 text-sm hover:bg-blue-50 transition-colors border-b border-gray-100"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    🏙️ Population Density
+                  </Link>
+                  <Link
+                    href="/population-pyramid-maker"
+                    className="block px-4 py-3 text-sm hover:bg-blue-50 transition-colors border-b border-gray-100"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    🛠️ Pyramid Maker
+                  </Link>
+                  <Link
+                    href="/population-projection-by-country"
+                    className="block px-4 py-3 text-sm hover:bg-blue-50 transition-colors border-b border-gray-100"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    🔮 Population Projection 2050/2100
+                  </Link>
+                  <Link
+                    href="/compare"
                     className="block px-4 py-3 text-sm hover:bg-blue-50 transition-colors border-b border-gray-100"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >

@@ -1,29 +1,45 @@
 import Link from 'next/link';
 import { getAllLifeExpectancyData } from '@/lib/life-expectancy-loader';
 import { getCountryRankings } from '@/lib/country-rankings';
+import { loadCountries } from '@/lib/data-loader';
+import { getCountryFlag } from '@/lib/country-flags';
 import { getWorldMapPaths } from '@/lib/world-map-data';
 import RankingBarChart, { BarItem } from '@/components/RankingBarChart';
 import WorldPopulationMap, { CountryMapDatum } from '@/components/WorldPopulationMap';
+import { CURRENT_YEAR, LAST_UPDATED_ISO } from '@/lib/site-meta';
+import LifeExpectancyCalculator from './LifeExpectancyCalculator';
+import { toSlim } from '@/lib/life-expectancy-helpers';
+import ToolCrossLinks from '@/components/ToolCrossLinks';
+
+export const revalidate = 86400;
 
 export const metadata = {
-  title: 'Life Expectancy by Country 2026 — All 195 Countries Ranked',
+  title: `Life Expectancy Calculator & Ranking by Country ${CURRENT_YEAR}`,
   description:
-    'Complete ranking of every country in the world by life expectancy at birth, 2024. Monaco, Japan, Switzerland, San Marino, and South Korea top the list at 85+ years. Nigeria, Chad, and Central African Republic at the bottom around 55 years. UN World Population Prospects 2024 data, with male/female breakdowns and projections to 2100.',
+    `Personal life expectancy calculator + all 195 countries ranked. Enter your birth year, sex, and country to see your statistical lifespan and how it's changed since you were born. Monaco, Japan, Switzerland lead at 85+ years; Nigeria, Chad, CAR at the bottom around 55. UN World Population Prospects ${CURRENT_YEAR} data with male/female breakdowns and projections to 2100.`,
   keywords:
-    'life expectancy by country, average life expectancy by country, countries by life expectancy, life expectancy at birth by country, lifespan by country, life longevity by country, country life span, age expectancy by country, life expectancy by nation, average life span by country, countries longest life expectancy, countries highest life expectancy',
+    'life expectancy calculator, how long will I live, life expectancy by country, life expectancy at birth by country, average life expectancy by country, countries by life expectancy, lifespan by country, country life span, age expectancy by country, life expectancy by nation, average life span by country, countries longest life expectancy, countries highest life expectancy, expected age of death, longevity calculator',
   openGraph: {
-    title: 'Life Expectancy by Country 2026 — All 195 Countries Ranked',
+    title: `Life Expectancy Calculator & Ranking by Country ${CURRENT_YEAR}`,
     description:
-      'Every country ranked by life expectancy at birth, with bar chart, full table, regional breakdowns, projections to 2100, and male/female breakdown. UN WPP 2024 data.',
+      'Personal calculator + all 195 countries ranked. Enter your birth year, sex & country to see your statistical lifespan. Male/female breakdowns and projections to 2100.',
     type: 'website',
     url: 'https://populationpyramids.org/life-expectancy-by-country',
+    siteName: 'Population Pyramids',
+    // og:image auto-generated from src/app/life-expectancy-by-country/opengraph-image.tsx
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `Life Expectancy Calculator & Ranking by Country ${CURRENT_YEAR}`,
+    description: 'Personal life expectancy calculator + all 195 countries ranked. Birth year + sex + country → your statistical lifespan.',
+    // twitter:image auto-derives from og:image (file convention)
   },
   alternates: {
     canonical: 'https://populationpyramids.org/life-expectancy-by-country',
   },
 };
 
-const LAST_UPDATED = '2026-05-20';
+const LAST_UPDATED = LAST_UPDATED_ISO;
 const PUBLISHED = '2026-05-20';
 
 function generateSchema(top10: any[], bottom10: any[], worldAvg: number, gapTopBottom: number) {
@@ -33,7 +49,7 @@ function generateSchema(top10: any[], bottom10: any[], worldAvg: number, gapTopB
       {
         '@type': 'Article',
         '@id': 'https://populationpyramids.org/life-expectancy-by-country#article',
-        headline: 'Life Expectancy by Country 2026 — All 195 Countries Ranked',
+        headline: `Life Expectancy by Country ${CURRENT_YEAR} — All 195 Countries Ranked`,
         description:
           'A sourced ranking of every country by life expectancy at birth, with male/female breakdowns and projections to 2100.',
         author: { '@type': 'Organization', name: 'PopulationPyramids.org', url: 'https://populationpyramids.org' },
@@ -60,7 +76,7 @@ function generateSchema(top10: any[], bottom10: any[], worldAvg: number, gapTopB
       {
         '@type': 'WebPage',
         '@id': 'https://populationpyramids.org/life-expectancy-by-country#webpage',
-        name: 'Life Expectancy by Country 2026',
+        name: `Life Expectancy by Country ${CURRENT_YEAR}`,
         url: 'https://populationpyramids.org/life-expectancy-by-country',
         description: 'Complete ranking of life expectancy across all 195 countries in 2024.',
         inLanguage: 'en-US',
@@ -241,6 +257,15 @@ function generateSchema(top10: any[], bottom10: any[], worldAvg: number, gapTopB
 export default async function LifeExpectancyByCountryPage() {
   const all = await getAllLifeExpectancyData();
   const { countries: rankings } = await getCountryRankings();
+  const countriesMeta = await loadCountries();
+  const codeBySlug = new Map(countriesMeta.map(c => [c.slug, c.code]));
+
+  // Slim per-country payload shipped to the calculator client island.
+  // Sorted alphabetically for the dropdown UX.
+  const slimCountries = all
+    .map(le => toSlim(le, getCountryFlag(codeBySlug.get(le.slug) ?? '') || '🌍'))
+    .sort((a, b) => a.name.localeCompare(b.name));
+
   const top10 = all.slice(0, 10);
   const bottom10 = all.slice(-10);
   const worldAvg = all[0]?.worldAverage.total ?? 73.4;
@@ -322,10 +347,11 @@ export default async function LifeExpectancyByCountryPage() {
 
           {/* H1 + concise lede */}
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
-            Life Expectancy by Country 2026
+            Life Expectancy Calculator &amp; Ranking by Country {CURRENT_YEAR}
           </h1>
           <p className="text-lg text-gray-700 max-w-4xl mb-2">
-            All 195 countries ranked by life expectancy at birth (2024). <strong>{top10[0].country}</strong> leads at{' '}
+            Enter your birth year, sex, and country below to see your statistical lifespan — or jump to the
+            ranking of all 195 countries. <strong>{top10[0].country}</strong> leads at{' '}
             <strong>{top10[0].current.total} years</strong>; <strong>{bottom10[bottom10.length - 1].country}</strong>{' '}
             has the lowest at <strong>{bottom10[bottom10.length - 1].current.total} years</strong>. The gap between
             longest- and shortest-lived populations is roughly{' '}
@@ -337,6 +363,14 @@ export default async function LifeExpectancyByCountryPage() {
               UN World Population Prospects 2024
             </a>
           </p>
+
+          {/* Personal calculator — SSR-rendered, hydrates client-side */}
+          <LifeExpectancyCalculator
+            slimCountries={slimCountries}
+            defaultSlug="united-states"
+            defaultBirthYear={1990}
+            defaultSex="total"
+          />
 
           {/* World choropleth map */}
           <div className="mb-8">
@@ -735,18 +769,7 @@ export default async function LifeExpectancyByCountryPage() {
             </div>
           </section>
 
-          {/* Cross-links */}
-          <section className="bg-blue-50 rounded-lg p-6 border border-blue-200 mb-8">
-            <h2 className="text-lg font-bold text-gray-900 mb-3">Explore More Rankings</h2>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
-              <li><Link href="/median-age-by-country" className="text-blue-700 hover:text-blue-900 font-medium">→ Median Age by Country</Link></li>
-              <li><Link href="/most-populated-countries" className="text-blue-700 hover:text-blue-900 font-medium">→ Most Populated Countries</Link></li>
-              <li><Link href="/largest-countries" className="text-blue-700 hover:text-blue-900 font-medium">→ Largest Countries by Area</Link></li>
-              <li><Link href="/smallest-countries" className="text-blue-700 hover:text-blue-900 font-medium">→ Smallest Countries</Link></li>
-              <li><Link href="/countries" className="text-blue-700 hover:text-blue-900 font-medium">→ All 195 Countries with Demographics</Link></li>
-              <li><Link href="/compare" className="text-blue-700 hover:text-blue-900 font-medium">→ Compare Any Two Countries</Link></li>
-            </ul>
-          </section>
+          <ToolCrossLinks currentSlug="life-expectancy-by-country" />
 
           {/* Sources footer */}
           <section className="bg-gray-100 rounded-lg p-5 text-sm text-gray-700">
