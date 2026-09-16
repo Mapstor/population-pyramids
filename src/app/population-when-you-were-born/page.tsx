@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { loadCountries, loadCountryData } from '@/lib/data-loader';
 import { generateWorldPopulationData } from '@/lib/world-data-aggregator';
 import { getCountryFlag } from '@/lib/country-flags';
-import { CURRENT_YEAR, LAST_UPDATED_ISO } from '@/lib/site-meta';
+import { DATA_YEAR, LAST_UPDATED_ISO } from '@/lib/site-meta';
 import PopulationWhenBornCalculator from './PopulationWhenBornCalculator';
 import PopulationContextSections, {
   type MilestoneEntry,
@@ -26,13 +26,13 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: `Population When You Were Born — How Much Has the World Grown in Your Lifetime?`,
   description:
-    `Enter your birth year to see the world's population the day you were born vs. today. Find out how many people lived in your country in any year from 1950 to ${DATA_LATEST_YEAR}, what % of people alive today are older than you, and how the planet has changed since you arrived. UN World Population Prospects ${CURRENT_YEAR} data.`,
+    `Enter your birth year to see the world's population the day you were born vs. today. Find out how many people lived in your country in any year from 1950 to ${DATA_LATEST_YEAR}, what % of people alive today are older than you, and how the planet has changed since you arrived. UN World Population Prospects ${DATA_YEAR} data.`,
   keywords:
     'world population when I was born, population when I was born, world population by year, how many people were alive when I was born, world population in 1990, world population 1980, population since 1950, world population growth since I was born, how much has the world grown',
   openGraph: {
     title: `Population When You Were Born — Personal World Population Calculator`,
     description:
-      `Enter your birth year and country: see how the world (and your country) has grown since the day you were born. UN WPP ${CURRENT_YEAR} data, every year 1950–${DATA_LATEST_YEAR}.`,
+      `Enter your birth year and country: see how the world (and your country) has grown since the day you were born. UN WPP ${DATA_YEAR} data, every year 1950–${DATA_LATEST_YEAR}.`,
     type: 'website',
     url: 'https://populationpyramids.org/population-when-you-were-born',
     siteName: 'Population Pyramids',

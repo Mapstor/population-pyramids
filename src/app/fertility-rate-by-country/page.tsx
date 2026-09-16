@@ -4,7 +4,7 @@ import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { loadCountries } from '@/lib/data-loader';
 import { getCountryFlag } from '@/lib/country-flags';
-import { CURRENT_YEAR, LAST_UPDATED_ISO } from '@/lib/site-meta';
+import { CURRENT_YEAR, DATA_YEAR, LAST_UPDATED_ISO } from '@/lib/site-meta';
 import { getCountryRankings } from '@/lib/country-rankings';
 import { getWorldMapPaths } from '@/lib/world-map-data';
 import WorldPopulationMap, { type CountryMapDatum } from '@/components/WorldPopulationMap';
@@ -27,12 +27,12 @@ const WORLD_2024_TFR = WORLD_TFR_POINTS[WORLD_TFR_POINTS.length - 1].tfr;
 export const metadata: Metadata = {
   title: `Fertility Rate by Country ${CURRENT_YEAR} — Calculator + All Countries Below Replacement`,
   description:
-    `Personal fertility rate calculator + every country ranked by Total Fertility Rate. Find out if your country has dropped below the replacement rate of 2.1 children per woman, and when. South Korea leads the global low at ~0.72; Niger leads the high at ~6.0. UN World Population Prospects ${CURRENT_YEAR} data with birth rate (CBR) and projections to 2050.`,
+    `Personal fertility rate calculator + every country ranked by Total Fertility Rate. Find out if your country has dropped below the replacement rate of 2.1 children per woman, and when. South Korea leads the global low at ~0.72; Niger leads the high at ~6.0. UN World Population Prospects ${DATA_YEAR} data with birth rate (CBR) and projections to 2050.`,
   keywords:
     'fertility rate by country, birth rate by country, total fertility rate 2026, lowest fertility rate in the world, countries below replacement rate, replacement rate 2.1, world fertility rate, fertility rate calculator, crude birth rate by country, fertility collapse, south korea fertility rate, china fertility rate, japan fertility rate',
   openGraph: {
     title: `Fertility Rate by Country ${CURRENT_YEAR} — Calculator + Rankings`,
-    description: `Personal calculator + all countries ranked by TFR. Find out when your country dropped below the 2.1 replacement rate. UN WPP ${CURRENT_YEAR} data, 1965 → 2050.`,
+    description: `Personal calculator + all countries ranked by TFR. Find out when your country dropped below the 2.1 replacement rate. UN WPP ${DATA_YEAR} data, 1965 → 2050.`,
     type: 'website',
     url: 'https://populationpyramids.org/fertility-rate-by-country',
     siteName: 'Population Pyramids',
