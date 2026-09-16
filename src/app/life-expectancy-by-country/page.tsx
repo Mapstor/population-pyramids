@@ -6,7 +6,7 @@ import { getCountryFlag } from '@/lib/country-flags';
 import { getWorldMapPaths } from '@/lib/world-map-data';
 import RankingBarChart, { BarItem } from '@/components/RankingBarChart';
 import WorldPopulationMap, { CountryMapDatum } from '@/components/WorldPopulationMap';
-import { CURRENT_YEAR, LAST_UPDATED_ISO } from '@/lib/site-meta';
+import { CURRENT_YEAR, DATA_YEAR, LAST_UPDATED_ISO } from '@/lib/site-meta';
 import LifeExpectancyCalculator from './LifeExpectancyCalculator';
 import { toSlim } from '@/lib/life-expectancy-helpers';
 import ToolCrossLinks from '@/components/ToolCrossLinks';
@@ -16,7 +16,7 @@ export const revalidate = 86400;
 export const metadata = {
   title: `Life Expectancy Calculator & Ranking by Country ${CURRENT_YEAR}`,
   description:
-    `Personal life expectancy calculator + all 195 countries ranked. Enter your birth year, sex, and country to see your statistical lifespan and how it's changed since you were born. Monaco, Japan, Switzerland lead at 85+ years; Nigeria, Chad, CAR at the bottom around 55. UN World Population Prospects ${CURRENT_YEAR} data with male/female breakdowns and projections to 2100.`,
+    `Personal life expectancy calculator + all 195 countries ranked. Enter your birth year, sex, and country to see your statistical lifespan and how it's changed since you were born. Monaco, Japan, Switzerland lead at 85+ years; Nigeria, Chad, CAR at the bottom around 55. UN World Population Prospects ${DATA_YEAR} data with male/female breakdowns and projections to 2100.`,
   keywords:
     'life expectancy calculator, how long will I live, life expectancy by country, life expectancy at birth by country, average life expectancy by country, countries by life expectancy, lifespan by country, country life span, age expectancy by country, life expectancy by nation, average life span by country, countries longest life expectancy, countries highest life expectancy, expected age of death, longevity calculator',
   openGraph: {

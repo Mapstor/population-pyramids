@@ -731,7 +731,7 @@ export async function GET(request: NextRequest) {
               </p>
               <span style={{ fontSize: '20px', color: '#cbd5e1' }}>|</span>
               <p style={{ fontSize: '18px', color: '#64748b' }}>
-                UN World Population Prospects 2025
+                UN World Population Prospects 2024
               </p>
             </div>
           </div>

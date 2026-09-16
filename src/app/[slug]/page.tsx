@@ -285,8 +285,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
             </h1>
             <div className="bg-blue-800 bg-opacity-50 rounded-lg p-3 mb-4">
               <p className="text-sm text-blue-100">
-                <span className="font-semibold">📅 Next Update:</span> {countryData.countryName} population pyramid 2026 
-                will be released in July 2026 when UN publishes World Population Prospects 2026 revision.
+                <span className="font-semibold">📅 Data currency &amp; next update —</span> Current figures use UN World Population Prospects 2024 (released 11 July 2024), the latest official UN revision; {countryData.countryName}&apos;s 2025, 2026 and 2027 values are medium-variant projections from this dataset. The UN&apos;s next full revision was originally due in 2026 but has been officially postponed to 2027. UN revisions are published on World Population Day (11 July), so the next update is expected around July 2027; this page updates when it is released.
               </p>
             </div>
             <div className="flex flex-wrap gap-4 text-sm">
@@ -947,9 +946,9 @@ export default async function CountryPage({ params }: CountryPageProps) {
                       <h4 className="font-semibold text-blue-900">{countryData.countryName} Demographics 2026 Forecast</h4>
                     </div>
                     <p className="text-sm text-blue-800">
-                      {countryData.countryName} population 2026 projections will show continued demographic transition. 
-                      The UN World Population Prospects 2026 revision (July 2026) will update {countryData.countryName} age distribution 2026, 
-                      providing new insights into youth population trends, working-age dynamics, and aging patterns for policy planning.
+                      {countryData.countryName} population 2026 projections show continued demographic transition,
+                      providing insights into youth population trends, working-age dynamics, and aging patterns for policy planning.
+                      Next full UN revision: postponed from 2026 to 2027, expected ~July 2027 (World Population Day). Current data: UN WPP 2024.
                     </p>
                   </div>
                 </div>
@@ -1147,7 +1146,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                     <h3 className="font-semibold text-yellow-800">2026 Fertility Rate Projections</h3>
                   </div>
                   <p className="text-sm text-yellow-700">
-                    <strong>📅 Next Update:</strong> {countryData.countryName} fertility rate 2026 data will be released with UN World Population Prospects 2026 revision. 
+                    <strong>📅 Data currency &amp; next update —</strong> Next full UN revision: postponed from 2026 to 2027, expected ~July 2027 (World Population Day). Current data: UN WPP 2024.
                     {fertilityData.fertilityData.current.totalFertilityRate && 
                       `Current projections suggest ${fertilityData.fertilityData.current.totalFertilityRate < 2.0 ? 'continued decline' : 'stabilization'} in birth rates,`} 
                     impacting long-term demographic planning and economic policies.
