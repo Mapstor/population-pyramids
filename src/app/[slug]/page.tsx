@@ -252,16 +252,10 @@ export default async function CountryPage({ params }: CountryPageProps) {
         
         {/* Birth Statistics Schema */}
         {birthSchemas && (
-          <>
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify(birthSchemas.birthDatasetSchema) }}
-            />
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify(birthSchemas.birthFAQSchema) }}
-            />
-          </>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(birthSchemas.birthDatasetSchema) }}
+          />
         )}
         <div className="max-w-7xl mx-auto px-4 py-8">
           {/* Breadcrumbs */}

@@ -1,5 +1,6 @@
 import type { YearData, CountryData } from '@/types/population';
 import { calculateMetrics } from '@/lib/calculations';
+import { DATA_YEAR } from '@/lib/site-meta';
 
 interface FertilityData {
   fertilityData: {
@@ -34,7 +35,7 @@ export function generatePopulationDatasetSchema(
   const sexRatio = metrics.sexRatio;
   
   // Get country description from meta tags or generate one
-  const description = `Comprehensive demographic dataset for ${countryName} including population structure, age distribution, sex ratios, and demographic trends. Based on UN World Population Prospects ${year} data with detailed population pyramid visualization and statistics.`;
+  const description = `Comprehensive demographic dataset for ${countryName} including population structure, age distribution, sex ratios, and demographic trends. Based on UN World Population Prospects ${DATA_YEAR} data with detailed population pyramid visualization and statistics.`;
 
   // Main Dataset Schema
   const populationDatasetSchema = {
@@ -195,7 +196,7 @@ export function generatePopulationDatasetSchema(
         description: 'Population counts by age group and sex',
         variableMeasured: yearData.ageGroups.map(group => ({
           '@type': 'PropertyValue',
-          name: `Age Group ${group.ageGroup}`,
+          name: `Age Group ${group.ageRange}`,
           value: group.total,
           unitText: 'people'
         }))
