@@ -1,3 +1,8 @@
+// Single source of truth for the canonical origin used in this component's
+// JSON-LD. The site has no shared SITE_URL constant yet; keeping one local
+// const here prevents the .org/.net drift this file previously had.
+const BASE_URL = 'https://populationpyramids.org';
+
 export default function ComparisonStructuredData({
   country1Name,
   country2Name,
@@ -19,7 +24,7 @@ export default function ComparisonStructuredData({
       {
         "@type": "Article",
         "headline": `${country1Name} vs ${country2Name}: Population Comparison ${year}`,
-        "description": `Compare population pyramids and demographics of ${country1Name} and ${country2Name}. Detailed analysis including age structure, sex ratio, and growth trends with ${year} UN data.`,
+        "description": `Compare population pyramids and demographics of ${country1Name} and ${country2Name}. Detailed analysis including age structure, sex ratio, and growth trends with 2024 UN data.`,
         "image": {
           "@type": "ImageObject",
           "url": `/api/og/comparison?country1=${comparison.split('-vs-')[0]}&country2=${comparison.split('-vs-')[1]}`,
@@ -31,19 +36,19 @@ export default function ComparisonStructuredData({
         "author": {
           "@type": "Organization",
           "name": "Population Pyramids",
-          "url": "https://populationpyramids.net"
+          "url": BASE_URL
         },
         "publisher": {
           "@type": "Organization",
           "name": "Population Pyramids",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://populationpyramids.net/logo.png"
+            "url": `${BASE_URL}/logo.png`
           }
         },
         "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": `https://populationpyramids.net/compare/${comparison}`
+          "@id": `${BASE_URL}/compare/${comparison}`
         }
       },
       {
@@ -54,11 +59,6 @@ export default function ComparisonStructuredData({
           "@type": "Organization",
           "name": "United Nations",
           "url": "https://www.un.org"
-        },
-        "distribution": {
-          "@type": "DataDownload",
-          "encodingFormat": "application/json",
-          "contentUrl": `https://populationpyramids.net/api/data/${comparison}`
         },
         "temporalCoverage": `${year}`,
         "spatialCoverage": [
@@ -131,19 +131,19 @@ export default function ComparisonStructuredData({
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://populationpyramids.net"
+            "item": BASE_URL
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Compare",
-            "item": "https://populationpyramids.net/compare"
+            "item": `${BASE_URL}/compare`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": `${country1Name} vs ${country2Name}`,
-            "item": `https://populationpyramids.net/compare/${comparison}`
+            "item": `${BASE_URL}/compare/${comparison}`
           }
         ]
       }
