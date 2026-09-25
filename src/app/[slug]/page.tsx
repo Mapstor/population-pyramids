@@ -987,18 +987,6 @@ export default async function CountryPage({ params }: CountryPageProps) {
                     </p>
                   </div>
                   
-                  {/* 2026 Age Distribution Forecast */}
-                  <div className="mt-4 bg-blue-50 border border-blue-200 rounded-lg p-4">
-                    <div className="flex items-center mb-2">
-                      <span className="text-lg mr-2">🔮</span>
-                      <h4 className="font-semibold text-blue-900">{countryData.countryName} Demographics 2026 Forecast</h4>
-                    </div>
-                    <p className="text-sm text-blue-800">
-                      {countryData.countryName} population 2026 projections show continued demographic transition,
-                      providing insights into youth population trends, working-age dynamics, and aging patterns for policy planning.
-                      Next full UN revision: postponed from 2026 to 2027, expected ~July 2027 (World Population Day). Current data: UN WPP 2024.
-                    </p>
-                  </div>
                 </div>
               </div>
             </section>
@@ -1185,20 +1173,6 @@ export default async function CountryPage({ params }: CountryPageProps) {
                       <li>• <strong>Future Projections:</strong> {fertilityData.fertilityData.projections.length > 0 ? `${fertilityData.fertilityData.projections[0].totalFertilityRate} by ${fertilityData.fertilityData.projections[0].year}` : 'Continued decline expected'}</li>
                     </ul>
                   </div>
-                </div>
-
-                {/* 2026 Update Notice */}
-                <div className="bg-yellow-50 rounded-lg p-4">
-                  <div className="flex items-center mb-3">
-                    <span className="text-2xl mr-3">🔮</span>
-                    <h3 className="font-semibold text-yellow-800">2026 Fertility Rate Projections</h3>
-                  </div>
-                  <p className="text-sm text-yellow-700">
-                    <strong>📅 Data currency &amp; next update —</strong> Next full UN revision: postponed from 2026 to 2027, expected ~July 2027 (World Population Day). Current data: UN WPP 2024.
-                    {fertilityData.fertilityData.current.totalFertilityRate && 
-                      `Current projections suggest ${fertilityData.fertilityData.current.totalFertilityRate < 2.0 ? 'continued decline' : 'stabilization'} in birth rates,`} 
-                    impacting long-term demographic planning and economic policies.
-                  </p>
                 </div>
 
                 {/* Expert Analysis */}

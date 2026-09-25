@@ -3149,12 +3149,12 @@ function generateEnhancedFacts(
         },
         {
           icon: '📅',
-          text: 'The median age has increased from 28.1 to 38.9 years since 1970, reflecting demographic aging and declining birth rates',
+          text: `The median age has risen from ${(countryData.years['1970']?.medianAge ?? 28.1).toFixed(1)} in 1970 to ${yearData.medianAge.toFixed(1)} years today, reflecting demographic aging and declining birth rates`,
           category: 'age'
         },
         {
           icon: '🌍',
-          text: `With ${popWords(yearData.totalPopulation)} people, the US has the world's largest economy and represents ${formatShare((yearData.totalPopulation / (worldPopulation(currentYear) ?? 8231613070)) * 100)} of global population on 1.9% of land`,
+          text: `With ${popWords(yearData.totalPopulation)} people, the US has the world's largest economy and represents ${formatShare((yearData.totalPopulation / (worldPopulation(currentYear) ?? 8231613070)) * 100)} of global population`,
           category: 'comparison'
         },
         {
