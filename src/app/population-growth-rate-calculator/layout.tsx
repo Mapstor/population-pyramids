@@ -1,33 +1,11 @@
 import { Metadata } from 'next';
+import { buildMetadata, SITE_URL } from '@/lib/site-meta';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'Population Growth Rate Calculator & Rankings 2026',
   description: 'Calculate population growth rate and doubling time for any country. See 195 countries ranked by growth rate with real UN data, historical charts, and projections.',
-  openGraph: {
-    title: 'Population Growth Rate Calculator & Rankings 2026',
-    description: 'Calculate population growth rate and doubling time for any country. See 195 countries ranked by growth rate with real UN data, historical charts, and projections.',
-    url: 'https://populationpyramids.org/population-growth-rate-calculator',
-    siteName: 'Population Pyramids',
-    images: [
-      {
-        url: 'https://populationpyramids.org/og-image.png',
-        width: 1200,
-        height: 630,
-      }
-    ],
-    locale: 'en_US',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Population Growth Rate Calculator & Rankings 2026',
-    description: 'Calculate population growth rate and doubling time for any country. See 195 countries ranked by growth rate with real UN data.',
-    images: ['https://populationpyramids.org/og-image.png'],
-  },
-  alternates: {
-    canonical: 'https://populationpyramids.org/population-growth-rate-calculator',
-  }
-};
+  path: '/population-growth-rate-calculator',
+});
 
 export default function PopulationGrowthLayout({
   children,
@@ -141,7 +119,7 @@ export default function PopulationGrowthLayout({
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Population Growth Rate Calculator",
-    "url": "https://populationpyramids.org/population-growth-rate-calculator",
+    "url": `${SITE_URL}/population-growth-rate-calculator`,
     "applicationCategory": "UtilityApplication",
     "operatingSystem": "All",
     "description": "Calculate population growth rates and doubling time for any country using real UN data"
@@ -177,13 +155,13 @@ export default function PopulationGrowthLayout({
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://populationpyramids.org"
+        "item": SITE_URL
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Population Growth Rate Calculator",
-        "item": "https://populationpyramids.org/population-growth-rate-calculator"
+        "item": `${SITE_URL}/population-growth-rate-calculator`
       }
     ]
   };

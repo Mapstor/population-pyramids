@@ -2,9 +2,10 @@ import { MetadataRoute } from 'next';
 import { loadCountries } from '@/lib/data-loader';
 import { loadStates } from '@/lib/state-data-loader';
 import { COMPARISON_PAIRS } from '@/lib/comparison-pairs';
+import { SITE_URL } from '@/lib/site-meta';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://populationpyramids.org';
+  const baseUrl = SITE_URL;
   
   try {
     // Load countries and states for dynamic routes
@@ -446,8 +447,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   } catch (error) {
     console.error('Error generating sitemap:', error);
     
-    // Fallback minimal sitemap with www domain
-    const fallbackBaseUrl = 'https://populationpyramids.org';
+    // Fallback minimal sitemap with the canonical www domain
+    const fallbackBaseUrl = SITE_URL;
     return [
       {
         url: fallbackBaseUrl,

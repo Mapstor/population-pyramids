@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import type { LifeExpectancyData } from '@/lib/life-expectancy-loader';
+import { SITE_URL } from '@/lib/site-meta';
+import { inText } from '@/lib/country-names';
 
 interface Props {
   data: LifeExpectancyData;
@@ -227,10 +229,10 @@ export default function LifeExpectancySection({ data, countrySlug }: Props) {
   const datasetSchema = {
     '@context': 'https://schema.org',
     '@type': 'Dataset',
-    '@id': `https://populationpyramids.org/${countrySlug}#life-expectancy-dataset`,
-    name: `Life Expectancy at Birth in ${data.country}`,
-    description: `Life expectancy at birth in ${data.country}, 2024: ${data.current.total} years (male ${data.current.male}, female ${data.current.female}). World rank #${data.rank.position} of ${data.rank.outOf}. Historical series 1950–${data.historical[data.historical.length - 1].year} and UN medium-variant projections to 2100.`,
-    url: `https://populationpyramids.org/${countrySlug}#life-expectancy`,
+    '@id': `${SITE_URL}/${countrySlug}#life-expectancy-dataset`,
+    name: `Life Expectancy at Birth in ${inText(data.country)}`,
+    description: `Life expectancy at birth in ${inText(data.country)}, 2024: ${data.current.total} years (male ${data.current.male}, female ${data.current.female}). World rank #${data.rank.position} of ${data.rank.outOf}. Historical series 1950–${data.historical[data.historical.length - 1].year} and UN medium-variant projections to 2100.`,
+    url: `${SITE_URL}/${countrySlug}#life-expectancy`,
     creator: {
       '@type': 'Organization',
       name: 'United Nations Department of Economic and Social Affairs, Population Division',
@@ -256,9 +258,9 @@ export default function LifeExpectancySection({ data, countrySlug }: Props) {
       {/* Header */}
       <div className="px-6 py-4 border-b border-gray-200 flex justify-between items-baseline flex-wrap gap-2">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Life Expectancy in {data.country}</h2>
+          <h2 className="text-2xl font-bold text-gray-900">Life Expectancy in {inText(data.country)}</h2>
           <p className="text-xs text-gray-600 mt-0.5">
-            How long the average person in {data.country} is expected to live · sourced from UN WPP 2024
+            How long the average person in {inText(data.country)} is expected to live · sourced from UN WPP 2024
           </p>
         </div>
         <span className="text-xs text-gray-500">Source: UN WPP 2024 · Updated {data.lastUpdated}</span>

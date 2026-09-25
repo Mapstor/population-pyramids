@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { loadCountries, loadCountryData } from '@/lib/data-loader';
 import { generateWorldPopulationData } from '@/lib/world-data-aggregator';
 import { getCountryFlag } from '@/lib/country-flags';
-import { DATA_YEAR, LAST_UPDATED_ISO } from '@/lib/site-meta';
+import { DATA_YEAR, LAST_UPDATED_ISO, buildMetadata, SITE_URL, SITE_NAME } from '@/lib/site-meta';
 import PopulationWhenBornCalculator from './PopulationWhenBornCalculator';
 import PopulationContextSections, {
   type MilestoneEntry,
@@ -24,28 +24,14 @@ import {
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: `Population When You Were Born — How Much Has the World Grown in Your Lifetime?`,
-  description:
-    `Enter your birth year to see the world's population the day you were born vs. today. Find out how many people lived in your country in any year from 1950 to ${DATA_LATEST_YEAR}, what % of people alive today are older than you, and how the planet has changed since you arrived. UN World Population Prospects ${DATA_YEAR} data.`,
+  ...buildMetadata({
+    title: `Population When You Were Born — How Much Has the World Grown in Your Lifetime?`,
+    description:
+      `Enter your birth year to see the world's population the day you were born vs. today. Find out how many people lived in your country in any year from 1950 to ${DATA_LATEST_YEAR}, what % of people alive today are older than you, and how the planet has changed since you arrived. UN World Population Prospects ${DATA_YEAR} data.`,
+    path: '/population-when-you-were-born',
+  }),
   keywords:
     'world population when I was born, population when I was born, world population by year, how many people were alive when I was born, world population in 1990, world population 1980, population since 1950, world population growth since I was born, how much has the world grown',
-  openGraph: {
-    title: `Population When You Were Born — Personal World Population Calculator`,
-    description:
-      `Enter your birth year and country: see how the world (and your country) has grown since the day you were born. UN WPP ${DATA_YEAR} data, every year 1950–${DATA_LATEST_YEAR}.`,
-    type: 'website',
-    url: 'https://populationpyramids.org/population-when-you-were-born',
-    siteName: 'Population Pyramids',
-    // og:image auto-generated from src/app/population-when-you-were-born/opengraph-image.tsx
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: `Population When You Were Born`,
-    description: `See the world's population the day you were born vs. today. Personal calculator + country picker.`,
-  },
-  alternates: {
-    canonical: 'https://populationpyramids.org/population-when-you-were-born',
-  },
 };
 
 function generateSchema(worldPopToday: number, worldPop1950: number, worldPop1990: number) {
@@ -54,9 +40,9 @@ function generateSchema(worldPopToday: number, worldPop1950: number, worldPop199
     '@graph': [
       {
         '@type': 'WebApplication',
-        '@id': 'https://populationpyramids.org/population-when-you-were-born#webapp',
+        '@id': `${SITE_URL}/population-when-you-were-born#webapp`,
         name: 'Population When You Were Born Calculator',
-        url: 'https://populationpyramids.org/population-when-you-were-born',
+        url: `${SITE_URL}/population-when-you-were-born`,
         applicationCategory: 'EducationalApplication',
         applicationSubCategory: 'Demographics Tool',
         operatingSystem: 'Any',
@@ -73,7 +59,7 @@ function generateSchema(worldPopToday: number, worldPop1950: number, worldPop199
       },
       {
         '@type': 'Dataset',
-        '@id': 'https://populationpyramids.org/population-when-you-were-born#dataset',
+        '@id': `${SITE_URL}/population-when-you-were-born#dataset`,
         name: `World and Country Population by Year, 1950–${DATA_LATEST_YEAR}`,
         description: 'Annual total population for the world and 195 countries from UN World Population Prospects 2024 Revision.',
         creator: {
@@ -81,7 +67,7 @@ function generateSchema(worldPopToday: number, worldPop1950: number, worldPop199
           name: 'United Nations Department of Economic and Social Affairs, Population Division',
           url: 'https://population.un.org/',
         },
-        publisher: { '@type': 'Organization', name: 'PopulationPyramids.org', url: 'https://populationpyramids.org' },
+        publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
         temporalCoverage: `1950/${DATA_LATEST_YEAR}`,
         spatialCoverage: { '@type': 'Place', name: 'World' },
         license: 'https://creativecommons.org/licenses/by/4.0/',
@@ -89,8 +75,8 @@ function generateSchema(worldPopToday: number, worldPop1950: number, worldPop199
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://populationpyramids.org/' },
-          { '@type': 'ListItem', position: 2, name: 'Population When You Were Born', item: 'https://populationpyramids.org/population-when-you-were-born' },
+          { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Population When You Were Born', item: `${SITE_URL}/population-when-you-were-born` },
         ],
       },
       {

@@ -1,3 +1,5 @@
+import { possessiveStart } from '@/lib/country-names';
+
 interface HistoricalEvent {
   title: string;
   period: string;
@@ -279,7 +281,7 @@ export function getHistoricalEvents(countrySlug: string): CountryEvents {
 export function generateHistoricalContext(countryName: string, countrySlug: string): string {
   const events = getHistoricalEvents(countrySlug);
   
-  let content = `${countryName}'s current demographic profile has been profoundly shaped by specific historical events and policy decisions. `;
+  let content = `${possessiveStart(countryName)} current demographic profile has been profoundly shaped by specific historical events and policy decisions. `;
   
   events.events.forEach((event, index) => {
     content += `**${event.title} (${event.period})**: ${event.description} ${event.demographicImpact}`;

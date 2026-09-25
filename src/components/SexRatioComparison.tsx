@@ -13,6 +13,7 @@ import {
   ChartOptions
 } from 'chart.js';
 import type { CountryData } from '@/types/population';
+import { possessiveInText, possessiveStart } from '@/lib/country-names';
 
 ChartJS.register(
   CategoryScale,
@@ -293,8 +294,8 @@ export default function SexRatioComparison({
         <h3 className="text-lg font-semibold mb-4">Sex Ratio Analysis</h3>
         <div className="prose prose-sm max-w-none text-gray-700">
           <p className="mb-3">
-            The sex ratio comparison reveals important demographic patterns. {country1Name}'s overall sex ratio of {overallRatio1.toFixed(1)} 
-            {overallRatio1 > overallRatio2 ? ' exceeds' : ' is lower than'} {country2Name}'s ratio of {overallRatio2.toFixed(1)} males per 100 females.
+            The sex ratio comparison reveals important demographic patterns. {possessiveStart(country1Name)} overall sex ratio of {overallRatio1.toFixed(1)} 
+            {overallRatio1 > overallRatio2 ? ' exceeds' : ' is lower than'} {possessiveInText(country2Name)} ratio of {overallRatio2.toFixed(1)} males per 100 females.
             {(sexRatioAtBirth1 > 110 || sexRatioAtBirth2 > 110) && 
               ' Notably, the sex ratio at birth shows concerning imbalances that may indicate gender-selective practices.'}
           </p>

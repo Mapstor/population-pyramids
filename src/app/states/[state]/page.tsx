@@ -9,6 +9,7 @@ import StatsTable from '@/components/StatsTable';
 import StateComparisonSection from '@/components/StateComparisonSection';
 import { Metadata } from 'next';
 import { hasValue } from '@/lib/render-guards';
+import { buildMetadata } from '@/lib/site-meta';
 
 export const dynamicParams = false;
 export const revalidate = false;
@@ -37,15 +38,12 @@ export async function generateMetadata({ params }: StatePageProps): Promise<Meta
     const yearData = stateData.years[latestYear.toString()];
     
     return {
-      title: `${stateData.stateName} Population Pyramid 2024 - Demographics & Age Distribution`,
-      description: `Explore ${stateData.stateName}'s population pyramid and demographic data for 2024. Total population: ${yearData.totalPopulation.toLocaleString()}. Interactive visualizations showing age distribution, gender balance, and demographic trends from 2000-2024.`,
+      ...buildMetadata({
+        title: `${stateData.stateName} Population Pyramid 2024 - Demographics & Age Distribution`,
+        description: `Explore ${stateData.stateName}'s population pyramid and demographic data for 2024. Total population: ${yearData.totalPopulation.toLocaleString()}. Interactive visualizations showing age distribution, gender balance, and demographic trends from 2000-2024.`,
+        path: `/states/${stateSlug}`,
+      }),
       keywords: `${stateData.stateName} population pyramid, ${stateData.stateName} demographics, ${stateData.stateName} population, ${stateData.stateName} age distribution, ${stateData.stateName} census data, ${stateData.stateName} population statistics`,
-      openGraph: {
-        title: `${stateData.stateName} Population Pyramid & Demographics 2024`,
-        description: `Interactive population pyramid and demographic analysis for ${stateData.stateName}. Population: ${yearData.totalPopulation.toLocaleString()}`,
-        type: 'website',
-        url: `https://populationpyramids.org/states/${stateSlug}`,
-      }
     };
   } catch {
     return {

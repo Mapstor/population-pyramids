@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getDependencyRatioData } from '@/lib/dependency-ratio-data';
+import { SITE_URL } from '@/lib/site-meta';
 import DependencyRatioInteractiveTool from './DependencyRatioInteractiveTool';
 
 // JSON-LD Schema for SEO
@@ -99,13 +100,13 @@ function generateStructuredData(worldData: any, countries: any[], highestRatios:
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://populationpyramids.org/"
+        "item": SITE_URL
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Dependency Ratio Calculator",
-        "item": "https://populationpyramids.org/dependency-ratio-calculator"
+        "item": `${SITE_URL}/dependency-ratio-calculator`
       }
     ]
   };

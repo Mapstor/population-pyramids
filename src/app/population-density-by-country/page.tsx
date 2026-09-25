@@ -6,7 +6,7 @@ import { getCountryRankings } from '@/lib/country-rankings';
 import { getWorldMapPaths } from '@/lib/world-map-data';
 import WorldPopulationMap, { type CountryMapDatum } from '@/components/WorldPopulationMap';
 import countryAreas from '@/data/country-areas.json';
-import { CURRENT_YEAR, DATA_YEAR, DATA_SOURCE_REVISION, LAST_UPDATED_ISO } from '@/lib/site-meta';
+import { CURRENT_YEAR, DATA_SOURCE_REVISION, LAST_UPDATED_ISO, buildMetadata, SITE_URL, SITE_NAME } from '@/lib/site-meta';
 import DensityCalculator from './DensityCalculator';
 import DensityContextSections, { type RegionDensity } from './DensityContextSections';
 import ToolCrossLinks from '@/components/ToolCrossLinks';
@@ -24,26 +24,13 @@ export const revalidate = 86400;
 const AREAS = countryAreas as Record<string, number>;
 
 export const metadata: Metadata = {
-  title: `Population Density by Country ${CURRENT_YEAR} — All 195 Ranked + Calculator`,
-  description: `Complete population density ranking for every country in ${CURRENT_YEAR}, plus a personal calculator. Monaco leads at ~19,000 people per km²; Mongolia anchors the low at ~2/km². Includes interactive map, top/bottom 10 charts, continental averages, city density comparison, and a "what if" thought experiment to compare any two countries. UN WPP 2024 + CIA World Factbook.`,
+  ...buildMetadata({
+    title: `Population Density by Country ${CURRENT_YEAR} — All 195 Ranked + Calculator`,
+    description: `Complete population density ranking for every country in ${CURRENT_YEAR}, plus a personal calculator. Monaco leads at ~19,000 people per km²; Mongolia anchors the low at ~2/km². Includes interactive map, top/bottom 10 charts, continental averages, city density comparison, and a "what if" thought experiment to compare any two countries. UN WPP 2024 + CIA World Factbook.`,
+    path: '/population-density-by-country',
+  }),
   keywords:
     'population density by country, most densely populated countries, least densely populated countries, population density calculator, country density ranking, people per square mile by country, people per square km by country, monaco population density, singapore population density, world population density',
-  openGraph: {
-    title: `Population Density by Country ${CURRENT_YEAR} — Calculator + Rankings`,
-    description: `All 195 countries ranked by population density. Personal calculator + 'what if' comparisons. UN WPP ${DATA_YEAR} + CIA Factbook.`,
-    type: 'website',
-    url: 'https://populationpyramids.org/population-density-by-country',
-    siteName: 'Population Pyramids',
-    // og:image auto-generated from src/app/population-density-by-country/opengraph-image.tsx
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: `Population Density by Country ${CURRENT_YEAR}`,
-    description: 'Which countries are most crowded? Calculator + every country ranked. Monaco vs Mongolia: 8,500× different.',
-  },
-  alternates: {
-    canonical: 'https://populationpyramids.org/population-density-by-country',
-  },
 };
 
 function generateSchema(top: SlimDensityPlace[], bottom: SlimDensityPlace[], worldDensity: number, totalCountries: number) {
@@ -52,9 +39,9 @@ function generateSchema(top: SlimDensityPlace[], bottom: SlimDensityPlace[], wor
     '@graph': [
       {
         '@type': 'WebApplication',
-        '@id': 'https://populationpyramids.org/population-density-by-country#webapp',
+        '@id': `${SITE_URL}/population-density-by-country#webapp`,
         name: 'Population Density Calculator & Country Ranking',
-        url: 'https://populationpyramids.org/population-density-by-country',
+        url: `${SITE_URL}/population-density-by-country`,
         applicationCategory: 'EducationalApplication',
         applicationSubCategory: 'Demographics Tool',
         operatingSystem: 'Any',
@@ -72,14 +59,14 @@ function generateSchema(top: SlimDensityPlace[], bottom: SlimDensityPlace[], wor
       },
       {
         '@type': 'Dataset',
-        '@id': 'https://populationpyramids.org/population-density-by-country#dataset',
+        '@id': `${SITE_URL}/population-density-by-country#dataset`,
         name: `World Population Density by Country ${CURRENT_YEAR}`,
         description: `Population density (people per km²) for all ${totalCountries} countries, computed from UN WPP 2024 population estimates and CIA World Factbook land-area figures.`,
         creator: [
           { '@type': 'Organization', name: 'United Nations Department of Economic and Social Affairs, Population Division', url: 'https://population.un.org/' },
           { '@type': 'Organization', name: 'Central Intelligence Agency', url: 'https://www.cia.gov/the-world-factbook/' },
         ],
-        publisher: { '@type': 'Organization', name: 'PopulationPyramids.org', url: 'https://populationpyramids.org' },
+        publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
         temporalCoverage: '1950/2025',
         spatialCoverage: { '@type': 'Place', name: 'World' },
         license: 'https://creativecommons.org/licenses/by/4.0/',
@@ -89,7 +76,7 @@ function generateSchema(top: SlimDensityPlace[], bottom: SlimDensityPlace[], wor
       },
       {
         '@type': 'ItemList',
-        '@id': 'https://populationpyramids.org/population-density-by-country#itemlist',
+        '@id': `${SITE_URL}/population-density-by-country#itemlist`,
         name: 'Top 10 Most Densely Populated Countries',
         numberOfItems: 10,
         itemListOrder: 'https://schema.org/ItemListOrderDescending',
@@ -98,15 +85,15 @@ function generateSchema(top: SlimDensityPlace[], bottom: SlimDensityPlace[], wor
           position: i + 1,
           name: c.name,
           description: `${Math.round(c.densityKm2).toLocaleString()} people per km²`,
-          url: `https://populationpyramids.org/${c.slug}`,
+          url: `${SITE_URL}/${c.slug}`,
         })),
       },
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://populationpyramids.org/' },
-          { '@type': 'ListItem', position: 2, name: 'Countries', item: 'https://populationpyramids.org/countries' },
-          { '@type': 'ListItem', position: 3, name: 'Population Density', item: 'https://populationpyramids.org/population-density-by-country' },
+          { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Countries', item: `${SITE_URL}/countries` },
+          { '@type': 'ListItem', position: 3, name: 'Population Density', item: `${SITE_URL}/population-density-by-country` },
         ],
       },
       {

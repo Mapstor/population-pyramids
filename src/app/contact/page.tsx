@@ -1,13 +1,11 @@
 import { Metadata } from 'next';
+import { buildMetadata, SITE_URL } from '@/lib/site-meta';
 
-export const metadata: Metadata = {
-  title: 'Contact Us - Population Pyramids',
+export const metadata: Metadata = buildMetadata({
+  title: 'Contact Us',
   description: 'Contact Population Pyramids team for support, feedback, or questions about our demographic data platform. Email us at info@populationpyramids.org for assistance.',
-  openGraph: {
-    title: 'Contact Us - Population Pyramids',
-    description: 'Get in touch with Population Pyramids team for support, feedback, or questions about demographic data visualization.',
-  },
-};
+  path: '/contact',
+});
 
 // JSON-LD Schema for Contact page
 const jsonLd = {
@@ -16,7 +14,7 @@ const jsonLd = {
   mainEntity: {
     '@type': 'Organization',
     name: 'Population Pyramids',
-    url: 'https://populationpyramids.org',
+    url: SITE_URL,
     contactPoint: {
       '@type': 'ContactPoint',
       email: 'info@populationpyramids.org',

@@ -1,4 +1,5 @@
 import type { YearData } from '@/types/population';
+import { inText, sentenceStart, possessiveInText } from '@/lib/country-names';
 
 export interface DemographicStage {
   stage: 1 | 2 | 3 | 4 | 5;
@@ -77,7 +78,7 @@ export function classifyDemographicStage(data: YearData): DemographicStage {
 
 export function getDemographicStageExplanation(stage: DemographicStage, countryName: string): string {
   const dtmStage = stage.stage;
-  const dtmExplanation = `The Demographic Transition Model (DTM) places ${countryName} in Stage ${dtmStage}, characterized by specific birth and death rate patterns.`;
-  
-  return `${countryName} is currently in ${stage.name} of the Demographic Transition Model (DTM). ${stage.description} ${dtmExplanation} Understanding ${countryName}'s DTM stage helps predict future population trends and economic implications. You can read more about ${stage.name.toLowerCase()} here.`;
+  const dtmExplanation = `The Demographic Transition Model (DTM) places ${inText(countryName)} in Stage ${dtmStage}, characterized by specific birth and death rate patterns.`;
+
+  return `${sentenceStart(countryName)} is currently in ${stage.name} of the Demographic Transition Model (DTM). ${stage.description} ${dtmExplanation} Understanding ${possessiveInText(countryName)} DTM stage helps predict future population trends and economic implications. You can read more about ${stage.name.toLowerCase()} here.`;
 }

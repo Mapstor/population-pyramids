@@ -1,24 +1,11 @@
 import { Metadata } from 'next';
+import { buildMetadata, SITE_URL } from '@/lib/site-meta';
 
-export const metadata: Metadata = {
-  title: 'Dependency Ratio Calculator & Rankings 2026 | PopulationPyramids',
+export const metadata: Metadata = buildMetadata({
+  title: 'Dependency Ratio Calculator & Rankings 2026',
   description: 'Calculate dependency ratio for any country. See youth, old-age, and total dependency ratios for 195 countries with real UN data. Free calculator with formula and examples.',
-  openGraph: {
-    title: 'Dependency Ratio Calculator & Rankings 2026',
-    description: 'Calculate dependency ratio for any country. See youth, old-age, and total dependency ratios for 195 countries with real UN data.',
-    url: 'https://populationpyramids.org/dependency-ratio-calculator',
-    siteName: 'Population Pyramids',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Dependency Ratio Calculator & Rankings 2026',
-    description: 'Calculate dependency ratio for any country. See youth, old-age, and total dependency ratios for 195 countries.',
-  },
-  alternates: {
-    canonical: 'https://populationpyramids.org/dependency-ratio-calculator',
-  },
-};
+  path: '/dependency-ratio-calculator',
+});
 
 export default function Layout({
   children,
@@ -145,7 +132,7 @@ export default function Layout({
     distribution: {
       '@type': 'DataDownload',
       encodingFormat: 'JSON',
-      contentUrl: 'https://populationpyramids.org/data/population/'
+      contentUrl: `${SITE_URL}/data/population/`
     },
     temporalCoverage: '1950/2026',
     spatialCoverage: {
@@ -162,13 +149,13 @@ export default function Layout({
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://populationpyramids.org'
+        item: SITE_URL
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Dependency Ratio Calculator',
-        item: 'https://populationpyramids.org/dependency-ratio-calculator'
+        item: `${SITE_URL}/dependency-ratio-calculator`
       }
     ]
   };

@@ -1,30 +1,17 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { buildMetadata } from '@/lib/site-meta';
 
 export const metadata: Metadata = {
-  title: 'This Country Has 2.5 Men for Every Woman (And the Dating Scene is Insane) | Population Pyramids',
-  description: 'Qatar has 71.3% male population - 2.17 million men vs 875,000 women. Discover how extreme gender ratios in Gulf states create unprecedented social dynamics and dating challenges.',
-  keywords: 'Qatar gender ratio, dating crisis, male majority countries, gulf states demographics, UAE gender imbalance, Kuwait demographics, Bahrain population',
-  openGraph: {
+  ...buildMetadata({
     title: 'This Country Has 2.5 Men for Every Woman (And the Dating Scene is Insane)',
-    description: 'Qatar has 71.3% male population creating the world\'s most extreme dating market. Discover the shocking demographics behind Gulf states\' gender crisis.',
+    description: 'Qatar has 71.3% male population - 2.17 million men vs 875,000 women. Discover how extreme gender ratios in Gulf states create unprecedented social dynamics and dating challenges.',
+    path: '/blog/country-2-5-men-for-every-woman-dating-crisis',
     type: 'article',
-    url: 'https://populationpyramids.org/blog/country-2-5-men-for-every-woman-dating-crisis',
-    images: [
-      {
-        url: '/blog/qatar-gender-ratio-og.png',
-        width: 1200,
-        height: 630,
-        alt: 'Qatar gender ratio demographics visualization'
-      }
-    ]
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'This Country Has 2.5 Men for Every Woman',
-    description: 'Qatar\'s extreme 71.3% male population creates unprecedented social dynamics. The numbers are shocking.',
-    images: ['/blog/qatar-gender-ratio-og.png']
-  }
+    image: '/blog/qatar-gender-ratio-og.png',
+    imageAlt: 'Qatar gender ratio demographics visualization',
+  }),
+  keywords: 'Qatar gender ratio, dating crisis, male majority countries, gulf states demographics, UAE gender imbalance, Kuwait demographics, Bahrain population',
 };
 
 export default function QatarGenderRatioArticle() {

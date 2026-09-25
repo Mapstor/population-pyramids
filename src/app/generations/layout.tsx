@@ -1,28 +1,17 @@
 import { Metadata } from 'next';
+import { buildMetadata } from '@/lib/site-meta';
 
 export const metadata: Metadata = {
-  title: 'Generation Age Ranges 2026: Gen Z, Millennial, Gen X, Boomer Calculator',
-  description: 'What generation am I? Enter your birth year to find out. See 2026 age ranges and real population data for Gen Z, Millennials, Gen X, Baby Boomers, Gen Alpha.',
+  ...buildMetadata({
+    title: 'Generation Age Ranges 2026: Gen Z, Millennial, Gen X, Boomer Calculator',
+    description:
+      'What generation am I? Enter your birth year to find out. See 2026 age ranges and real population data for Gen Z, Millennials, Gen X, Baby Boomers, Gen Alpha.',
+    path: '/generations',
+  }),
   keywords: 'generation age ranges, gen z age range, millennial age range, gen x age range, baby boomer age range, gen alpha age range, what generation am I, generation calculator, generation years, generation chart, gen z years, millennial years, gen z cutoff, generation breakdown by year, oldest millennial age, youngest boomer age, gen z age range 2026',
   authors: [{ name: 'Population Pyramids' }],
   creator: 'Population Pyramids',
   publisher: 'Population Pyramids',
-  openGraph: {
-    title: 'Generation Age Ranges 2026: Gen Z, Millennial, Gen X, Boomer Calculator',
-    description: 'What generation am I? Enter your birth year to find out. See 2026 age ranges and real population data for Gen Z, Millennials, Gen X, Baby Boomers, Gen Alpha.',
-    url: 'https://populationpyramids.org/generations',
-    siteName: 'Population Pyramids',
-    locale: 'en_US',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Generation Age Ranges 2026: Gen Z, Millennial, Gen X, Boomer Calculator',
-    description: 'What generation am I? Enter your birth year to find out. Real UN population data for all generations.',
-  },
-  alternates: {
-    canonical: 'https://populationpyramids.org/generations',
-  },
   robots: {
     index: true,
     follow: true,

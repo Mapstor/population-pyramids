@@ -587,8 +587,9 @@ export default function ComparisonFAQ({
       ];
     }
     
-    // Default FAQs for China vs India comparison
-    return [
+    // China vs India keeps its bespoke FAQ (this is a real, valid pair).
+    if (comparison === 'china-vs-india') {
+      return [
     {
       question: `When did India overtake China in population?`,
       answer: `India officially overtook China as the world's most populous country in April 2023, according to United Nations estimates. This historic shift ended China's long reign as the world's most populous nation, a position it had held for centuries. As of 2025, India has ${formatNumber(country2Pop2025)} people compared to China's ${formatNumber(country1Pop2025)}, a gap of ${formatNumber(country2Pop2025 - country1Pop2025)} people.`
@@ -630,6 +631,46 @@ export default function ComparisonFAQ({
       answer: `Both countries have more males than females, but for different reasons. ${country1Name}'s sex ratio imbalance (about 105 males per 100 females) was exacerbated by the one-child policy and cultural preference for sons, leading to sex-selective practices. ${country2Name} also has a skewed ratio (about 108 males per 100 females), similarly influenced by cultural preferences. Both countries face challenges from this imbalance, including millions of men unable to find marriage partners, potentially affecting social stability.`
     }
     ];
+    }
+
+    // Generic, data-derived FAQ for every other pair. Every claim below is
+    // computed from the two countries' own numbers passed as props, so it
+    // never asserts another country's facts.
+    const [biggerName, smallerName] = country1Pop2025 >= country2Pop2025
+      ? [country1Name, country2Name]
+      : [country2Name, country1Name];
+    const biggerPop = Math.max(country1Pop2025, country2Pop2025);
+    const smallerPop = Math.min(country1Pop2025, country2Pop2025);
+    const popDiff = Math.abs(country1Pop2025 - country2Pop2025);
+    const popRatio = smallerPop > 0 ? (biggerPop / smallerPop).toFixed(1) : null;
+    const olderName = country1MedianAge >= country2MedianAge ? country1Name : country2Name;
+    const higherFertName = country1Fertility >= country2Fertility ? country1Name : country2Name;
+    const c1Below = country1Fertility < 2.1;
+    const c2Below = country2Fertility < 2.1;
+    const replacementNote = c1Below && c2Below
+      ? `Both are below the ~2.1 replacement level, so without net migration each population would tend to shrink over time.`
+      : (!c1Below && !c2Below
+        ? `Both are at or above the ~2.1 replacement level.`
+        : `${c1Below ? country1Name : country2Name} is below the ~2.1 replacement level, while ${c1Below ? country2Name : country1Name} is at or above it.`);
+
+    return [
+      {
+        question: `Which country has a larger population, ${country1Name} or ${country2Name}?`,
+        answer: `${biggerName} has the larger population. ${country1Name} has about ${formatNumber(country1Pop2025)} people and ${country2Name} about ${formatNumber(country2Pop2025)}${popRatio ? `, which makes ${biggerName} roughly ${popRatio}× the size of ${smallerName}` : ''}. These figures are UN World Population Prospects 2024 medium-variant estimates for 2025.`
+      },
+      {
+        question: `How do fertility rates in ${country1Name} and ${country2Name} compare?`,
+        answer: `${country1Name} has a total fertility rate of about ${country1Fertility.toFixed(2)} children per woman, and ${country2Name} about ${country2Fertility.toFixed(2)}. ${higherFertName} has the higher rate. ${replacementNote}`
+      },
+      {
+        question: `Which country has an older population, ${country1Name} or ${country2Name}?`,
+        answer: `${olderName} has the older population by median age: ${country1Name} is about ${country1MedianAge.toFixed(1)} years and ${country2Name} about ${country2MedianAge.toFixed(1)} years. A higher median age generally means a larger share of older adults and a heavier future aging burden.`
+      },
+      {
+        question: `What is the population gap between ${country1Name} and ${country2Name}?`,
+        answer: `The two differ by about ${formatNumber(popDiff)} people (${country1Name}: ${formatNumber(country1Pop2025)}; ${country2Name}: ${formatNumber(country2Pop2025)}). Use the pyramids above to compare how their age structures — not just their totals — differ.`
+      }
+    ];
   };
   
   const faqs = getComparisonFAQs();
@@ -668,11 +709,12 @@ export default function ComparisonFAQ({
               </span>
             </button>
             
-            {openIndex === index && (
-              <div className="mt-3 text-gray-600 leading-relaxed animate-fadeIn">
-                {faq.answer}
-              </div>
-            )}
+            <div
+              className="mt-3 text-gray-600 leading-relaxed animate-fadeIn"
+              hidden={openIndex !== index}
+            >
+              {faq.answer}
+            </div>
           </div>
         ))}
       </div>

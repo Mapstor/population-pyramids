@@ -11,6 +11,7 @@ import PopulationMilestoneChart from '@/components/PopulationMilestoneChart';
 import ComparisonFAQ from '@/components/ComparisonFAQ';
 import ComparisonStructuredData from '@/components/ComparisonStructuredData';
 import { calculateMetrics } from '@/lib/calculations';
+import { buildMetadata } from '@/lib/site-meta';
 import type { CountryData, YearData } from '@/types/population';
 import populationRankings from '@/data/population-rankings-2025.json';
 import { COMPARISON_PAIRS } from '@/lib/comparison-pairs';
@@ -183,42 +184,23 @@ Object.assign(COMPARISON_METADATA, LEGACY_METADATA);
 
 export async function generateMetadata({ params }: { params: { comparison: string } }): Promise<Metadata> {
   const comparisonData = COMPARISON_METADATA[params.comparison];
-  
+  const path = `/compare/${params.comparison}`;
+
   if (!comparisonData) {
-    return {
+    return buildMetadata({
       title: 'Population Comparison',
-      description: 'Compare population pyramids and demographic data between countries.'
-    };
+      description: 'Compare population pyramids and demographic data between countries.',
+      path,
+    });
   }
 
-  const ogImageUrl = `https://populationpyramids.org/og-image.png`;
-
-  return {
+  return buildMetadata({
     title: comparisonData.title,
     description: comparisonData.description,
-    openGraph: {
-      title: comparisonData.title,
-      description: comparisonData.description,
-      images: [
-        {
-          url: ogImageUrl,
-          width: 1200,
-          height: 630,
-          alt: `${comparisonData.country1Name} vs ${comparisonData.country2Name} Population Comparison`
-        }
-      ],
-      siteName: 'Population Pyramids',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: comparisonData.title,
-      description: comparisonData.description,
-      images: [ogImageUrl],
-    },
-    alternates: {
-      canonical: `/compare/${params.comparison}`
-    }
-  };
+    path,
+    image: '/og-image.png',
+    imageAlt: `${comparisonData.country1Name} vs ${comparisonData.country2Name} Population Comparison`,
+  });
 }
 
 // Server-side data loading function

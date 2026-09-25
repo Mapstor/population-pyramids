@@ -1,23 +1,17 @@
 import Link from 'next/link';
 import { getCountriesWithPopulationChange } from '@/lib/world-data-aggregator';
 import SortableCountryTable from '@/components/SortableCountryTable';
+import { buildMetadata, SITE_URL, SITE_NAME } from '@/lib/site-meta';
 
 export const metadata = {
-  title: 'All 195 Countries Ranked by Population — Complete Demographic Data',
-  description:
-    'Comprehensive demographic data for every country in the world, with sortable rankings by population, growth rate, median age, and dependency ratio. Browse all 195 countries from UN World Population Prospects 2024.',
-  keywords:
-    'countries by population, list of countries by population, list of countries and population, every country population, countries and population, list of countries in the world by population, countries ranked by population, countries sorted by population, world population by country, all countries population',
-  openGraph: {
+  ...buildMetadata({
     title: 'All 195 Countries Ranked by Population — Complete Demographic Data',
     description:
-      'Sortable table of every country in the world with population, growth, median age, and density. UN World Population Prospects 2024 data.',
-    type: 'website',
-    url: 'https://populationpyramids.org/countries',
-  },
-  alternates: {
-    canonical: 'https://populationpyramids.org/countries',
-  },
+      'Comprehensive demographic data for every country in the world, with sortable rankings by population, growth rate, median age, and dependency ratio. Browse all 195 countries from UN World Population Prospects 2024.',
+    path: '/countries',
+  }),
+  keywords:
+    'countries by population, list of countries by population, list of countries and population, every country population, countries and population, list of countries in the world by population, countries ranked by population, countries sorted by population, world population by country, all countries population',
 };
 
 function generateSchema(totalPopulation: number, topCountries: any[]) {
@@ -26,20 +20,20 @@ function generateSchema(totalPopulation: number, topCountries: any[]) {
     '@graph': [
       {
         '@type': 'WebPage',
-        '@id': 'https://populationpyramids.org/countries#webpage',
+        '@id': `${SITE_URL}/countries#webpage`,
         name: 'All 195 Countries Ranked by Population',
-        url: 'https://populationpyramids.org/countries',
+        url: `${SITE_URL}/countries`,
         description:
           'Comprehensive demographic data for all 195 countries, sortable by population, growth, median age, and more.',
         inLanguage: 'en-US',
       },
       {
         '@type': 'Dataset',
-        '@id': 'https://populationpyramids.org/countries#dataset',
+        '@id': `${SITE_URL}/countries#dataset`,
         name: 'World Countries Population Demographics Dataset',
         description:
           'Complete demographic data for 195 countries including population, median age, growth rates, and dependency ratios.',
-        url: 'https://populationpyramids.org/countries',
+        url: `${SITE_URL}/countries`,
         creator: {
           '@type': 'Organization',
           name: 'United Nations Department of Economic and Social Affairs, Population Division',
@@ -47,12 +41,12 @@ function generateSchema(totalPopulation: number, topCountries: any[]) {
         },
         publisher: {
           '@type': 'Organization',
-          name: 'PopulationPyramids.org',
-          url: 'https://populationpyramids.org',
+          name: SITE_NAME,
+          url: SITE_URL,
         },
         distribution: {
           '@type': 'DataDownload',
-          contentUrl: 'https://populationpyramids.org/countries',
+          contentUrl: `${SITE_URL}/countries`,
           encodingFormat: 'text/html',
         },
         temporalCoverage: '1950/2025',
@@ -62,8 +56,8 @@ function generateSchema(totalPopulation: number, topCountries: any[]) {
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://populationpyramids.org/' },
-          { '@type': 'ListItem', position: 2, name: 'Countries', item: 'https://populationpyramids.org/countries' },
+          { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Countries', item: `${SITE_URL}/countries` },
         ],
       },
       {

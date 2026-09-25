@@ -14,6 +14,7 @@ import ComparisonStructuredData from '@/components/ComparisonStructuredData';
 import { calculateMetrics } from '@/lib/calculations';
 import type { CountryData, YearData } from '@/types/population';
 import populationRankings from '@/data/population-rankings-2025.json';
+import { SITE_URL } from '@/lib/site-meta';
 
 // Define all valid comparison pairs
 const VALID_COMPARISONS = [
@@ -184,7 +185,7 @@ export async function generateMetadata({ params }: { params: { comparison: strin
     };
   }
 
-  const ogImageUrl = `https://populationpyramids.org/og-image.png`;
+  const ogImageUrl = `${SITE_URL}/og-image.png`;
 
   return {
     title: comparisonData.title,

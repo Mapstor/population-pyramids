@@ -1,8 +1,12 @@
 import { Metadata } from 'next';
+import { buildMetadata } from '@/lib/site-meta';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service - Population Pyramids',
-  description: 'Terms of service for Population Pyramids platform. Legal terms and conditions for using our interactive demographic data visualization and analysis tools.',
+  ...buildMetadata({
+    title: 'Terms of Service',
+    description: 'Terms of service for Population Pyramids platform. Legal terms and conditions for using our interactive demographic data visualization and analysis tools.',
+    path: '/terms',
+  }),
   robots: {
     index: true,
     follow: true,

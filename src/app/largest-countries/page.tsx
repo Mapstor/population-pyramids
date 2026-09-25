@@ -1,23 +1,23 @@
 import Link from 'next/link';
 import { getCountryRankings, formatPopulation, formatArea, formatDensity } from '@/lib/country-rankings';
 import RankingBarChart, { BarItem } from '@/components/RankingBarChart';
+import { getWorldMapPaths } from '@/lib/world-map-data';
+import WorldPopulationMap, { CountryMapDatum } from '@/components/WorldPopulationMap';
+import { CURRENT_YEAR, LAST_UPDATED_ISO, buildMetadata, SITE_URL, SITE_NAME } from '@/lib/site-meta';
+
+export const revalidate = 86400;
 
 export const metadata = {
-  title: 'Largest Countries in the World by Area 2026 — All 195 Ranked',
-  description:
-    'Complete ranking of every country by land area in 2026. Russia leads with 17 million km², followed by Canada, the United States, China, and Brazil. Sortable table, regional breakdowns, geographic context, historical changes, glossary, methodology, and 15-question FAQ.',
+  ...buildMetadata({
+    title: `Largest Countries in the World by Area ${CURRENT_YEAR} — All 195 Ranked`,
+    description: `Complete ranking of every country by land area in ${CURRENT_YEAR}. Russia leads with 17 million km², followed by Canada, the United States, China, and Brazil. Sortable table, regional breakdowns, geographic context, historical changes, glossary, methodology, and 15-question FAQ.`,
+    path: '/largest-countries',
+  }),
   keywords:
     'largest countries in the world, biggest countries in the world, biggest countries, largest countries by area, largest country, top 10 largest countries, countries ranked by area, biggest country in the world, list of countries by area',
-  openGraph: {
-    title: 'Largest Countries in the World by Area 2026',
-    description: 'Every country ranked by land area. Russia leads at 17M km². Regional breakdowns, geographic context, historical changes, glossary, methodology, and 15-question FAQ.',
-    type: 'website',
-    url: 'https://populationpyramids.org/largest-countries',
-  },
-  alternates: { canonical: 'https://populationpyramids.org/largest-countries' },
 };
 
-const LAST_UPDATED = '2026-05-18';
+const LAST_UPDATED = LAST_UPDATED_ISO;
 const PUBLISHED = '2026-05-18';
 
 const TOP10_GEOGRAPHY: Record<string, { climate: string; coastline: string; uniqueFact: string }> = {
@@ -39,14 +39,14 @@ function generateSchema(top10: any[], worldLandArea: number) {
     '@graph': [
       {
         '@type': 'Article',
-        '@id': 'https://populationpyramids.org/largest-countries#article',
-        headline: 'Largest Countries in the World by Area 2026 — All 195 Ranked',
+        '@id': `${SITE_URL}/largest-countries#article`,
+        headline: `Largest Countries in the World by Area ${CURRENT_YEAR} — All 195 Ranked`,
         description: 'A sourced ranking of every country by land area, with regional breakdowns and geographic context.',
-        author: { '@type': 'Organization', name: 'PopulationPyramids.org', url: 'https://populationpyramids.org' },
-        publisher: { '@type': 'Organization', name: 'PopulationPyramids.org', url: 'https://populationpyramids.org', logo: { '@type': 'ImageObject', url: 'https://populationpyramids.org/icon.svg' } },
+        author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+        publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL, logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon.svg` } },
         datePublished: PUBLISHED,
         dateModified: LAST_UPDATED,
-        mainEntityOfPage: 'https://populationpyramids.org/largest-countries',
+        mainEntityOfPage: `${SITE_URL}/largest-countries`,
         articleSection: 'Geography',
         wordCount: 4500,
         citation: [
@@ -56,19 +56,19 @@ function generateSchema(top10: any[], worldLandArea: number) {
       },
       {
         '@type': 'WebPage',
-        '@id': 'https://populationpyramids.org/largest-countries#webpage',
-        name: 'Largest Countries in the World by Area 2026',
-        url: 'https://populationpyramids.org/largest-countries',
+        '@id': `${SITE_URL}/largest-countries#webpage`,
+        name: `Largest Countries in the World by Area ${CURRENT_YEAR}`,
+        url: `${SITE_URL}/largest-countries`,
         inLanguage: 'en-US',
       },
       {
         '@type': 'Dataset',
-        '@id': 'https://populationpyramids.org/largest-countries#dataset',
-        name: 'World Countries Ranked by Land Area 2026',
+        '@id': `${SITE_URL}/largest-countries#dataset`,
+        name: `World Countries Ranked by Land Area ${CURRENT_YEAR}`,
         description: 'Land area for all 195 countries paired with population and density.',
-        url: 'https://populationpyramids.org/largest-countries',
+        url: `${SITE_URL}/largest-countries`,
         creator: [{ '@type': 'Organization', name: 'CIA World Factbook' }, { '@type': 'Organization', name: 'UN DESA Population Division', url: 'https://population.un.org/' }],
-        publisher: { '@type': 'Organization', name: 'PopulationPyramids.org', url: 'https://populationpyramids.org' },
+        publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
         spatialCoverage: { '@type': 'Place', name: 'World' },
         license: 'https://creativecommons.org/licenses/by/4.0/',
       },
@@ -77,19 +77,19 @@ function generateSchema(top10: any[], worldLandArea: number) {
         name: 'Top 10 Largest Countries by Area',
         numberOfItems: 10,
         itemListOrder: 'https://schema.org/ItemListOrderDescending',
-        itemListElement: top10.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, description: `${c.areaKm2.toLocaleString()} km²`, url: `https://populationpyramids.org/${c.slug}` })),
+        itemListElement: top10.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, description: `${c.areaKm2.toLocaleString()} km²`, url: `${SITE_URL}/${c.slug}` })),
       },
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://populationpyramids.org/' },
-          { '@type': 'ListItem', position: 2, name: 'Countries', item: 'https://populationpyramids.org/countries' },
-          { '@type': 'ListItem', position: 3, name: 'Largest Countries', item: 'https://populationpyramids.org/largest-countries' },
+          { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Countries', item: `${SITE_URL}/countries` },
+          { '@type': 'ListItem', position: 3, name: 'Largest Countries', item: `${SITE_URL}/largest-countries` },
         ],
       },
       {
         '@type': 'DefinedTermSet',
-        '@id': 'https://populationpyramids.org/largest-countries#glossary',
+        '@id': `${SITE_URL}/largest-countries#glossary`,
         name: 'Geography Glossary',
         hasDefinedTerm: [
           { '@type': 'DefinedTerm', name: 'Total area', description: 'Combined land plus internal water (lakes, rivers).' },
@@ -125,6 +125,20 @@ function generateSchema(top10: any[], worldLandArea: number) {
 
 export default async function LargestCountriesPage() {
   const { countries, worldLandArea } = await getCountryRankings();
+  // Build map data: dataByAlpha for choropleth
+  const features = getWorldMapPaths();
+  const dataByAlpha: Record<string, CountryMapDatum> = {};
+  for (const c of countries) {
+    dataByAlpha[c.code] = {
+      population2024: c.population2024,
+      worldPopulationShare: c.worldPopulationShare,
+      slug: c.slug,
+      medianAge2024: c.medianAge2024,
+      densityPerKm2: c.densityPerKm2,
+      region: c.region,
+      areaKm2: c.areaKm2,
+    };
+  }
   const sortedByArea = [...countries].sort((a, b) => b.areaKm2 - a.areaKm2);
   const top10 = sortedByArea.slice(0, 10);
   const schema = generateSchema(top10, worldLandArea);
@@ -156,7 +170,7 @@ export default async function LargestCountriesPage() {
           </nav>
 
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
-            Largest Countries in the World by Area 2026
+            Largest Countries in the World by Area {CURRENT_YEAR}
           </h1>
           <p className="text-lg text-gray-700 max-w-4xl mb-2">
             All 195 countries ranked by total area. <strong>{top10[0].name}</strong> is largest at{' '}
@@ -222,6 +236,19 @@ export default async function LargestCountriesPage() {
               </div>
             </div>
           </section>
+
+          {/* World area choropleth */}
+          <div className="mb-8">
+            <WorldPopulationMap
+              features={features}
+              dataByAlpha={dataByAlpha}
+              mode="area"
+              worldLandArea={worldLandArea}
+              title={`World Land Area Map ${CURRENT_YEAR}`}
+              hint="Color shows land area. Hover any country for details · Click to open."
+              source="Source: CIA World Factbook · Boundaries: Natural Earth"
+            />
+          </div>
 
           <div className="mb-8">
             <RankingBarChart

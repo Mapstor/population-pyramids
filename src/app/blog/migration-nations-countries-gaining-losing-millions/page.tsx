@@ -1,30 +1,17 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { buildMetadata } from '@/lib/site-meta';
 
 export const metadata: Metadata = {
-  title: 'Migration Nations: Countries Gaining and Losing Millions Through Human Movement | Population Pyramids',
-  description: 'Germany gained 2 million migrants in 2 years. Venezuela lost 20% of its population. Syria emptied entire cities. Discover how mass migration is reshaping global demographics faster than birth rates.',
-  keywords: 'migration demographics, population movement, immigration statistics, emigration crisis, refugee demographics, global migration patterns',
-  openGraph: {
-    title: 'Migration Nations: Countries Gaining and Losing Millions',
-    description: 'Mass migration is reshaping demographics faster than birth rates. Discover the winners and losers in global population movement.',
+  ...buildMetadata({
+    title: 'Migration Nations: Countries Gaining and Losing Millions Through Human Movement',
+    description: 'Germany gained 2 million migrants in 2 years. Venezuela lost 20% of its population. Syria emptied entire cities. Discover how mass migration is reshaping global demographics faster than birth rates.',
+    path: '/blog/migration-nations-countries-gaining-losing-millions',
     type: 'article',
-    url: 'https://populationpyramids.org/blog/migration-nations-countries-gaining-losing-millions',
-    images: [
-      {
-        url: '/blog/migration-nations-og.png',
-        width: 1200,
-        height: 630,
-        alt: 'Global migration patterns visualization'
-      }
-    ]
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Migration Nations: Countries Gaining and Losing Millions',
-    description: 'Mass migration reshaping demographics faster than birth rates. The numbers are staggering.',
-    images: ['/blog/migration-nations-og.png']
-  }
+    image: '/blog/migration-nations-og.png',
+    imageAlt: 'Global migration patterns visualization',
+  }),
+  keywords: 'migration demographics, population movement, immigration statistics, emigration crisis, refugee demographics, global migration patterns',
 };
 
 export default function MigrationNationsArticle() {

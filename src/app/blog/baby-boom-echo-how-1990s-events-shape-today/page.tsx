@@ -1,30 +1,17 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { buildMetadata } from '@/lib/site-meta';
 
 export const metadata: Metadata = {
-  title: 'The Baby Boom Echo: How 1990s Events Shape Today\'s Global Demographics and Economic Trends | Population Pyramids',
-  description: 'The children of Baby Boomers are now adults, creating massive demographic waves. From housing shortages to workforce disruptions, discover how events from 30 years ago control today\'s world.',
-  keywords: 'baby boom echo, demographic waves, millennials, generational demographics, economic cycles, population history, demographic momentum',
-  openGraph: {
-    title: 'The Baby Boom Echo: How 1990s Events Shape Today\'s World',
-    description: 'The children of Baby Boomers are now adults, creating demographic waves that control housing markets, job markets, and entire economies.',
+  ...buildMetadata({
+    title: 'The Baby Boom Echo: How 1990s Events Shape Today\'s Global Demographics and Economic Trends',
+    description: 'The children of Baby Boomers are now adults, creating massive demographic waves. From housing shortages to workforce disruptions, discover how events from 30 years ago control today\'s world.',
+    path: '/blog/baby-boom-echo-how-1990s-events-shape-today',
     type: 'article',
-    url: 'https://populationpyramids.org/blog/baby-boom-echo-how-1990s-events-shape-today',
-    images: [
-      {
-        url: '/blog/baby-boom-echo-og.png',
-        width: 1200,
-        height: 630,
-        alt: 'Baby Boom Echo demographic visualization showing generational waves'
-      }
-    ]
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'The Baby Boom Echo: How 1990s Events Shape Today',
-    description: 'Demographic waves from the 1990s control today\'s housing crisis, job markets, and economic trends.',
-    images: ['/blog/baby-boom-echo-og.png']
-  }
+    image: '/blog/baby-boom-echo-og.png',
+    imageAlt: 'Baby Boom Echo demographic visualization showing generational waves',
+  }),
+  keywords: 'baby boom echo, demographic waves, millennials, generational demographics, economic cycles, population history, demographic momentum',
 };
 
 export default function BabyBoomEchoArticle() {

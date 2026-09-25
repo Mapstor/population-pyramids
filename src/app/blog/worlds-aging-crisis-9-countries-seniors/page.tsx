@@ -3,17 +3,16 @@ import { loadCountries, loadCountryData } from '@/lib/data-loader';
 import { calculateMetrics } from '@/lib/calculations';
 import PopulationPyramid from '@/components/PopulationPyramid';
 import { Line, Bar } from 'react-chartjs-2';
+import { buildMetadata } from '@/lib/site-meta';
 
 export const metadata = {
-  title: 'The World\'s Aging Crisis: 9 Countries Where Half the Population Will Soon Be Seniors',
-  description: 'Japan\'s median age has risen 7.5 years since 2000. South Korea ages faster than any nation in history. Explore the demographic revolution transforming our world.',
-  keywords: 'aging population, demographic crisis, japan aging, south korea elderly, population aging, demographic transition',
-  openGraph: {
+  ...buildMetadata({
     title: 'The World\'s Aging Crisis: 9 Countries Where Half the Population Will Soon Be Seniors',
-    description: 'Japan\'s median age has risen 7.5 years since 2000. South Korea ages faster than any nation in history.',
+    description: 'Japan\'s median age has risen 7.5 years since 2000. South Korea ages faster than any nation in history. Explore the demographic revolution transforming our world.',
+    path: '/blog/worlds-aging-crisis-9-countries-seniors',
     type: 'article',
-    url: 'https://populationpyramids.org/blog/worlds-aging-crisis-9-countries-seniors',
-  },
+  }),
+  keywords: 'aging population, demographic crisis, japan aging, south korea elderly, population aging, demographic transition',
 };
 
 // Static country data for the aging countries
@@ -232,14 +231,12 @@ export default async function AgingCrisisArticle() {
                 </div>
               </div>
               <div className="bg-gray-50 rounded-lg p-4">
-                <div style={{ height: '400px' }}>
-                  <PopulationPyramid
+                <PopulationPyramid
                     data={japanData.years['2024']}
                     countryName="Japan"
                     year={2024}
                     height={400}
                   />
-                </div>
               </div>
             </div>
           </div>
@@ -252,14 +249,12 @@ export default async function AgingCrisisArticle() {
           <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div className="bg-gray-50 rounded-lg p-4">
-                <div style={{ height: '400px' }}>
-                  <PopulationPyramid
+                <PopulationPyramid
                     data={southKoreaData.years['2024']}
                     countryName="South Korea"
                     year={2024}
                     height={400}
                   />
-                </div>
               </div>
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">The Fastest Transformation in History</h3>
@@ -336,14 +331,12 @@ export default async function AgingCrisisArticle() {
                 </div>
               </div>
               <div className="bg-gray-50 rounded-lg p-4">
-                <div style={{ height: '400px' }}>
-                  <PopulationPyramid
+                <PopulationPyramid
                     data={italyData.years['2024']}
                     countryName="Italy"
                     year={2024}
                     height={400}
                   />
-                </div>
               </div>
             </div>
           </div>

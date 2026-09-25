@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import { SITE_URL } from '@/lib/site-meta';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,13 +18,15 @@ export const metadata: Metadata = {
   authors: [{ name: 'Population Pyramids' }],
   creator: 'Population Pyramids',
   publisher: 'Population Pyramids',
-  metadataBase: new URL('https://populationpyramids.org'),
-  
-  // Open Graph
+  metadataBase: new URL(SITE_URL),
+
+  // Open Graph — no `url` here on purpose: og:url is per-route (set via
+  // buildMetadata). A root-level url would be inherited by any child that
+  // doesn't set its own openGraph, which is how pages ended up advertising the
+  // homepage as their og:url.
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://populationpyramids.org',
     title: 'Population Pyramids - Interactive Demographics for 195 Countries',
     description: 'Explore interactive population pyramids for 195 countries from 1950-2025. Analyze age distribution, demographic trends, and population data with real UN World Population Prospects 2024.',
     siteName: 'Population Pyramids',
@@ -78,19 +82,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Clarity tracking code for https://www.populationpyramids.org/ */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(c,l,a,r,i,t,y){
-                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
-                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", "uakgabnpiz");
-            `,
-          }}
-        />
-        
+        {/* Raptive/AdThrive head code (bootstrap + email detection) — inline in
+            <head> as on origin/main, so ads and bidders initialise before render.
+            The ad-block-recovery pair stays inline in <body> (also per origin/main);
+            Microsoft Clarity is on next/script in <body>. */}
         {/* AdThrive Head Tag Manual */}
         <script 
           data-no-optimize="1" 
@@ -113,7 +108,6 @@ export default function RootLayout({
           }}
         />
         {/* End of AdThrive Head Tag */}
-        
         {/* START email detection/removal script */}
         <script
           dangerouslySetInnerHTML={{
@@ -125,6 +119,19 @@ export default function RootLayout({
         {/* END email detection/removal script */}
       </head>
       <body className={inter.className}>
+        {/* Microsoft Clarity — analytics. afterInteractive defers to first paint. */}
+        <Script id="clarity-init" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "uakgabnpiz");
+          `}
+        </Script>
+
+
+
         <GoogleAnalytics measurementId="G-HXTB2KJ9X6" />
         
         <div className="min-h-screen flex flex-col overflow-x-hidden">

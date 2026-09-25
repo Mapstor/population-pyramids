@@ -1,5 +1,6 @@
 'use client';
 
+import { possessiveInText } from '@/lib/country-names';
 import { useState, useEffect, useRef } from 'react';
 import { Bar } from 'react-chartjs-2';
 import {
@@ -173,7 +174,7 @@ export default function TimelinePyramid({
           Historical Demographic Changes
         </h2>
         <p className="text-gray-600">
-          Watch how {countryName}'s population structure evolved from {minYear} to {maxYear}
+          Watch how {possessiveInText(countryName)} population structure evolved from {minYear} to {maxYear}
         </p>
       </div>
 

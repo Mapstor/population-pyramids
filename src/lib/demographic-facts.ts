@@ -1,5 +1,8 @@
 import type { YearData, DemographicMetrics, CountryPopulationData } from '@/types/population';
 import { formatPopulationProse } from '@/lib/number-format';
+import { inText, sentenceStart, possessiveInText, possessiveStart } from '@/lib/country-names';
+import { popWords, formatShare } from '@/lib/country-format';
+import { worldPopulation } from '@/lib/world-population';
 
 interface DemographicFact {
   icon: string;
@@ -51,25 +54,25 @@ export function generateDemographicFacts(
     if (growthMultiple >= 3) {
       facts.push({
         icon: '📈',
-        text: `${countryName}'s population has ${growthMultiple >= 4 ? 'quadrupled' : growthMultiple >= 3.5 ? 'more than tripled' : 'tripled'} since 1970, growing from ${formatPopulationProse(data1970.totalPopulation)} to ${formatPopulationProse(yearData.totalPopulation)} people`,
+        text: `${possessiveStart(countryName)} population has ${growthMultiple >= 4 ? 'quadrupled' : growthMultiple >= 3.5 ? 'more than tripled' : 'tripled'} since 1970, growing from ${formatPopulationProse(data1970.totalPopulation)} to ${formatPopulationProse(yearData.totalPopulation)} people`,
         category: 'growth'
       });
     } else if (growthMultiple >= 2) {
       facts.push({
         icon: '📊',
-        text: `The population has doubled since 1970, with ${countryName} adding ${((yearData.totalPopulation - data1970.totalPopulation) / 1000000).toFixed(1)} million people over 54 years`,
+        text: `The population has doubled since 1970, with ${inText(countryName)} adding ${((yearData.totalPopulation - data1970.totalPopulation) / 1000000).toFixed(1)} million people over 54 years`,
         category: 'growth'
       });
     } else if (growthMultiple >= 1.5) {
       facts.push({
         icon: '⬆️',
-        text: `${countryName}'s population has grown by ${((growthMultiple - 1) * 100).toFixed(0)}% since 1970, reflecting ${growthMultiple > 1.8 ? 'rapid' : 'steady'} demographic expansion`,
+        text: `${possessiveStart(countryName)} population has grown by ${((growthMultiple - 1) * 100).toFixed(0)}% since 1970, reflecting ${growthMultiple > 1.8 ? 'rapid' : 'steady'} demographic expansion`,
         category: 'growth'
       });
     } else if (growthMultiple < 0.95) {
       facts.push({
         icon: '📉',
-        text: `${countryName} has experienced population decline, with ${((1 - growthMultiple) * 100).toFixed(0)}% fewer people than in 1970`,
+        text: `${sentenceStart(countryName)} has experienced population decline, with ${((1 - growthMultiple) * 100).toFixed(0)}% fewer people than in 1970`,
         category: 'growth'
       });
     }
@@ -85,13 +88,13 @@ export function generateDemographicFacts(
   } else if (metrics.youthPercentage > 30) {
     facts.push({
       icon: '🎒',
-      text: `1 in 3 people in ${countryName} is under 15 years old, creating massive demand for schools and youth services`,
+      text: `1 in 3 people in ${inText(countryName)} is under 15 years old, creating massive demand for schools and youth services`,
       category: 'age'
     });
   } else if (metrics.youthPercentage < 15) {
     facts.push({
       icon: '🏫',
-      text: `Only ${metrics.youthPercentage.toFixed(0)}% of ${countryName}'s population is under 15 - one of the world's smallest youth cohorts`,
+      text: `Only ${metrics.youthPercentage.toFixed(0)}% of ${possessiveInText(countryName)} population is under 15 - one of the world's smallest youth cohorts`,
       category: 'age'
     });
   }
@@ -100,19 +103,19 @@ export function generateDemographicFacts(
   if (metrics.elderlyPercentage > 25) {
     facts.push({
       icon: '👴',
-      text: `${countryName} is among the world's most aged societies, with 1 in 4 people over 65 years old`,
+      text: `${sentenceStart(countryName)} is among the world's most aged societies, with 1 in 4 people over 65 years old`,
       category: 'age'
     });
   } else if (metrics.elderlyPercentage > 20) {
     facts.push({
       icon: '🦳',
-      text: `${metrics.elderlyPercentage.toFixed(0)}% of the population is elderly (65+), making ${countryName} a rapidly aging society`,
+      text: `${metrics.elderlyPercentage.toFixed(0)}% of the population is elderly (65+), making ${inText(countryName)} a rapidly aging society`,
       category: 'age'
     });
   } else if (metrics.elderlyPercentage < 3) {
     facts.push({
       icon: '🌱',
-      text: `${countryName} has one of the world's youngest populations - only ${metrics.elderlyPercentage.toFixed(1)}% are over 65`,
+      text: `${sentenceStart(countryName)} has one of the world's youngest populations - only ${metrics.elderlyPercentage.toFixed(1)}% are over 65`,
       category: 'age'
     });
   }
@@ -121,13 +124,13 @@ export function generateDemographicFacts(
   if (metrics.medianAge < 18) {
     facts.push({
       icon: '🎓',
-      text: `Half of ${countryName}'s population is younger than ${metrics.medianAge.toFixed(1)} years old - younger than most high school graduates`,
+      text: `Half of ${possessiveInText(countryName)} population is younger than ${metrics.medianAge.toFixed(1)} years old - younger than most high school graduates`,
       category: 'age'
     });
   } else if (metrics.medianAge > 45) {
     facts.push({
       icon: '⏰',
-      text: `The median age of ${metrics.medianAge.toFixed(1)} years makes ${countryName} one of the world's most mature societies`,
+      text: `The median age of ${metrics.medianAge.toFixed(1)} years makes ${inText(countryName)} one of the world's most mature societies`,
       category: 'age'
     });
   } else if (data1970) {
@@ -174,7 +177,7 @@ export function generateDemographicFacts(
   } else if (metrics.dependencyRatio < 40) {
     facts.push({
       icon: '🚀',
-      text: `With only ${metrics.dependencyRatio.toFixed(0)} dependents per 100 workers, ${countryName} has ideal conditions for economic growth`,
+      text: `With only ${metrics.dependencyRatio.toFixed(0)} dependents per 100 workers, ${inText(countryName)} has ideal conditions for economic growth`,
       category: 'comparison'
     });
   }
@@ -184,13 +187,13 @@ export function generateDemographicFacts(
   if (populationInMillions > 100) {
     facts.push({
       icon: '🌍',
-      text: `With ${populationInMillions.toFixed(0)} million people, ${countryName} has more residents than most continents had in 1900`,
+      text: `With ${populationInMillions.toFixed(0)} million people, ${inText(countryName)} has more residents than most continents had in 1900`,
       category: 'comparison'
     });
   } else if (populationInMillions < 1) {
     facts.push({
       icon: '🏝️',
-      text: `${countryName}'s entire population of ${formatPopulationProse(yearData.totalPopulation)} could fit in a large sports stadium`,
+      text: `${possessiveStart(countryName)} entire population of ${formatPopulationProse(yearData.totalPopulation)} could fit in a large sports stadium`,
       category: 'comparison'
     });
   }
@@ -207,7 +210,7 @@ export function generateDemographicFacts(
     } else if (recentGrowth < -5) {
       facts.push({
         icon: '📉',
-        text: `${countryName} has lost ${Math.abs(recentGrowth).toFixed(1)}% of its population since 2000, reflecting demographic decline`,
+        text: `${sentenceStart(countryName)} has lost ${Math.abs(recentGrowth).toFixed(1)}% of its population since 2000, reflecting demographic decline`,
         category: 'growth'
       });
     }
@@ -246,7 +249,7 @@ export function generateDemographicFacts(
   if (projectedPop2050 / yearData.totalPopulation > 1.5) {
     facts.push({
       icon: '🔮',
-      text: `By 2050, ${countryName}'s population could reach ${(projectedPop2050 / 1000000).toFixed(0)} million people if current trends continue`,
+      text: `By 2050, ${possessiveInText(countryName)} population could reach ${(projectedPop2050 / 1000000).toFixed(0)} million people if current trends continue`,
       category: 'projection'
     });
   } else if (projectedPop2050 / yearData.totalPopulation < 0.9) {
@@ -261,7 +264,7 @@ export function generateDemographicFacts(
   if (populationInMillions > 50) {
     facts.push({
       icon: '🏆',
-      text: `${countryName} ranks among the world's most populous countries, with more people than most regions had throughout history`,
+      text: `${sentenceStart(countryName)} ranks among the world's most populous countries, with more people than most regions had throughout history`,
       category: 'comparison'
     });
   }
@@ -3141,17 +3144,17 @@ function generateEnhancedFacts(
       facts.push(
         {
           icon: '📊',
-          text: 'US population has grown from 203 million in 1970 to 335 million, making it the world\'s third-largest country by population',
+          text: `US population has grown from ${popWords(countryData.years['1970']?.totalPopulation ?? 203000000)} in 1970 to ${popWords(yearData.totalPopulation)}, making it the world's third-largest country by population`,
           category: 'growth'
         },
         {
           icon: '📅',
-          text: 'The median age has increased from 28.1 to 38.9 years since 1970, reflecting demographic aging and declining birth rates',
+          text: `The median age has risen from ${(countryData.years['1970']?.medianAge ?? 28.1).toFixed(1)} in 1970 to ${yearData.medianAge.toFixed(1)} years today, reflecting demographic aging and declining birth rates`,
           category: 'age'
         },
         {
           icon: '🌍',
-          text: 'With 335 million people, the US has the world\'s largest economy and represents 4.2% of global population on 1.9% of land',
+          text: `With ${popWords(yearData.totalPopulation)} people, the US has the world's largest economy and represents ${formatShare((yearData.totalPopulation / (worldPopulation(currentYear) ?? 8231613070)) * 100)} of global population`,
           category: 'comparison'
         },
         {
@@ -3384,7 +3387,7 @@ function generateEnhancedFacts(
         const growthMultiple = yearData.totalPopulation / data1970.totalPopulation;
         facts.push({
           icon: '📊',
-          text: `${countryName}\'s population has ${growthMultiple > 1.5 ? 'grown significantly' : growthMultiple > 1.1 ? 'grown moderately' : 'remained stable'} since 1970`,
+          text: `${possessiveStart(countryName)} population has ${growthMultiple > 1.5 ? 'grown significantly' : growthMultiple > 1.1 ? 'grown moderately' : 'remained stable'} since 1970`,
           category: 'growth'
         });
 
@@ -3399,7 +3402,7 @@ function generateEnhancedFacts(
       const populationInMillions = yearData.totalPopulation / 1000000;
       facts.push({
         icon: '🌍',
-        text: `With ${populationInMillions.toFixed(1)} million people, ${countryName} represents a significant global population center`,
+        text: `With ${populationInMillions.toFixed(1)} million people, ${inText(countryName)} represents a significant global population center`,
         category: 'comparison'
       });
       break;

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { SITE_URL, SITE_NAME } from '@/lib/site-meta';
 import { GenerationsHeader } from '@/components/generations/GenerationsHeader';
 import { GenerationsCalculator } from '@/components/generations/GenerationsCalculator';
 import { GenerationsTable } from '@/components/generations/GenerationsTable';
@@ -44,12 +45,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: `${country.name} has ${largestGen ? `${largestGen.generation.name} as its largest generation (${largestGen.percentOfTotal.toFixed(1)}%). ` : ''}See complete generation breakdown with population data for Gen Z, Millennials, Gen X, Baby Boomers, and Gen Alpha in ${country.name}.`,
     keywords: `${country.name} generations, ${country.name} millennials, ${country.name} gen z, ${country.name} boomers, ${country.name} gen x, ${country.name} generation breakdown, ${country.name} age demographics`,
     openGraph: {
-      title: `${country.name} Generation Breakdown 2026 | Population Pyramids`,
+      title: `${country.name} Generation Breakdown 2026 | ${SITE_NAME}`,
       description: `Generation population distribution in ${country.name}. See how many Millennials, Gen Z, and Boomers live in ${country.name}.`,
       type: 'article',
-      url: `https://www.populationpyramids.org/generations/${params.country}`,
+      locale: 'en_US',
+      siteName: SITE_NAME,
+      url: `${SITE_URL}/generations/${params.country}`,
       images: [{
-        url: `https://www.populationpyramids.org/og-generations-${params.country}.png`,
+        url: `${SITE_URL}/og-generations-${params.country}.png`,
         width: 1200,
         height: 630,
         alt: `${country.name} Generation Breakdown`
@@ -58,12 +61,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     twitter: {
       card: 'summary_large_image',
       title: `${country.name} Generations: Population by Age Group`,
-      description: largestGen 
+      description: largestGen
         ? `${largestGen.generation.name} is the largest generation in ${country.name} at ${largestGen.percentOfTotal.toFixed(1)}% of population.`
-        : `Generation breakdown for ${country.name} with current UN population data.`
+        : `Generation breakdown for ${country.name} with current UN population data.`,
+      images: [`${SITE_URL}/og-generations-${params.country}.png`]
     },
     alternates: {
-      canonical: `https://www.populationpyramids.org/generations/${params.country}`
+      canonical: `${SITE_URL}/generations/${params.country}`
     }
   };
 }
@@ -85,13 +89,13 @@ function generateStructuredData(
     {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      "@id": `https://www.populationpyramids.org/generations/${country.slug}#dataset`,
+      "@id": `${SITE_URL}/generations/${country.slug}#dataset`,
       "name": `${country.name} Generation Populations 2026`,
       "description": `Generation population distribution in ${country.name} including Gen Alpha, Gen Z, Millennials, Gen X, Baby Boomers, and Silent Generation`,
       "creator": {
         "@type": "Organization",
         "name": "Population Pyramids",
-        "url": "https://www.populationpyramids.org"
+        "url": SITE_URL
       },
       "temporalCoverage": "2026",
       "spatialCoverage": {
@@ -177,19 +181,19 @@ function generateStructuredData(
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://www.populationpyramids.org"
+          "item": SITE_URL
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Generation Calculator",
-          "item": "https://www.populationpyramids.org/generations"
+          "item": `${SITE_URL}/generations`
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": country.name,
-          "item": `https://www.populationpyramids.org/generations/${country.slug}`
+          "item": `${SITE_URL}/generations/${country.slug}`
         }
       ]
     }

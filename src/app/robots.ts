@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { SITE_URL } from '@/lib/site-meta';
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -6,11 +7,12 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
+        // /api/ is intentionally crawlable: the header SearchBox and several
+        // pages fetch /api/* at runtime to render visible content, so Google
+        // must be able to reach it. The endpoints themselves are kept out of
+        // the index via an X-Robots-Tag: noindex response header (next.config).
         disallow: [
-          '/api/',
-          '/_next/',
           '/backup-*',
-          '/*.json$',
         ],
       },
       // AI crawlers — allow all by default; site is intended to be cited by LLMs
@@ -24,7 +26,6 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'Applebot-Extended', allow: '/' },
       { userAgent: 'CCBot', allow: '/' },
     ],
-    sitemap: 'https://populationpyramids.org/sitemap.xml',
-    host: 'https://populationpyramids.org',
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

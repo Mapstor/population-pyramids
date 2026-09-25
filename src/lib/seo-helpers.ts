@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { SITE_NAME, DEFAULT_OG_IMAGE, absoluteUrl } from '@/lib/site-meta';
 
 export function formatNumber(num: number): string {
   return num.toLocaleString();
@@ -19,11 +20,12 @@ export function generateCountryMetadata(
   birthRate?: number
 ): Metadata {
   const slug = generateSlug(countryName);
-  const canonicalUrl = `https://populationpyramids.org/${slug}`;
-  const titleSuffix = dailyBirths ? ` | ${dailyBirths.toLocaleString()} Daily Births` : '';
-  const title = `${countryName} Population Pyramid ${year} - Demographics & Birth Statistics${titleSuffix}`;
-  const birthInfo = dailyBirths ? ` ${dailyBirths.toLocaleString()} babies born daily (birth rate: ${birthRate} per 1,000).` : '';
-  const description = `Interactive population pyramid for ${countryName} in ${year}. Total population: ${formatNumber(totalPopulation)}.${birthInfo} View age distribution, birth statistics, demographic trends.`;
+  const canonicalUrl = absoluteUrl(`/${slug}`);
+  // T2 Step 7: births boilerplate removed (computed births are wrong until T4).
+  // The live country route no longer uses this helper (it builds metadata via
+  // buildMetadata); kept here for the legacy page-partial.tsx only.
+  const title = `${countryName} Population Pyramid ${year} - Demographics & Age Structure`;
+  const description = `Interactive population pyramid for ${countryName} in ${year}. Total population: ${formatNumber(totalPopulation)}. View age distribution and demographic trends.`;
 
   const baseKeywords = [
     `${countryName.toLowerCase()} population pyramid`,
@@ -49,15 +51,19 @@ export function generateCountryMetadata(
     keywords: [...baseKeywords, ...birthKeywords],
     alternates: { canonical: canonicalUrl },
     openGraph: {
+      type: 'article',
+      locale: 'en_US',
+      url: canonicalUrl,
+      siteName: SITE_NAME,
       title,
       description,
-      type: 'article',
-      url: canonicalUrl,
+      images: [{ url: absoluteUrl(DEFAULT_OG_IMAGE), width: 1200, height: 630, alt: title }],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
+      images: [absoluteUrl(DEFAULT_OG_IMAGE)],
     },
   };
 }

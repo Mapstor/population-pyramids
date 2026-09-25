@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { SITE_URL, SITE_NAME } from '@/lib/site-meta';
 import USStatesClient from './USStatesClient';
 
 export const metadata = {
@@ -12,10 +13,10 @@ export const metadata = {
     description:
       'Every US state ranked by population. California, Texas, and Florida lead. Full table with growth and demographic data.',
     type: 'website',
-    url: 'https://populationpyramids.org/us-states',
+    url: `${SITE_URL}/us-states`,
   },
   alternates: {
-    canonical: 'https://populationpyramids.org/us-states',
+    canonical: `${SITE_URL}/us-states`,
   },
 };
 
@@ -24,22 +25,22 @@ const schema = {
   '@graph': [
     {
       '@type': 'WebPage',
-      '@id': 'https://populationpyramids.org/us-states#webpage',
+      '@id': `${SITE_URL}/us-states#webpage`,
       name: 'US States Ranked by Population 2026',
-      url: 'https://populationpyramids.org/us-states',
+      url: `${SITE_URL}/us-states`,
       description:
         'Complete population and demographic data for all 50 US states plus DC, sortable by population, growth rate, and median age.',
       inLanguage: 'en-US',
     },
     {
       '@type': 'Dataset',
-      '@id': 'https://populationpyramids.org/us-states#dataset',
+      '@id': `${SITE_URL}/us-states#dataset`,
       name: 'US States Population Demographics Dataset 2026',
       description:
         'Population, growth rate, and median age data for all 50 US states. Source: US Census Bureau.',
-      url: 'https://populationpyramids.org/us-states',
+      url: `${SITE_URL}/us-states`,
       creator: { '@type': 'Organization', name: 'US Census Bureau', url: 'https://www.census.gov/' },
-      publisher: { '@type': 'Organization', name: 'PopulationPyramids.org', url: 'https://populationpyramids.org' },
+      publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
       spatialCoverage: { '@type': 'Place', name: 'United States' },
       temporalCoverage: '2010/2024',
       license: 'https://creativecommons.org/licenses/by/4.0/',
@@ -52,8 +53,8 @@ const schema = {
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://populationpyramids.org/' },
-        { '@type': 'ListItem', position: 2, name: 'US States', item: 'https://populationpyramids.org/us-states' },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: 'US States', item: `${SITE_URL}/us-states` },
       ],
     },
     {
