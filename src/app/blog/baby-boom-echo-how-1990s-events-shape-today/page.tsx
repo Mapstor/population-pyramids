@@ -24,7 +24,8 @@ export const metadata: Metadata = {
     title: 'The Baby Boom Echo: How 1990s Events Shape Today',
     description: 'Demographic waves from the 1990s control today\'s housing crisis, job markets, and economic trends.',
     images: ['/blog/baby-boom-echo-og.png']
-  }
+  },
+  alternates: { canonical: 'https://populationpyramids.org/blog/baby-boom-echo-how-1990s-events-shape-today' },
 };
 
 export default function BabyBoomEchoArticle() {

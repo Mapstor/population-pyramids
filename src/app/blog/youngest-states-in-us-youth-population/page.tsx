@@ -1,9 +1,13 @@
 import Link from 'next/link';
+import { CURRENT_YEAR } from '@/lib/site-meta';
+
+export const revalidate = 86400;
 
 export const metadata = {
-  title: 'Youngest States in the US 2024: Which State Has the Youngest Population? | Population Pyramids',
+  title: `Youngest States in the US ${CURRENT_YEAR}: Which State Has the Youngest Population?`,
   description: 'Utah has the youngest population in America with median age 32.3 years. Discover the youngest states in the US, states with youngest population, and why these states attract young families.',
   keywords: 'youngest states in the us, states with youngest population, which state has the youngest population, youngest states US, median age by state, young population states',
+  alternates: { canonical: 'https://populationpyramids.org/blog/youngest-states-in-us-youth-population' },
 };
 
 export default function YoungestStatesPage() {

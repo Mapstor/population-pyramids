@@ -14,6 +14,7 @@ export const metadata = {
     type: 'article',
     url: 'https://populationpyramids.org/blog/worlds-aging-crisis-9-countries-seniors',
   },
+  alternates: { canonical: 'https://populationpyramids.org/blog/worlds-aging-crisis-9-countries-seniors' },
 };
 
 // Static country data for the aging countries
@@ -232,14 +233,12 @@ export default async function AgingCrisisArticle() {
                 </div>
               </div>
               <div className="bg-gray-50 rounded-lg p-4">
-                <div style={{ height: '400px' }}>
-                  <PopulationPyramid
+                <PopulationPyramid
                     data={japanData.years['2024']}
                     countryName="Japan"
                     year={2024}
                     height={400}
                   />
-                </div>
               </div>
             </div>
           </div>
@@ -252,14 +251,12 @@ export default async function AgingCrisisArticle() {
           <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div className="bg-gray-50 rounded-lg p-4">
-                <div style={{ height: '400px' }}>
-                  <PopulationPyramid
+                <PopulationPyramid
                     data={southKoreaData.years['2024']}
                     countryName="South Korea"
                     year={2024}
                     height={400}
                   />
-                </div>
               </div>
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">The Fastest Transformation in History</h3>
@@ -336,14 +333,12 @@ export default async function AgingCrisisArticle() {
                 </div>
               </div>
               <div className="bg-gray-50 rounded-lg p-4">
-                <div style={{ height: '400px' }}>
-                  <PopulationPyramid
+                <PopulationPyramid
                     data={italyData.years['2024']}
                     countryName="Italy"
                     year={2024}
                     height={400}
                   />
-                </div>
               </div>
             </div>
           </div>

@@ -24,7 +24,8 @@ export const metadata: Metadata = {
     title: 'Youth Explosion: Africa\'s Demographic Dividend',
     description: 'Countries where 45%+ of population is under 15 face unprecedented opportunities and challenges.',
     images: ['/blog/youth-explosion-og.png']
-  }
+  },
+  alternates: { canonical: 'https://populationpyramids.org/blog/youth-explosion-africa-youngest-populations' },
 };
 
 export default function YouthExplosionArticle() {

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Migration Nations: Countries Gaining and Losing Millions Through Human Movement | Population Pyramids',
+  title: 'Migration Nations: Countries Gaining and Losing Millions Through Human Movement',
   description: 'Germany gained 2 million migrants in 2 years. Venezuela lost 20% of its population. Syria emptied entire cities. Discover how mass migration is reshaping global demographics faster than birth rates.',
   keywords: 'migration demographics, population movement, immigration statistics, emigration crisis, refugee demographics, global migration patterns',
   openGraph: {
@@ -24,7 +24,8 @@ export const metadata: Metadata = {
     title: 'Migration Nations: Countries Gaining and Losing Millions',
     description: 'Mass migration reshaping demographics faster than birth rates. The numbers are staggering.',
     images: ['/blog/migration-nations-og.png']
-  }
+  },
+  alternates: { canonical: 'https://populationpyramids.org/blog/migration-nations-countries-gaining-losing-millions' },
 };
 
 export default function MigrationNationsArticle() {

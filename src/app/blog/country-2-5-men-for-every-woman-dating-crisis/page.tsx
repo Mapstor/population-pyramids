@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'This Country Has 2.5 Men for Every Woman (And the Dating Scene is Insane) | Population Pyramids',
+  title: 'This Country Has 2.5 Men for Every Woman (And the Dating Scene is Insane)',
   description: 'Qatar has 71.3% male population - 2.17 million men vs 875,000 women. Discover how extreme gender ratios in Gulf states create unprecedented social dynamics and dating challenges.',
   keywords: 'Qatar gender ratio, dating crisis, male majority countries, gulf states demographics, UAE gender imbalance, Kuwait demographics, Bahrain population',
   openGraph: {
@@ -24,7 +24,8 @@ export const metadata: Metadata = {
     title: 'This Country Has 2.5 Men for Every Woman',
     description: 'Qatar\'s extreme 71.3% male population creates unprecedented social dynamics. The numbers are shocking.',
     images: ['/blog/qatar-gender-ratio-og.png']
-  }
+  },
+  alternates: { canonical: 'https://populationpyramids.org/blog/country-2-5-men-for-every-woman-dating-crisis' },
 };
 
 export default function QatarGenderRatioArticle() {

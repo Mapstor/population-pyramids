@@ -24,7 +24,8 @@ export const metadata: Metadata = {
     title: 'Half This Country is Under 17',
     description: 'Niger\'s median age is 16.5 - imagine a country where everyone looks like they\'re in high school.',
     images: ['/blog/niger-youth-explosion-og.png']
-  }
+  },
+  alternates: { canonical: 'https://populationpyramids.org/blog/half-this-country-under-17-youth-explosion' },
 };
 
 export default function NigerYouthExplosionArticle() {

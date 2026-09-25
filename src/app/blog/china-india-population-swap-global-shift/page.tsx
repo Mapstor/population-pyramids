@@ -24,7 +24,8 @@ export const metadata: Metadata = {
     title: 'The Great Population Swap: India Overtakes China',
     description: 'Explore the historic demographic shift that changed global population rankings forever.',
     images: ['/blog/china-india-swap-og.png']
-  }
+  },
+  alternates: { canonical: 'https://populationpyramids.org/blog/china-india-population-swap-global-shift' },
 };
 
 export default function ChinaIndiaSwapArticle() {

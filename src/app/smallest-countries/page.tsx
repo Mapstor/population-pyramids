@@ -1,15 +1,19 @@
 import Link from 'next/link';
 import { getCountryRankings, formatPopulation, formatArea, formatDensity } from '@/lib/country-rankings';
 import RankingBarChart, { BarItem } from '@/components/RankingBarChart';
+import { getWorldMapPaths, getExtraMarkers, getRegionView } from '@/lib/world-map-data';
+import WorldPopulationMap, { CountryMapDatum, ExtraMarker, RegionPreset } from '@/components/WorldPopulationMap';
+import { CURRENT_YEAR, LAST_UPDATED_ISO } from '@/lib/site-meta';
+
+export const revalidate = 86400;
 
 export const metadata = {
-  title: 'Smallest Countries in the World 2026 — By Area and Population',
-  description:
-    'Complete ranking of the smallest countries by both land area and population. Vatican City is smallest at 0.49 km² and ~500 people. Monaco, Nauru, Tuvalu, San Marino, Liechtenstein round out the top 6. Microstate categories, climate threats, economic models, glossary, methodology, and 15-question FAQ.',
+  title: `Smallest Countries in the World ${CURRENT_YEAR} — By Area and Population`,
+  description: `Complete ranking of the smallest countries by both land area and population. Vatican City is smallest at 0.49 km² and ~500 people. Monaco, Nauru, Tuvalu, San Marino, Liechtenstein round out the top 6. Microstate categories, climate threats, economic models, glossary, methodology, and 15-question FAQ.`,
   keywords:
     'smallest countries in the world, smallest countries, least populated countries, smallest countries by population, top 10 smallest countries, smallest nation in the world, countries with lowest population, microstates, smallest country in the world',
   openGraph: {
-    title: 'Smallest Countries in the World 2026',
+    title: `Smallest Countries in the World ${CURRENT_YEAR}`,
     description: 'Vatican City, Monaco, Nauru, Tuvalu — every microstate ranked. Categories, climate threats, economic models, glossary, methodology.',
     type: 'website',
     url: 'https://populationpyramids.org/smallest-countries',
@@ -17,7 +21,7 @@ export const metadata = {
   alternates: { canonical: 'https://populationpyramids.org/smallest-countries' },
 };
 
-const LAST_UPDATED = '2026-05-18';
+const LAST_UPDATED = LAST_UPDATED_ISO;
 const PUBLISHED = '2026-05-18';
 
 function generateSchema(top10Area: any[], top10Pop: any[]) {
@@ -27,7 +31,7 @@ function generateSchema(top10Area: any[], top10Pop: any[]) {
       {
         '@type': 'Article',
         '@id': 'https://populationpyramids.org/smallest-countries#article',
-        headline: 'Smallest Countries in the World 2026',
+        headline: `Smallest Countries in the World ${CURRENT_YEAR}`,
         description: 'A complete ranking of the world\'s smallest countries by area and population.',
         author: { '@type': 'Organization', name: 'PopulationPyramids.org', url: 'https://populationpyramids.org' },
         publisher: { '@type': 'Organization', name: 'PopulationPyramids.org', url: 'https://populationpyramids.org', logo: { '@type': 'ImageObject', url: 'https://populationpyramids.org/icon.svg' } },
@@ -39,13 +43,13 @@ function generateSchema(top10Area: any[], top10Pop: any[]) {
       {
         '@type': 'WebPage',
         '@id': 'https://populationpyramids.org/smallest-countries#webpage',
-        name: 'Smallest Countries in the World 2026',
+        name: `Smallest Countries in the World ${CURRENT_YEAR}`,
         url: 'https://populationpyramids.org/smallest-countries',
         inLanguage: 'en-US',
       },
       {
         '@type': 'Dataset',
-        name: 'World Countries Ranked Smallest to Largest 2026',
+        name: `World Countries Ranked Smallest to Largest ${CURRENT_YEAR}`,
         description: 'Area and population for all 195 countries.',
         url: 'https://populationpyramids.org/smallest-countries',
         creator: [{ '@type': 'Organization', name: 'UN DESA Population Division', url: 'https://population.un.org/' }, { '@type': 'Organization', name: 'CIA World Factbook' }],
@@ -104,12 +108,48 @@ function generateSchema(top10Area: any[], top10Pop: any[]) {
 }
 
 export default async function SmallestCountriesPage() {
-  const { countries } = await getCountryRankings();
+  const { countries, worldLandArea } = await getCountryRankings();
   const byArea = [...countries].sort((a, b) => a.areaKm2 - b.areaKm2);
   const byPopulation = [...countries].sort((a, b) => a.population2024 - b.population2024 || a.name.localeCompare(b.name));
   const top10Area = byArea.slice(0, 10);
   const top10Pop = byPopulation.slice(0, 10);
   const schema = generateSchema(top10Area, top10Pop);
+
+  // World map: choropleth by area + pin markers for the 10 smallest (most are
+  // too small to render as paths in the 110m topology).
+  const features = getWorldMapPaths();
+  const dataByAlpha: Record<string, CountryMapDatum> = {};
+  for (const c of countries) {
+    dataByAlpha[c.code] = {
+      population2024: c.population2024,
+      worldPopulationShare: c.worldPopulationShare,
+      slug: c.slug,
+      medianAge2024: c.medianAge2024,
+      densityPerKm2: c.densityPerKm2,
+      region: c.region,
+      areaKm2: c.areaKm2,
+    };
+  }
+  const markerCoords = getExtraMarkers(top10Area.map((c) => c.slug));
+  const slugToRank = new Map(top10Area.map((c, i) => [c.slug, i + 1]));
+  const slugToName = new Map(top10Area.map((c) => [c.slug, c.name]));
+  const extraMarkers: ExtraMarker[] = markerCoords.map((m) => ({
+    slug: m.slug,
+    x: m.x,
+    y: m.y,
+    label: String(slugToRank.get(m.slug) ?? ''),
+    name: slugToName.get(m.slug) ?? m.slug,
+  }));
+
+  // Region jump presets — one click to zoom into where the microstates cluster.
+  // null view = reset to full world.
+  const regionPresets: RegionPreset[] = [
+    { id: 'world', label: 'World', view: null },
+    { id: 'europe', label: 'Europe', view: getRegionView('europe') },
+    { id: 'pacific', label: 'Pacific', view: getRegionView('pacific') },
+    { id: 'caribbean', label: 'Caribbean', view: getRegionView('caribbean') },
+    { id: 'indianOcean', label: 'Indian Ocean', view: getRegionView('indianOcean') },
+  ];
 
   return (
     <>
@@ -128,7 +168,7 @@ export default async function SmallestCountriesPage() {
           </nav>
 
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
-            Smallest Countries in the World 2026
+            Smallest Countries in the World {CURRENT_YEAR}
           </h1>
           <p className="text-lg text-gray-700 max-w-4xl mb-2">
             The world&apos;s smallest countries by both area and population. <strong>{top10Area[0].name}</strong> is smallest at{' '}
@@ -201,6 +241,30 @@ export default async function SmallestCountriesPage() {
               <div className="text-sm text-gray-700 mt-1">Existential climate risk</div>
             </div>
           </section>
+
+          {/* World map: choropleth by area + pinned microstates + region zoom */}
+          <div className="mb-6">
+            <WorldPopulationMap
+              features={features}
+              dataByAlpha={dataByAlpha}
+              mode="area"
+              worldLandArea={worldLandArea}
+              extraMarkers={extraMarkers}
+              regionPresets={regionPresets}
+              title={`The 10 Smallest Countries on the World Map ${CURRENT_YEAR}`}
+              hint="Use the region buttons or scroll to zoom — Vatican, Monaco, Nauru, Tuvalu are sub-pixel at world scale. Numbered pins mark each microstate."
+              source="Source: CIA World Factbook · Boundaries: Natural Earth"
+            />
+            <p className="text-sm text-gray-600 mt-3 px-1">
+              <strong>Why the pins and the zoom?</strong> Vatican City (0.49 km²), Monaco
+              (2 km²), Nauru (21 km²), Tuvalu (26 km²) and the other microstates are physically
+              smaller than a single pixel at world scale — they don&apos;t render as visible
+              polygons. Use the <strong>Europe</strong>, <strong>Pacific</strong>,
+              <strong> Caribbean</strong>, or <strong>Indian Ocean</strong> buttons above the
+              map to zoom in to where each cluster actually sits, or scroll on the map and drag
+              to pan freely. Click any pin&apos;s country in the table below to open its page.
+            </p>
+          </div>
 
           {/* Bar chart: smallest by area */}
           <div className="mb-6">

@@ -24,7 +24,8 @@ export const metadata: Metadata = {
     title: 'India Just Beat China for the First Time in 300 Years',
     description: 'Historic: India (1.45B) overtook China (1.42B) as world\'s most populous country. Most people missed this massive milestone.',
     images: ['/blog/india-china-population-swap-og.png']
-  }
+  },
+  alternates: { canonical: 'https://populationpyramids.org/blog/india-beat-china-first-time-300-years-population' },
 };
 
 export default function IndiaChinaPopulationMilestoneArticle() {

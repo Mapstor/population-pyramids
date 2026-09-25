@@ -3,15 +3,18 @@ import { getCountryRankings, formatPopulation, formatArea, formatDensity } from 
 import RankingBarChart, { BarItem } from '@/components/RankingBarChart';
 import { getWorldMapPaths } from '@/lib/world-map-data';
 import WorldPopulationMap, { CountryMapDatum } from '@/components/WorldPopulationMap';
+import { CURRENT_YEAR, LAST_UPDATED_ISO } from '@/lib/site-meta';
+
+export const revalidate = 86400;
 
 export const metadata = {
-  title: 'Top 10 Largest Countries in the World by Area 2026',
+  title: `Top 10 Largest Countries in the World by Area ${CURRENT_YEAR}`,
   description:
     'The 10 largest countries ranked by land area. Russia leads with 17M km², followed by Canada, the US, China, Brazil, Australia, India, Argentina, Kazakhstan, and Algeria. Detailed profiles with geography, climate, history, and demographic context.',
   keywords:
     'top 10 largest countries in the world, top 10 biggest countries in the world, top 10 biggest countries, largest countries in the world, 10 biggest countries, ten largest countries, top 10 countries by area',
   openGraph: {
-    title: 'Top 10 Largest Countries in the World by Area 2026',
+    title: `Top 10 Largest Countries in the World by Area ${CURRENT_YEAR}`,
     description: 'Detailed profiles of the 10 biggest countries by land area.',
     type: 'website',
     url: 'https://populationpyramids.org/top-10-largest-countries',
@@ -19,7 +22,7 @@ export const metadata = {
   alternates: { canonical: 'https://populationpyramids.org/top-10-largest-countries' },
 };
 
-const LAST_UPDATED = '2026-05-18';
+const LAST_UPDATED = LAST_UPDATED_ISO;
 const PUBLISHED = '2026-05-18';
 
 const PROFILES: Record<string, { intro: string; geography: string; history: string }> = {
@@ -82,7 +85,7 @@ function generateSchema(top10: any[], worldLandArea: number) {
       {
         '@type': 'Article',
         '@id': 'https://populationpyramids.org/top-10-largest-countries#article',
-        headline: 'Top 10 Largest Countries in the World by Area 2026',
+        headline: `Top 10 Largest Countries in the World by Area ${CURRENT_YEAR}`,
         description: 'Detailed profiles of the 10 biggest countries by land area.',
         author: { '@type': 'Organization', name: 'PopulationPyramids.org', url: 'https://populationpyramids.org' },
         publisher: { '@type': 'Organization', name: 'PopulationPyramids.org', url: 'https://populationpyramids.org', logo: { '@type': 'ImageObject', url: 'https://populationpyramids.org/icon.svg' } },
@@ -94,7 +97,7 @@ function generateSchema(top10: any[], worldLandArea: number) {
       {
         '@type': 'WebPage',
         '@id': 'https://populationpyramids.org/top-10-largest-countries#webpage',
-        name: 'Top 10 Largest Countries in the World by Area 2026',
+        name: `Top 10 Largest Countries in the World by Area ${CURRENT_YEAR}`,
         url: 'https://populationpyramids.org/top-10-largest-countries',
         inLanguage: 'en-US',
       },
@@ -176,7 +179,7 @@ export default async function Top10LargestCountriesPage() {
           </nav>
 
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
-            Top 10 Largest Countries in the World by Area 2026
+            Top 10 Largest Countries in the World by Area {CURRENT_YEAR}
           </h1>
           <p className="text-lg text-gray-700 mb-2">
             The world&apos;s 10 largest countries cover about <strong>{totalShare.toFixed(0)}%</strong> of all national land area on Earth.

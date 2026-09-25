@@ -3,15 +3,17 @@ import { getCountryRankings, formatPopulation, formatDensity } from '@/lib/count
 import { getWorldMapPaths } from '@/lib/world-map-data';
 import WorldPopulationMap, { CountryMapDatum } from '@/components/WorldPopulationMap';
 import RankingBarChart, { BarItem } from '@/components/RankingBarChart';
+import { CURRENT_YEAR, LAST_UPDATED_ISO } from '@/lib/site-meta';
+
+export const revalidate = 86400;
 
 export const metadata = {
-  title: 'Most Populated Countries in the World 2026 — All 195 Ranked',
-  description:
-    'Complete list of every country in the world ranked by population in 2026. India and China each hold over 1.4 billion people; the United States is third with 340 million. Interactive world map, sortable table, regional breakdowns, projections to 2050 and 2100, glossary, methodology, and 15-question FAQ. Data from UN World Population Prospects 2024.',
+  title: `Most Populated Countries in the World ${CURRENT_YEAR} — All 195 Ranked`,
+  description: `Complete list of every country in the world ranked by population in ${CURRENT_YEAR}. India and China each hold over 1.4 billion people; the United States is third with 340 million. Interactive world map, sortable table, regional breakdowns, projections to 2050 and 2100, glossary, methodology, and 15-question FAQ. Data from UN World Population Prospects 2024.`,
   keywords:
     'most populated countries, countries by population, most populous nations, largest countries by population, countries ranked by population, world population by country, list of countries by population, every country population, population by country, world population ranking, world population map',
   openGraph: {
-    title: 'Most Populated Countries in the World 2026 — Interactive Map + All 195 Ranked',
+    title: `Most Populated Countries in the World ${CURRENT_YEAR} — Interactive Map + All 195 Ranked`,
     description:
       'Interactive world map showing every country\'s population. Sortable rankings, regional breakdowns, historical evolution since 1950, projections to 2100, glossary, methodology, and 15-question FAQ.',
     type: 'website',
@@ -22,7 +24,7 @@ export const metadata = {
   },
 };
 
-const LAST_UPDATED = '2026-05-18';
+const LAST_UPDATED = LAST_UPDATED_ISO;
 const PUBLISHED = '2026-05-18';
 
 // Stable, hand-curated extras for the top-10 dynamics table.
@@ -79,7 +81,7 @@ function generateSchema(top10: any[], worldPopulation: number) {
       {
         '@type': 'Article',
         '@id': 'https://populationpyramids.org/most-populated-countries#article',
-        headline: 'Most Populated Countries in the World 2026 — All 195 Ranked',
+        headline: `Most Populated Countries in the World ${CURRENT_YEAR} — All 195 Ranked`,
         description:
           'A complete, sourced ranking of every country by population, with interactive world map, regional breakdowns, demographic context, and projections to 2100.',
         author: { '@type': 'Organization', name: 'PopulationPyramids.org', url: 'https://populationpyramids.org' },
@@ -112,16 +114,16 @@ function generateSchema(top10: any[], worldPopulation: number) {
       {
         '@type': 'WebPage',
         '@id': 'https://populationpyramids.org/most-populated-countries#webpage',
-        name: 'Most Populated Countries in the World 2026',
+        name: `Most Populated Countries in the World ${CURRENT_YEAR}`,
         url: 'https://populationpyramids.org/most-populated-countries',
-        description: 'Complete ranking of all 195 countries by population in 2026 with interactive map.',
+        description: `Complete ranking of all 195 countries by population in ${CURRENT_YEAR} with interactive map.`,
         inLanguage: 'en-US',
         isPartOf: { '@type': 'WebSite', name: 'Population Pyramids', url: 'https://populationpyramids.org' },
       },
       {
         '@type': 'Dataset',
         '@id': 'https://populationpyramids.org/most-populated-countries#dataset',
-        name: 'World Countries Ranked by Population 2026',
+        name: `World Countries Ranked by Population ${CURRENT_YEAR}`,
         description: 'Population data for all 195 countries with rankings, growth rates, median age, density.',
         url: 'https://populationpyramids.org/most-populated-countries',
         creator: {
@@ -137,7 +139,7 @@ function generateSchema(top10: any[], worldPopulation: number) {
       {
         '@type': 'ItemList',
         '@id': 'https://populationpyramids.org/most-populated-countries#itemlist',
-        name: 'Top 10 Most Populated Countries 2026',
+        name: `Top 10 Most Populated Countries ${CURRENT_YEAR}`,
         numberOfItems: 10,
         itemListOrder: 'https://schema.org/ItemListOrderDescending',
         itemListElement: top10.map((c, i) => ({
@@ -245,7 +247,7 @@ export default async function MostPopulatedCountriesPage() {
 
           {/* H1 + concise lede */}
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
-            Most Populated Countries in the World 2026
+            Most Populated Countries in the World {CURRENT_YEAR}
           </h1>
           <p className="text-lg text-gray-700 max-w-4xl mb-2">
             All 195 countries ranked by population. <strong>{top10[0].name}</strong> leads with{' '}

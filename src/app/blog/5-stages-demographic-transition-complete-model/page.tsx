@@ -1,9 +1,10 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: '5 Stages of Demographic Transition: Complete Modern Model With Population Decline | Population Pyramids',
+  title: '5 Stages of Demographic Transition: Complete Modern Model With Population Decline',
   description: 'Learn the complete 5 stages of demographic transition including Stage 5 population decline. Modern model explains Japan, Germany aging crisis. Full guide with country examples.',
   keywords: '5 stages of demographic transition, demographic transition 5 stages, population decline stage, stage 5 demographic transition, modern demographic transition model',
+  alternates: { canonical: 'https://populationpyramids.org/blog/5-stages-demographic-transition-complete-model' },
 };
 
 export default function FiveStagesDemographicTransitionPage() {

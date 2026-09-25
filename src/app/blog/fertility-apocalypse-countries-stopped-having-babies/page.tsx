@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Fertility Apocalypse: Countries Where People Have Stopped Having Babies | Population Pyramids',
+  title: 'Fertility Apocalypse: Countries Where People Have Stopped Having Babies',
   description: 'South Korea: 0.72 births per woman. Singapore: 1.04. Taiwan: 0.87. Entire societies are choosing not to reproduce. Discover the countries facing fertility collapse and the end of traditional family structures.',
   keywords: 'fertility crisis, birth rates, demographic collapse, population decline, fertility rates, family planning, reproductive trends',
   openGraph: {
@@ -24,7 +24,8 @@ export const metadata: Metadata = {
     title: 'Fertility Apocalypse: Countries Where People Stopped Having Babies',
     description: 'South Korea: 0.72 births per woman. The demographic collapse is happening now.',
     images: ['/blog/fertility-apocalypse-og.png']
-  }
+  },
+  alternates: { canonical: 'https://populationpyramids.org/blog/fertility-apocalypse-countries-stopped-having-babies' },
 };
 
 export default function FertilityApocalypseArticle() {

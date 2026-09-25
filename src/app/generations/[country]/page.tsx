@@ -47,9 +47,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: `${country.name} Generation Breakdown 2026 | Population Pyramids`,
       description: `Generation population distribution in ${country.name}. See how many Millennials, Gen Z, and Boomers live in ${country.name}.`,
       type: 'article',
-      url: `https://www.populationpyramids.org/generations/${params.country}`,
+      url: `https://populationpyramids.org/generations/${params.country}`,
       images: [{
-        url: `https://www.populationpyramids.org/og-generations-${params.country}.png`,
+        url: `https://populationpyramids.org/og-generations-${params.country}.png`,
         width: 1200,
         height: 630,
         alt: `${country.name} Generation Breakdown`
@@ -63,7 +63,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         : `Generation breakdown for ${country.name} with current UN population data.`
     },
     alternates: {
-      canonical: `https://www.populationpyramids.org/generations/${params.country}`
+      canonical: `https://populationpyramids.org/generations/${params.country}`
     }
   };
 }
@@ -85,13 +85,13 @@ function generateStructuredData(
     {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      "@id": `https://www.populationpyramids.org/generations/${country.slug}#dataset`,
+      "@id": `https://populationpyramids.org/generations/${country.slug}#dataset`,
       "name": `${country.name} Generation Populations 2026`,
       "description": `Generation population distribution in ${country.name} including Gen Alpha, Gen Z, Millennials, Gen X, Baby Boomers, and Silent Generation`,
       "creator": {
         "@type": "Organization",
         "name": "Population Pyramids",
-        "url": "https://www.populationpyramids.org"
+        "url": "https://populationpyramids.org"
       },
       "temporalCoverage": "2026",
       "spatialCoverage": {
@@ -177,19 +177,19 @@ function generateStructuredData(
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://www.populationpyramids.org"
+          "item": "https://populationpyramids.org"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Generation Calculator",
-          "item": "https://www.populationpyramids.org/generations"
+          "item": "https://populationpyramids.org/generations"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": country.name,
-          "item": `https://www.populationpyramids.org/generations/${country.slug}`
+          "item": `https://populationpyramids.org/generations/${country.slug}`
         }
       ]
     }

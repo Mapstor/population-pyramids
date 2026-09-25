@@ -1,9 +1,10 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: '3 Types of Population Pyramids: Complete Guide to Expansive, Constrictive & Stationary | Population Pyramids',
+  title: '3 Types of Population Pyramids: Complete Guide to Expansive, Constrictive & Stationary',
   description: 'Learn the 3 main population pyramid types: expansive (growing populations), constrictive (declining populations), and stationary (stable populations). Complete guide with examples.',
   keywords: 'population pyramid types, expansive population pyramid, constrictive population pyramid, stationary population pyramid, demographic transition model, population structure',
+  alternates: { canonical: 'https://populationpyramids.org/blog/population-pyramid-types-complete-guide' },
 };
 
 export default function PopulationPyramidTypesPage() {

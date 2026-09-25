@@ -15,12 +15,12 @@ export const metadata: Metadata = {
   description: 'What generation am I? Enter your birth year to find out. See 2026 age ranges and real population data for Gen Z (14-29), Millennials (30-45), Gen X (46-61), Baby Boomers (62-80), Gen Alpha (0-13).',
   keywords: 'generation calculator, gen z age, millennial age, boomer age, gen x age, generation age ranges 2026, what generation am i, gen alpha age, silent generation age',
   openGraph: {
-    title: 'Generation Age Ranges Calculator 2026 | Population Pyramids',
+    title: 'Generation Age Ranges Calculator 2026',
     description: 'Find out what generation you belong to. Current age ranges and population data for all generations worldwide.',
     type: 'website',
-    url: 'https://www.populationpyramids.org/generations',
+    url: 'https://populationpyramids.org/generations',
     images: [{
-      url: 'https://www.populationpyramids.org/og-generations.png',
+      url: 'https://populationpyramids.org/og-generations.png',
       width: 1200,
       height: 630,
       alt: 'Generation Age Ranges 2026'
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     description: 'Gen Z (14-29), Millennials (30-45), Gen X (46-61), Boomers (62-80). Find your generation and see global population data.',
   },
   alternates: {
-    canonical: 'https://www.populationpyramids.org/generations'
+    canonical: 'https://populationpyramids.org/generations'
   }
 };
 
@@ -56,18 +56,18 @@ function generateStructuredData(worldGenerations: any[]) {
         "Compare generation sizes by country",
         "See age ranges for all generations in 2026"
       ],
-      "screenshot": "https://www.populationpyramids.org/screenshots/generation-calculator.png"
+      "screenshot": "https://populationpyramids.org/screenshots/generation-calculator.png"
     },
     {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      "@id": "https://www.populationpyramids.org/generations#dataset",
+      "@id": "https://populationpyramids.org/generations#dataset",
       "name": "World Generation Populations 2026",
       "description": "Global population distribution by generation (Gen Alpha, Gen Z, Millennials, Gen X, Baby Boomers, Silent Generation)",
       "creator": {
         "@type": "Organization",
         "name": "Population Pyramids",
-        "url": "https://www.populationpyramids.org"
+        "url": "https://populationpyramids.org"
       },
       "temporalCoverage": "2026",
       "spatialCoverage": {
@@ -139,13 +139,13 @@ function generateStructuredData(worldGenerations: any[]) {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://www.populationpyramids.org"
+          "item": "https://populationpyramids.org"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Generation Calculator",
-          "item": "https://www.populationpyramids.org/generations"
+          "item": "https://populationpyramids.org/generations"
         }
       ]
     }

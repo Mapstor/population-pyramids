@@ -3,15 +3,18 @@ import { getCountryRankings, formatPopulation, formatArea, formatDensity } from 
 import RankingBarChart, { BarItem } from '@/components/RankingBarChart';
 import { getWorldMapPaths } from '@/lib/world-map-data';
 import WorldPopulationMap, { CountryMapDatum } from '@/components/WorldPopulationMap';
+import { CURRENT_YEAR, LAST_UPDATED_ISO } from '@/lib/site-meta';
+
+export const revalidate = 86400;
 
 export const metadata = {
-  title: 'Top 10 Most Populated Countries in the World 2026',
+  title: `Top 10 Most Populated Countries in the World ${CURRENT_YEAR}`,
   description:
     'Detailed profiles of the 10 most populated countries — India, China, US, Indonesia, Pakistan, Nigeria, Brazil, Bangladesh, Russia, Mexico. Demographics, fertility, projections to 2050, glossary, methodology, 15-question FAQ. Source: UN WPP 2024.',
   keywords:
     'top 10 most populated countries, top 10 most populous countries, top 10 populous countries, top 10 countries with highest population, 10 most populated countries, 10 most populous countries, ten most populous countries, top 10 populated countries in the world',
   openGraph: {
-    title: 'Top 10 Most Populated Countries in the World 2026',
+    title: `Top 10 Most Populated Countries in the World ${CURRENT_YEAR}`,
     description: 'Detailed profiles of the 10 most populous countries with demographics, fertility, projections.',
     type: 'website',
     url: 'https://populationpyramids.org/top-10-most-populated-countries',
@@ -19,7 +22,7 @@ export const metadata = {
   alternates: { canonical: 'https://populationpyramids.org/top-10-most-populated-countries' },
 };
 
-const LAST_UPDATED = '2026-05-18';
+const LAST_UPDATED = LAST_UPDATED_ISO;
 const PUBLISHED = '2026-05-18';
 
 const PROFILES: Record<string, { intro: string; key: string; future: string }> = {
@@ -82,7 +85,7 @@ function generateSchema(top10: any[]) {
       {
         '@type': 'Article',
         '@id': 'https://populationpyramids.org/top-10-most-populated-countries#article',
-        headline: 'Top 10 Most Populated Countries in the World 2026',
+        headline: `Top 10 Most Populated Countries in the World ${CURRENT_YEAR}`,
         description: 'Detailed profiles of the 10 most populated countries.',
         author: { '@type': 'Organization', name: 'PopulationPyramids.org', url: 'https://populationpyramids.org' },
         publisher: { '@type': 'Organization', name: 'PopulationPyramids.org', url: 'https://populationpyramids.org', logo: { '@type': 'ImageObject', url: 'https://populationpyramids.org/icon.svg' } },
@@ -94,7 +97,7 @@ function generateSchema(top10: any[]) {
       {
         '@type': 'WebPage',
         '@id': 'https://populationpyramids.org/top-10-most-populated-countries#webpage',
-        name: 'Top 10 Most Populated Countries in the World 2026',
+        name: `Top 10 Most Populated Countries in the World ${CURRENT_YEAR}`,
         url: 'https://populationpyramids.org/top-10-most-populated-countries',
         inLanguage: 'en-US',
       },
@@ -176,7 +179,7 @@ export default async function Top10MostPopulatedCountriesPage() {
           </nav>
 
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
-            Top 10 Most Populated Countries in the World 2026
+            Top 10 Most Populated Countries in the World {CURRENT_YEAR}
           </h1>
           <p className="text-lg text-gray-700 mb-2">
             The world&apos;s 10 most populated countries hold approximately <strong>{totalShare.toFixed(0)}%</strong> of all humans on Earth.
