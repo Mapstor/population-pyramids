@@ -3,22 +3,18 @@ import { getCountryRankings, formatPopulation, formatArea, formatDensity } from 
 import RankingBarChart, { BarItem } from '@/components/RankingBarChart';
 import { getWorldMapPaths, getExtraMarkers, getRegionView } from '@/lib/world-map-data';
 import WorldPopulationMap, { CountryMapDatum, ExtraMarker, RegionPreset } from '@/components/WorldPopulationMap';
-import { CURRENT_YEAR, LAST_UPDATED_ISO } from '@/lib/site-meta';
+import { CURRENT_YEAR, LAST_UPDATED_ISO, buildMetadata, SITE_URL, SITE_NAME } from '@/lib/site-meta';
 
 export const revalidate = 86400;
 
 export const metadata = {
-  title: `Smallest Countries in the World ${CURRENT_YEAR} — By Area and Population`,
-  description: `Complete ranking of the smallest countries by both land area and population. Vatican City is smallest at 0.49 km² and ~500 people. Monaco, Nauru, Tuvalu, San Marino, Liechtenstein round out the top 6. Microstate categories, climate threats, economic models, glossary, methodology, and 15-question FAQ.`,
+  ...buildMetadata({
+    title: `Smallest Countries in the World ${CURRENT_YEAR} — By Area and Population`,
+    description: `Complete ranking of the smallest countries by both land area and population. Vatican City is smallest at 0.49 km² and ~500 people. Monaco, Nauru, Tuvalu, San Marino, Liechtenstein round out the top 6. Microstate categories, climate threats, economic models, glossary, methodology, and 15-question FAQ.`,
+    path: '/smallest-countries',
+  }),
   keywords:
     'smallest countries in the world, smallest countries, least populated countries, smallest countries by population, top 10 smallest countries, smallest nation in the world, countries with lowest population, microstates, smallest country in the world',
-  openGraph: {
-    title: `Smallest Countries in the World ${CURRENT_YEAR}`,
-    description: 'Vatican City, Monaco, Nauru, Tuvalu — every microstate ranked. Categories, climate threats, economic models, glossary, methodology.',
-    type: 'website',
-    url: 'https://populationpyramids.org/smallest-countries',
-  },
-  alternates: { canonical: 'https://populationpyramids.org/smallest-countries' },
 };
 
 const LAST_UPDATED = LAST_UPDATED_ISO;
@@ -30,11 +26,11 @@ function generateSchema(top10Area: any[], top10Pop: any[]) {
     '@graph': [
       {
         '@type': 'Article',
-        '@id': 'https://populationpyramids.org/smallest-countries#article',
+        '@id': `${SITE_URL}/smallest-countries#article`,
         headline: `Smallest Countries in the World ${CURRENT_YEAR}`,
         description: 'A complete ranking of the world\'s smallest countries by area and population.',
-        author: { '@type': 'Organization', name: 'PopulationPyramids.org', url: 'https://populationpyramids.org' },
-        publisher: { '@type': 'Organization', name: 'PopulationPyramids.org', url: 'https://populationpyramids.org', logo: { '@type': 'ImageObject', url: 'https://populationpyramids.org/icon.svg' } },
+        author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+        publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL, logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon.svg` } },
         datePublished: PUBLISHED,
         dateModified: LAST_UPDATED,
         articleSection: 'Geography',
@@ -42,18 +38,18 @@ function generateSchema(top10Area: any[], top10Pop: any[]) {
       },
       {
         '@type': 'WebPage',
-        '@id': 'https://populationpyramids.org/smallest-countries#webpage',
+        '@id': `${SITE_URL}/smallest-countries#webpage`,
         name: `Smallest Countries in the World ${CURRENT_YEAR}`,
-        url: 'https://populationpyramids.org/smallest-countries',
+        url: `${SITE_URL}/smallest-countries`,
         inLanguage: 'en-US',
       },
       {
         '@type': 'Dataset',
         name: `World Countries Ranked Smallest to Largest ${CURRENT_YEAR}`,
         description: 'Area and population for all 195 countries.',
-        url: 'https://populationpyramids.org/smallest-countries',
+        url: `${SITE_URL}/smallest-countries`,
         creator: [{ '@type': 'Organization', name: 'UN DESA Population Division', url: 'https://population.un.org/' }, { '@type': 'Organization', name: 'CIA World Factbook' }],
-        publisher: { '@type': 'Organization', name: 'PopulationPyramids.org' },
+        publisher: { '@type': 'Organization', name: SITE_NAME },
         spatialCoverage: { '@type': 'Place', name: 'World' },
         license: 'https://creativecommons.org/licenses/by/4.0/',
       },
@@ -62,14 +58,14 @@ function generateSchema(top10Area: any[], top10Pop: any[]) {
         name: 'Top 10 Smallest Countries by Area',
         numberOfItems: 10,
         itemListOrder: 'https://schema.org/ItemListOrderAscending',
-        itemListElement: top10Area.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, description: `${c.areaKm2} km²`, url: `https://populationpyramids.org/${c.slug}` })),
+        itemListElement: top10Area.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, description: `${c.areaKm2} km²`, url: `${SITE_URL}/${c.slug}` })),
       },
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://populationpyramids.org/' },
-          { '@type': 'ListItem', position: 2, name: 'Countries', item: 'https://populationpyramids.org/countries' },
-          { '@type': 'ListItem', position: 3, name: 'Smallest Countries', item: 'https://populationpyramids.org/smallest-countries' },
+          { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Countries', item: `${SITE_URL}/countries` },
+          { '@type': 'ListItem', position: 3, name: 'Smallest Countries', item: `${SITE_URL}/smallest-countries` },
         ],
       },
       {

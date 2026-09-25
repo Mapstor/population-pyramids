@@ -4,7 +4,7 @@ import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { loadCountries } from '@/lib/data-loader';
 import { getCountryFlag } from '@/lib/country-flags';
-import { CURRENT_YEAR, LAST_UPDATED_ISO } from '@/lib/site-meta';
+import { CURRENT_YEAR, LAST_UPDATED_ISO, buildMetadata, SITE_URL, SITE_NAME } from '@/lib/site-meta';
 import { getCountryRankings } from '@/lib/country-rankings';
 import { getWorldMapPaths } from '@/lib/world-map-data';
 import WorldPopulationMap, { type CountryMapDatum } from '@/components/WorldPopulationMap';
@@ -25,27 +25,14 @@ export const revalidate = 86400;
 const WORLD_2024_TFR = WORLD_TFR_POINTS[WORLD_TFR_POINTS.length - 1].tfr;
 
 export const metadata: Metadata = {
-  title: `Fertility Rate by Country ${CURRENT_YEAR} — Calculator + All Countries Below Replacement`,
-  description:
-    `Personal fertility rate calculator + every country ranked by Total Fertility Rate. Find out if your country has dropped below the replacement rate of 2.1 children per woman, and when. South Korea leads the global low at ~0.72; Niger leads the high at ~6.0. UN World Population Prospects ${CURRENT_YEAR} data with birth rate (CBR) and projections to 2050.`,
+  ...buildMetadata({
+    title: `Fertility Rate by Country ${CURRENT_YEAR} — Calculator + All Countries Below Replacement`,
+    description:
+      `Personal fertility rate calculator + every country ranked by Total Fertility Rate. Find out if your country has dropped below the replacement rate of 2.1 children per woman, and when. South Korea leads the global low at ~0.72; Niger leads the high at ~6.0. UN World Population Prospects ${CURRENT_YEAR} data with birth rate (CBR) and projections to 2050.`,
+    path: '/fertility-rate-by-country',
+  }),
   keywords:
     'fertility rate by country, birth rate by country, total fertility rate 2026, lowest fertility rate in the world, countries below replacement rate, replacement rate 2.1, world fertility rate, fertility rate calculator, crude birth rate by country, fertility collapse, south korea fertility rate, china fertility rate, japan fertility rate',
-  openGraph: {
-    title: `Fertility Rate by Country ${CURRENT_YEAR} — Calculator + Rankings`,
-    description: `Personal calculator + all countries ranked by TFR. Find out when your country dropped below the 2.1 replacement rate. UN WPP ${CURRENT_YEAR} data, 1965 → 2050.`,
-    type: 'website',
-    url: 'https://populationpyramids.org/fertility-rate-by-country',
-    siteName: 'Population Pyramids',
-    // og:image auto-generated from src/app/fertility-rate-by-country/opengraph-image.tsx
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: `Fertility Rate by Country ${CURRENT_YEAR}`,
-    description: 'Has your country dropped below the replacement rate of 2.1 children per woman? Calculator + global ranking.',
-  },
-  alternates: {
-    canonical: 'https://populationpyramids.org/fertility-rate-by-country',
-  },
 };
 
 interface FertilityFile {
@@ -83,9 +70,9 @@ function generateSchema(countries: SlimFertility[], belowCount: number, lowest: 
     '@graph': [
       {
         '@type': 'WebApplication',
-        '@id': 'https://populationpyramids.org/fertility-rate-by-country#webapp',
+        '@id': `${SITE_URL}/fertility-rate-by-country#webapp`,
         name: 'Fertility Rate Calculator & Country Ranking',
-        url: 'https://populationpyramids.org/fertility-rate-by-country',
+        url: `${SITE_URL}/fertility-rate-by-country`,
         applicationCategory: 'EducationalApplication',
         applicationSubCategory: 'Demographics Tool',
         operatingSystem: 'Any',
@@ -102,7 +89,7 @@ function generateSchema(countries: SlimFertility[], belowCount: number, lowest: 
       },
       {
         '@type': 'Dataset',
-        '@id': 'https://populationpyramids.org/fertility-rate-by-country#dataset',
+        '@id': `${SITE_URL}/fertility-rate-by-country#dataset`,
         name: 'World Fertility Rate Data, 1965–2050',
         description: 'Total Fertility Rate and Crude Birth Rate for 194 countries from UN World Population Prospects 2024 Revision, with medium-variant projections to 2050.',
         creator: {
@@ -110,7 +97,7 @@ function generateSchema(countries: SlimFertility[], belowCount: number, lowest: 
           name: 'United Nations Department of Economic and Social Affairs, Population Division',
           url: 'https://population.un.org/',
         },
-        publisher: { '@type': 'Organization', name: 'PopulationPyramids.org', url: 'https://populationpyramids.org' },
+        publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
         temporalCoverage: '1965/2050',
         spatialCoverage: { '@type': 'Place', name: 'World' },
         license: 'https://creativecommons.org/licenses/by/4.0/',
@@ -122,8 +109,8 @@ function generateSchema(countries: SlimFertility[], belowCount: number, lowest: 
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://populationpyramids.org/' },
-          { '@type': 'ListItem', position: 2, name: 'Fertility Rate by Country', item: 'https://populationpyramids.org/fertility-rate-by-country' },
+          { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Fertility Rate by Country', item: `${SITE_URL}/fertility-rate-by-country` },
         ],
       },
       {

@@ -20,7 +20,11 @@ interface SitemapUrl {
 async function generateSitemap() {
   console.log('🚀 Starting sitemap generation...');
   
-  const baseUrl = 'https://populationpyramids.org';
+  // Canonical host is www (see src/lib/site-meta.ts SITE_URL). This standalone
+  // script can't import the TS module via ts-node path aliases, so the value is
+  // mirrored here. NOTE: the live sitemap is served by src/app/sitemap.ts, not
+  // this legacy generator.
+  const baseUrl = 'https://www.populationpyramids.org';
   const currentDate = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
   
   // Load countries data

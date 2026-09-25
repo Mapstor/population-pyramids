@@ -1,31 +1,17 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { buildMetadata } from '@/lib/site-meta';
 
 export const metadata: Metadata = {
-  title: 'Demographic Time Bombs: 12 Countries Losing People Fast and the Economic Collapse That Follows',
-  description: 'Japan loses 500,000 people annually. South Korea may shrink by 50% by 2100. Eastern Europe empties entire villages. Explore the countries facing catastrophic population decline and economic devastation.',
-  keywords: 'population decline, demographic collapse, aging crisis, birth rate crisis, economic collapse, japan population, south korea demographics, eastern europe decline',
-  openGraph: {
-    title: 'Demographic Time Bombs: Countries Losing People Fast',
-    description: 'Japan loses 500,000 people annually. South Korea faces 50% population decline by 2100. The economic devastation is unprecedented.',
+  ...buildMetadata({
+    title: 'Demographic Time Bombs: 12 Countries Losing People Fast and the Economic Collapse That Follows',
+    description: 'Japan loses 500,000 people annually. South Korea may shrink by 50% by 2100. Eastern Europe empties entire villages. Explore the countries facing catastrophic population decline and economic devastation.',
+    path: '/blog/demographic-time-bombs-countries-losing-people',
     type: 'article',
-    url: 'https://populationpyramids.org/blog/demographic-time-bombs-countries-losing-people',
-    images: [
-      {
-        url: '/blog/demographic-time-bombs-og.png',
-        width: 1200,
-        height: 630,
-        alt: 'Countries experiencing severe population decline visualization'
-      }
-    ]
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Demographic Time Bombs: Countries Losing People Fast',
-    description: 'Japan loses 500,000 people annually. The economic consequences are devastating.',
-    images: ['/blog/demographic-time-bombs-og.png']
-  },
-  alternates: { canonical: 'https://populationpyramids.org/blog/demographic-time-bombs-countries-losing-people' },
+    image: '/blog/demographic-time-bombs-og.png',
+    imageAlt: 'Countries experiencing severe population decline visualization',
+  }),
+  keywords: 'population decline, demographic collapse, aging crisis, birth rate crisis, economic collapse, japan population, south korea demographics, eastern europe decline',
 };
 
 export default function DemographicTimeBombsArticle() {

@@ -1,31 +1,17 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { buildMetadata } from '@/lib/site-meta';
 
 export const metadata: Metadata = {
-  title: 'The Great Population Swap: How India Overtook China to Become the World\'s Most Populous Nation | Population Pyramids',
-  description: 'India officially surpassed China as the world\'s most populous country in 2023. Explore the demographic forces behind this historic shift and what it means for global economics, geopolitics, and the future.',
-  keywords: 'china india population, most populous country, demographic transition, one child policy, population growth, global demographics, asia population',
-  openGraph: {
-    title: 'The Great Population Swap: How India Overtook China',
-    description: 'The historic moment when India became the world\'s most populous nation, ending China\'s centuries-long reign.',
+  ...buildMetadata({
+    title: 'The Great Population Swap: How India Overtook China to Become the World\'s Most Populous Nation',
+    description: 'India officially surpassed China as the world\'s most populous country in 2023. Explore the demographic forces behind this historic shift and what it means for global economics, geopolitics, and the future.',
+    path: '/blog/china-india-population-swap-global-shift',
     type: 'article',
-    url: 'https://populationpyramids.org/blog/china-india-population-swap-global-shift',
-    images: [
-      {
-        url: '/blog/china-india-swap-og.png',
-        width: 1200,
-        height: 630,
-        alt: 'China vs India population comparison visualization'
-      }
-    ]
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'The Great Population Swap: India Overtakes China',
-    description: 'Explore the historic demographic shift that changed global population rankings forever.',
-    images: ['/blog/china-india-swap-og.png']
-  },
-  alternates: { canonical: 'https://populationpyramids.org/blog/china-india-population-swap-global-shift' },
+    image: '/blog/china-india-swap-og.png',
+    imageAlt: 'China vs India population comparison visualization',
+  }),
+  keywords: 'china india population, most populous country, demographic transition, one child policy, population growth, global demographics, asia population',
 };
 
 export default function ChinaIndiaSwapArticle() {

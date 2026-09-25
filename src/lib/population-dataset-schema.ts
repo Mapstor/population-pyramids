@@ -1,5 +1,6 @@
 import type { YearData, CountryData } from '@/types/population';
 import { calculateMetrics } from '@/lib/calculations';
+import { SITE_URL } from '@/lib/site-meta';
 
 interface FertilityData {
   fertilityData: {
@@ -24,7 +25,7 @@ export function generatePopulationDatasetSchema(
   year: number,
   fertilityData?: FertilityData | null
 ) {
-  const baseUrl = 'https://populationpyramids.org';
+  const baseUrl = SITE_URL;
   const metrics = calculateMetrics(yearData);
   
   // Calculate additional metrics
@@ -220,7 +221,7 @@ export function generateMinimalDatasetSchema(
   medianAge: number,
   year: number
 ) {
-  const baseUrl = 'https://populationpyramids.org';
+  const baseUrl = SITE_URL;
   
   return {
     '@context': 'https://schema.org',
@@ -258,7 +259,7 @@ export function generateCountrySchemaPackage(
   options: PopulationSchemaOptions = {}
 ) {
   const { includeDetailed = true, includeBreadcrumbs = true, includeWebApplication = true } = options;
-  const baseUrl = 'https://populationpyramids.org';
+  const baseUrl = SITE_URL;
   
   const schemas: any[] = [];
 

@@ -1,3 +1,5 @@
+import { SITE_URL } from '@/lib/site-meta';
+
 export function generateBirthStatisticsSchema(
   countryName: string,
   countrySlug: string,
@@ -8,7 +10,7 @@ export function generateBirthStatisticsSchema(
   population: number,
   year: number
 ) {
-  const baseUrl = 'https://www.populationpyramids.org';
+  const baseUrl = SITE_URL;
   
   // Main Dataset Schema for Birth Statistics
   const birthDatasetSchema = {

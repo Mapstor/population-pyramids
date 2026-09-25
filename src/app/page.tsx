@@ -2,6 +2,33 @@ import Link from 'next/link';
 import { generateWorldPopulationData, getCountriesWithPopulationChange } from '@/lib/world-data-aggregator';
 import WorldPopulationPyramid from '@/components/WorldPopulationPyramid';
 import SortableCountryTable from '@/components/SortableCountryTable';
+import type { Metadata } from 'next';
+import { SITE_URL, SITE_NAME, absoluteUrl } from '@/lib/site-meta';
+
+// The home page inherits the root layout's title.default; it only needs a
+// self-referencing canonical + a full openGraph carrying the www og:url
+// (a child openGraph fully replaces the root's, so every field is repeated).
+export const metadata: Metadata = {
+  alternates: { canonical: SITE_URL },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: 'Population Pyramids - Interactive Demographics for 195 Countries',
+    description:
+      'Explore interactive population pyramids for 195 countries from 1950-2025. Analyze age distribution, demographic trends, and population data with real UN World Population Prospects 2024.',
+    images: [
+      {
+        url: absoluteUrl('/og-image.png'),
+        width: 1200,
+        height: 630,
+        alt: 'Population Pyramids - Interactive demographic visualization platform showing age structure charts',
+        type: 'image/png',
+      },
+    ],
+  },
+};
 
 // JSON-LD Schema for SEO
 const jsonLd = {
@@ -9,7 +36,7 @@ const jsonLd = {
   '@type': 'WebSite',
   name: 'Population Pyramids',
   description: 'Interactive demographic visualization platform providing comprehensive population data for 195 countries from 1950-2025 based on UN World Population Prospects 2024.',
-  url: 'https://populationpyramids.org',
+  url: SITE_URL,
   author: {
     '@type': 'Organization',
     name: 'Population Pyramids',
@@ -28,7 +55,7 @@ const jsonLd = {
     },
     distribution: {
       '@type': 'DataDownload',
-      contentUrl: 'https://populationpyramids.org',
+      contentUrl: SITE_URL,
       encodingFormat: 'application/json',
     },
     temporalCoverage: '1950/2025',

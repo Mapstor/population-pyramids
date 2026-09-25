@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getGrowthRateData } from '@/lib/growth-rate-data';
+import { SITE_URL } from '@/lib/site-meta';
 import PopulationGrowthInteractiveTool from './PopulationGrowthInteractiveTool';
 
 // JSON-LD Schema for SEO
@@ -99,13 +100,13 @@ function generateStructuredData(worldData: any, countries: any[], fastestGrowing
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://populationpyramids.org/"
+        "item": SITE_URL
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Population Growth Rate Calculator",
-        "item": "https://populationpyramids.org/population-growth-rate-calculator"
+        "item": `${SITE_URL}/population-growth-rate-calculator`
       }
     ]
   };

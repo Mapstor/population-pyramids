@@ -16,6 +16,7 @@ import { generateUsageGuide, generateUsageSummary } from '@/lib/usage-guide';
 import PopulationPyramid from '@/components/PopulationPyramid';
 import StatsTable from '@/components/StatsTable';
 import ShareButtons from '@/components/ShareButtons';
+import { SITE_URL } from '@/lib/site-meta';
 
 export const dynamicParams = false;
 export const revalidate = false;
@@ -379,7 +380,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
 
           {/* Share Buttons */}
           <ShareButtons
-            url={`https://populationpyramids.org/${params.slug}`}
+            url={`${SITE_URL}/${params.slug}`}
             title={`${countryData.countryName} Population Pyramid ${latestYear}`}
             description={`Explore demographic data and population trends for ${countryData.countryName}`}
           />

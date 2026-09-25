@@ -4,7 +4,7 @@ import { readFileSync, readdirSync, existsSync } from 'fs';
 import { join } from 'path';
 import { loadCountries, loadCountryData } from '@/lib/data-loader';
 import { getCountryFlag } from '@/lib/country-flags';
-import { CURRENT_YEAR, LAST_UPDATED_ISO } from '@/lib/site-meta';
+import { CURRENT_YEAR, LAST_UPDATED_ISO, buildMetadata, SITE_URL, SITE_NAME } from '@/lib/site-meta';
 import ProjectionCalculator from './ProjectionCalculator';
 import ProjectionContextSections from './ProjectionContextSections';
 import ToolCrossLinks from '@/components/ToolCrossLinks';
@@ -21,26 +21,13 @@ export const revalidate = 86400;
 const PROJECTION_DIR = join(process.cwd(), 'src', 'data', 'population-projections');
 
 export const metadata: Metadata = {
-  title: `Population Projection by Country 2025–2100 — UN Medium Variant`,
-  description: `Personal population projection calculator + every country's UN-projected population in 2025, 2050, 2100, and any year in between. World population reaches 9.7 billion by 2050 and peaks near 10.3 billion in the 2080s. Includes peak year per country, fastest-growing, fastest-shrinking, and the gap between the UN's low / medium / high variants. UN World Population Prospects 2024 Revision, medium variant.`,
+  ...buildMetadata({
+    title: `Population Projection by Country 2025–2100 — UN Medium Variant`,
+    description: `Personal population projection calculator + every country's UN-projected population in 2025, 2050, 2100, and any year in between. World population reaches 9.7 billion by 2050 and peaks near 10.3 billion in the 2080s. Includes peak year per country, fastest-growing, fastest-shrinking, and the gap between the UN's low / medium / high variants. UN World Population Prospects 2024 Revision, medium variant.`,
+    path: '/population-projection-by-country',
+  }),
   keywords:
     'world population 2050, world population 2100, population projection by country, future population, [country] population 2050, [country] population 2100, UN population projection, world population peak, when does world population peak, future population calculator, demographic projections',
-  openGraph: {
-    title: `Population Projection by Country 2025–2100`,
-    description: `Pick any country & projection year (2025-2100) using UN data. See when each country peaks and how the global total reaches 10.3B before declining.`,
-    type: 'website',
-    url: 'https://populationpyramids.org/population-projection-by-country',
-    siteName: 'Population Pyramids',
-    // og:image auto-generated from src/app/population-projection-by-country/opengraph-image.tsx
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Population Projection by Country — UN WPP 2024',
-    description: 'World peaks at 10.3B in the 2080s. Calculator + every country to 2100.',
-  },
-  alternates: {
-    canonical: 'https://populationpyramids.org/population-projection-by-country',
-  },
 };
 
 function loadProjectionFile(slug: string): ProjectionRecord | null {
@@ -62,9 +49,9 @@ function generateSchema(worldPlace: SlimProjection, countries: SlimProjection[])
     '@graph': [
       {
         '@type': 'WebApplication',
-        '@id': 'https://populationpyramids.org/population-projection-by-country#webapp',
+        '@id': `${SITE_URL}/population-projection-by-country#webapp`,
         name: 'Population Projection Calculator 2025–2100',
-        url: 'https://populationpyramids.org/population-projection-by-country',
+        url: `${SITE_URL}/population-projection-by-country`,
         applicationCategory: 'EducationalApplication',
         applicationSubCategory: 'Demographics Tool',
         operatingSystem: 'Any',
@@ -80,11 +67,11 @@ function generateSchema(worldPlace: SlimProjection, countries: SlimProjection[])
       },
       {
         '@type': 'Dataset',
-        '@id': 'https://populationpyramids.org/population-projection-by-country#dataset',
+        '@id': `${SITE_URL}/population-projection-by-country#dataset`,
         name: 'World Population Projection by Country, 1950–2100',
         description: 'Annual total population for 195 countries plus the world aggregate, 1950 estimates and medium-variant projections to 2100. Source: UN World Population Prospects 2024 Revision.',
         creator: { '@type': 'Organization', name: 'United Nations Department of Economic and Social Affairs, Population Division', url: 'https://population.un.org/' },
-        publisher: { '@type': 'Organization', name: 'PopulationPyramids.org', url: 'https://populationpyramids.org' },
+        publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
         temporalCoverage: '1950/2100',
         spatialCoverage: { '@type': 'Place', name: 'World' },
         license: 'https://creativecommons.org/licenses/by/4.0/',
@@ -92,8 +79,8 @@ function generateSchema(worldPlace: SlimProjection, countries: SlimProjection[])
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://populationpyramids.org/' },
-          { '@type': 'ListItem', position: 2, name: 'Population Projection', item: 'https://populationpyramids.org/population-projection-by-country' },
+          { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Population Projection', item: `${SITE_URL}/population-projection-by-country` },
         ],
       },
       {

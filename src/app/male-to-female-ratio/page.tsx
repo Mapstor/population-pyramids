@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getGenderRatioData } from '@/lib/gender-ratio-data';
+import { SITE_URL } from '@/lib/site-meta';
 import GenderRatioInteractiveTool from './GenderRatioInteractiveTool';
 
 // JSON-LD Schema for SEO
@@ -86,7 +87,7 @@ function generateStructuredData(worldData: any, countries: any[], highestRatioCo
     "distribution": {
       "@type": "DataDownload",
       "encodingFormat": "application/json",
-      "contentUrl": "https://populationpyramids.org/api/gender-ratios"
+      "contentUrl": `${SITE_URL}/api/gender-ratios`
     },
     "temporalCoverage": "1950/2025",
     "spatialCoverage": {
@@ -104,13 +105,13 @@ function generateStructuredData(worldData: any, countries: any[], highestRatioCo
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://populationpyramids.org/"
+        "item": SITE_URL
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Male to Female Ratio",
-        "item": "https://populationpyramids.org/male-to-female-ratio"
+        "item": `${SITE_URL}/male-to-female-ratio`
       }
     ]
   };

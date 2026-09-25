@@ -1,31 +1,17 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { buildMetadata } from '@/lib/site-meta';
 
 export const metadata: Metadata = {
-  title: 'India Just Beat China for the First Time in 300 Years (But China Doesn\'t Want You to Know) | Population Pyramids',
-  description: 'April 2023: India officially became the world\'s most populous country with 1.45 billion people, overtaking China\'s 1.42 billion. Discover the historic demographic reversal that\'s reshaping global power.',
-  keywords: 'India vs China population, world most populous country, India overtakes China, population milestone 2023, demographic shift, global population ranking',
-  openGraph: {
-    title: 'India Just Beat China for the First Time in 300 Years',
-    description: 'Historic milestone: India (1.45B) officially overtook China (1.42B) as world\'s most populous nation. The demographic reversal reshaping global power.',
+  ...buildMetadata({
+    title: 'India Just Beat China for the First Time in 300 Years (But China Doesn\'t Want You to Know)',
+    description: 'April 2023: India officially became the world\'s most populous country with 1.45 billion people, overtaking China\'s 1.42 billion. Discover the historic demographic reversal that\'s reshaping global power.',
+    path: '/blog/india-beat-china-first-time-300-years-population',
     type: 'article',
-    url: 'https://populationpyramids.org/blog/india-beat-china-first-time-300-years-population',
-    images: [
-      {
-        url: '/blog/india-china-population-swap-og.png',
-        width: 1200,
-        height: 630,
-        alt: 'India vs China population milestone visualization'
-      }
-    ]
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'India Just Beat China for the First Time in 300 Years',
-    description: 'Historic: India (1.45B) overtook China (1.42B) as world\'s most populous country. Most people missed this massive milestone.',
-    images: ['/blog/india-china-population-swap-og.png']
-  },
-  alternates: { canonical: 'https://populationpyramids.org/blog/india-beat-china-first-time-300-years-population' },
+    image: '/blog/india-china-population-swap-og.png',
+    imageAlt: 'India vs China population milestone visualization',
+  }),
+  keywords: 'India vs China population, world most populous country, India overtakes China, population milestone 2023, demographic shift, global population ranking',
 };
 
 export default function IndiaChinaPopulationMilestoneArticle() {

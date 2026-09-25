@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import ComparePageClient from '@/components/ComparePageClient';
 import countries from '@/data/countries.json';
+import { SITE_URL } from '@/lib/site-meta';
 
 export const metadata: Metadata = {
   title: 'Compare Population Pyramids - Side-by-Side Country Demographics',
@@ -10,10 +11,10 @@ export const metadata: Metadata = {
     title: 'Compare Population Pyramids - Side-by-Side Country Demographics',
     description: 'Compare population pyramids and demographic data between countries. Interactive visualizations for 195+ countries.',
     type: 'website',
-    url: 'https://populationpyramids.org/compare',
+    url: `${SITE_URL}/compare`,
     images: [
       {
-        url: 'https://populationpyramids.org/og-compare.png',
+        url: `${SITE_URL}/og-compare.png`,
         width: 1200,
         height: 630,
         alt: 'Compare Population Pyramids Tool'

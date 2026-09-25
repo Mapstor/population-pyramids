@@ -9,31 +9,19 @@ import {
   getWorldGenerationData, 
   getAllCountries 
 } from '@/lib/generation-data-loader';
+import { SITE_URL, buildMetadata } from '@/lib/site-meta';
 
 export const metadata: Metadata = {
-  title: 'Generation Age Ranges 2026: Gen Z, Millennial, Gen X, Boomer Calculator',
-  description: 'What generation am I? Enter your birth year to find out. See 2026 age ranges and real population data for Gen Z (14-29), Millennials (30-45), Gen X (46-61), Baby Boomers (62-80), Gen Alpha (0-13).',
-  keywords: 'generation calculator, gen z age, millennial age, boomer age, gen x age, generation age ranges 2026, what generation am i, gen alpha age, silent generation age',
-  openGraph: {
-    title: 'Generation Age Ranges Calculator 2026',
-    description: 'Find out what generation you belong to. Current age ranges and population data for all generations worldwide.',
-    type: 'website',
-    url: 'https://populationpyramids.org/generations',
-    images: [{
-      url: 'https://populationpyramids.org/og-generations.png',
-      width: 1200,
-      height: 630,
-      alt: 'Generation Age Ranges 2026'
-    }]
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Generation Calculator 2026: What Generation Am I?',
-    description: 'Gen Z (14-29), Millennials (30-45), Gen X (46-61), Boomers (62-80). Find your generation and see global population data.',
-  },
-  alternates: {
-    canonical: 'https://populationpyramids.org/generations'
-  }
+  ...buildMetadata({
+    title: 'Generation Age Ranges 2026: Gen Z, Millennial, Gen X, Boomer Calculator',
+    description:
+      'What generation am I? Enter your birth year to find out. See 2026 age ranges and real population data for Gen Z (14-29), Millennials (30-45), Gen X (46-61), Baby Boomers (62-80), Gen Alpha (0-13).',
+    path: '/generations',
+    image: '/og-generations.png',
+    imageAlt: 'Generation Age Ranges 2026',
+  }),
+  keywords:
+    'generation calculator, gen z age, millennial age, boomer age, gen x age, generation age ranges 2026, what generation am i, gen alpha age, silent generation age',
 };
 
 // Generate structured data for SEO
@@ -56,18 +44,18 @@ function generateStructuredData(worldGenerations: any[]) {
         "Compare generation sizes by country",
         "See age ranges for all generations in 2026"
       ],
-      "screenshot": "https://populationpyramids.org/screenshots/generation-calculator.png"
+      "screenshot": `${SITE_URL}/screenshots/generation-calculator.png`
     },
     {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      "@id": "https://populationpyramids.org/generations#dataset",
+      "@id": `${SITE_URL}/generations#dataset`,
       "name": "World Generation Populations 2026",
       "description": "Global population distribution by generation (Gen Alpha, Gen Z, Millennials, Gen X, Baby Boomers, Silent Generation)",
       "creator": {
         "@type": "Organization",
         "name": "Population Pyramids",
-        "url": "https://populationpyramids.org"
+        "url": SITE_URL
       },
       "temporalCoverage": "2026",
       "spatialCoverage": {
@@ -139,13 +127,13 @@ function generateStructuredData(worldGenerations: any[]) {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://populationpyramids.org"
+          "item": SITE_URL
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Generation Calculator",
-          "item": "https://populationpyramids.org/generations"
+          "item": `${SITE_URL}/generations`
         }
       ]
     }

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getMedianAgeData } from '@/lib/median-age-data';
+import { SITE_URL, SITE_NAME } from '@/lib/site-meta';
 import MedianAgeInteractiveTool from './MedianAgeInteractiveTool';
 
 // JSON-LD Schema for SEO with @graph structure
@@ -10,9 +11,9 @@ function generateStructuredData(worldData: any, countries: any[], oldestCountrie
     "@graph": [
       {
         "@type": "WebApplication",
-        "@id": "https://populationpyramids.org/median-age-by-country#webapp",
+        "@id": `${SITE_URL}/median-age-by-country#webapp`,
         "name": "Median Age by Country Explorer",
-        "url": "https://populationpyramids.org/median-age-by-country",
+        "url": `${SITE_URL}/median-age-by-country`,
         "applicationCategory": "ReferenceApplication",
         "operatingSystem": "All",
         "offers": {
@@ -28,16 +29,16 @@ function generateStructuredData(worldData: any, countries: any[], oldestCountrie
           "Regional demographic insights",
           "Youth vs elderly population analysis"
         ],
-        "screenshot": "https://populationpyramids.org/og-median-age.png",
+        "screenshot": `${SITE_URL}/og-median-age.png`,
         "applicationSubCategory": "Demographics Tool",
         "inLanguage": "en-US"
       },
       {
         "@type": "Dataset",
-        "@id": "https://populationpyramids.org/median-age-by-country#dataset",
+        "@id": `${SITE_URL}/median-age-by-country#dataset`,
         "name": "Global Median Age Data 2025",
         "description": "Comprehensive median age statistics and age distribution data for all 195 countries from UN World Population Prospects",
-        "url": "https://populationpyramids.org/median-age-by-country",
+        "url": `${SITE_URL}/median-age-by-country`,
         "creator": {
           "@type": "Organization",
           "name": "United Nations Department of Economic and Social Affairs",
@@ -45,13 +46,13 @@ function generateStructuredData(worldData: any, countries: any[], oldestCountrie
         },
         "publisher": {
           "@type": "Organization",
-          "name": "PopulationPyramids.org",
-          "url": "https://populationpyramids.org"
+          "name": SITE_NAME,
+          "url": SITE_URL
         },
         "distribution": {
           "@type": "DataDownload",
           "encodingFormat": "application/json",
-          "contentUrl": "https://populationpyramids.org/api/median-ages"
+          "contentUrl": `${SITE_URL}/api/median-ages`
         },
         "temporalCoverage": "1950/2025",
         "spatialCoverage": {
@@ -89,13 +90,13 @@ function generateStructuredData(worldData: any, countries: any[], oldestCountrie
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://populationpyramids.org/"
+            "item": SITE_URL
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Median Age by Country",
-            "item": "https://populationpyramids.org/median-age-by-country"
+            "item": `${SITE_URL}/median-age-by-country`
           }
         ]
       },

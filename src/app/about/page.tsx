@@ -1,18 +1,11 @@
 import { Metadata } from 'next';
+import { buildMetadata, SITE_URL } from '@/lib/site-meta';
 
-export const metadata: Metadata = {
-  title: 'About - Population Pyramids Platform',
+export const metadata: Metadata = buildMetadata({
+  title: 'About',
   description: 'Learn about our demographic visualization platform providing interactive population data for 195 countries. Built on UN World Population Prospects 2024 data with comprehensive analysis tools.',
-  openGraph: {
-    title: 'About - Population Pyramids Platform',
-    description: 'Learn about our demographic visualization platform providing interactive population data for 195 countries. Built on UN World Population Prospects 2024 data.',
-    url: 'https://populationpyramids.org/about',
-  },
-  twitter: {
-    title: 'About - Population Pyramids Platform',
-    description: 'Learn about our demographic visualization platform providing interactive population data for 195 countries.',
-  },
-};
+  path: '/about',
+});
 
 // JSON-LD Schema for About page
 const jsonLd = {
@@ -29,7 +22,7 @@ const jsonLd = {
       priceCurrency: 'USD',
     },
     description: 'Interactive demographic visualization platform providing comprehensive population data for 195 countries from 1950-2025.',
-    url: 'https://populationpyramids.org',
+    url: SITE_URL,
     author: {
       '@type': 'Organization',
       name: 'Population Pyramids',

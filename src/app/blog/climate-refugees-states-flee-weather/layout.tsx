@@ -1,21 +1,12 @@
 import type { Metadata } from 'next';
+import { buildMetadata } from '@/lib/site-meta';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Climate Refugees: 12 States Americans Flee Due to Weather",
-  description: "Climate Refugees: 12 States Americans Flee Due to Weather — data-driven demographic analysis on PopulationPyramids.org. UN World Population Prospects 2024 / US Census-based reporting.",
-  alternates: { canonical: "https://populationpyramids.org/blog/climate-refugees-states-flee-weather" },
-  openGraph: {
-    title: "Climate Refugees: 12 States Americans Flee Due to Weather",
-    description: "Climate Refugees: 12 States Americans Flee Due to Weather — data-driven demographic analysis on PopulationPyramids.org. UN World Population Prospects 2024 / US Census-based reporting.",
-    type: 'article',
-    url: "https://populationpyramids.org/blog/climate-refugees-states-flee-weather",
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: "Climate Refugees: 12 States Americans Flee Due to Weather",
-    description: "Climate Refugees: 12 States Americans Flee Due to Weather — data-driven demographic analysis on PopulationPyramids.org. UN World Population Prospects 2024 / US Census-based reporting.",
-  },
-};
+  description: "Climate Refugees: 12 States Americans Flee Due to Weather — data-driven demographic analysis on Population Pyramids. UN World Population Prospects 2024 / US Census-based reporting.",
+  path: "/blog/climate-refugees-states-flee-weather",
+  type: 'article',
+});
 
 export default function ArticleLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;

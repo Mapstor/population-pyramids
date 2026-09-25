@@ -1,13 +1,16 @@
 import Link from 'next/link';
-import { CURRENT_YEAR } from '@/lib/site-meta';
+import { CURRENT_YEAR, buildMetadata } from '@/lib/site-meta';
 
 export const revalidate = 86400;
 
 export const metadata = {
-  title: `States With Oldest Population ${CURRENT_YEAR}: Top 15 US States by Median Age`,
-  description: 'Discover which state has the oldest population. Maine leads at 45.1 years median age. Complete ranking of states with oldest population, senior citizens data, and cheapest states for seniors to live.',
+  ...buildMetadata({
+    title: `States With Oldest Population ${CURRENT_YEAR}: Top 15 US States by Median Age`,
+    description: 'Discover which state has the oldest population. Maine leads at 45.1 years median age. Complete ranking of states with oldest population, senior citizens data, and cheapest states for seniors to live.',
+    path: '/blog/oldest-states-in-us-aging-population',
+    type: 'article',
+  }),
   keywords: 'oldest states in the US, states with oldest population, which state has the oldest population, state with most senior citizens, cheapest states for seniors to live, median age by state',
-  alternates: { canonical: 'https://populationpyramids.org/blog/oldest-states-in-us-aging-population' },
 };
 
 export default function OldestStatesPage() {

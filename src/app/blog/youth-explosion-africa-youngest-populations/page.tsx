@@ -1,31 +1,17 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { buildMetadata } from '@/lib/site-meta';
 
 export const metadata: Metadata = {
-  title: 'Youth Explosion: Africa\'s Demographic Dividend and the World\'s Youngest Populations | Population Pyramids',
-  description: 'Explore countries where 45%+ of the population is under 15. From Niger\'s baby boom to Chad\'s youth surge, discover how young populations drive economic growth and face unique challenges.',
-  keywords: 'youth demographics, africa young population, demographic dividend, population boom, young countries, birth rates, economic growth',
-  openGraph: {
+  ...buildMetadata({
     title: 'Youth Explosion: Africa\'s Demographic Dividend and the World\'s Youngest Populations',
-    description: 'Discover countries where nearly half the population is under 15 and how this demographic dividend shapes economic futures.',
+    description: 'Explore countries where 45%+ of the population is under 15. From Niger\'s baby boom to Chad\'s youth surge, discover how young populations drive economic growth and face unique challenges.',
+    path: '/blog/youth-explosion-africa-youngest-populations',
     type: 'article',
-    url: 'https://populationpyramids.org/blog/youth-explosion-africa-youngest-populations',
-    images: [
-      {
-        url: '/blog/youth-explosion-og.png',
-        width: 1200,
-        height: 630,
-        alt: 'Youth explosion demographics visualization'
-      }
-    ]
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Youth Explosion: Africa\'s Demographic Dividend',
-    description: 'Countries where 45%+ of population is under 15 face unprecedented opportunities and challenges.',
-    images: ['/blog/youth-explosion-og.png']
-  },
-  alternates: { canonical: 'https://populationpyramids.org/blog/youth-explosion-africa-youngest-populations' },
+    image: '/blog/youth-explosion-og.png',
+    imageAlt: 'Youth explosion demographics visualization',
+  }),
+  keywords: 'youth demographics, africa young population, demographic dividend, population boom, young countries, birth rates, economic growth',
 };
 
 export default function YouthExplosionArticle() {

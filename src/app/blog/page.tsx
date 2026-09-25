@@ -2,24 +2,19 @@ import Link from 'next/link';
 import BlogThumbnailPyramid from '@/components/BlogThumbnailPyramid';
 import { loadCountryData } from '@/lib/data-loader';
 import { loadStateData } from '@/lib/state-data-loader';
-import { CURRENT_YEAR, LAST_UPDATED_ISO } from '@/lib/site-meta';
+import { CURRENT_YEAR, LAST_UPDATED_ISO, buildMetadata, SITE_URL, SITE_NAME } from '@/lib/site-meta';
 
 export const revalidate = 86400;
 
 export const metadata = {
-  title: 'Demographics Blog — Population Insights & Analysis',
-  description:
-    'Demographic trends, population insights, and data-driven stories from around the world. Aging societies, youth booms, fertility collapse, migration, US state shifts.',
-  keywords:
-    'demographics blog, population trends, aging crisis, youth boom, demographic analysis, population insights',
-  openGraph: {
+  ...buildMetadata({
     title: 'Demographics Blog — Population Insights & Analysis',
     description:
-      'Demographic trends and data-driven stories from around the world.',
-    type: 'website',
-    url: 'https://populationpyramids.org/blog',
-  },
-  alternates: { canonical: 'https://populationpyramids.org/blog' },
+      'Demographic trends, population insights, and data-driven stories from around the world. Aging societies, youth booms, fertility collapse, migration, US state shifts.',
+    path: '/blog',
+  }),
+  keywords:
+    'demographics blog, population trends, aging crisis, youth boom, demographic analysis, population insights',
 };
 
 // Year used for every thumbnail pyramid (latest UN WPP / US Census vintage we have).
@@ -559,32 +554,32 @@ export default async function BlogPage() {
     '@graph': [
       {
         '@type': 'Blog',
-        '@id': 'https://populationpyramids.org/blog#blog',
+        '@id': `${SITE_URL}/blog#blog`,
         name: 'Demographics Blog',
         description:
           'Data-driven demographic stories — aging societies, youth booms, fertility collapse, migration, US state shifts.',
-        url: 'https://populationpyramids.org/blog',
+        url: `${SITE_URL}/blog`,
         publisher: {
           '@type': 'Organization',
-          name: 'PopulationPyramids.org',
-          url: 'https://populationpyramids.org',
+          name: SITE_NAME,
+          url: SITE_URL,
           logo: {
             '@type': 'ImageObject',
-            url: 'https://populationpyramids.org/icon.svg',
+            url: `${SITE_URL}/icon.svg`,
           },
         },
         blogPost: sorted.map((p) => ({
           '@type': 'BlogPosting',
-          '@id': `https://populationpyramids.org/blog/${p.slug}#post`,
-          url: `https://populationpyramids.org/blog/${p.slug}`,
+          '@id': `${SITE_URL}/blog/${p.slug}#post`,
+          url: `${SITE_URL}/blog/${p.slug}`,
           headline: p.title,
           description: p.excerpt,
           datePublished: p.date,
           dateModified: p.date,
           author: {
             '@type': 'Organization',
-            name: 'PopulationPyramids.org',
-            url: 'https://populationpyramids.org',
+            name: SITE_NAME,
+            url: SITE_URL,
           },
           keywords: p.tags.join(', '),
           articleSection: p.category,
@@ -594,8 +589,8 @@ export default async function BlogPage() {
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://populationpyramids.org/' },
-          { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://populationpyramids.org/blog' },
+          { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_URL}/blog` },
         ],
       },
     ],

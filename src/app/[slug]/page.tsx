@@ -30,6 +30,7 @@ import LifeExpectancySection from '@/components/LifeExpectancySection';
 import DecadeBreakdown from '@/components/DecadeBreakdown';
 import ShareButtons from '@/components/ShareButtons';
 import { getCountryNeighbors, getRegionalCountries } from '@/lib/country-neighbors';
+import { SITE_URL } from '@/lib/site-meta';
 
 export const dynamicParams = false;
 export const revalidate = false;
@@ -1800,7 +1801,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
 
           {/* Share Buttons */}
           <ShareButtons
-            url={`https://populationpyramids.org/${params.slug}`}
+            url={`${SITE_URL}/${params.slug}`}
             title={`${countryData.countryName} Population Pyramid ${latestYear}`}
             description={`Explore demographic data and population trends for ${countryData.countryName}`}
           />

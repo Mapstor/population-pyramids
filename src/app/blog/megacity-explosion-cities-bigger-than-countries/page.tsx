@@ -1,31 +1,17 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { buildMetadata } from '@/lib/site-meta';
 
 export const metadata: Metadata = {
-  title: 'Megacity Explosion: When Cities Become Bigger Than Entire Countries',
-  description: 'Tokyo has more people than all of Canada. Lagos grows by 1,500 people daily. Delhi adds a Miami every year. Discover how megacities are reshaping human civilization and creating unprecedented urban demographics.',
-  keywords: 'megacities, urban population, urbanization, city demographics, population density, urban growth, metropolitan areas',
-  openGraph: {
-    title: 'Megacity Explosion: Cities Bigger Than Countries',
-    description: 'Tokyo has more people than Canada. Lagos grows by 1,500 daily. The megacity revolution is reshaping humanity.',
+  ...buildMetadata({
+    title: 'Megacity Explosion: When Cities Become Bigger Than Entire Countries',
+    description: 'Tokyo has more people than all of Canada. Lagos grows by 1,500 people daily. Delhi adds a Miami every year. Discover how megacities are reshaping human civilization and creating unprecedented urban demographics.',
+    path: '/blog/megacity-explosion-cities-bigger-than-countries',
     type: 'article',
-    url: 'https://populationpyramids.org/blog/megacity-explosion-cities-bigger-than-countries',
-    images: [
-      {
-        url: '/blog/megacity-explosion-og.png',
-        width: 1200,
-        height: 630,
-        alt: 'Megacity population visualization'
-      }
-    ]
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Megacity Explosion: Cities Bigger Than Countries',
-    description: 'Tokyo: 38M. Lagos: +1,500 daily. The urban revolution changing everything.',
-    images: ['/blog/megacity-explosion-og.png']
-  },
-  alternates: { canonical: 'https://populationpyramids.org/blog/megacity-explosion-cities-bigger-than-countries' },
+    image: '/blog/megacity-explosion-og.png',
+    imageAlt: 'Megacity population visualization',
+  }),
+  keywords: 'megacities, urban population, urbanization, city demographics, population density, urban growth, metropolitan areas',
 };
 
 export default function MegacityExplosionArticle() {

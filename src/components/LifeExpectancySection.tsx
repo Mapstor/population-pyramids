@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { LifeExpectancyData } from '@/lib/life-expectancy-loader';
+import { SITE_URL } from '@/lib/site-meta';
 
 interface Props {
   data: LifeExpectancyData;
@@ -227,10 +228,10 @@ export default function LifeExpectancySection({ data, countrySlug }: Props) {
   const datasetSchema = {
     '@context': 'https://schema.org',
     '@type': 'Dataset',
-    '@id': `https://populationpyramids.org/${countrySlug}#life-expectancy-dataset`,
+    '@id': `${SITE_URL}/${countrySlug}#life-expectancy-dataset`,
     name: `Life Expectancy at Birth in ${data.country}`,
     description: `Life expectancy at birth in ${data.country}, 2024: ${data.current.total} years (male ${data.current.male}, female ${data.current.female}). World rank #${data.rank.position} of ${data.rank.outOf}. Historical series 1950–${data.historical[data.historical.length - 1].year} and UN medium-variant projections to 2100.`,
-    url: `https://populationpyramids.org/${countrySlug}#life-expectancy`,
+    url: `${SITE_URL}/${countrySlug}#life-expectancy`,
     creator: {
       '@type': 'Organization',
       name: 'United Nations Department of Economic and Social Affairs, Population Division',

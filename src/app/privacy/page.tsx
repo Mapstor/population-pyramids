@@ -1,8 +1,12 @@
 import { Metadata } from 'next';
+import { buildMetadata } from '@/lib/site-meta';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy - Population Pyramids',
-  description: 'Privacy policy for Population Pyramids demographic visualization platform. Learn how we protect your data and respect your privacy while providing UN population data access.',
+  ...buildMetadata({
+    title: 'Privacy Policy',
+    description: 'Privacy policy for Population Pyramids demographic visualization platform. Learn how we protect your data and respect your privacy while providing UN population data access.',
+    path: '/privacy',
+  }),
   robots: {
     index: true,
     follow: true,

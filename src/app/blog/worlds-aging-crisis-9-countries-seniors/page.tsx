@@ -3,18 +3,16 @@ import { loadCountries, loadCountryData } from '@/lib/data-loader';
 import { calculateMetrics } from '@/lib/calculations';
 import PopulationPyramid from '@/components/PopulationPyramid';
 import { Line, Bar } from 'react-chartjs-2';
+import { buildMetadata } from '@/lib/site-meta';
 
 export const metadata = {
-  title: 'The World\'s Aging Crisis: 9 Countries Where Half the Population Will Soon Be Seniors',
-  description: 'Japan\'s median age has risen 7.5 years since 2000. South Korea ages faster than any nation in history. Explore the demographic revolution transforming our world.',
-  keywords: 'aging population, demographic crisis, japan aging, south korea elderly, population aging, demographic transition',
-  openGraph: {
+  ...buildMetadata({
     title: 'The World\'s Aging Crisis: 9 Countries Where Half the Population Will Soon Be Seniors',
-    description: 'Japan\'s median age has risen 7.5 years since 2000. South Korea ages faster than any nation in history.',
+    description: 'Japan\'s median age has risen 7.5 years since 2000. South Korea ages faster than any nation in history. Explore the demographic revolution transforming our world.',
+    path: '/blog/worlds-aging-crisis-9-countries-seniors',
     type: 'article',
-    url: 'https://populationpyramids.org/blog/worlds-aging-crisis-9-countries-seniors',
-  },
-  alternates: { canonical: 'https://populationpyramids.org/blog/worlds-aging-crisis-9-countries-seniors' },
+  }),
+  keywords: 'aging population, demographic crisis, japan aging, south korea elderly, population aging, demographic transition',
 };
 
 // Static country data for the aging countries

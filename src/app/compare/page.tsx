@@ -4,30 +4,17 @@ import ComparePageClient from '@/components/ComparePageClient';
 import countries from '@/data/countries.json';
 import { COMPARISON_PAIRS } from '@/lib/comparison-pairs';
 import { getComparePageData, groupCountriesByRegion } from '@/lib/compare-data';
+import { buildMetadata } from '@/lib/site-meta';
 
-export const metadata: Metadata = {
+// Canonicalizes to the clean /compare path (the page ignores any ?c1=&c2= query).
+export const metadata: Metadata = buildMetadata({
   title: 'Compare Population Pyramids - Side-by-Side Country Demographics',
-  description: 'Compare population pyramids and demographic data between countries. Interactive visualizations showing age distribution, sex ratios, and population structures for any two countries.',
-  openGraph: {
-    title: 'Compare Population Pyramids - Side-by-Side Country Demographics',
-    description: 'Compare population pyramids and demographic data between countries. Interactive visualizations for 195+ countries.',
-    type: 'website',
-    url: 'https://populationpyramids.org/compare',
-    images: [
-      {
-        url: 'https://populationpyramids.org/og-compare.png',
-        width: 1200,
-        height: 630,
-        alt: 'Compare Population Pyramids Tool'
-      }
-    ]
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Compare Population Pyramids',
-    description: 'Compare demographics between any two countries with interactive population pyramids.',
-  }
-};
+  description:
+    'Compare population pyramids and demographic data between countries. Interactive visualizations showing age distribution, sex ratios, and population structures for any two countries.',
+  path: '/compare',
+  image: '/og-compare.png',
+  imageAlt: 'Compare Population Pyramids Tool',
+});
 
 // Popular comparison pairs - select from the comprehensive list
 const POPULAR_COMPARISONS = COMPARISON_PAIRS

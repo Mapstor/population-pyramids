@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { loadCountries, loadCountryData } from '@/lib/data-loader';
 import { getCountryFlag } from '@/lib/country-flags';
-import { CURRENT_YEAR, LAST_UPDATED_ISO } from '@/lib/site-meta';
+import { CURRENT_YEAR, LAST_UPDATED_ISO, buildMetadata, SITE_URL } from '@/lib/site-meta';
 import PyramidMaker from './PyramidMaker';
 import PyramidContextSections from './PyramidContextSections';
 import { STANDARD_AGE_BANDS, type PyramidRow } from '@/lib/pyramid-maker-helpers';
@@ -15,26 +15,13 @@ export const revalidate = 86400;
 const SHIPPED_YEARS = [1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020, 2025];
 
 export const metadata: Metadata = {
-  title: `Population Pyramid Maker ${CURRENT_YEAR} — Generate Custom Pyramids Free`,
-  description: `Free online population pyramid generator. Pick any of 195 countries from 1950–2025 (UN data pre-loaded) or enter your own age/sex numbers. Customize colors, title, and percentages — download as PNG or SVG. Built-in anatomy guide and the three pyramid types (expansive, stationary, constrictive) with real examples.`,
+  ...buildMetadata({
+    title: `Population Pyramid Maker ${CURRENT_YEAR} — Generate Custom Pyramids Free`,
+    description: `Free online population pyramid generator. Pick any of 195 countries from 1950–2025 (UN data pre-loaded) or enter your own age/sex numbers. Customize colors, title, and percentages — download as PNG or SVG. Built-in anatomy guide and the three pyramid types (expansive, stationary, constrictive) with real examples.`,
+    path: '/population-pyramid-maker',
+  }),
   keywords:
     'population pyramid maker, population pyramid generator, make population pyramid, custom population pyramid, population pyramid creator, age pyramid maker, demographic pyramid generator, free population pyramid tool',
-  openGraph: {
-    title: `Population Pyramid Maker — Free Generator for Any Country or Custom Data`,
-    description: `Pick any country & year (UN data) or enter your own numbers. Customize, then download PNG or SVG. Built-in anatomy guide.`,
-    type: 'website',
-    url: 'https://populationpyramids.org/population-pyramid-maker',
-    siteName: 'Population Pyramids',
-    // og:image auto-generated from src/app/population-pyramid-maker/opengraph-image.tsx
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Population Pyramid Maker — Free PNG/SVG Generator',
-    description: '195 countries 1950–2025, or paste your own data. Free download.',
-  },
-  alternates: {
-    canonical: 'https://populationpyramids.org/population-pyramid-maker',
-  },
 };
 
 function generateSchema() {
@@ -43,9 +30,9 @@ function generateSchema() {
     '@graph': [
       {
         '@type': 'WebApplication',
-        '@id': 'https://populationpyramids.org/population-pyramid-maker#webapp',
+        '@id': `${SITE_URL}/population-pyramid-maker#webapp`,
         name: 'Population Pyramid Maker',
-        url: 'https://populationpyramids.org/population-pyramid-maker',
+        url: `${SITE_URL}/population-pyramid-maker`,
         applicationCategory: 'EducationalApplication',
         applicationSubCategory: 'Data visualization · demographics',
         operatingSystem: 'Any',
@@ -64,8 +51,8 @@ function generateSchema() {
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://populationpyramids.org/' },
-          { '@type': 'ListItem', position: 2, name: 'Population Pyramid Maker', item: 'https://populationpyramids.org/population-pyramid-maker' },
+          { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Population Pyramid Maker', item: `${SITE_URL}/population-pyramid-maker` },
         ],
       },
       {

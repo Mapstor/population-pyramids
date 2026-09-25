@@ -30,15 +30,51 @@ const blogRedirects = [
     to:   'fastest-growing-states-population' },
 ];
 
+/**
+ * Legacy hosts that must funnel to the one canonical host, www. These are the
+ * ONLY hardcoded host strings in the codebase (the site URL otherwise lives in
+ * src/lib/site-meta.ts, which next.config.js — plain CommonJS, loaded before TS
+ * compilation — cannot import). Values are matched by Next as `^<value>$`
+ * (anchored, host lowercased), so the dots are escaped and neither localhost,
+ * preview *.vercel.app deploys, nor www itself can match.
+ *
+ * This is the code-side safety net; the Vercel dashboard apex->www 308 redirect
+ * is the primary mechanism.
+ */
+const CANONICAL_ORIGIN = 'https://www.populationpyramids.org';
+const LEGACY_HOSTS = [
+  'populationpyramids\\.org',
+  'population-pyramids-peach\\.vercel\\.app',
+];
+
 module.exports = {
   swcMinify: false,
   typescript: { ignoreBuildErrors: true },
   eslint: { ignoreDuringBuilds: true },
   async redirects() {
-    return blogRedirects.map(({ from, to }) => ({
+    const blog = blogRedirects.map(({ from, to }) => ({
       source: `/blog/${from}`,
       destination: `/blog/${to}`,
       permanent: true,
     }));
+    // 308 every path from a legacy host to the same path on www, query preserved.
+    const host = LEGACY_HOSTS.map((value) => ({
+      source: '/:path*',
+      has: [{ type: 'host', value }],
+      destination: `${CANONICAL_ORIGIN}/:path*`,
+      permanent: true,
+    }));
+    return [...blog, ...host];
+  },
+  async headers() {
+    // Keep machine-readable endpoints out of the index. /api and /data must
+    // stay crawlable (robots no longer disallows /api — pages fetch it at
+    // runtime), so noindex is enforced at the response-header level instead.
+    const noindex = [{ key: 'X-Robots-Tag', value: 'noindex' }];
+    return [
+      { source: '/api/:path*', headers: noindex },
+      { source: '/data/:path*', headers: noindex },
+      { source: '/sitemap.xml', headers: noindex },
+    ];
   },
 };

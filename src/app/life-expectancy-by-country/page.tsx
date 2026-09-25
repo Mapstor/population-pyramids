@@ -6,7 +6,7 @@ import { getCountryFlag } from '@/lib/country-flags';
 import { getWorldMapPaths } from '@/lib/world-map-data';
 import RankingBarChart, { BarItem } from '@/components/RankingBarChart';
 import WorldPopulationMap, { CountryMapDatum } from '@/components/WorldPopulationMap';
-import { CURRENT_YEAR, LAST_UPDATED_ISO } from '@/lib/site-meta';
+import { CURRENT_YEAR, LAST_UPDATED_ISO, buildMetadata, SITE_URL, SITE_NAME } from '@/lib/site-meta';
 import LifeExpectancyCalculator from './LifeExpectancyCalculator';
 import { toSlim } from '@/lib/life-expectancy-helpers';
 import ToolCrossLinks from '@/components/ToolCrossLinks';
@@ -14,29 +14,14 @@ import ToolCrossLinks from '@/components/ToolCrossLinks';
 export const revalidate = 86400;
 
 export const metadata = {
-  title: `Life Expectancy Calculator & Ranking by Country ${CURRENT_YEAR}`,
-  description:
-    `Personal life expectancy calculator + all 195 countries ranked. Enter your birth year, sex, and country to see your statistical lifespan and how it's changed since you were born. Monaco, Japan, Switzerland lead at 85+ years; Nigeria, Chad, CAR at the bottom around 55. UN World Population Prospects ${CURRENT_YEAR} data with male/female breakdowns and projections to 2100.`,
-  keywords:
-    'life expectancy calculator, how long will I live, life expectancy by country, life expectancy at birth by country, average life expectancy by country, countries by life expectancy, lifespan by country, country life span, age expectancy by country, life expectancy by nation, average life span by country, countries longest life expectancy, countries highest life expectancy, expected age of death, longevity calculator',
-  openGraph: {
+  ...buildMetadata({
     title: `Life Expectancy Calculator & Ranking by Country ${CURRENT_YEAR}`,
     description:
-      'Personal calculator + all 195 countries ranked. Enter your birth year, sex & country to see your statistical lifespan. Male/female breakdowns and projections to 2100.',
-    type: 'website',
-    url: 'https://populationpyramids.org/life-expectancy-by-country',
-    siteName: 'Population Pyramids',
-    // og:image auto-generated from src/app/life-expectancy-by-country/opengraph-image.tsx
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: `Life Expectancy Calculator & Ranking by Country ${CURRENT_YEAR}`,
-    description: 'Personal life expectancy calculator + all 195 countries ranked. Birth year + sex + country → your statistical lifespan.',
-    // twitter:image auto-derives from og:image (file convention)
-  },
-  alternates: {
-    canonical: 'https://populationpyramids.org/life-expectancy-by-country',
-  },
+      `Personal life expectancy calculator + all 195 countries ranked. Enter your birth year, sex, and country to see your statistical lifespan and how it's changed since you were born. Monaco, Japan, Switzerland lead at 85+ years; Nigeria, Chad, CAR at the bottom around 55. UN World Population Prospects ${CURRENT_YEAR} data with male/female breakdowns and projections to 2100.`,
+    path: '/life-expectancy-by-country',
+  }),
+  keywords:
+    'life expectancy calculator, how long will I live, life expectancy by country, life expectancy at birth by country, average life expectancy by country, countries by life expectancy, lifespan by country, country life span, age expectancy by country, life expectancy by nation, average life span by country, countries longest life expectancy, countries highest life expectancy, expected age of death, longevity calculator',
 };
 
 const LAST_UPDATED = LAST_UPDATED_ISO;
@@ -48,20 +33,20 @@ function generateSchema(top10: any[], bottom10: any[], worldAvg: number, gapTopB
     '@graph': [
       {
         '@type': 'Article',
-        '@id': 'https://populationpyramids.org/life-expectancy-by-country#article',
+        '@id': `${SITE_URL}/life-expectancy-by-country#article`,
         headline: `Life Expectancy by Country ${CURRENT_YEAR} — All 195 Countries Ranked`,
         description:
           'A sourced ranking of every country by life expectancy at birth, with male/female breakdowns and projections to 2100.',
-        author: { '@type': 'Organization', name: 'PopulationPyramids.org', url: 'https://populationpyramids.org' },
+        author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
         publisher: {
           '@type': 'Organization',
-          name: 'PopulationPyramids.org',
-          url: 'https://populationpyramids.org',
-          logo: { '@type': 'ImageObject', url: 'https://populationpyramids.org/icon.svg' },
+          name: SITE_NAME,
+          url: SITE_URL,
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon.svg` },
         },
         datePublished: PUBLISHED,
         dateModified: LAST_UPDATED,
-        mainEntityOfPage: 'https://populationpyramids.org/life-expectancy-by-country',
+        mainEntityOfPage: `${SITE_URL}/life-expectancy-by-country`,
         articleSection: 'Demographics',
         wordCount: 3000,
         citation: [
@@ -75,26 +60,26 @@ function generateSchema(top10: any[], bottom10: any[], worldAvg: number, gapTopB
       },
       {
         '@type': 'WebPage',
-        '@id': 'https://populationpyramids.org/life-expectancy-by-country#webpage',
+        '@id': `${SITE_URL}/life-expectancy-by-country#webpage`,
         name: `Life Expectancy by Country ${CURRENT_YEAR}`,
-        url: 'https://populationpyramids.org/life-expectancy-by-country',
+        url: `${SITE_URL}/life-expectancy-by-country`,
         description: 'Complete ranking of life expectancy across all 195 countries in 2024.',
         inLanguage: 'en-US',
-        isPartOf: { '@type': 'WebSite', name: 'Population Pyramids', url: 'https://populationpyramids.org' },
+        isPartOf: { '@type': 'WebSite', name: 'Population Pyramids', url: SITE_URL },
       },
       {
         '@type': 'Dataset',
-        '@id': 'https://populationpyramids.org/life-expectancy-by-country#dataset',
+        '@id': `${SITE_URL}/life-expectancy-by-country#dataset`,
         name: 'World Countries Ranked by Life Expectancy at Birth 2024',
         description:
           'Life expectancy at birth for all 195 UN-recognized countries — both sexes combined plus male/female breakdowns, historical series 1950–2023, and medium-variant projections to 2100.',
-        url: 'https://populationpyramids.org/life-expectancy-by-country',
+        url: `${SITE_URL}/life-expectancy-by-country`,
         creator: {
           '@type': 'Organization',
           name: 'United Nations Department of Economic and Social Affairs, Population Division',
           url: 'https://population.un.org/',
         },
-        publisher: { '@type': 'Organization', name: 'PopulationPyramids.org', url: 'https://populationpyramids.org' },
+        publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
         temporalCoverage: '1950/2100',
         spatialCoverage: { '@type': 'Place', name: 'World' },
         license: 'https://creativecommons.org/licenses/by/4.0/',
@@ -106,7 +91,7 @@ function generateSchema(top10: any[], bottom10: any[], worldAvg: number, gapTopB
       },
       {
         '@type': 'ItemList',
-        '@id': 'https://populationpyramids.org/life-expectancy-by-country#itemlist',
+        '@id': `${SITE_URL}/life-expectancy-by-country#itemlist`,
         name: 'Top 10 Countries by Life Expectancy 2024',
         numberOfItems: 10,
         itemListOrder: 'https://schema.org/ItemListOrderDescending',
@@ -115,19 +100,19 @@ function generateSchema(top10: any[], bottom10: any[], worldAvg: number, gapTopB
           position: i + 1,
           name: c.country,
           description: `${c.current.total} years`,
-          url: `https://populationpyramids.org/${c.slug}`,
+          url: `${SITE_URL}/${c.slug}`,
         })),
       },
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://populationpyramids.org/' },
-          { '@type': 'ListItem', position: 2, name: 'Countries', item: 'https://populationpyramids.org/countries' },
+          { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Countries', item: `${SITE_URL}/countries` },
           {
             '@type': 'ListItem',
             position: 3,
             name: 'Life Expectancy by Country',
-            item: 'https://populationpyramids.org/life-expectancy-by-country',
+            item: `${SITE_URL}/life-expectancy-by-country`,
           },
         ],
       },

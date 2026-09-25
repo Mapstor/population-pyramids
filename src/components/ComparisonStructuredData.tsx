@@ -1,7 +1,8 @@
-// Single source of truth for the canonical origin used in this component's
-// JSON-LD. The site has no shared SITE_URL constant yet; keeping one local
-// const here prevents the .org/.net drift this file previously had.
-const BASE_URL = 'https://populationpyramids.org';
+import { SITE_URL } from '@/lib/site-meta';
+
+// Canonical origin for this component's JSON-LD — sourced from the shared
+// site-wide constant so it can never drift from the rest of the site.
+const BASE_URL = SITE_URL;
 
 export default function ComparisonStructuredData({
   country1Name,

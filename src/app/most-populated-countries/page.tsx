@@ -3,25 +3,18 @@ import { getCountryRankings, formatPopulation, formatDensity } from '@/lib/count
 import { getWorldMapPaths } from '@/lib/world-map-data';
 import WorldPopulationMap, { CountryMapDatum } from '@/components/WorldPopulationMap';
 import RankingBarChart, { BarItem } from '@/components/RankingBarChart';
-import { CURRENT_YEAR, LAST_UPDATED_ISO } from '@/lib/site-meta';
+import { CURRENT_YEAR, LAST_UPDATED_ISO, buildMetadata, SITE_URL, SITE_NAME } from '@/lib/site-meta';
 
 export const revalidate = 86400;
 
 export const metadata = {
-  title: `Most Populated Countries in the World ${CURRENT_YEAR} — All 195 Ranked`,
-  description: `Complete list of every country in the world ranked by population in ${CURRENT_YEAR}. India and China each hold over 1.4 billion people; the United States is third with 340 million. Interactive world map, sortable table, regional breakdowns, projections to 2050 and 2100, glossary, methodology, and 15-question FAQ. Data from UN World Population Prospects 2024.`,
+  ...buildMetadata({
+    title: `Most Populated Countries in the World ${CURRENT_YEAR} — All 195 Ranked`,
+    description: `Complete list of every country in the world ranked by population in ${CURRENT_YEAR}. India and China each hold over 1.4 billion people; the United States is third with 340 million. Interactive world map, sortable table, regional breakdowns, projections to 2050 and 2100, glossary, methodology, and 15-question FAQ. Data from UN World Population Prospects 2024.`,
+    path: '/most-populated-countries',
+  }),
   keywords:
     'most populated countries, countries by population, most populous nations, largest countries by population, countries ranked by population, world population by country, list of countries by population, every country population, population by country, world population ranking, world population map',
-  openGraph: {
-    title: `Most Populated Countries in the World ${CURRENT_YEAR} — Interactive Map + All 195 Ranked`,
-    description:
-      'Interactive world map showing every country\'s population. Sortable rankings, regional breakdowns, historical evolution since 1950, projections to 2100, glossary, methodology, and 15-question FAQ.',
-    type: 'website',
-    url: 'https://populationpyramids.org/most-populated-countries',
-  },
-  alternates: {
-    canonical: 'https://populationpyramids.org/most-populated-countries',
-  },
 };
 
 const LAST_UPDATED = LAST_UPDATED_ISO;
@@ -80,20 +73,20 @@ function generateSchema(top10: any[], worldPopulation: number) {
     '@graph': [
       {
         '@type': 'Article',
-        '@id': 'https://populationpyramids.org/most-populated-countries#article',
+        '@id': `${SITE_URL}/most-populated-countries#article`,
         headline: `Most Populated Countries in the World ${CURRENT_YEAR} — All 195 Ranked`,
         description:
           'A complete, sourced ranking of every country by population, with interactive world map, regional breakdowns, demographic context, and projections to 2100.',
-        author: { '@type': 'Organization', name: 'PopulationPyramids.org', url: 'https://populationpyramids.org' },
+        author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
         publisher: {
           '@type': 'Organization',
-          name: 'PopulationPyramids.org',
-          url: 'https://populationpyramids.org',
-          logo: { '@type': 'ImageObject', url: 'https://populationpyramids.org/icon.svg' },
+          name: SITE_NAME,
+          url: SITE_URL,
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon.svg` },
         },
         datePublished: PUBLISHED,
         dateModified: LAST_UPDATED,
-        mainEntityOfPage: 'https://populationpyramids.org/most-populated-countries',
+        mainEntityOfPage: `${SITE_URL}/most-populated-countries`,
         articleSection: 'Demographics',
         wordCount: 5000,
         citation: [
@@ -113,32 +106,32 @@ function generateSchema(top10: any[], worldPopulation: number) {
       },
       {
         '@type': 'WebPage',
-        '@id': 'https://populationpyramids.org/most-populated-countries#webpage',
+        '@id': `${SITE_URL}/most-populated-countries#webpage`,
         name: `Most Populated Countries in the World ${CURRENT_YEAR}`,
-        url: 'https://populationpyramids.org/most-populated-countries',
+        url: `${SITE_URL}/most-populated-countries`,
         description: `Complete ranking of all 195 countries by population in ${CURRENT_YEAR} with interactive map.`,
         inLanguage: 'en-US',
-        isPartOf: { '@type': 'WebSite', name: 'Population Pyramids', url: 'https://populationpyramids.org' },
+        isPartOf: { '@type': 'WebSite', name: 'Population Pyramids', url: SITE_URL },
       },
       {
         '@type': 'Dataset',
-        '@id': 'https://populationpyramids.org/most-populated-countries#dataset',
+        '@id': `${SITE_URL}/most-populated-countries#dataset`,
         name: `World Countries Ranked by Population ${CURRENT_YEAR}`,
         description: 'Population data for all 195 countries with rankings, growth rates, median age, density.',
-        url: 'https://populationpyramids.org/most-populated-countries',
+        url: `${SITE_URL}/most-populated-countries`,
         creator: {
           '@type': 'Organization',
           name: 'United Nations Department of Economic and Social Affairs, Population Division',
           url: 'https://population.un.org/',
         },
-        publisher: { '@type': 'Organization', name: 'PopulationPyramids.org', url: 'https://populationpyramids.org' },
+        publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
         temporalCoverage: '1950/2100',
         spatialCoverage: { '@type': 'Place', name: 'World' },
         license: 'https://creativecommons.org/licenses/by/4.0/',
       },
       {
         '@type': 'ItemList',
-        '@id': 'https://populationpyramids.org/most-populated-countries#itemlist',
+        '@id': `${SITE_URL}/most-populated-countries#itemlist`,
         name: `Top 10 Most Populated Countries ${CURRENT_YEAR}`,
         numberOfItems: 10,
         itemListOrder: 'https://schema.org/ItemListOrderDescending',
@@ -147,20 +140,20 @@ function generateSchema(top10: any[], worldPopulation: number) {
           position: i + 1,
           name: c.name,
           description: `${c.population2024.toLocaleString()} people (${c.worldPopulationShare.toFixed(1)}% of world)`,
-          url: `https://populationpyramids.org/${c.slug}`,
+          url: `${SITE_URL}/${c.slug}`,
         })),
       },
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://populationpyramids.org/' },
-          { '@type': 'ListItem', position: 2, name: 'Countries', item: 'https://populationpyramids.org/countries' },
-          { '@type': 'ListItem', position: 3, name: 'Most Populated Countries', item: 'https://populationpyramids.org/most-populated-countries' },
+          { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Countries', item: `${SITE_URL}/countries` },
+          { '@type': 'ListItem', position: 3, name: 'Most Populated Countries', item: `${SITE_URL}/most-populated-countries` },
         ],
       },
       {
         '@type': 'DefinedTermSet',
-        '@id': 'https://populationpyramids.org/most-populated-countries#glossary',
+        '@id': `${SITE_URL}/most-populated-countries#glossary`,
         name: 'Demographic Glossary',
         hasDefinedTerm: [
           { '@type': 'DefinedTerm', name: 'Population', description: 'Total number of people living in a defined area; UN figures are mid-year de facto estimates.' },

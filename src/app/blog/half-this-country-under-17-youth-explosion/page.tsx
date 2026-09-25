@@ -1,31 +1,17 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { buildMetadata } from '@/lib/site-meta';
 
 export const metadata: Metadata = {
-  title: 'Half This Country is Under 17 - And It\'s About to Change Everything | Population Pyramids',
-  description: 'Niger has a median age of 16.5 years - nearly half the population is under 17. Discover how the world\'s youngest country is reshaping global demographics and what it means for the future.',
-  keywords: 'youngest country in the world, Niger demographics, youth explosion, baby boom, median age, youngest population, demographic dividend, youth bulge',
-  openGraph: {
+  ...buildMetadata({
     title: 'Half This Country is Under 17 - And It\'s About to Change Everything',
-    description: 'Niger\'s median age is 16.5 - younger than TikTok\'s minimum age. Discover the mind-blowing reality of the world\'s youngest country.',
+    description: 'Niger has a median age of 16.5 years - nearly half the population is under 17. Discover how the world\'s youngest country is reshaping global demographics and what it means for the future.',
+    path: '/blog/half-this-country-under-17-youth-explosion',
     type: 'article',
-    url: 'https://populationpyramids.org/blog/half-this-country-under-17-youth-explosion',
-    images: [
-      {
-        url: '/blog/niger-youth-explosion-og.png',
-        width: 1200,
-        height: 630,
-        alt: 'Niger youth explosion demographics visualization'
-      }
-    ]
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Half This Country is Under 17',
-    description: 'Niger\'s median age is 16.5 - imagine a country where everyone looks like they\'re in high school.',
-    images: ['/blog/niger-youth-explosion-og.png']
-  },
-  alternates: { canonical: 'https://populationpyramids.org/blog/half-this-country-under-17-youth-explosion' },
+    image: '/blog/niger-youth-explosion-og.png',
+    imageAlt: 'Niger youth explosion demographics visualization',
+  }),
+  keywords: 'youngest country in the world, Niger demographics, youth explosion, baby boom, median age, youngest population, demographic dividend, youth bulge',
 };
 
 export default function NigerYouthExplosionArticle() {
