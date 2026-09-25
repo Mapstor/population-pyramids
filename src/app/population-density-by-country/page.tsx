@@ -6,7 +6,7 @@ import { getCountryRankings } from '@/lib/country-rankings';
 import { getWorldMapPaths } from '@/lib/world-map-data';
 import WorldPopulationMap, { type CountryMapDatum } from '@/components/WorldPopulationMap';
 import countryAreas from '@/data/country-areas.json';
-import { CURRENT_YEAR, LAST_UPDATED_ISO, buildMetadata, SITE_URL, SITE_NAME } from '@/lib/site-meta';
+import { CURRENT_YEAR, DATA_SOURCE_REVISION, LAST_UPDATED_ISO, buildMetadata, SITE_URL, SITE_NAME } from '@/lib/site-meta';
 import DensityCalculator from './DensityCalculator';
 import DensityContextSections, { type RegionDensity } from './DensityContextSections';
 import ToolCrossLinks from '@/components/ToolCrossLinks';
@@ -152,7 +152,7 @@ function generateSchema(top: SlimDensityPlace[], bottom: SlimDensityPlace[], wor
             name: 'Where does this data come from?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: `Population: UN World Population Prospects ${CURRENT_YEAR} Revision (population.un.org/wpp). Land area: CIA World Factbook (cia.gov/the-world-factbook). City density: Demographia World Urban Areas 2023 (Wendell Cox). Last updated ${LAST_UPDATED_ISO}.`,
+              text: `Population: ${DATA_SOURCE_REVISION} (population.un.org/wpp). Land area: CIA World Factbook (cia.gov/the-world-factbook). City density: Demographia World Urban Areas 2023 (Wendell Cox). Last updated ${LAST_UPDATED_ISO}.`,
             },
           },
         ],
@@ -356,7 +356,7 @@ export default async function PopulationDensityByCountryPage() {
                 },
                 {
                   q: 'Where does this data come from?',
-                  a: `Population: UN World Population Prospects ${CURRENT_YEAR} Revision (population.un.org/wpp). Land area: CIA World Factbook (cia.gov/the-world-factbook). City density: Demographia World Urban Areas 2023 (demographia.com). Last updated ${LAST_UPDATED_ISO}.`,
+                  a: `Population: ${DATA_SOURCE_REVISION} (population.un.org/wpp). Land area: CIA World Factbook (cia.gov/the-world-factbook). City density: Demographia World Urban Areas 2023 (demographia.com). Last updated ${LAST_UPDATED_ISO}.`,
                 },
               ].map((item, i) => (
                 <div key={i}>

@@ -76,46 +76,6 @@ export function generateBirthStatisticsSchema(
     ]
   };
 
-  // FAQPage Schema for Birth-related Questions
-  const birthFAQSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: `How many babies are born in ${countryName} per day?`,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: `Approximately ${dailyBirths.toLocaleString()} babies are born in ${countryName} every day. This translates to ${Math.round(dailyBirths / 24)} births per hour, or about one birth every ${Math.round(86400 / dailyBirths)} seconds. The annual total is approximately ${annualBirths.toLocaleString()} births.`
-        }
-      },
-      {
-        '@type': 'Question',
-        name: `What is the birth rate in ${countryName}?`,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: `${countryName} has a crude birth rate of ${birthRate} per 1,000 population. The total fertility rate is ${fertilityRate} children per woman. This ${fertilityRate < 2.1 ? 'is below' : 'is above'} the replacement level of 2.1 children per woman.`
-        }
-      },
-      {
-        '@type': 'Question',
-        name: `How many births per year in ${countryName}?`,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: `${countryName} has approximately ${annualBirths.toLocaleString()} births per year based on current birth rates. This represents ${((annualBirths / population) * 100).toFixed(2)}% of the total population.`
-        }
-      },
-      {
-        '@type': 'Question',
-        name: `How often is a baby born in ${countryName}?`,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: `A baby is born in ${countryName} approximately every ${Math.round(86400 / dailyBirths)} seconds. That's ${Math.round(dailyBirths / 24)} births per hour, ${dailyBirths} births per day, and ${Math.round(dailyBirths * 7)} births per week.`
-        }
-      }
-    ]
-  };
-
   // Statistical Data Table Schema
   const birthTableSchema = {
     '@context': 'https://schema.org',
@@ -170,7 +130,6 @@ export function generateBirthStatisticsSchema(
 
   return {
     birthDatasetSchema,
-    birthFAQSchema,
     birthTableSchema,
     speakableSchema,
     breadcrumbSchema

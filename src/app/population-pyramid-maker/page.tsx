@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { loadCountries, loadCountryData } from '@/lib/data-loader';
 import { getCountryFlag } from '@/lib/country-flags';
-import { CURRENT_YEAR, LAST_UPDATED_ISO, buildMetadata, SITE_URL } from '@/lib/site-meta';
+import { CURRENT_YEAR, DATA_SOURCE_REVISION, LAST_UPDATED_ISO, buildMetadata, SITE_URL } from '@/lib/site-meta';
 import PyramidMaker from './PyramidMaker';
 import PyramidContextSections from './PyramidContextSections';
 import { STANDARD_AGE_BANDS, type PyramidRow } from '@/lib/pyramid-maker-helpers';
@@ -273,7 +273,7 @@ export default async function PopulationPyramidMakerPage() {
                 },
                 {
                   q: 'Where does the country data come from?',
-                  a: `UN World Population Prospects ${CURRENT_YEAR} Revision (population.un.org/wpp). The maker ships 9 key years per country (1950, 1960, ..., 2025) for instant switching.`,
+                  a: `${DATA_SOURCE_REVISION} (population.un.org/wpp). The maker ships 9 key years per country (1950, 1960, ..., 2025) for instant switching.`,
                 },
                 {
                   q: 'What formats can I download?',

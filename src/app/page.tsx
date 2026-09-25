@@ -167,7 +167,7 @@ export default async function HomePage() {
             </p>
             <p className="text-gray-600 mb-4">
               Our interactive population pyramids use authentic UN World Population Prospects data through 2025, with projections extending to 2026 and 2027. 
-              The 2026 revision will be released in July 2026, bringing updated demographic forecasts. Each pyramid displays male population on the left (blue) 
+              Next full UN revision: postponed from 2026 to 2027, expected ~July 2027 (World Population Day). Current data: UN WPP 2024. Each pyramid displays male population on the left (blue) 
               and female population on the right (pink), with age groups from 2025 data stacked from youngest at the bottom to oldest at the top.
             </p>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
@@ -282,8 +282,8 @@ export default async function HomePage() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">Comprehensive Population Data Visualization 2025-2027</h3>
                 <p className="text-gray-600 mb-4">
                   This platform provides interactive visualization and analysis of demographic data for all {countries.length} countries and territories 
-                  recognized by the United Nations. Our database includes complete data through 2025, with the 2026 update coming in July 2026 when the UN 
-                  releases World Population Prospects 2026 revision. Projections extend to 2027 and beyond.
+                  recognized by the United Nations. Our database includes complete data through 2025.
+                  Next full UN revision: postponed from 2026 to 2027, expected ~July 2027 (World Population Day). Current data: UN WPP 2024. Projections extend to 2027 and beyond.
                 </p>
                 
                 <h4 className="text-lg font-semibold text-gray-900 mb-2">Interactive Features:</h4>
@@ -301,7 +301,7 @@ export default async function HomePage() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">Extensive Data Coverage 2025-2026</h3>
                 <p className="text-gray-600 mb-4">
                   Every country page includes comprehensive demographic indicators for 2025, sourced from UN World Population Prospects. 
-                  The 2026 revision will be released in July 2026, bringing updated projections through 2027. All data represents the most 
+                  Next full UN revision: postponed from 2026 to 2027, expected ~July 2027 (World Population Day). Current data: UN WPP 2024. All data represents the most 
                   current and authoritative population statistics available.
                 </p>
                 

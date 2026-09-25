@@ -994,9 +994,9 @@ export default async function CountryPage({ params }: CountryPageProps) {
                       <h4 className="font-semibold text-blue-900">{countryData.countryName} Demographics 2026 Forecast</h4>
                     </div>
                     <p className="text-sm text-blue-800">
-                      {countryData.countryName} population 2026 projections will show continued demographic transition. 
-                      The UN World Population Prospects 2026 revision (July 2026) will update {countryData.countryName} age distribution 2026, 
-                      providing new insights into youth population trends, working-age dynamics, and aging patterns for policy planning.
+                      {countryData.countryName} population 2026 projections show continued demographic transition,
+                      providing insights into youth population trends, working-age dynamics, and aging patterns for policy planning.
+                      Next full UN revision: postponed from 2026 to 2027, expected ~July 2027 (World Population Day). Current data: UN WPP 2024.
                     </p>
                   </div>
                 </div>
@@ -1194,7 +1194,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                     <h3 className="font-semibold text-yellow-800">2026 Fertility Rate Projections</h3>
                   </div>
                   <p className="text-sm text-yellow-700">
-                    <strong>📅 Next Update:</strong> {countryData.countryName} fertility rate 2026 data will be released with UN World Population Prospects 2026 revision. 
+                    <strong>📅 Data currency &amp; next update —</strong> Next full UN revision: postponed from 2026 to 2027, expected ~July 2027 (World Population Day). Current data: UN WPP 2024.
                     {fertilityData.fertilityData.current.totalFertilityRate && 
                       `Current projections suggest ${fertilityData.fertilityData.current.totalFertilityRate < 2.0 ? 'continued decline' : 'stabilization'} in birth rates,`} 
                     impacting long-term demographic planning and economic policies.

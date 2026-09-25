@@ -4,7 +4,7 @@ import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { loadCountries } from '@/lib/data-loader';
 import { getCountryFlag } from '@/lib/country-flags';
-import { CURRENT_YEAR, LAST_UPDATED_ISO, buildMetadata, SITE_URL, SITE_NAME } from '@/lib/site-meta';
+import { CURRENT_YEAR, DATA_YEAR, LAST_UPDATED_ISO, buildMetadata, SITE_URL, SITE_NAME } from '@/lib/site-meta';
 import { getCountryRankings } from '@/lib/country-rankings';
 import { getWorldMapPaths } from '@/lib/world-map-data';
 import WorldPopulationMap, { type CountryMapDatum } from '@/components/WorldPopulationMap';
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   ...buildMetadata({
     title: `Fertility Rate by Country ${CURRENT_YEAR} — Calculator + All Countries Below Replacement`,
     description:
-      `Personal fertility rate calculator + every country ranked by Total Fertility Rate. Find out if your country has dropped below the replacement rate of 2.1 children per woman, and when. South Korea leads the global low at ~0.72; Niger leads the high at ~6.0. UN World Population Prospects ${CURRENT_YEAR} data with birth rate (CBR) and projections to 2050.`,
+      `Personal fertility rate calculator + every country ranked by Total Fertility Rate. Find out if your country has dropped below the replacement rate of 2.1 children per woman, and when. South Korea leads the global low at ~0.72; Niger leads the high at ~6.0. UN World Population Prospects ${DATA_YEAR} data with birth rate (CBR) and projections to 2050.`,
     path: '/fertility-rate-by-country',
   }),
   keywords:

@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { loadCountries, loadCountryData } from '@/lib/data-loader';
 import { generateWorldPopulationData } from '@/lib/world-data-aggregator';
 import { getCountryFlag } from '@/lib/country-flags';
-import { CURRENT_YEAR, LAST_UPDATED_ISO, buildMetadata, SITE_URL, SITE_NAME } from '@/lib/site-meta';
+import { DATA_YEAR, LAST_UPDATED_ISO, buildMetadata, SITE_URL, SITE_NAME } from '@/lib/site-meta';
 import PopulationWhenBornCalculator from './PopulationWhenBornCalculator';
 import PopulationContextSections, {
   type MilestoneEntry,
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   ...buildMetadata({
     title: `Population When You Were Born — How Much Has the World Grown in Your Lifetime?`,
     description:
-      `Enter your birth year to see the world's population the day you were born vs. today. Find out how many people lived in your country in any year from 1950 to ${DATA_LATEST_YEAR}, what % of people alive today are older than you, and how the planet has changed since you arrived. UN World Population Prospects ${CURRENT_YEAR} data.`,
+      `Enter your birth year to see the world's population the day you were born vs. today. Find out how many people lived in your country in any year from 1950 to ${DATA_LATEST_YEAR}, what % of people alive today are older than you, and how the planet has changed since you arrived. UN World Population Prospects ${DATA_YEAR} data.`,
     path: '/population-when-you-were-born',
   }),
   keywords:
