@@ -1,4 +1,5 @@
 import type { CountryPopulationData, YearData } from '@/types/population';
+import { inText, possessiveInText } from '@/lib/country-names';
 
 interface DecadeData {
   decade: string;
@@ -158,7 +159,7 @@ export function generateDecadeAnalysis(
 
   decadeData.forEach(({ decade, startYear, endYear, startData, endData, populationChange, medianAgeChange, youthPercentChange, elderlyPercentChange }) => {
     if (!startData || !endData) {
-      analysis[decade] = `Limited demographic data is available for ${countryName} during the ${decade}. This period represents a gap in comprehensive population records, which was common for many countries during earlier decades of demographic data collection. The absence of detailed age-structure data from this period highlights the evolution of statistical capacity and international data standardization that has occurred since the 1970s.`;
+      analysis[decade] = `Limited demographic data is available for ${inText(countryName)} during the ${decade}. This period represents a gap in comprehensive population records, which was common for many countries during earlier decades of demographic data collection. The absence of detailed age-structure data from this period highlights the evolution of statistical capacity and international data standardization that has occurred since the 1970s.`;
       return;
     }
 
@@ -166,7 +167,7 @@ export function generateDecadeAnalysis(
     const startPop = (startData.totalPopulation / 1000000).toFixed(1);
     const endPop = (endData.totalPopulation / 1000000).toFixed(1);
     
-    let content = `During the ${decade}, ${countryName} experienced significant demographic transformation. The population ${calculateDecadeChange(startData.totalPopulation, endData.totalPopulation)}, growing from ${startPop} million in ${startYear} to ${endPop} million by ${endYear === 2024 ? '2024' : endYear}. `;
+    let content = `During the ${decade}, ${inText(countryName)} experienced significant demographic transformation. The population ${calculateDecadeChange(startData.totalPopulation, endData.totalPopulation)}, growing from ${startPop} million in ${startYear} to ${endPop} million by ${endYear === 2024 ? '2024' : endYear}. `;
 
     // Median age analysis
     if (Math.abs(medianAgeChange) > 0.5) {
@@ -199,7 +200,7 @@ export function generateDecadeAnalysis(
     }
 
     // Future implications
-    content += `These demographic shifts established important foundations for subsequent population trends and continue to influence ${countryName}'s current age structure and socioeconomic development trajectory.`;
+    content += `These demographic shifts established important foundations for subsequent population trends and continue to influence ${possessiveInText(countryName)} current age structure and socioeconomic development trajectory.`;
 
     analysis[decade] = content;
   });

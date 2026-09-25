@@ -29,8 +29,14 @@ import RegionalComparison from '@/components/RegionalComparison';
 import LifeExpectancySection from '@/components/LifeExpectancySection';
 import DecadeBreakdown from '@/components/DecadeBreakdown';
 import ShareButtons from '@/components/ShareButtons';
+import DataNotice from '@/components/DataNotice';
 import { getCountryNeighbors, getRegionalCountries } from '@/lib/country-neighbors';
-import { SITE_URL } from '@/lib/site-meta';
+import { SITE_URL, buildMetadata } from '@/lib/site-meta';
+import { getRankTable, computeShare } from '@/lib/country-rank';
+import { countryTitle, countryDescription, countryAnswer, VATICAN, type CountryStats } from '@/lib/country-copy';
+import { inText, sentenceStart, possessive, possessiveInText, possessiveStart } from '@/lib/country-names';
+import { popWords } from '@/lib/country-format';
+import { worldPopulation } from '@/lib/world-population';
 
 export const dynamicParams = false;
 export const revalidate = false;
@@ -51,32 +57,43 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: CountryPageProps) {
+  const slug = params.slug;
+
+  // Vatican City has no WPP series: fixed, non-WPP title/description (T2 Step 8).
+  if (slug === 'vatican-city') {
+    return buildMetadata({
+      title: VATICAN.title,
+      description: VATICAN.description,
+      path: `/${slug}`,
+      brandInTitle: false,
+    });
+  }
+
   try {
-    const countrySlug = params.slug;
-    const countryData = await loadCountryData(countrySlug);
+    const countryData = await loadCountryData(slug);
     const availableYears = getAvailableYears(countryData);
     const latestYear = Math.max(...availableYears);
     const yearData = countryData.years[latestYear.toString()];
-    
-    // Load fertility data for birth statistics in metadata
-    const fertilityData = await loadFertilityData(countrySlug);
-    const crudebirthRateForMetadata = fertilityData?.fertilityData.historical.find(d => d.year === fertilityData.fertilityData.current.year)?.crudebirthRate || 
-                                      fertilityData?.fertilityData.historical[fertilityData.fertilityData.historical.length - 1]?.crudebirthRate;
-    const dailyBirths = (fertilityData && crudebirthRateForMetadata) ? 
-      Math.round((yearData.totalPopulation * crudebirthRateForMetadata) / 1000 / 365) : undefined;
-    const birthRate = crudebirthRateForMetadata;
-    
-    return generateCountryMetadata(
-      countryData.countryName,
-      latestYear,
-      yearData.totalPopulation,
-      dailyBirths,
-      birthRate
-    );
-  } catch {
-    return {
-      title: 'Country Not Found'
+    const metrics = calculateMetrics(yearData);
+    const { ranks } = await getRankTable(latestYear);
+
+    const stats: CountryStats = {
+      slug,
+      name: countryData.countryName,
+      year: latestYear,
+      population: yearData.totalPopulation,
+      rank: ranks[slug] ?? null,
+      sharePct: computeShare(yearData.totalPopulation, latestYear),
+      u15: metrics.youthPercentage,
+      o65: metrics.elderlyPercentage,
+      sexRatio: metrics.sexRatio,
     };
+
+    const { title } = countryTitle(slug, latestYear, stats.population);
+    const { description } = countryDescription(stats);
+    return buildMetadata({ title, description, path: `/${slug}`, brandInTitle: false });
+  } catch {
+    return { title: 'Country Not Found' };
   }
 }
 
@@ -89,7 +106,23 @@ export default async function CountryPage({ params }: CountryPageProps) {
     const latestYear = Math.max(...availableYears);
     const yearData = countryData.years[latestYear.toString()];
     const metrics = calculateMetrics(yearData);
-    
+
+    // T2: population rank / share and the answer-first lead paragraph.
+    const isVatican = countrySlug === 'vatican-city';
+    const { ranks: populationRanks } = await getRankTable(latestYear);
+    const countryStats: CountryStats = {
+      slug: countrySlug,
+      name: countryData.countryName,
+      year: latestYear,
+      population: yearData.totalPopulation,
+      rank: populationRanks[countrySlug] ?? null,
+      sharePct: computeShare(yearData.totalPopulation, latestYear),
+      u15: metrics.youthPercentage,
+      o65: metrics.elderlyPercentage,
+      sexRatio: metrics.sexRatio,
+    };
+    const answerLead = countryAnswer(countryStats);
+
     // Load neighbor country data for RegionalComparison
     let neighborSlugs = getCountryNeighbors(countrySlug);
     if (neighborSlugs.length === 0) {
@@ -180,8 +213,19 @@ export default async function CountryPage({ params }: CountryPageProps) {
       yearData,
       metrics,
       countryData,
-      latestYear
+      latestYear,
+      countryStats.rank
     );
+    // FAQPage schema mirrors the visible FAQ exactly (T2 render requirement).
+    const faqPageSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: expandedFAQs.map((f) => ({
+        '@type': 'Question',
+        name: f.question,
+        acceptedAnswer: { '@type': 'Answer', text: f.answer },
+      })),
+    };
     const glossaryTerms = generateDemographicGlossary(
       countryData.countryName,
       yearData,
@@ -203,26 +247,9 @@ export default async function CountryPage({ params }: CountryPageProps) {
     const demographicStage = classifyDemographicStage(yearData);
     const stageExplanation = getDemographicStageExplanation(demographicStage, countryData.countryName);
 
-    // Calculate birth statistics for schema
-    const crudebirthRateForSchema = fertilityData?.fertilityData.historical.find(d => d.year === fertilityData.fertilityData.current.year)?.crudebirthRate || 
-                                    fertilityData?.fertilityData.historical[fertilityData.fertilityData.historical.length - 1]?.crudebirthRate;
-    const dailyBirths = (fertilityData && crudebirthRateForSchema) ? 
-      Math.round((yearData.totalPopulation * crudebirthRateForSchema) / 1000 / 365) : null;
-    const annualBirths = dailyBirths ? dailyBirths * 365 : null;
-    const birthRate = crudebirthRateForSchema || null;
-    const fertilityRate = fertilityData?.fertilityData.current.totalFertilityRate || null;
-
-    // Generate schema markup
-    const birthSchemas = dailyBirths > 0 ? generateBirthStatisticsSchema(
-      countryData.countryName,
-      countrySlug,
-      dailyBirths,
-      annualBirths,
-      birthRate,
-      fertilityRate,
-      yearData.totalPopulation,
-      latestYear
-    ) : null;
+    // T2 Step 7: computed births are wrong until T4, so the birth-based JSON-LD
+    // (dataset + FAQ) is no longer emitted here. The visible FAQ's FAQPage
+    // schema (faqPageSchema, above) is the page's only FAQPage.
 
     // Generate comprehensive population dataset schema
     const populationSchemas = generateCountrySchemaPackage(
@@ -251,19 +278,11 @@ export default async function CountryPage({ params }: CountryPageProps) {
           />
         ))}
         
-        {/* Birth Statistics Schema */}
-        {birthSchemas && (
-          <>
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify(birthSchemas.birthDatasetSchema) }}
-            />
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify(birthSchemas.birthFAQSchema) }}
-            />
-          </>
-        )}
+        {/* FAQPage schema — mirrors the visible FAQ section exactly */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema) }}
+        />
         <div className="max-w-7xl mx-auto px-4 py-8">
           {/* Breadcrumbs */}
           <nav className="mb-8 text-sm">
@@ -282,14 +301,41 @@ export default async function CountryPage({ params }: CountryPageProps) {
           {/* Hero Section */}
           <div id="overview" className="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg p-6 mb-8 shadow-lg">
             <h1 className="text-3xl font-bold mb-3">
-              {countryData.countryName} Population Pyramid ({latestYear})
+              {countryData.countryName} Population Pyramid{isVatican ? '' : ` (${latestYear})`}
             </h1>
-            <div className="bg-blue-800 bg-opacity-50 rounded-lg p-3 mb-4">
-              <p className="text-sm text-blue-100">
-                <span className="font-semibold">📅 Next Update:</span> {countryData.countryName} population pyramid 2026 
-                will be released in July 2026 when UN publishes World Population Prospects 2026 revision.
+
+            {/* T2: answer-first lead paragraph — server-rendered, directly under the H1, before any chart or card */}
+            {isVatican ? (
+              <p className="text-blue-50 text-base leading-relaxed mb-4">
+                Vatican City is the world's smallest country by both area (0.44 km²) and
+                population.{' '}
+                <a
+                  href="https://www.vaticanstate.va/en/state-and-government/general-informations/population.html"
+                  className="underline hover:text-white"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Official Vatican statistics
+                </a>{' '}
+                count 882 residents and 673 citizens as of 31 December 2024; 458 of the citizens
+                live inside the walls, including 120 members of the Pontifical Swiss Guard. The
+                age-and-sex chart on this page is a model estimate, not an official count.
               </p>
-            </div>
+            ) : answerLead ? (
+              <p className="text-blue-50 text-base leading-relaxed mb-4">
+                {answerLead.head}
+                <a
+                  href={answerLead.linkHref}
+                  className="underline hover:text-white"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {answerLead.linkText}
+                </a>
+                {answerLead.tail}
+              </p>
+            ) : null}
+
             <div className="flex flex-wrap gap-4 text-sm">
               <div className="flex items-center gap-2">
                 <span className="text-lg">👥</span>
@@ -367,7 +413,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                   Compare {countryData.countryName} Demographics
                 </h2>
                 <p className="text-gray-600 mb-4">
-                  Explore how {countryData.countryName}'s population structure compares with other countries:
+                  Explore how {possessiveInText(countryData.countryName)} population structure compares with other countries:
                 </p>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
                   {topComparisons.map((comparison) => (
@@ -593,7 +639,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                 <div className="bg-white rounded-lg p-5 border border-purple-100">
                   <div className="mb-4">
                     <p className="text-lg font-semibold text-gray-900 mb-2">
-                      {countryData.countryName} has <span className="text-purple-700 font-bold">{metrics.sexRatio.toFixed(1)} males per 100 females</span> (sex ratio)
+                      {sentenceStart(countryData.countryName)} has <span className="text-purple-700 font-bold">{metrics.sexRatio.toFixed(1)} males per 100 females</span> (sex ratio)
                     </p>
                   </div>
 
@@ -661,9 +707,9 @@ export default async function CountryPage({ params }: CountryPageProps) {
 
                   <div className="mt-4 text-sm text-gray-600 bg-gray-50 rounded-lg p-3">
                     <p>
-                      The sex ratio of {countryData.countryName} indicates {metrics.sexRatio > 100 ? 'more males than females' : metrics.sexRatio < 100 ? 'more females than males' : 'equal gender distribution'}. 
+                      The sex ratio of {inText(countryData.countryName)} indicates {metrics.sexRatio > 100 ? 'more males than females' : metrics.sexRatio < 100 ? 'more females than males' : 'equal gender distribution'}. 
                       This gender ratio affects various socioeconomic factors including marriage markets, labor force composition, and demographic trends. 
-                      Understanding {countryData.countryName}'s sex ratio is crucial for policy planning and demographic analysis.
+                      Understanding {possessiveInText(countryData.countryName)} sex ratio is crucial for policy planning and demographic analysis.
                     </p>
                   </div>
                 </div>
@@ -700,7 +746,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                 <div className="bg-white rounded-lg p-5 border border-amber-100">
                   <div className="mb-6">
                     <p className="text-2xl font-bold text-gray-900 mb-2">
-                      {countryData.countryName}'s median age is <span className="text-amber-700 text-3xl">{metrics.medianAge.toFixed(1)}</span> years
+                      {possessiveStart(countryData.countryName)} median age is <span className="text-amber-700 text-3xl">{metrics.medianAge.toFixed(1)}</span> years
                     </p>
                     <p className="text-gray-600">
                       Half the population is younger than {metrics.medianAge.toFixed(1)} years, half is older - indicating a {metrics.medianAge < 25 ? 'very young' : metrics.medianAge < 35 ? 'young' : metrics.medianAge < 45 ? 'middle-aged' : 'aging'} society
@@ -791,9 +837,9 @@ export default async function CountryPage({ params }: CountryPageProps) {
 
                   <div className="mt-4 text-sm text-gray-600 bg-gray-50 rounded-lg p-3">
                     <p>
-                      The median age of {countryData.countryName} at {metrics.medianAge.toFixed(1)} years reflects its demographic structure and development stage. 
+                      The median age of {inText(countryData.countryName)} at {metrics.medianAge.toFixed(1)} years reflects its demographic structure and development stage. 
                       This median age impacts everything from consumer markets to healthcare planning. 
-                      Understanding {countryData.countryName}'s median age helps predict economic trends, social needs, and future demographic transitions.
+                      Understanding {possessiveInText(countryData.countryName)} median age helps predict economic trends, social needs, and future demographic transitions.
                       The average age will continue evolving based on birth rates, life expectancy, and migration patterns.
                     </p>
                   </div>
@@ -816,7 +862,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                 <div className="bg-white rounded-lg p-5 border border-green-100">
                   <div className="mb-6">
                     <p className="text-lg font-semibold text-gray-900 mb-2">
-                      {countryData.countryName} shows a {metrics.pyramidType} population structure with significant youth demographics
+                      {sentenceStart(countryData.countryName)} shows a {metrics.pyramidType} population structure with significant youth demographics
                     </p>
                     <p className="text-gray-600">
                       Comprehensive age breakdown reveals economic potential, workforce dynamics, and policy planning needs
@@ -936,7 +982,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
 
                   <div className="mt-4 text-sm text-gray-600 bg-gray-50 rounded-lg p-3">
                     <p>
-                      This detailed age distribution reveals {countryData.countryName}'s demographic {under25Percentage > 35 ? 'advantages' : 'characteristics'}: {under25Percentage > 40 ? 'a large' : under25Percentage > 30 ? 'a substantial' : under25Percentage > 20 ? 'a moderate' : 'a limited'} youth population ({under25Percentage.toFixed(1)}% under 25) {under25Percentage > 35 ? 'creating economic opportunities' : 'shaping economic dynamics'}, {metrics.workingAgePercentage > 65 ? 'a substantial' : metrics.workingAgePercentage > 55 ? 'a moderate' : 'a limited'} working-age population ({metrics.workingAgePercentage.toFixed(1)}%) driving productivity, and {metrics.elderlyPercentage < 10 ? 'manageable' : metrics.elderlyPercentage < 20 ? 'growing' : 'significant'} elderly dependency ({metrics.elderlyPercentage.toFixed(1)}% over 65). 
+                      This detailed age distribution reveals {possessiveInText(countryData.countryName)} demographic {under25Percentage > 35 ? 'advantages' : 'characteristics'}: {under25Percentage > 40 ? 'a large' : under25Percentage > 30 ? 'a substantial' : under25Percentage > 20 ? 'a moderate' : 'a limited'} youth population ({under25Percentage.toFixed(1)}% under 25) {under25Percentage > 35 ? 'creating economic opportunities' : 'shaping economic dynamics'}, {metrics.workingAgePercentage > 65 ? 'a substantial' : metrics.workingAgePercentage > 55 ? 'a moderate' : 'a limited'} working-age population ({metrics.workingAgePercentage.toFixed(1)}%) driving productivity, and {metrics.elderlyPercentage < 10 ? 'manageable' : metrics.elderlyPercentage < 20 ? 'growing' : 'significant'} elderly dependency ({metrics.elderlyPercentage.toFixed(1)}% over 65). 
                       Understanding each age group's needs enables targeted policy development for education, employment, healthcare, and social services.
                     </p>
                   </div>
@@ -1180,7 +1226,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
           {/* Understanding Demographics Section */}
           <section className="bg-white rounded-lg shadow-sm p-8 mb-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Understanding {countryData.countryName}'s Demographics
+              Understanding {possessiveInText(countryData.countryName)} Demographics
             </h2>
             <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
               {content.understanding.split('\n\n').map((para, i) => (
@@ -1194,7 +1240,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
             <div className="flex items-center mb-4">
               <span className="text-3xl mr-3">🎓</span>
               <h2 className="text-3xl font-bold text-gray-900">
-                Demographic Analysis: {countryData.countryName}'s Population Structure
+                Demographic Analysis: {possessiveInText(countryData.countryName)} Population Structure
               </h2>
             </div>
             <p className="text-gray-600 mb-6 italic">
@@ -1278,10 +1324,10 @@ export default async function CountryPage({ params }: CountryPageProps) {
           {/* What This Means Section */}
           <section className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg shadow-sm p-8 mb-8 border border-green-200">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              What This Means for {countryData.countryName}
+              What This Means for {inText(countryData.countryName)}
             </h2>
             <p className="text-gray-600 mb-6">
-              Understanding the practical implications of {countryData.countryName}'s demographic structure for key sectors and policy areas.
+              Understanding the practical implications of {possessiveInText(countryData.countryName)} demographic structure for key sectors and policy areas.
             </p>
             
             <div className="grid md:grid-cols-2 gap-6">
@@ -1404,11 +1450,11 @@ export default async function CountryPage({ params }: CountryPageProps) {
             <div className="flex items-center mb-4">
               <span className="text-3xl mr-3">📚</span>
               <h2 className="text-3xl font-bold text-gray-900">
-                Major Events That Shaped {countryData.countryName}'s Demographics
+                Major Events That Shaped {possessiveInText(countryData.countryName)} Demographics
               </h2>
             </div>
             <p className="text-gray-600 mb-6">
-              Understanding the historical events and policy decisions that created {countryData.countryName}'s current population structure.
+              Understanding the historical events and policy decisions that created {possessiveInText(countryData.countryName)} current population structure.
             </p>
             
             <div className="space-y-6">
@@ -1490,11 +1536,11 @@ export default async function CountryPage({ params }: CountryPageProps) {
             <div className="flex items-center mb-6">
               <span className="text-3xl mr-3">❓</span>
               <h2 className="text-3xl font-bold text-gray-900">
-                Frequently Asked Questions About {countryData.countryName}
+                Frequently Asked Questions About {inText(countryData.countryName)}
               </h2>
             </div>
             <p className="text-gray-600 mb-8">
-              Comprehensive answers to the most common questions about {countryData.countryName}'s demographics, 
+              Comprehensive answers to the most common questions about {possessiveInText(countryData.countryName)} demographics, 
               population trends, and societal implications based on current data and analysis.
             </p>
             
@@ -1546,10 +1592,10 @@ export default async function CountryPage({ params }: CountryPageProps) {
             {/* FAQ Summary */}
             <div className="mt-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200">
               <h3 className="text-xl font-bold text-gray-900 mb-3">
-                Understanding {countryData.countryName}'s Demographics
+                Understanding {possessiveInText(countryData.countryName)} Demographics
               </h3>
               <p className="text-gray-700 leading-relaxed">
-                These comprehensive questions and answers provide deep insights into {countryData.countryName}'s 
+                These comprehensive questions and answers provide deep insights into {possessiveInText(countryData.countryName)} 
                 population dynamics, demographic challenges, and development opportunities. The analysis covers 
                 historical trends, current patterns, future projections, and policy implications to help understand 
                 the complex relationships between demographics and societal development.
@@ -1563,7 +1609,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
               Compare with Other Countries
             </h2>
             <p className="text-gray-600 mb-6">
-              See how {countryData.countryName}'s demographic structure compares to similar or neighboring countries.
+              See how {possessiveInText(countryData.countryName)} demographic structure compares to similar or neighboring countries.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -1608,11 +1654,11 @@ export default async function CountryPage({ params }: CountryPageProps) {
             <div className="flex items-center mb-6">
               <span className="text-3xl mr-3">📖</span>
               <h2 className="text-3xl font-bold text-gray-900">
-                Understanding Demographic Terms for {countryData.countryName}
+                Understanding Demographic Terms for {inText(countryData.countryName)}
               </h2>
             </div>
             <p className="text-gray-600 mb-8">
-              Key demographic concepts explained in the specific context of {countryData.countryName}'s 
+              Key demographic concepts explained in the specific context of {possessiveInText(countryData.countryName)} 
               population data and development patterns.
             </p>
 
@@ -1669,8 +1715,8 @@ export default async function CountryPage({ params }: CountryPageProps) {
                 Voice Search Friendly
               </h4>
               <p className="text-gray-700 text-sm">
-                These definitions are optimized for voice search queries like "What is dependency ratio in {countryData.countryName}?" 
-                or "Define median age for {countryData.countryName}."
+                These definitions are optimized for voice search queries like "What is dependency ratio in {inText(countryData.countryName)}?"
+                or "Define median age for {inText(countryData.countryName)}."
               </p>
             </div>
           </section>
@@ -1680,7 +1726,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
             <div className="flex items-center mb-6">
               <span className="text-3xl mr-3">🎯</span>
               <h2 className="text-3xl font-bold text-gray-900">
-                How to Use {countryData.countryName}'s Demographic Data
+                How to Use {possessiveInText(countryData.countryName)} Demographic Data
               </h2>
             </div>
             <p className="text-gray-600 mb-8">
@@ -1780,6 +1826,9 @@ export default async function CountryPage({ params }: CountryPageProps) {
             </div>
           </section>
 
+          {/* T2 Step 6: single "About this data" notice, just above the sources section */}
+          <DataNotice />
+
           {/* Data Sources */}
           <section className="bg-blue-50 rounded-lg p-6 mb-8 border border-blue-200">
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
@@ -1803,7 +1852,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
           <ShareButtons
             url={`${SITE_URL}/${params.slug}`}
             title={`${countryData.countryName} Population Pyramid ${latestYear}`}
-            description={`Explore demographic data and population trends for ${countryData.countryName}`}
+            description={`Explore demographic data and population trends for ${inText(countryData.countryName)}`}
           />
         </div>
       </div>

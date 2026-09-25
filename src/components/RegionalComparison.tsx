@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import RegionalMiniPyramid from './RegionalMiniPyramid';
 import { formatPopulationCompact } from '@/lib/number-format';
+import { sentenceStart } from '@/lib/country-names';
 import type { YearData, DemographicMetrics } from '@/types/population';
 
 interface ComparisonCountry {
@@ -46,10 +47,10 @@ export default function RegionalComparison({
     const youngerCountries = validCountries.filter(c => c.metrics!.medianAge < currentCountry.metrics.medianAge);
     
     if (olderCountries.length > 0) {
-      insights.push(`${currentCountry.name} has a younger population than ${olderCountries.map(c => c.name).join(', ')}`);
+      insights.push(`${sentenceStart(currentCountry.name)} has a younger population than ${olderCountries.map(c => c.name).join(', ')}`);
     }
     if (youngerCountries.length > 0) {
-      insights.push(`${currentCountry.name} has an older population than ${youngerCountries.map(c => c.name).join(', ')}`);
+      insights.push(`${sentenceStart(currentCountry.name)} has an older population than ${youngerCountries.map(c => c.name).join(', ')}`);
     }
     
     // Population size comparison
@@ -57,10 +58,10 @@ export default function RegionalComparison({
     const smallerCountries = validCountries.filter(c => c.data!.totalPopulation < currentCountry.data.totalPopulation);
     
     if (largerCountries.length > 0) {
-      insights.push(`${currentCountry.name} has a smaller population than ${largerCountries.map(c => c.name).join(', ')}`);
+      insights.push(`${sentenceStart(currentCountry.name)} has a smaller population than ${largerCountries.map(c => c.name).join(', ')}`);
     }
     if (smallerCountries.length > 0) {
-      insights.push(`${currentCountry.name} has a larger population than ${smallerCountries.map(c => c.name).join(', ')}`);
+      insights.push(`${sentenceStart(currentCountry.name)} has a larger population than ${smallerCountries.map(c => c.name).join(', ')}`);
     }
 
     return insights.slice(0, 2).join('. ') + '.';

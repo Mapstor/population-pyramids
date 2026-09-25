@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import type { CountryPopulationData } from '@/types/population';
 import { generateDecadeAnalysis } from '@/lib/decade-analyzer';
+import { possessive, possessiveInText, possessiveStart } from '@/lib/country-names';
 
 interface DecadeBreakdownProps {
   countryName: string;
@@ -49,10 +50,10 @@ export default function DecadeBreakdown({ countryName, countrySlug, countryData 
   return (
     <div className="bg-white rounded-lg shadow-sm p-8">
       <h2 className="text-3xl font-bold text-gray-900 mb-4">
-        {countryName}'s Demographic Evolution by Decade
+        {possessive(countryName)} Demographic Evolution by Decade
       </h2>
       <p className="text-gray-600 mb-8">
-        Explore how {countryName}'s population structure and demographics have transformed over the past five decades, 
+        Explore how {possessiveInText(countryName)} population structure and demographics have transformed over the past five decades, 
         shaped by historical events, policy changes, and socioeconomic developments.
       </p>
 
@@ -180,7 +181,7 @@ export default function DecadeBreakdown({ countryName, countrySlug, countryData 
           Five Decades of Transformation
         </h3>
         <p className="text-gray-700 leading-relaxed">
-          {countryName}'s demographic journey from the 1970s to today reflects broader patterns of global development, 
+          {possessiveStart(countryName)} demographic journey from the 1970s to today reflects broader patterns of global development, 
           modernization, and social change. Each decade brought unique challenges and opportunities that shaped the 
           country's population structure, age distribution, and demographic characteristics. Understanding these 
           historical patterns provides valuable context for interpreting current trends and anticipating future 

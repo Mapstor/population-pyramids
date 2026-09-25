@@ -1,5 +1,6 @@
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
+import { inText, sentenceStart } from '@/lib/country-names';
 
 export interface FertilityYearData {
   year: number;
@@ -87,26 +88,26 @@ export function getFertilityAnalysis(fertilityData: FertilityData, countryName: 
   const current = fertilityData.fertilityData.current;
   const worldComp = fertilityData.fertilityData.worldComparison;
   
-  let analysis = `${countryName} has a Total Fertility Rate (TFR) of ${current.totalFertilityRate} children per woman in ${current.year}, `;
+  let analysis = `${sentenceStart(countryName)} has a Total Fertility Rate (TFR) of ${current.totalFertilityRate} children per woman in ${current.year}, `;
   
   if (metrics.belowReplacement) {
     analysis += `which is below the replacement level of ${fertilityData.fertilityData.replacementLevel}. `;
-    analysis += `This indicates that ${countryName} is experiencing below-replacement fertility, contributing to population aging and potential future decline. `;
+    analysis += `This indicates that ${inText(countryName)} is experiencing below-replacement fertility, contributing to population aging and potential future decline. `;
   } else {
     analysis += `which is above the replacement level of ${fertilityData.fertilityData.replacementLevel}. `;
-    analysis += `This indicates that ${countryName} maintains replacement-level fertility supporting population stability. `;
+    analysis += `This indicates that ${inText(countryName)} maintains replacement-level fertility supporting population stability. `;
   }
   
   if (worldComp.rank <= 50) {
-    analysis += `${countryName} ranks ${worldComp.rank} globally for fertility rate, indicating relatively high fertility compared to other countries. `;
+    analysis += `${sentenceStart(countryName)} ranks ${worldComp.rank} globally for fertility rate, indicating relatively high fertility compared to other countries. `;
   } else if (worldComp.rank <= 100) {
-    analysis += `${countryName} ranks ${worldComp.rank} globally for fertility rate, placing it in the middle range internationally. `;
+    analysis += `${sentenceStart(countryName)} ranks ${worldComp.rank} globally for fertility rate, placing it in the middle range internationally. `;
   } else {
-    analysis += `${countryName} ranks ${worldComp.rank} out of ${worldComp.totalCountries} countries globally for fertility rate, indicating relatively low fertility. `;
+    analysis += `${sentenceStart(countryName)} ranks ${worldComp.rank} out of ${worldComp.totalCountries} countries globally for fertility rate, indicating relatively low fertility. `;
   }
   
   analysis += `The fertility rate has changed by ${metrics.tfrChangePercent.toFixed(1)}% since 1950, `;
-  analysis += `reflecting demographic transition and socioeconomic development in ${countryName}.`;
+  analysis += `reflecting demographic transition and socioeconomic development in ${inText(countryName)}.`;
   
   return analysis;
 }

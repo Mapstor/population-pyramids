@@ -76,6 +76,12 @@ interface BuildMetadataInput {
   /** Custom OG image (absolute URL or site-relative). Defaults to DEFAULT_OG_IMAGE. */
   image?: string;
   imageAlt?: string;
+  /**
+   * Whether to append " | {SITE_NAME}" to the title. Default true. Set false
+   * when the page supplies a complete, self-contained answer-first title that
+   * must not carry a brand suffix (e.g. country pages).
+   */
+  brandInTitle?: boolean;
   keywords?: string[];
 }
 
@@ -96,9 +102,10 @@ export function buildMetadata({
   image = DEFAULT_OG_IMAGE,
   imageAlt,
   keywords,
+  brandInTitle = true,
 }: BuildMetadataInput): Metadata {
   const url = absoluteUrl(path);
-  const fullTitle = `${title} | ${SITE_NAME}`;
+  const fullTitle = brandInTitle ? `${title} | ${SITE_NAME}` : title;
   const ogImage = image.startsWith('http') ? image : absoluteUrl(image);
   const ogBase = {
     locale: 'en_US',

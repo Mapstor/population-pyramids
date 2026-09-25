@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { worldPopulation as worldPopulationFor } from '@/lib/world-population';
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -70,8 +71,8 @@ export default function BirthStatistics({
 
   // Global comparisons - using real UN data
   // World birth rate is approximately 17 per 1,000 (UN 2024 data)
-  // World population is approximately 8.1 billion (UN 2024)
-  const worldPopulation = 8100000000;
+  // World population from the shared UN WPP 2024 source (T2 Step 4).
+  const worldPopulation = worldPopulationFor(2025) ?? 8_231_613_070;
   const worldBirthRate = 17; // per 1,000 (UN global average)
   const worldAnnualBirths = (worldPopulation * worldBirthRate) / 1000;
   const worldDailyBirths = Math.round(worldAnnualBirths / 365);

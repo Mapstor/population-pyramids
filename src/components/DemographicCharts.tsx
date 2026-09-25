@@ -1,5 +1,6 @@
 'use client';
 
+import { possessiveInText } from '@/lib/country-names';
 import { Line, Bar, Pie } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -342,7 +343,7 @@ export default function DemographicCharts({
         Demographic Data Visualizations
       </h2>
       <p className="text-gray-600 mb-8">
-        Comprehensive charts showing {countryName}'s demographic trends, age structure evolution, and current population distribution patterns.
+        Comprehensive charts showing {possessiveInText(countryName)} demographic trends, age structure evolution, and current population distribution patterns.
       </p>
 
       <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
@@ -353,7 +354,7 @@ export default function DemographicCharts({
           </div>
           <div className="mt-4 text-sm text-gray-700 leading-relaxed">
             <p>
-              <strong>Population Growth Trajectory:</strong> This chart reveals {countryName}'s population growth pattern from 1970 to 2024, showing whether the country experienced steady growth, rapid expansion, or demographic transition phases. The curve shape indicates the stage of demographic development and helps predict future population trends.
+              <strong>Population Growth Trajectory:</strong> This chart reveals {possessiveInText(countryName)} population growth pattern from 1970 to 2024, showing whether the country experienced steady growth, rapid expansion, or demographic transition phases. The curve shape indicates the stage of demographic development and helps predict future population trends.
             </p>
           </div>
         </div>
@@ -365,7 +366,7 @@ export default function DemographicCharts({
           </div>
           <div className="mt-4 text-sm text-gray-700 leading-relaxed">
             <p>
-              <strong>Population Aging Trend:</strong> The median age progression illustrates {countryName}'s demographic transition speed and aging trajectory. Steep increases indicate rapid population aging, while gradual changes suggest balanced demographic development. This metric is crucial for understanding societal and economic pressures.
+              <strong>Population Aging Trend:</strong> The median age progression illustrates {possessiveInText(countryName)} demographic transition speed and aging trajectory. Steep increases indicate rapid population aging, while gradual changes suggest balanced demographic development. This metric is crucial for understanding societal and economic pressures.
             </p>
           </div>
         </div>
@@ -378,7 +379,7 @@ export default function DemographicCharts({
             </div>
             <div className="mt-4 text-sm text-gray-700 leading-relaxed">
               <p>
-                <strong>Generational Shift Analysis:</strong> Comparing 1970 and 2024 age structures reveals {countryName}'s demographic transformation over five decades. Changes in youth, working-age, and elderly proportions demonstrate the country's progression through demographic transition stages and highlight emerging challenges or opportunities.
+                <strong>Generational Shift Analysis:</strong> Comparing 1970 and 2024 age structures reveals {possessiveInText(countryName)} demographic transformation over five decades. Changes in youth, working-age, and elderly proportions demonstrate the country's progression through demographic transition stages and highlight emerging challenges or opportunities.
               </p>
             </div>
           </div>
@@ -391,7 +392,7 @@ export default function DemographicCharts({
           </div>
           <div className="mt-4 text-sm text-gray-700 leading-relaxed">
             <p>
-              <strong>Current Demographic Balance:</strong> This distribution shows {countryName}'s present age structure composition, highlighting the relative size of dependent populations (youth and elderly) versus the productive working-age group. The proportions directly influence economic growth potential, social service demands, and policy priorities.
+              <strong>Current Demographic Balance:</strong> This distribution shows {possessiveInText(countryName)} present age structure composition, highlighting the relative size of dependent populations (youth and elderly) versus the productive working-age group. The proportions directly influence economic growth potential, social service demands, and policy priorities.
             </p>
           </div>
         </div>
@@ -403,7 +404,7 @@ export default function DemographicCharts({
           Visual Data Insights Summary
         </h3>
         <p className="text-gray-700 leading-relaxed">
-          These visualizations collectively tell the story of {countryName}'s demographic evolution, 
+          These visualizations collectively tell the story of {possessiveInText(countryName)} demographic evolution, 
           revealing patterns in population growth, aging trends, and structural changes that shape 
           current social and economic realities. Understanding these visual patterns helps interpret 
           the country's demographic challenges and opportunities in a global context.

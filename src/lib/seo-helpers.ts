@@ -21,10 +21,11 @@ export function generateCountryMetadata(
 ): Metadata {
   const slug = generateSlug(countryName);
   const canonicalUrl = absoluteUrl(`/${slug}`);
-  const titleSuffix = dailyBirths ? ` | ${dailyBirths.toLocaleString()} Daily Births` : '';
-  const title = `${countryName} Population Pyramid ${year} - Demographics & Birth Statistics${titleSuffix}`;
-  const birthInfo = dailyBirths ? ` ${dailyBirths.toLocaleString()} babies born daily (birth rate: ${birthRate} per 1,000).` : '';
-  const description = `Interactive population pyramid for ${countryName} in ${year}. Total population: ${formatNumber(totalPopulation)}.${birthInfo} View age distribution, birth statistics, demographic trends.`;
+  // T2 Step 7: births boilerplate removed (computed births are wrong until T4).
+  // The live country route no longer uses this helper (it builds metadata via
+  // buildMetadata); kept here for the legacy page-partial.tsx only.
+  const title = `${countryName} Population Pyramid ${year} - Demographics & Age Structure`;
+  const description = `Interactive population pyramid for ${countryName} in ${year}. Total population: ${formatNumber(totalPopulation)}. View age distribution and demographic trends.`;
 
   const baseKeywords = [
     `${countryName.toLowerCase()} population pyramid`,
