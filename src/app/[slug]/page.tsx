@@ -195,6 +195,13 @@ export default async function CountryPage({ params }: CountryPageProps) {
       .reduce((sum, ag) => sum + ag.total, 0);
     const youngAdultPercentage = (youngAdultPopulation / yearData.totalPopulation) * 100;
 
+    // Sex-ratio surplus as a single head-count figure (+ share of the population).
+    const sexSurplusN = Math.abs(metrics.malePopulation - metrics.femalePopulation);
+    const sexSurplusPct = metrics.totalPopulation ? (sexSurplusN / metrics.totalPopulation) * 100 : 0;
+    const sexSurplusMore = metrics.malePopulation >= metrics.femalePopulation ? 'Men' : 'Women';
+    const sexSurplusFewer = metrics.malePopulation >= metrics.femalePopulation ? 'women' : 'men';
+    const sexSurplusSentence = `${sexSurplusMore} outnumber ${sexSurplusFewer} by ${sexSurplusN.toLocaleString('en-US')} (${sexSurplusPct.toFixed(1)}% of the population)`;
+
     // Generate all content
     const content = generateCountryContent(
       countryData.countryName,
@@ -211,6 +218,13 @@ export default async function CountryPage({ params }: CountryPageProps) {
     const historicalEvents = getHistoricalEvents(countrySlug);
     // T5a: key facts are derived from the UN data (replaces generateEnhancedFacts).
     const demographicFacts = await keyFacts(countrySlug);
+    // T5a: DTM stage, dividend window, aging speed and future trend from the UN data.
+    const [dtm, dividend, aging, future] = await Promise.all([
+      dtmStage(countrySlug),
+      dividendStatus(countrySlug),
+      agingSpeed(countrySlug),
+      futureTrend(countrySlug),
+    ]);
     const expandedFAQs = generateExpandedFAQ(
       countryData.countryName,
       countrySlug,
@@ -218,7 +232,8 @@ export default async function CountryPage({ params }: CountryPageProps) {
       metrics,
       countryData,
       latestYear,
-      countryStats.rank
+      countryStats.rank,
+      { dtm, dividend, pyramidType: metrics.pyramidType, tfr: fertilityData?.fertilityData?.current?.totalFertilityRate ?? null }
     );
     // FAQPage schema mirrors the visible FAQ exactly (T2 render requirement).
     const faqPageSchema = {
@@ -246,14 +261,6 @@ export default async function CountryPage({ params }: CountryPageProps) {
       latestYear
     );
     const usageSummary = generateUsageSummary(countryData.countryName, metrics);
-    
-    // T5a: DTM stage, dividend window, aging speed and future trend from the UN data.
-    const [dtm, dividend, aging, future] = await Promise.all([
-      dtmStage(countrySlug),
-      dividendStatus(countrySlug),
-      agingSpeed(countrySlug),
-      futureTrend(countrySlug),
-    ]);
 
     // T2 Step 7: computed births are wrong until T4, so the birth-based JSON-LD
     // (dataset + FAQ) is no longer emitted here. The visible FAQ's FAQPage
@@ -652,6 +659,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                     <p className="text-lg font-semibold text-gray-900 mb-2">
                       {sentenceStart(countryData.countryName)} has <span className="text-purple-700 font-bold">{metrics.sexRatio.toFixed(1)} males per 100 females</span> (sex ratio)
                     </p>
+                    <p className="text-gray-700">{sexSurplusSentence}.</p>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-6">
@@ -667,12 +675,6 @@ export default async function CountryPage({ params }: CountryPageProps) {
                         <li className="flex justify-between">
                           <span>Percentage:</span>
                           <span className="font-medium">{metrics.malePercent.toFixed(1)}%</span>
-                        </li>
-                        <li className="flex justify-between">
-                          <span>Surplus:</span>
-                          <span className="font-medium text-blue-600">
-                            +{(metrics.malePopulation - metrics.femalePopulation).toLocaleString()}
-                          </span>
                         </li>
                       </ul>
                     </div>
@@ -710,7 +712,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                       <div className="bg-blue-50 rounded-lg p-3">
                         <div className="font-medium text-blue-900 mb-1">Gender Balance</div>
                         <div className="text-lg font-bold text-blue-700">
-                          {metrics.sexRatio > 100 ? 'Male' : 'Female'} surplus: {Math.abs(metrics.sexRatio - 100).toFixed(1)}%
+                          {sexSurplusMore} +{sexSurplusN.toLocaleString('en-US')} ({sexSurplusPct.toFixed(1)}%)
                         </div>
                       </div>
                     </div>

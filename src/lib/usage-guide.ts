@@ -72,7 +72,7 @@ export function generateUsageGuide(
       title: 'Government Planning and Policy Development',
       description: `Essential demographic intelligence for evidence-based policy making, resource allocation, and strategic planning. Use ${possessiveInText(countryName)} data to inform decisions on education, healthcare, infrastructure, and social services.`,
       applications: [
-        `Education planning: ${hasHighGrowth ? 'Prepare for ' + Math.round(metrics.youthPercentage * populationInMillions / 100).toFixed(1) + 'M school-age children' : 'Optimize educational resources for smaller youth cohorts'}`,
+        `Education planning: ${hasHighGrowth ? 'Prepare for ' + Math.round((metrics.youthPercentage / 100) * yearData.totalPopulation).toLocaleString('en-US') + ' school-age children' : 'Optimize educational resources for smaller youth cohorts'}`,
         `Healthcare systems: ${isAgingPopulation ? 'Address aging population needs with ' + metrics.elderlyPercentage.toFixed(1) + '% elderly' : 'Focus on maternal and child health services'}`,
         `Economic development: ${metrics.workingAgePercentage > 65 ? 'Leverage demographic dividend with ' + metrics.workingAgePercentage.toFixed(1) + '% working-age population' : 'Address dependency challenges with targeted interventions'}`,
         `Infrastructure planning: Anticipate ${populationInMillions > 10 ? 'large-scale' : 'moderate'} demographic pressures on urban services`,

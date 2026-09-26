@@ -11,6 +11,13 @@ interface FAQ {
   category: 'population' | 'age' | 'fertility' | 'migration' | 'comparison' | 'trends' | 'social' | 'economic';
 }
 
+interface FaqRules {
+  dtm: { stage: number } | null;
+  dividend: { status: string; sentence: string } | null;
+  pyramidType: 'expansive' | 'constrictive' | 'stationary' | null;
+  tfr: number | null;
+}
+
 export function generateExpandedFAQ(
   countryName: string,
   countrySlug: string,
@@ -18,7 +25,8 @@ export function generateExpandedFAQ(
   metrics: DemographicMetrics,
   countryData: CountryPopulationData,
   currentYear: number,
-  rank: number | null = null
+  rank: number | null = null,
+  rules: FaqRules = { dtm: null, dividend: null, pyramidType: null, tfr: null }
 ): FAQ[] {
   const faqs: FAQ[] = [];
 
@@ -48,7 +56,7 @@ export function generateExpandedFAQ(
   // 9. Age structure question
   faqs.push({
     question: `What does ${namePoss} age structure reveal about its development?`,
-    answer: `${namePossStart} age structure, with ${metrics.youthPercentage.toFixed(1)}% under 15, ${metrics.workingAgePercentage.toFixed(1)}% working-age (15-64), and ${metrics.elderlyPercentage.toFixed(1)}% elderly (65+), indicates ${metrics.medianAge < 25 ? 'early demographic transition with high growth potential' : metrics.medianAge < 35 ? 'intermediate development with demographic dividend opportunities' : 'advanced transition with aging challenges'}. The median age of ${metrics.medianAge.toFixed(1)} years reflects ${metrics.medianAge < 30 ? 'a young society with significant future workforce entry' : 'a maturing population with established workforce patterns'}. This demographic structure ${metrics.dependencyRatio < 50 ? 'provides favorable conditions for economic growth through low dependency ratios' : 'presents challenges with high dependency ratios requiring substantial support systems'}. ${metrics.youthPercentage > 30 ? 'The large youth population demands major investment in education, healthcare, and job creation over the coming decades.' : 'The smaller youth cohorts suggest approaching population stabilization and eventual aging pressures.'} Age structure directly influences economic planning, social service needs, labor market dynamics, and long-term fiscal sustainability in ${nameMid}.`,
+    answer: `${namePossStart} age structure — ${metrics.youthPercentage.toFixed(1)}% under 15, ${metrics.workingAgePercentage.toFixed(1)}% working-age (15-64) and ${metrics.elderlyPercentage.toFixed(1)}% aged 65+ — is that of ${rules.dtm ? `a country in Stage ${rules.dtm.stage} of the demographic transition` : 'a country mid-transition'}${rules.pyramidType ? `, with a ${rules.pyramidType} population pyramid` : ''}. The median age of ${metrics.medianAge.toFixed(1)} years reflects ${metrics.medianAge < 30 ? 'a young society with significant future workforce entry' : 'a maturing population with established workforce patterns'}. This structure ${metrics.dependencyRatio < 50 ? 'provides favorable conditions for economic growth through low dependency ratios' : 'presents challenges with high dependency ratios requiring substantial support systems'}. ${metrics.youthPercentage > 30 ? 'The large youth population demands major investment in education, healthcare, and job creation over the coming decades.' : 'The smaller youth cohorts suggest approaching population stabilization and eventual aging pressures.'} Age structure directly influences economic planning, social service needs, labor market dynamics, and long-term fiscal sustainability in ${nameMid}.`,
     category: 'age'
   });
 
@@ -59,10 +67,16 @@ export function generateExpandedFAQ(
     category: 'economic'
   });
 
-  // 11. Demographic dividend question
+  // 11. Demographic dividend question — follows the dividendStatus rule (T5a).
+  const divPhrase =
+    rules.dividend?.status === 'closed' ? 'has moved past its demographic-dividend window'
+      : rules.dividend?.status === 'opening' ? 'is opening its demographic-dividend window'
+      : rules.dividend?.status === 'open' ? 'is in its demographic-dividend window'
+      : rules.dividend?.status === 'at its peak' ? 'is at the peak of its demographic-dividend window'
+      : 'is approaching a demographic-dividend phase';
   faqs.push({
     question: `Is ${nameMid} experiencing a demographic dividend?`,
-    answer: `${NameStart} is ${metrics.dependencyRatio < 50 && metrics.workingAgePercentage > 65 ? 'currently experiencing' : metrics.dependencyRatio < 60 && metrics.workingAgePercentage > 60 ? 'entering' : metrics.dependencyRatio > 70 ? 'past' : 'approaching'} a demographic dividend phase. ${metrics.dependencyRatio < 50 ? 'With low dependency ratios and a large working-age population, conditions are favorable for accelerated economic growth through increased savings, investment, and productivity.' : 'Current demographic conditions ' + (metrics.dependencyRatio > 70 ? 'have moved beyond the dividend window, requiring focus on productivity and automation' : 'suggest emerging opportunities for demographic benefits') + '.'} The demographic dividend occurs when fertility declines create a bulge in working-age population while dependency ratios remain manageable. ${NameStart} ${metrics.youthPercentage > 25 ? 'still has significant youth populations that will enter the workforce over the next 15 years' : 'shows more balanced age structures typical of dividend or post-dividend phases'}. Realizing demographic-dividend benefits requires strategic investment in education, healthcare, job creation, and governance so the working-age population can contribute productively. ${metrics.dependencyRatio < 50 ? 'This demographic window typically lasts 20-30 years, making current policy decisions crucial for maximizing economic benefits.' : 'Understanding demographic timing helps inform appropriate economic and social policies.'}`,
+    answer: `${NameStart} ${divPhrase}. ${rules.dividend?.sentence ? rules.dividend.sentence + ' ' : ''}The demographic dividend occurs when falling fertility creates a bulge in the working-age population while dependency ratios stay manageable. Realizing its benefits requires strategic investment in education, healthcare, job creation, and governance so the working-age population can contribute productively.`,
     category: 'economic'
   });
 

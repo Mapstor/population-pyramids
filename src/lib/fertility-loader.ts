@@ -1,6 +1,7 @@
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import { inText, sentenceStart } from '@/lib/country-names';
+import { fertilityBand } from '@/lib/country-rules';
 
 export interface FertilityYearData {
   year: number;
@@ -88,14 +89,14 @@ export function getFertilityAnalysis(fertilityData: FertilityData, countryName: 
   const current = fertilityData.fertilityData.current;
   const worldComp = fertilityData.fertilityData.worldComparison;
   
-  let analysis = `${sentenceStart(countryName)} has a Total Fertility Rate (TFR) of ${current.totalFertilityRate} children per woman in ${current.year}, `;
-  
-  if (metrics.belowReplacement) {
-    analysis += `which is below the replacement level of ${fertilityData.fertilityData.replacementLevel}. `;
-    analysis += `This indicates that ${inText(countryName)} is experiencing below-replacement fertility, contributing to population aging and potential future decline. `;
+  const tfr = current.totalFertilityRate;
+  const replacement = fertilityData.fertilityData.replacementLevel;
+  let analysis = `${sentenceStart(countryName)} has a Total Fertility Rate (TFR) of ${tfr.toFixed(2)} children per woman in ${current.year} — ${fertilityBand(tfr)}. `;
+
+  if (tfr < replacement) {
+    analysis += `That is below the replacement level of ${replacement.toFixed(1)}, contributing to population aging and potential future decline. `;
   } else {
-    analysis += `which is above the replacement level of ${fertilityData.fertilityData.replacementLevel}. `;
-    analysis += `This indicates that ${inText(countryName)} maintains replacement-level fertility supporting population stability. `;
+    analysis += `That is at or above the replacement level of ${replacement.toFixed(1)}, supporting continued population growth. `;
   }
   
   // Thirds of the 194-country ranking (1 = highest TFR): 1–65 highest third,

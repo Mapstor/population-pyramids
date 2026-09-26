@@ -73,10 +73,19 @@ export default function BirthStatistics({
   const monthlyBirths = Math.round(annualBirths / 12);
   const weeklyBirths = Math.round(annualBirths / 52);
   const dailyBirths = Math.round(annualBirths / 365);
-  const hourlyBirths = Math.round(dailyBirths / 24);
+  const birthsPerHour = dailyBirths / 24;
   const birthsPerMinute = dailyBirths / 24 / 60;
   const birthsPerSecond = birthsPerMinute / 60;
   const secondsBetweenBirths = dailyBirths > 0 ? Math.round(86400 / dailyBirths) : 0;
+  // Rates < 10 show one decimal; a positive rate is never displayed as 0. Intervals
+  // over 120s show in minutes, over 2h in hours ("about every 3.4 hours").
+  const fmtRate = (v: number, decimals: number) => {
+    if (v >= 10) return Math.round(v).toLocaleString('en-US');
+    const s = v.toFixed(decimals);
+    return v > 0 && parseFloat(s) === 0 ? v.toPrecision(1) : s;
+  };
+  const fmtInterval = (s: number) => (!s || s <= 0) ? '—' : s > 7200 ? `about every ${(s / 3600).toFixed(1)} hours` : s > 120 ? `about every ${(s / 60).toFixed(1)} minutes` : `every ${Math.round(s)}s`;
+  const fmtCountdown = (s: number) => (!s || s <= 0) ? '—' : s > 7200 ? `${(s / 3600).toFixed(1)} h` : s > 120 ? `${(s / 60).toFixed(1)} min` : `${Math.round(s)}s`;
 
   const declineFromPeak = peakCbr && peakCbr.value > 0 ? ((peakCbr.value - crudeBirthRate) / peakCbr.value) * 100 : 0;
 
@@ -195,11 +204,11 @@ export default function BirthStatistics({
                 <div className="pt-3 border-t border-blue-200 space-y-2">
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-600">Next birth:</span>
-                    <span className="font-semibold">{isClient ? `${secondsUntilNext}s` : '--s'}</span>
+                    <span className="font-semibold">{isClient ? fmtCountdown(secondsUntilNext) : '--'}</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-600">Frequency:</span>
-                    <span className="font-semibold">Every {secondsBetweenBirths}s</span>
+                    <span className="font-semibold">{fmtInterval(secondsBetweenBirths)}</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-600">Daily ({referenceYear}):</span>
@@ -254,15 +263,15 @@ export default function BirthStatistics({
                 <div className="space-y-2">
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-gray-600">Per Second:</span>
-                    <span className="font-bold text-green-700">{birthsPerSecond.toFixed(4)}</span>
+                    <span className="font-bold text-green-700">{fmtRate(birthsPerSecond, 4)}</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-gray-600">Per Minute:</span>
-                    <span className="font-bold text-green-700">{birthsPerMinute.toFixed(2)}</span>
+                    <span className="font-bold text-green-700">{fmtRate(birthsPerMinute, 1)}</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-gray-600">Per Hour:</span>
-                    <span className="font-bold text-green-700">{hourlyBirths.toLocaleString()}</span>
+                    <span className="font-bold text-green-700">{fmtRate(birthsPerHour, 1)}</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-gray-600">Per Day:</span>

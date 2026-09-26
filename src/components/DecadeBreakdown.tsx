@@ -4,6 +4,7 @@ import { useState } from 'react';
 import type { CountryPopulationData } from '@/types/population';
 import { generateDecadeAnalysis } from '@/lib/decade-analyzer';
 import { possessive, possessiveInText, possessiveStart } from '@/lib/country-names';
+import { popShort } from '@/lib/country-format';
 
 interface DecadeBreakdownProps {
   countryName: string;
@@ -44,8 +45,8 @@ export default function DecadeBreakdown({ countryName, countrySlug, countryData 
     const medianAgeChange = endData.medianAge - startData.medianAge;
 
     return {
-      startPop: (startData.totalPopulation / 1000000).toFixed(1),
-      endPop: (endData.totalPopulation / 1000000).toFixed(1),
+      startPop: popShort(startData.totalPopulation),
+      endPop: popShort(endData.totalPopulation),
       populationChange: populationChange.toFixed(1),
       medianAgeChange: medianAgeChange.toFixed(1),
       startMedian: startData.medianAge.toFixed(1),
@@ -134,11 +135,11 @@ export default function DecadeBreakdown({ countryName, countrySlug, countryData 
                     {popData && (
                       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 p-3 sm:p-4 bg-white rounded-lg border border-blue-200">
                         <div className="text-center">
-                          <div className="text-lg sm:text-xl lg:text-2xl font-bold text-blue-600">{popData.startPop}M</div>
+                          <div className="text-lg sm:text-xl lg:text-2xl font-bold text-blue-600">{popData.startPop}</div>
                           <div className="text-xs sm:text-sm text-gray-600">Start Population</div>
                         </div>
                         <div className="text-center">
-                          <div className="text-lg sm:text-xl lg:text-2xl font-bold text-blue-600">{popData.endPop}M</div>
+                          <div className="text-lg sm:text-xl lg:text-2xl font-bold text-blue-600">{popData.endPop}</div>
                           <div className="text-xs sm:text-sm text-gray-600">End Population</div>
                         </div>
                         <div className="text-center">
@@ -168,7 +169,7 @@ export default function DecadeBreakdown({ countryName, countrySlug, countryData 
                       <div className="mt-6 p-3 sm:p-4 bg-blue-100 rounded-lg border border-blue-200">
                         <h4 className="font-semibold text-blue-900 mb-2 text-sm sm:text-base">Key Demographic Highlights</h4>
                         <ul className="text-blue-800 text-xs sm:text-sm space-y-1 leading-relaxed">
-                          <li>• Population changed from {popData.startPop} million to {popData.endPop} million</li>
+                          <li>• Population changed from {popData.startPop} to {popData.endPop}</li>
                           <li>• {parseFloat(popData.populationChange) > 0 ? 'Growth' : 'Decline'} rate of {Math.abs(parseFloat(popData.populationChange))}% over the decade</li>
                           <li>• Median age shifted from {popData.startMedian} to {popData.endMedian} years ({parseFloat(popData.medianAgeChange) >= 0 ? '+' : ''}{popData.medianAgeChange}y)</li>
                           <li>• 65+ share changed by {parseFloat(popData.o65Change) >= 0 ? '+' : ''}{popData.o65Change} points; under-15 share by {parseFloat(popData.u15Change) >= 0 ? '+' : ''}{popData.u15Change} points</li>

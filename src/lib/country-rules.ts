@@ -142,7 +142,8 @@ export const agingSpeed = cache(async (slug: string): Promise<{ sentence: string
   if (m2016 == null || m2026 == null || wm2016 == null || wm2026 == null) return null;
   const c = m2026 - m2016, w = wm2026 - wm2016;
   const rel = c > w ? 'faster' : 'slower';
-  return { sentence: `${possessiveStart(name)} median age changed by +${f1(c)} years from 2016 to ${REFERENCE_YEAR}, ${rel} than the world average (+${f1(w)} years).` };
+  const sign = (v: number) => (v >= 0 ? '+' : '');
+  return { sentence: `${possessiveStart(name)} median age changed by ${sign(c)}${f1(c)} years from 2016 to ${REFERENCE_YEAR}, ${rel} than the world average (${sign(w)}${f1(w)} years).` };
 });
 
 // ---- (e) future trend ----
