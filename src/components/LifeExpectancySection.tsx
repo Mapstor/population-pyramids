@@ -231,7 +231,7 @@ export default function LifeExpectancySection({ data, countrySlug }: Props) {
     '@type': 'Dataset',
     '@id': `${SITE_URL}/${countrySlug}#life-expectancy-dataset`,
     name: `Life Expectancy at Birth in ${inText(data.country)}`,
-    description: `Life expectancy at birth in ${inText(data.country)}, 2024: ${data.current.total} years (male ${data.current.male}, female ${data.current.female}). World rank #${data.rank.position} of ${data.rank.outOf}. Historical series 1950–${data.historical[data.historical.length - 1].year} and UN medium-variant projections to 2100.`,
+    description: `Life expectancy at birth in ${inText(data.country)}, ${data.current.year} (UN projection): ${data.current.total} years (male ${data.current.male}, female ${data.current.female}). World rank #${data.rank.position} of ${data.rank.outOf}. Historical series 1950–2023 and UN medium-variant projections to 2100.`,
     url: `${SITE_URL}/${countrySlug}#life-expectancy`,
     creator: {
       '@type': 'Organization',
@@ -263,17 +263,17 @@ export default function LifeExpectancySection({ data, countrySlug }: Props) {
             How long the average person in {inText(data.country)} is expected to live · sourced from UN WPP 2024
           </p>
         </div>
-        <span className="text-xs text-gray-500">Source: UN WPP 2024 · Updated {data.lastUpdated}</span>
+        <span className="text-xs text-gray-500">Source: UN WPP 2024 medium-variant projection ({data.current.year})</span>
       </div>
 
       {/* Main stat grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-4">
         <div className="bg-blue-50 rounded-lg p-4 border-l-4 border-blue-600">
           <div className="text-xs font-bold text-blue-700 uppercase tracking-wider mb-1">
-            Life expectancy 2024
+            Life expectancy {data.current.year} (UN projection)
           </div>
           <div className="text-3xl font-bold text-blue-900 leading-none">{data.current.total}</div>
-          <div className="text-xs text-blue-700 mt-1">years · world rank #{data.rank.position}</div>
+          <div className="text-xs text-blue-700 mt-1">years · world rank #{data.rank.position} of {data.rank.outOf}</div>
         </div>
         <div className="bg-emerald-50 rounded-lg p-4 border-l-4 border-emerald-600">
           <div className="text-xs font-bold text-emerald-700 uppercase tracking-wider mb-1">
@@ -331,7 +331,7 @@ export default function LifeExpectancySection({ data, countrySlug }: Props) {
             Since 1950: +{gain1950to2024.toFixed(1)} years
           </div>
           <div className="font-semibold text-gray-900 text-sm">
-            From {data.historical[0].total} yrs (1950) → {data.current.total} yrs (2024)
+            From {data.historical[0].total} yrs (1950) → {data.current.total} yrs ({data.current.year})
           </div>
           <div className="text-xs text-gray-700 mt-1">{gainPhrase(gain1950to2024)}</div>
         </div>
@@ -341,7 +341,7 @@ export default function LifeExpectancySection({ data, countrySlug }: Props) {
       <div className="border-t border-gray-200 p-4">
         <div className="flex justify-between items-baseline mb-3 flex-wrap gap-2">
           <h3 className="text-base font-bold text-gray-900">
-            Historical Trend, 1950 → 2024 (plus UN projection to 2100)
+            Historical Trend, 1950 → {data.current.year} (plus UN projection to 2100)
           </h3>
           <span className="text-xs text-gray-500">Solid: actual · Dashed: medium-variant projection</span>
         </div>
@@ -352,11 +352,11 @@ export default function LifeExpectancySection({ data, countrySlug }: Props) {
             <div className="font-bold text-gray-900">{data.historical[0].total} yrs</div>
           </div>
           <div className="bg-gray-50 rounded p-3">
-            <div className="text-xs text-gray-500 uppercase tracking-wider">2024 today</div>
+            <div className="text-xs text-gray-500 uppercase tracking-wider">{data.current.year} today</div>
             <div className="font-bold text-gray-900">{data.current.total} yrs</div>
           </div>
           <div className="bg-blue-50 rounded p-3">
-            <div className="text-xs text-blue-700 uppercase tracking-wider">+ gained 1950–2024</div>
+            <div className="text-xs text-blue-700 uppercase tracking-wider">+ gained 1950–{data.current.year}</div>
             <div className="font-bold text-blue-900">+{gain1950to2024.toFixed(1)} yrs</div>
           </div>
           <div className="bg-amber-50 rounded p-3">
@@ -392,7 +392,7 @@ export default function LifeExpectancySection({ data, countrySlug }: Props) {
       {projection2100 && (
         <div className="border-t border-gray-200 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200">
           <div className="p-4 text-center">
-            <div className="text-xs text-gray-500 uppercase tracking-wider">Today (2024)</div>
+            <div className="text-xs text-gray-500 uppercase tracking-wider">Today ({data.current.year})</div>
             <div className="text-2xl font-bold text-gray-900 mt-1">{data.current.total}</div>
             <div className="text-xs text-gray-500 mt-0.5">years</div>
           </div>
@@ -420,7 +420,7 @@ export default function LifeExpectancySection({ data, countrySlug }: Props) {
         <div className="border-t border-gray-200 p-4">
           <div className="flex justify-between items-baseline mb-3 flex-wrap gap-2">
             <h3 className="text-base font-bold text-gray-900">{data.country} vs Regional Neighbors</h3>
-            <span className="text-xs text-gray-500">Life expectancy at birth, 2024 · UN WPP</span>
+            <span className="text-xs text-gray-500">Life expectancy at birth, {data.current.year} · UN WPP</span>
           </div>
           {(() => {
             const allCountries = [

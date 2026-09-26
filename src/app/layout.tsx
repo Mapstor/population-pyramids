@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     default: 'Population Pyramids - Interactive Demographics for 195 Countries',
     template: '%s | Population Pyramids'
   },
-  description: 'Explore interactive population pyramids for 195 countries from 1950-2025. Analyze age distribution, demographic trends, and population data with real UN World Population Prospects 2024.',
+  description: 'Explore interactive population pyramids for 195 countries from 1950-2026. Analyze age distribution, demographic trends, and population data with real UN World Population Prospects 2024.',
   keywords: ['population pyramid', 'demographics', 'population data', 'UN data', 'age structure', 'demographic analysis', 'population statistics', 'world population', 'population growth', 'demographic transition'],
   authors: [{ name: 'Population Pyramids' }],
   creator: 'Population Pyramids',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     title: 'Population Pyramids - Interactive Demographics for 195 Countries',
-    description: 'Explore interactive population pyramids for 195 countries from 1950-2025. Analyze age distribution, demographic trends, and population data with real UN World Population Prospects 2024.',
+    description: 'Explore interactive population pyramids for 195 countries from 1950-2026. Analyze age distribution, demographic trends, and population data with real UN World Population Prospects 2024.',
     siteName: 'Population Pyramids',
     images: [
       {
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Population Pyramids - Interactive Demographics for 195 Countries',
-    description: 'Explore interactive population pyramids for 195 countries from 1950-2025. Real UN demographic data visualization.',
+    description: 'Explore interactive population pyramids for 195 countries from 1950-2026. Real UN demographic data visualization.',
     images: ['/og-image.png'],
     creator: '@populationpyramids',
     site: '@populationpyramids',

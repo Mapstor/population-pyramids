@@ -1,5 +1,6 @@
 import { loadCountries, loadCountryData } from './data-loader';
 import { getCountryFlag } from './country-flags';
+import { REFERENCE_YEAR } from './site-meta';
 
 export interface CountryGrowthData {
   slug: string;
@@ -37,10 +38,14 @@ export async function getGrowthRateData(): Promise<{
       const data = await loadCountryData(country.slug);
       if (!data || !data.years) continue;
       
-      // Get most recent years data
-      const years = Object.keys(data.years).sort((a, b) => parseInt(b) - parseInt(a));
-      const currentYear = years[0]; // Most recent year
-      const previousYear = years[1]; // Previous year
+      // Reference year (2026) vs the year before — never "the latest year in the
+      // file" (data now runs to 2030, which must not be presented as current).
+      const years = Object.keys(data.years)
+        .map(Number)
+        .filter((y) => y <= REFERENCE_YEAR)
+        .sort((a, b) => b - a);
+      const currentYear = String(years[0]); // reference year (or latest available ≤ it)
+      const previousYear = String(years[1]); // the year before
       
       const current = data.years[currentYear]?.totalPopulation;
       const previous = data.years[previousYear]?.totalPopulation;

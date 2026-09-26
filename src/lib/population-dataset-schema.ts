@@ -57,7 +57,7 @@ export function generatePopulationDatasetSchema(
       url: baseUrl
     },
     license: 'https://creativecommons.org/licenses/by/4.0/',
-    temporalCoverage: '1950/2025',
+    temporalCoverage: `1950/${year}`,
     spatialCoverage: {
       '@type': 'Place',
       name: countryName,
@@ -204,8 +204,8 @@ export function generatePopulationDatasetSchema(
       {
         '@type': 'Dataset',
         name: `${countryName} Historical Demographics`,
-        description: 'Population trends from 1950-2025',
-        temporalCoverage: '1950/2025'
+        description: `Population trends from 1950-${year}`,
+        temporalCoverage: `1950/${year}`
       }
     ]
   };
@@ -234,7 +234,7 @@ export function generateMinimalDatasetSchema(
       name: 'PopulationPyramids.org'
     },
     license: 'https://creativecommons.org/licenses/by/4.0/',
-    temporalCoverage: '1950/2025',
+    temporalCoverage: `1950/${year}`,
     spatialCoverage: {
       '@type': 'Place',
       name: countryName

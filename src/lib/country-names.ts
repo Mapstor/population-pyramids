@@ -48,7 +48,19 @@ const TITLE_OVERRIDES: Record<string, string> = {
   'united-kingdom': 'UK',
   'united-arab-emirates': 'UAE',
   'democratic-republic-of-the-congo': 'DR Congo',
+  // Micronesia's list/display name stays "Micronesia"; the page title
+  // disambiguates it from the wider region as the Federated States.
+  micronesia: 'Micronesia (FSM)',
 };
+
+/**
+ * Micronesia is displayed as the bare "Micronesia" in lists, but running text
+ * must name the country (the Federated States of Micronesia) so it is never
+ * confused with the sub-region of the same name.
+ */
+const MICRONESIA_DISPLAY = 'Micronesia';
+const MICRONESIA_IN_TEXT = 'the Federated States of Micronesia';
+const MICRONESIA_SENTENCE_START = 'The Federated States of Micronesia';
 
 const NAME_BY_SLUG: Record<string, string> = Object.fromEntries(
   (countriesData as Array<{ slug: string; name: string }>).map((c) => [c.slug, c.name])
@@ -56,11 +68,13 @@ const NAME_BY_SLUG: Record<string, string> = Object.fromEntries(
 
 /** Mid-sentence name with a lowercase article where one is needed ("the Philippines"). */
 export function inText(name: string): string {
+  if (name === MICRONESIA_DISPLAY) return MICRONESIA_IN_TEXT;
   return THE_NAMES.has(name) ? `the ${name}` : name;
 }
 
 /** Sentence-initial name with a capitalised article where needed ("The Philippines"). */
 export function sentenceStart(name: string): string {
+  if (name === MICRONESIA_DISPLAY) return MICRONESIA_SENTENCE_START;
   return THE_NAMES.has(name) ? `The ${name}` : name;
 }
 

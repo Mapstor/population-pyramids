@@ -55,16 +55,16 @@
           "total": 10,
           "malePercent": 1.4,
           "femalePercent": 0.6,
-          "totalPercent": 2.0
+          "totalPercent": 2
         },
         {
           "ageRange": "25-29",
           "male": 10,
           "female": 5,
           "total": 15,
-          "malePercent": 2.0,
-          "femalePercent": 1.0,
-          "totalPercent": 3.0
+          "malePercent": 2,
+          "femalePercent": 1,
+          "totalPercent": 3
         },
         {
           "ageRange": "30-34",
@@ -80,7 +80,7 @@
           "male": 20,
           "female": 9,
           "total": 29,
-          "malePercent": 4.0,
+          "malePercent": 4,
           "femalePercent": 1.8,
           "totalPercent": 5.8
         },
@@ -98,7 +98,7 @@
           "male": 30,
           "female": 14,
           "total": 44,
-          "malePercent": 6.0,
+          "malePercent": 6,
           "femalePercent": 2.8,
           "totalPercent": 8.9
         },
@@ -152,8 +152,8 @@
           "male": 15,
           "female": 20,
           "total": 35,
-          "malePercent": 3.0,
-          "femalePercent": 4.0,
+          "malePercent": 3,
+          "femalePercent": 4,
           "totalPercent": 7.1
         },
         {
@@ -161,7 +161,7 @@
           "male": 10,
           "female": 14,
           "total": 24,
-          "malePercent": 2.0,
+          "malePercent": 2,
           "femalePercent": 2.8,
           "totalPercent": 4.8
         },
@@ -170,7 +170,7 @@
           "male": 5,
           "female": 7,
           "total": 12,
-          "malePercent": 1.0,
+          "malePercent": 1,
           "femalePercent": 1.4,
           "totalPercent": 2.4
         },
@@ -181,14 +181,14 @@
           "total": 5,
           "malePercent": 0.4,
           "femalePercent": 0.6,
-          "totalPercent": 1.0
+          "totalPercent": 1
         },
         {
           "ageRange": "95-99",
           "male": 0,
           "female": 1,
           "total": 1,
-          "malePercent": 0.0,
+          "malePercent": 0,
           "femalePercent": 0.2,
           "totalPercent": 0.2
         },
@@ -197,25 +197,25 @@
           "male": 0,
           "female": 0,
           "total": 0,
-          "malePercent": 0.0,
-          "femalePercent": 0.0,
-          "totalPercent": 0.0
+          "malePercent": 0,
+          "femalePercent": 0,
+          "totalPercent": 0
         }
       ],
       "un_data": {
         "population_density_per_km2": 1126,
         "sex_ratio_males_per_100_females": 91.7,
-        "life_expectancy_both_sexes": 83.0,
+        "life_expectancy_both_sexes": 83,
         "life_expectancy_male": 80.8,
         "life_expectancy_female": 85.1,
-        "total_fertility_rate": 1.0,
+        "total_fertility_rate": 1,
         "crude_birth_rate": 4.2,
         "crude_death_rate": 25.6,
         "annual_births": 2,
         "annual_deaths": 13,
         "natural_change": -11,
         "population_growth_rate": -1.8,
-        "infant_mortality_rate": 6.0
+        "infant_mortality_rate": 6
       }
     }
   }

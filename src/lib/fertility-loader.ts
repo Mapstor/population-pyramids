@@ -98,13 +98,10 @@ export function getFertilityAnalysis(fertilityData: FertilityData, countryName: 
     analysis += `This indicates that ${inText(countryName)} maintains replacement-level fertility supporting population stability. `;
   }
   
-  if (worldComp.rank <= 50) {
-    analysis += `${sentenceStart(countryName)} ranks ${worldComp.rank} globally for fertility rate, indicating relatively high fertility compared to other countries. `;
-  } else if (worldComp.rank <= 100) {
-    analysis += `${sentenceStart(countryName)} ranks ${worldComp.rank} globally for fertility rate, placing it in the middle range internationally. `;
-  } else {
-    analysis += `${sentenceStart(countryName)} ranks ${worldComp.rank} out of ${worldComp.totalCountries} countries globally for fertility rate, indicating relatively low fertility. `;
-  }
+  // Thirds of the 194-country ranking (1 = highest TFR): 1–65 highest third,
+  // 66–129 middle third, 130–194 lowest third. Keep the wording aligned with the rank.
+  const third = worldComp.rank <= 65 ? 'in the highest third of countries' : worldComp.rank <= 129 ? 'in the middle third of countries' : 'in the lowest third of countries';
+  analysis += `${sentenceStart(countryName)} ranks ${worldComp.rank} of ${worldComp.totalCountries} for fertility rate (1 = highest), ${third}. `;
   
   analysis += `The fertility rate has changed by ${metrics.tfrChangePercent.toFixed(1)}% since 1950, `;
   analysis += `reflecting demographic transition and socioeconomic development in ${inText(countryName)}.`;

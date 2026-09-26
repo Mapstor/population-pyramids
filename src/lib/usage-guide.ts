@@ -40,7 +40,7 @@ export function generateUsageGuide(
         'Generate charts and graphs for visual learning and academic presentations'
       ],
       tips: [
-        'Always include the data year (2024) when presenting statistics',
+        `Always include the data year (${currentYear}) when presenting statistics`,
         'Compare multiple time periods to show demographic changes over time',
         'Use specific numbers rather than general statements for academic credibility',
         'Consider cultural and economic factors when analyzing demographic patterns'
@@ -60,7 +60,7 @@ export function generateUsageGuide(
       ],
       citation: `Population Pyramids. (${currentYear}). ${countryName} Population Pyramid and Demographic Analysis. Retrieved from ${SITE_URL}/${countrySlug}`,
       tips: [
-        'Verify data currency - this analysis uses 2024 projections',
+        `Verify data currency - this analysis uses ${currentYear} projections`,
         'Cross-reference with original UN sources for academic rigor',
         'Consider demographic momentum when making future projections',
         'Include confidence intervals and data limitations in research'
