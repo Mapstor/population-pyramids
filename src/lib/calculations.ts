@@ -1,5 +1,7 @@
 import type { YearData, DemographicMetrics } from '@/types/population';
-import { pyramidTypeOf } from '@/lib/country-rules';
+// Pure module (no data imports) so this file — reachable from client components
+// like ComparisonStats/ComparePageClient — does not pull the server data layer client-side. (T4c)
+import { pyramidTypeOf } from '@/lib/demographic-thresholds';
 
 export function calculateMetrics(yearData: YearData): DemographicMetrics {
   // Gender percentages

@@ -9,6 +9,17 @@ module.exports = {
   swcMinify: false,
   typescript: { ignoreBuildErrors: true },
   eslint: { ignoreDuringBuilds: true },
+  experimental: {
+    // getWpp/getWorld read the wpp2024 JSON off disk (T4c server-only fs reads). The
+    // country and home pages are statically generated, so those reads run at BUILD time
+    // (files present under src/). We still trace the files onto those routes so any
+    // runtime regeneration (ISR / on-demand revalidate) can find them. Scoped to the two
+    // routes that use the layer — nothing else is pulled in.
+    outputFileTracingIncludes: {
+      '/[slug]': ['./src/data/wpp2024/*.json'],
+      '/': ['./src/data/wpp2024/world.json'],
+    },
+  },
   async redirects() {
     return redirects();
   },

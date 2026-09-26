@@ -1,4 +1,3 @@
-'use client';
 
 import Link from 'next/link';
 import { Bar } from 'react-chartjs-2';

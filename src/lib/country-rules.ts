@@ -3,45 +3,26 @@
  * population files). No hardcoded per-country facts. Reference year is 2026.
  */
 import { cache } from 'react';
-import { getWpp, getWorld } from '@/lib/wpp2024';
+import { getWpp, getWorld, getPrecomputedRanks } from '@/lib/wpp2024';
 import { loadCountries, loadCountryData } from '@/lib/data-loader';
 import { REFERENCE_YEAR } from '@/lib/site-meta';
 import { possessiveStart, sentenceStart } from '@/lib/country-names';
 import { popWords } from '@/lib/country-format';
 import type { YearData } from '@/types/population';
+// Pure threshold helpers live in a data-free module so client code (calculations.ts)
+// can use them without dragging this server-only data layer into client bundles. (T4c)
+import {
+  shareOf, workingShare, dependencyRatio, pyramidTypeOf,
+  fertilityBand, under15Band, over65Band, dependencyBand,
+  U15_BANDS as U15, O65_BANDS as O65,
+} from '@/lib/demographic-thresholds';
+// Re-exported so existing server importers ([slug], fertility-loader, glossary) keep their import site.
+export { workingShare, dependencyRatio, pyramidTypeOf, fertilityBand, under15Band, over65Band, dependencyBand };
 
-const U15 = ['0-4', '5-9', '10-14'];
-const O65 = ['65-69', '70-74', '75-79', '80-84', '85-89', '90-94', '95-99', '100+'];
-const W15_64 = ['15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64'];
-const MID = ['15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49'];
 const VATICAN = 'vatican-city';
 
 const f1 = (n: number) => (Math.round(n * 10) / 10).toFixed(1);
 const f2 = (n: number) => (Math.round(n * 100) / 100).toFixed(2);
-
-function shareOf(yd: YearData, bands: string[]): number {
-  const t = yd.totalPopulation;
-  if (!t) return 0;
-  return (yd.ageGroups.filter((a) => bands.includes(a.ageRange ?? '')).reduce((s, a) => s + (a.total ?? 0), 0) / t) * 100;
-}
-/** working-age (15–64) share; exported for the dividend series. */
-export function workingShare(yd: YearData): number {
-  return shareOf(yd, W15_64);
-}
-export function dependencyRatio(yd: YearData): number {
-  const w = shareOf(yd, W15_64);
-  return w > 0 ? ((shareOf(yd, U15) + shareOf(yd, O65)) / w) * 100 : 0;
-}
-
-/** Pyramid type from a single year's age bands (pure). */
-export function pyramidTypeOf(yd: YearData): 'expansive' | 'constrictive' | 'stationary' {
-  const u15 = shareOf(yd, U15);
-  if (u15 >= 30) return 'expansive';
-  const band04 = yd.ageGroups.find((a) => a.ageRange === '0-4')?.total ?? 0;
-  const maxMid = Math.max(0, ...yd.ageGroups.filter((a) => MID.includes(a.ageRange ?? '')).map((a) => a.total ?? 0));
-  if (u15 < 20 && maxMid > 0 && band04 <= 0.85 * maxMid) return 'constrictive';
-  return 'stationary';
-}
 
 const dataOf = cache(async (slug: string) => {
   const [w, pd] = await Promise.all([getWpp(slug), loadCountryData(slug).catch(() => null)]);
@@ -163,6 +144,16 @@ export const futureTrend = cache(async (slug: string): Promise<{ population: str
 
 // ---- ranks across all 194 countries (median age, 65+ share, under-15 share) ----
 export const metricRankings = cache(async (year: number = REFERENCE_YEAR) => {
+  // Fast path: precomputed ranks file (T4c) — avoids loading all 194 files per page.
+  const pre = getPrecomputedRanks(year);
+  if (pre) {
+    const map = (f: string) => {
+      const m: Record<string, number> = {};
+      for (const [slug, r] of Object.entries(pre.bySlug)) if (r[f] != null) m[slug] = r[f] as number;
+      return m;
+    };
+    return { N: pre.N, median: map('medianAge'), o65: map('o65'), u15: map('u15') };
+  }
   const countries = await loadCountries();
   const rows: { slug: string; name: string; median: number; o65: number; u15: number }[] = [];
   await Promise.all(
@@ -230,28 +221,5 @@ export const keyFacts = cache(async (slug: string): Promise<Fact[]> => {
   return facts;
 });
 
-/** Human label for a fertility level, by TFR. */
-export function fertilityBand(tfr: number): string {
-  if (tfr >= 4) return 'high fertility';
-  if (tfr >= 2.1) return 'above replacement';
-  if (tfr >= 1.3) return 'below replacement';
-  return 'very low (lowest-low) fertility';
-}
-/** Threshold labels used by the glossary / "What This Means". */
-export function under15Band(pct: number): string {
-  if (pct < 15) return 'very small';
-  if (pct < 25) return 'moderate';
-  if (pct < 35) return 'large';
-  return 'very large';
-}
-export function over65Band(pct: number): string {
-  if (pct < 7) return 'young';
-  if (pct < 14) return 'ageing';
-  if (pct < 21) return 'aged';
-  return 'super-aged';
-}
-export function dependencyBand(ratio: number): string {
-  if (ratio < 50) return 'low';
-  if (ratio <= 65) return 'moderate';
-  return 'high';
-}
+// fertilityBand / under15Band / over65Band / dependencyBand now live in
+// @/lib/demographic-thresholds and are re-exported at the top of this file.

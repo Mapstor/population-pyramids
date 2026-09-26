@@ -1,4 +1,6 @@
-@import "tailwindcss";
+/* Restrict Tailwind v4 content scanning to src/ (globals.css is in src/app/, so ../ = src).
+   Keeps it from walking backups/, venv/, docs/, briefs/, reports/ at the repo root. */
+@import "tailwindcss" source("../");
 
 :root {
   --background: #ffffff;

@@ -9,7 +9,10 @@
  * This is the single source for population rank/share and world totals. It does
  * NOT yet feed the births, fertility or life-expectancy sections — that is T4b.
  */
+import 'server-only';
 import { cache } from 'react';
+import fs from 'node:fs';
+import path from 'node:path';
 import { loadCountries } from './data-loader';
 
 export type WppField =
@@ -51,21 +54,30 @@ export interface WppData {
 /** Country slugs that never appear in rankings. */
 export const RANK_EXCLUDED = ['vatican-city'] as const;
 
-/** Load one slug's WPP 2024 series ('world' for the world aggregate). Cached per slug. */
-export const getWpp = cache(async (slug: string): Promise<WppData | null> => {
+// Server-only file reads: read + parse each wpp2024 file straight off disk and memoize
+// at module scope, so a file is parsed once per process (not once per page). This avoids
+// the ~196 dynamic-import() webpack chunks the old `await import()` produced and keeps the
+// data out of every client bundle. (T4c) Files are traced via next.config outputFileTracing.
+const WPP_DIR = path.join(process.cwd(), 'src', 'data', 'wpp2024');
+const wppCache = new Map<string, WppData | null>();
+
+/** Load one slug's WPP 2024 series ('world' for the world aggregate). Memoized per process. */
+export async function getWpp(slug: string): Promise<WppData | null> {
+  if (wppCache.has(slug)) return wppCache.get(slug) ?? null;
+  let data: WppData | null = null;
   try {
-    const data = await import(`@/data/wpp2024/${slug}.json`);
-    return data.default as WppData;
+    data = JSON.parse(fs.readFileSync(path.join(WPP_DIR, `${slug}.json`), 'utf8')) as WppData;
   } catch {
-    return null;
+    data = null;
   }
-});
+  wppCache.set(slug, data);
+  return data;
+}
 
 /** Load the world WPP 2024 series (UN world totals, 1950–2100). */
-export const getWorld = cache(async (): Promise<WppData> => {
-  const data = await import('@/data/wpp2024/world.json');
-  return data.default as WppData;
-});
+export async function getWorld(): Promise<WppData> {
+  return (await getWpp('world')) as WppData;
+}
 
 /** One indicator value for slug/field/year, or null if the slug/year/field is absent. */
 export async function value(slug: string, field: WppField, year: number): Promise<number | null> {
@@ -73,6 +85,21 @@ export async function value(slug: string, field: WppField, year: number): Promis
   const y = d?.years[String(year)];
   const v = y ? y[field] : null;
   return typeof v === 'number' ? v : null;
+}
+
+// Precomputed rankings (scripts/build-wpp-ranks.js): read once instead of loading all
+// 194 wpp2024 + population files per page during static generation. 15 KB, server-side.
+import ranks2026 from '@/data/wpp2024/ranks-2026.json';
+export interface PrecomputedRanks {
+  referenceYear: number;
+  N: number;
+  bySlug: Record<string, Record<string, number | null>>;
+  world: Record<string, number> | null;
+}
+const PRECOMPUTED: Record<number, PrecomputedRanks> = { 2026: ranks2026 as unknown as PrecomputedRanks };
+/** The precomputed ranks table for a year (null if not precomputed). */
+export function getPrecomputedRanks(year: number): PrecomputedRanks | null {
+  return PRECOMPUTED[year] ?? null;
 }
 
 export interface RankResult {
@@ -100,6 +127,19 @@ export const rankBy = cache(async (
   opts?: { direction?: 'asc' | 'desc'; exclude?: string[] }
 ): Promise<RankResult> => {
   const direction = opts?.direction ?? 'desc';
+  // Fast path: precomputed desc rankings (vatican-only exclusion) for known fields.
+  const pre = PRECOMPUTED[year];
+  if (pre && direction === 'desc' && !opts?.exclude) {
+    const sample = pre.bySlug[Object.keys(pre.bySlug)[0]] ?? {};
+    if (field in sample) {
+      const rank: Record<string, number> = {};
+      for (const [slug, m] of Object.entries(pre.bySlug)) {
+        const r = m[field];
+        if (r != null) rank[slug] = r;
+      }
+      return { rank, N: pre.N };
+    }
+  }
   const excluded = new Set<string>([...RANK_EXCLUDED, ...(opts?.exclude ?? [])]);
   const countries = await loadCountries();
   const rows: { slug: string; name: string; v: number }[] = [];
