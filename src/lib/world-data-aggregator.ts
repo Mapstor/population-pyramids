@@ -18,8 +18,8 @@ export async function generateWorldPopulationData(): Promise<WorldPopulationData
   const countries = await loadCountries();
   const worldData: WorldPopulationData = { years: {} };
   
-  // Years we want to aggregate (1950-2025)
-  const targetYears = Array.from({ length: 76 }, (_, i) => 1950 + i);
+  // Years we want to aggregate (1950 through the reference year 2026)
+  const targetYears = Array.from({ length: 77 }, (_, i) => 1950 + i);
   
   for (const year of targetYears) {
     const yearStr = year.toString();

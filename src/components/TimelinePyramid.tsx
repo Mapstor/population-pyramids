@@ -29,15 +29,21 @@ interface TimelinePyramidProps {
   countryName: string;
   height?: number;
   className?: string;
+  /** Cap the slider at this year (the site reference year); data runs to 2030 but we never scrub past it. */
+  maxYear?: number;
 }
 
 export default function TimelinePyramid({
   countryData,
   countryName,
   height = 500,
-  className = ''
+  className = '',
+  maxYear: maxYearCap
 }: TimelinePyramidProps) {
-  const availableYears = Object.keys(countryData.years).map(Number).sort();
+  const availableYears = Object.keys(countryData.years)
+    .map(Number)
+    .filter((y) => maxYearCap == null || y <= maxYearCap)
+    .sort();
   const minYear = Math.min(...availableYears);
   const maxYear = Math.max(...availableYears);
   
@@ -252,7 +258,7 @@ export default function TimelinePyramid({
 
         {/* Quick Jump Buttons */}
         <div className="flex flex-wrap gap-2 justify-center">
-          {[1950, 1980, 1990, 2000, 2010, 2020, 2025].map(year => (
+          {[1950, 1980, 1990, 2000, 2010, 2020, 2026].map(year => (
             availableYears.includes(year) && (
               <button
                 key={year}

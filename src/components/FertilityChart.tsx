@@ -39,72 +39,27 @@ export default function FertilityChart({
   className = ''
 }: FertilityChartProps) {
   const historicalData = fertilityData.fertilityData.historical;
-  const originalProjections = fertilityData.fertilityData.projections;
   const replacementLevel = fertilityData.fertilityData.replacementLevel;
 
-  // Create realistic year-by-year projections based on historical trends
-  const lastHistoricalYear = Math.max(...historicalData.map(d => d.year));
-  const lastHistoricalTfrData = historicalData.find(d => d.year === lastHistoricalYear);
-  const lastHistoricalTfr = lastHistoricalTfrData?.totalFertilityRate;
-  
-  // Calculate recent trend from last 10 years of data for more realistic projection
-  const recentData = historicalData.filter(d => d.year >= lastHistoricalYear - 10).sort((a, b) => a.year - b.year);
-  let yearlyDecline = 0.02; // Default modest decline
-  
-  if (recentData.length >= 3) {
-    // Calculate average yearly decline from recent data
-    const declines = [];
-    for (let i = 1; i < recentData.length; i++) {
-      const yearDiff = recentData[i].year - recentData[i-1].year;
-      const tfrDiff = recentData[i].totalFertilityRate - recentData[i-1].totalFertilityRate;
-      if (yearDiff > 0) {
-        declines.push(tfrDiff / yearDiff);
-      }
-    }
-    if (declines.length > 0) {
-      const avgDecline = declines.reduce((a, b) => a + b, 0) / declines.length;
-      // Smooth the decline - don't let it be too steep or positive
-      yearlyDecline = Math.min(0, Math.max(-0.05, avgDecline * 0.7));
-    }
-  }
-  
-  // Generate smooth projections with gradual leveling
-  const projections = [];
-  
-  // Only generate projections if we have historical TFR data
-  if (lastHistoricalTfr) {
-    for (let year = lastHistoricalYear + 1; year <= 2050; year++) {
-      const yearsFromStart = year - lastHistoricalYear;
-      
-      // Apply declining decline rate (levels off over time)
-      const declineMultiplier = Math.exp(-yearsFromStart * 0.05); // Exponential decay of decline rate
-      const adjustedDecline = yearlyDecline * declineMultiplier;
-      
-      // Calculate TFR with minimum floor
-      let projectedTfr = lastHistoricalTfr + (adjustedDecline * yearsFromStart);
-      
-      // Set realistic floor - countries rarely go below 1.0 for extended periods
-      const floor = Math.max(0.9, lastHistoricalTfr * 0.5);
-      projectedTfr = Math.max(floor, projectedTfr);
-      
-      projections.push({
-        year,
-        totalFertilityRate: projectedTfr,
-        crudebirthRate: Math.round(Math.max(6, projectedTfr * 5.5))
-      });
-    }
-  }
+  // Estimates are 1950–2023; 2024+ are UN medium-variant projections. Plot the UN
+  // series directly (no synthetic model): the projected line is the reference-year
+  // window from `historical` plus the UN `projections` (2030, 2050).
+  const estimates = historicalData.filter((d) => d.year <= 2023);
+  const projById = new Map<number, { year: number; totalFertilityRate: number }>();
+  for (const d of historicalData.filter((d) => d.year >= 2024)) projById.set(d.year, { year: d.year, totalFertilityRate: d.totalFertilityRate });
+  for (const d of fertilityData.fertilityData.projections) projById.set(d.year, { year: d.year, totalFertilityRate: d.totalFertilityRate });
+  const projections = Array.from(projById.values()).sort((a, b) => a.year - b.year);
 
-  // Combine historical and projection data
-  const allData = [...historicalData, ...projections];
-  const years = allData.map(d => d.year);
-  const tfrValues = allData.map(d => d.totalFertilityRate);
-  
-  // Split data for different styling
-  const historicalYears = historicalData.map(d => d.year);
-  const historicalTfr = historicalData.map(d => d.totalFertilityRate);
-  const projectionYears = projections.map(d => d.year);
-  const projectionTfr = projections.map(d => d.totalFertilityRate);
+  const historicalYears = estimates.map((d) => d.year);
+  const historicalTfr = estimates.map((d) => d.totalFertilityRate);
+  const projectionYears = projections.map((d) => d.year);
+  const projectionTfr = projections.map((d) => d.totalFertilityRate);
+  const years = [...historicalYears, ...projectionYears];
+  const tfrValues = [...historicalTfr, ...projectionTfr];
+  // Peak TFR over the estimate window (1950–2023).
+  const peakTfr = historicalTfr.length ? Math.max(...historicalTfr) : 0;
+  const peakTfrYear = historicalYears[historicalTfr.indexOf(peakTfr)];
+  const projected2050 = fertilityData.fertilityData.projections.find((p) => p.year === 2050)?.totalFertilityRate;
 
   const chartData = {
     labels: years,
@@ -262,12 +217,12 @@ export default function FertilityChart({
         </div>
         <div className="mt-4 grid grid-cols-3 gap-4 text-center text-sm">
           <div className="bg-blue-50 rounded-lg p-3">
-            <div className="font-medium text-blue-900">Highest TFR</div>
+            <div className="font-medium text-blue-900">Highest TFR since 1950</div>
             <div className="text-lg font-bold text-blue-700">
-              {Math.max(...historicalTfr).toFixed(2)}
+              {peakTfr.toFixed(2)}
             </div>
             <div className="text-xs text-blue-600">
-              {historicalYears[historicalTfr.indexOf(Math.max(...historicalTfr))]}
+              {peakTfrYear}
             </div>
           </div>
           {hasValue(fertilityData.fertilityData.current.totalFertilityRate) && (
@@ -281,14 +236,13 @@ export default function FertilityChart({
               </div>
             </div>
           )}
-          {/* CAT C: Chart stat card - N/A fallback appropriate when projection calculation fails */}
           <div className="bg-pink-50 rounded-lg p-3">
             <div className="font-medium text-pink-900">Projected 2050</div>
             <div className="text-lg font-bold text-pink-700">
-              {projections.find(p => p.year === 2050)?.totalFertilityRate?.toFixed(2) || 'N/A'}
+              {projected2050 != null ? projected2050.toFixed(2) : 'N/A'}
             </div>
             <div className="text-xs text-pink-600">
-              Estimate
+              UN projection
             </div>
           </div>
         </div>

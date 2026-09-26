@@ -17,8 +17,20 @@ export const CURRENT_YEAR: number = new Date().getFullYear();
 /**
  * The vintage of UN World Population Prospects data we use site-wide.
  * Update this only when UN publishes a new Revision (every ~2 years).
+ * NOTE: this is the SOURCE revision year ("UN WPP 2024"), not the year of the
+ * figures we display as "current" — that is REFERENCE_YEAR below.
  */
 export const DATA_YEAR = 2024;
+
+/**
+ * The single reference year the site shows as "current". The WPP 2024 data runs
+ * 1950–2100; we present REFERENCE_YEAR as today's figures and anything after it
+ * only where explicitly labelled a projection. Every page that shows "current"
+ * numbers must read this — never "the latest year in the file" (that is 2030).
+ * Fixed on purpose (not new Date().getFullYear()) so it never drifts past the
+ * data we have vetted; bump it deliberately when we roll the reference forward.
+ */
+export const REFERENCE_YEAR = 2026;
 
 /**
  * UN WPP revision label used in citations and schema attribution.

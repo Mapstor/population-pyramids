@@ -31,11 +31,13 @@ import DecadeBreakdown from '@/components/DecadeBreakdown';
 import ShareButtons from '@/components/ShareButtons';
 import DataNotice from '@/components/DataNotice';
 import { getCountryNeighbors, getRegionalCountries } from '@/lib/country-neighbors';
-import { SITE_URL, buildMetadata } from '@/lib/site-meta';
+import { SITE_URL, buildMetadata, REFERENCE_YEAR } from '@/lib/site-meta';
+import { getCountryVitals } from '@/lib/country-vitals';
 import { getRankTable, computeShare } from '@/lib/country-rank';
 import { countryTitle, countryDescription, countryAnswer, VATICAN, type CountryStats } from '@/lib/country-copy';
 import { inText, sentenceStart, possessive, possessiveInText, possessiveStart } from '@/lib/country-names';
-import { popWords } from '@/lib/country-format';
+import { popWords, popShort } from '@/lib/country-format';
+import { value as wppValue } from '@/lib/wpp2024';
 import { worldPopulation } from '@/lib/world-population';
 
 export const dynamicParams = false;
@@ -72,9 +74,10 @@ export async function generateMetadata({ params }: CountryPageProps) {
   try {
     const countryData = await loadCountryData(slug);
     const availableYears = getAvailableYears(countryData);
-    // Default display year stays 2025 until T4b adds the year switch, even
-    // though the data now runs to 2030 (vatican-city still falls back to 2023).
-    const latestYear = Math.max(...availableYears.filter((y) => y <= 2025));
+    // The site reference year is the "current" year we display. The data runs to
+    // 2030, but we never present a later year as current (vatican-city, which only
+    // has 2023, falls back to its latest available year).
+    const latestYear = Math.max(...availableYears.filter((y) => y <= REFERENCE_YEAR));
     const yearData = countryData.years[latestYear.toString()];
     const metrics = calculateMetrics(yearData);
     const { ranks } = await getRankTable(latestYear);
@@ -105,9 +108,10 @@ export default async function CountryPage({ params }: CountryPageProps) {
     const countryData = await loadCountryData(countrySlug);
     const countries = await loadCountries();
     const availableYears = getAvailableYears(countryData);
-    // Default display year stays 2025 until T4b adds the year switch, even
-    // though the data now runs to 2030 (vatican-city still falls back to 2023).
-    const latestYear = Math.max(...availableYears.filter((y) => y <= 2025));
+    // The site reference year is the "current" year we display. The data runs to
+    // 2030, but we never present a later year as current (vatican-city, which only
+    // has 2023, falls back to its latest available year).
+    const latestYear = Math.max(...availableYears.filter((y) => y <= REFERENCE_YEAR));
     const yearData = countryData.years[latestYear.toString()];
     const metrics = calculateMetrics(yearData);
 
@@ -160,11 +164,24 @@ export default async function CountryPage({ params }: CountryPageProps) {
       })
     );
     
-    // Load fertility data if available
-    const fertilityData = await loadFertilityData(countrySlug);
+    // T4b: births, fertility and life expectancy all come from the UN WPP 2024
+    // layer at the reference year (getCountryVitals), not the old computed /
+    // World-Bank sources. Shapes match what the sections already consume.
+    const vitals = await getCountryVitals(countrySlug, countryData.countryName);
+    const fertilityData = vitals.fertility;
+    const lifeExpectancyData = vitals.lifeExpectancy;
+    const birthsData = vitals.births;
+    const worldMedianAge = vitals.worldMedianAge ?? 30.5;
 
-    // Load life expectancy data if available (per-country JSON in src/data/life-expectancy/)
-    const lifeExpectancyData = await loadLifeExpectancyData(countrySlug);
+    // UN reference-year population for each "compare with" card (shared popShort formatter).
+    const comparisonSlugs = getComparisons(countrySlug);
+    const compPopById: Record<string, number> = {};
+    await Promise.all(
+      comparisonSlugs.map(async (s) => {
+        const v = await wppValue(s, 'pop', latestYear);
+        if (typeof v === 'number') compPopById[s] = v;
+      })
+    );
 
     // Get top comparison links for this country
     const topComparisons = getTopComparisonsForCountryOptimized(countrySlug);
@@ -558,6 +575,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                 countryData={countryData}
                 countryName={countryData.countryName}
                 height={500}
+                maxYear={latestYear}
               />
             </section>
           )}
@@ -721,20 +739,21 @@ export default async function CountryPage({ params }: CountryPageProps) {
             </section>
           )}
 
-          {/* Birth Statistics Section - NEW */}
-          {fertilityData && (() => {
-            const crudebirthRateForComponent = fertilityData.fertilityData.historical.find(d => d.year === fertilityData.fertilityData.current.year)?.crudebirthRate || 
-                                               fertilityData.fertilityData.historical[fertilityData.fertilityData.historical.length - 1]?.crudebirthRate;
-            return crudebirthRateForComponent ? (
-              <BirthStatistics
-                countryName={countryData.countryName}
-                countrySlug={countrySlug}
-                population={yearData.totalPopulation}
-                crudeBirthRate={crudebirthRateForComponent}
-                fertilityData={fertilityData.fertilityData}
-              />
-            ) : null;
-          })()}
+          {/* Birth Statistics Section — UN WPP 2024 births/rate/TFR (T4b) */}
+          {birthsData && (
+            <BirthStatistics
+              countryName={countryData.countryName}
+              countrySlug={countrySlug}
+              referenceYear={birthsData.referenceYear}
+              births={birthsData.births}
+              crudeBirthRate={birthsData.crudeBirthRate}
+              tfr={birthsData.tfr}
+              series={birthsData.series}
+              peakCbr={birthsData.peakCbr}
+              peakBirths={birthsData.peakBirths}
+              world={birthsData.world}
+            />
+          )}
 
           {/* Median Age Section - Prominent for SEO */}
           {(
@@ -761,14 +780,14 @@ export default async function CountryPage({ params }: CountryPageProps) {
                     <div className="bg-amber-50 rounded-lg p-4 text-center">
                       <div className="text-sm text-amber-900 font-medium mb-1">Current Median Age</div>
                       <div className="text-3xl font-bold text-amber-700">{metrics.medianAge.toFixed(1)}</div>
-                      <div className="text-xs text-amber-600 mt-1">years (2024)</div>
+                      <div className="text-xs text-amber-600 mt-1">years ({latestYear})</div>
                     </div>
-                    
+
                     <div className="bg-blue-50 rounded-lg p-4 text-center">
                       <div className="text-sm text-blue-900 font-medium mb-1">World Average</div>
-                      <div className="text-3xl font-bold text-blue-700">30.5</div>
+                      <div className="text-3xl font-bold text-blue-700">{worldMedianAge.toFixed(1)}</div>
                       <div className="text-xs text-blue-600 mt-1">
-                        {metrics.medianAge < 30.5 ? `${(30.5 - metrics.medianAge).toFixed(1)} years younger` : metrics.medianAge > 30.5 ? `${(metrics.medianAge - 30.5).toFixed(1)} years older` : 'Same as world'}
+                        {metrics.medianAge < worldMedianAge ? `${(worldMedianAge - metrics.medianAge).toFixed(1)} years younger` : metrics.medianAge > worldMedianAge ? `${(metrics.medianAge - worldMedianAge).toFixed(1)} years older` : 'Same as world'}
                       </div>
                     </div>
                     
@@ -1076,7 +1095,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                       </div>
                       <div className="bg-orange-50 rounded-lg p-4 text-center border border-orange-200">
                         <div className="text-sm text-orange-900 font-medium mb-1">Crude Birth Rate</div>
-                        <div className="text-3xl font-bold text-orange-700 mb-1">{fertilityData.fertilityData.historical.find(d => d.year === fertilityData.fertilityData.current.year)?.crudebirthRate || fertilityData.fertilityData.historical[fertilityData.fertilityData.historical.length - 1]?.crudebirthRate || 'N/A'}</div>
+                        <div className="text-3xl font-bold text-orange-700 mb-1">{(() => { const c = fertilityData.fertilityData.historical.find(d => d.year === fertilityData.fertilityData.current.year)?.crudebirthRate ?? fertilityData.fertilityData.historical[fertilityData.fertilityData.historical.length - 1]?.crudebirthRate; return typeof c === 'number' ? c.toFixed(1) : 'N/A'; })()}</div>
                         <div className="text-xs text-orange-500">per 1,000 people</div>
                       </div>
                     </div>
@@ -1090,7 +1109,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                       <div className="bg-purple-50 rounded-lg p-4 text-center border border-purple-200">
                         <div className="text-sm text-purple-900 font-medium mb-1">Global Rank</div>
                         <div className="text-3xl font-bold text-purple-700 mb-1">{fertilityData.fertilityData.worldComparison.rank}</div>
-                        <div className="text-xs text-purple-500">of {fertilityData.fertilityData.worldComparison.totalCountries} countries</div>
+                        <div className="text-xs text-purple-500">of {fertilityData.fertilityData.worldComparison.totalCountries} (1 = highest)</div>
                       </div>
                     </div>
                   </div>
@@ -1124,8 +1143,8 @@ export default async function CountryPage({ params }: CountryPageProps) {
                           {fertilityData.fertilityData.historical.slice(-6).map((yearDataPoint, index) => (
                             <tr key={yearDataPoint.year} className={index === fertilityData.fertilityData.historical.slice(-6).length - 1 ? 'bg-red-25 font-medium' : ''}>
                               <td className="py-2 px-4">{yearDataPoint.year}</td>
-                              <td className="py-2 px-4 text-center">{yearDataPoint.totalFertilityRate}</td>
-                              <td className="py-2 px-4 text-center">{yearDataPoint.crudebirthRate}</td>
+                              <td className="py-2 px-4 text-center">{yearDataPoint.totalFertilityRate.toFixed(2)}</td>
+                              <td className="py-2 px-4 text-center">{yearDataPoint.crudebirthRate.toFixed(1)}</td>
                               <td className="py-2 px-4 text-center">
                                 {index > 0 && (
                                   <span className={`text-xs px-2 py-1 rounded ${
@@ -1169,12 +1188,12 @@ export default async function CountryPage({ params }: CountryPageProps) {
                       <span className="text-lg mr-2">🌍</span> Global Context
                     </h3>
                     <ul className="text-sm text-green-700 space-y-1">
-                      <li>• <strong>World Average:</strong> {fertilityData.fertilityData.worldComparison.worldAverage} children per woman</li>
+                      <li>• <strong>World Average:</strong> {fertilityData.fertilityData.worldComparison.worldAverage.toFixed(2)} children per woman</li>
                       <li>• <strong>Comparison:</strong> {fertilityData.fertilityData.current.totalFertilityRate ? 
                         (fertilityData.fertilityData.current.totalFertilityRate < fertilityData.fertilityData.worldComparison.worldAverage ? 'Below' : 'Above') + ' global average' : 'Data unavailable'}</li>
                       <li>• <strong>Development Stage:</strong> {fertilityData.fertilityData.current.totalFertilityRate ? 
                         (fertilityData.fertilityData.current.totalFertilityRate < 2.1 ? 'Post-demographic transition' : 'Demographic transition') : 'Data unavailable'}</li>
-                      <li>• <strong>Future Projections:</strong> {fertilityData.fertilityData.projections.length > 0 ? `${fertilityData.fertilityData.projections[0].totalFertilityRate} by ${fertilityData.fertilityData.projections[0].year}` : 'Continued decline expected'}</li>
+                      <li>• <strong>Future Projections:</strong> {fertilityData.fertilityData.projections.length > 0 ? `${fertilityData.fertilityData.projections[0].totalFertilityRate.toFixed(2)} by ${fertilityData.fertilityData.projections[0].year}` : 'Continued decline expected'}</li>
                     </ul>
                   </div>
                 </div>
@@ -1608,7 +1627,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                       </h3>
                     </div>
                     <div className="text-sm text-gray-600 space-y-1">
-                      <div>Pop: {(compCountry.population2024 / 1000000).toFixed(1)}M</div>
+                      <div>Pop: {compPopById[compSlug] != null ? popShort(compPopById[compSlug]) : popShort(compCountry.population2024)}</div>
                       <div className="text-blue-600 font-medium">Compare →</div>
                     </div>
                   </Link>

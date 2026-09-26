@@ -248,7 +248,7 @@ export default function WorldPopulationPyramid({
           />
           <div className="flex justify-between text-xs text-gray-500 mt-1">
             <span>1950</span>
-            <span>2025</span>
+            <span>2026</span>
           </div>
         </div>
 

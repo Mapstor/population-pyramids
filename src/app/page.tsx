@@ -3,7 +3,8 @@ import { generateWorldPopulationData, getCountriesWithPopulationChange } from '@
 import WorldPopulationPyramid from '@/components/WorldPopulationPyramid';
 import SortableCountryTable from '@/components/SortableCountryTable';
 import type { Metadata } from 'next';
-import { SITE_URL, SITE_NAME, absoluteUrl } from '@/lib/site-meta';
+import { SITE_URL, SITE_NAME, absoluteUrl, REFERENCE_YEAR } from '@/lib/site-meta';
+import { worldPopulation } from '@/lib/world-population';
 
 // The home page inherits the root layout's title.default; it only needs a
 // self-referencing canonical + a full openGraph carrying the www og:url
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: 'Population Pyramids - Interactive Demographics for 195 Countries',
     description:
-      'Explore interactive population pyramids for 195 countries from 1950-2025. Analyze age distribution, demographic trends, and population data with real UN World Population Prospects 2024.',
+      'Explore interactive population pyramids for 195 countries from 1950-2026. Analyze age distribution, demographic trends, and population data with real UN World Population Prospects 2024.',
     images: [
       {
         url: absoluteUrl('/og-image.png'),
@@ -35,7 +36,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'Population Pyramids',
-  description: 'Interactive demographic visualization platform providing comprehensive population data for 195 countries from 1950-2025 based on UN World Population Prospects 2024.',
+  description: 'Interactive demographic visualization platform providing comprehensive population data for 195 countries from 1950-2026 based on UN World Population Prospects 2024.',
   url: SITE_URL,
   author: {
     '@type': 'Organization',
@@ -48,7 +49,7 @@ const jsonLd = {
   mainEntity: {
     '@type': 'Dataset',
     name: 'World Population Demographics Dataset',
-    description: 'Comprehensive demographic data for 195 countries covering 75 years (1950-2025) sourced from UN World Population Prospects 2024 Revision.',
+    description: 'Comprehensive demographic data for 195 countries covering 75 years (1950-2026) sourced from UN World Population Prospects 2024 Revision.',
     creator: {
       '@type': 'Organization',
       name: 'United Nations Department of Economic and Social Affairs, Population Division',
@@ -58,7 +59,7 @@ const jsonLd = {
       contentUrl: SITE_URL,
       encodingFormat: 'application/json',
     },
-    temporalCoverage: '1950/2025',
+    temporalCoverage: '1950/2026',
     spatialCoverage: {
       '@type': 'Place',
       name: 'World',
@@ -81,10 +82,11 @@ export default async function HomePage() {
     getCountriesWithPopulationChange()
   ]);
 
-  const totalWorldPop2024 = worldData.years['2024']?.totalPopulation || 0;
-  const totalWorldPop2000 = worldData.years['2000']?.totalPopulation || 0;
-  const worldGrowthPercent = totalWorldPop2000 > 0 ? 
-    ((totalWorldPop2024 - totalWorldPop2000) / totalWorldPop2000 * 100) : 0;
+  // World population + year come from world.json (UN WPP 2024), reference year 2026.
+  const totalWorldPopRef = worldPopulation(REFERENCE_YEAR) ?? worldData.years[String(REFERENCE_YEAR)]?.totalPopulation ?? 0;
+  const totalWorldPop2000 = worldPopulation(2000) ?? worldData.years['2000']?.totalPopulation ?? 0;
+  const worldGrowthPercent = totalWorldPop2000 > 0 ?
+    ((totalWorldPopRef - totalWorldPop2000) / totalWorldPop2000 * 100) : 0;
   
   return (
     <>
@@ -103,14 +105,14 @@ export default async function HomePage() {
               Global Population Demographics
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto mb-6 sm:mb-8 px-2">
-              Interactive visualization of world population data from 1950-2025, based on UN World Population Prospects 2024
+              Interactive visualization of world population data from 1950-2026, based on UN World Population Prospects 2024
             </p>
             
             {/* Compact Key Stats */}
             <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 text-center">
               <div>
-                <div className="text-xl sm:text-2xl font-bold text-blue-600">{(totalWorldPop2024 / 1000000000).toFixed(2)}B</div>
-                <div className="text-xs sm:text-sm text-gray-500">World Population 2024</div>
+                <div className="text-xl sm:text-2xl font-bold text-blue-600">{(totalWorldPopRef / 1000000000).toFixed(2)}B</div>
+                <div className="text-xs sm:text-sm text-gray-500">World Population {REFERENCE_YEAR}</div>
               </div>
               <div>
                 <div className="text-xl sm:text-2xl font-bold text-green-600">+{worldGrowthPercent.toFixed(2)}%</div>
@@ -159,16 +161,16 @@ export default async function HomePage() {
           {/* Understanding Population Pyramids */}
           <div className="bg-white rounded-lg shadow-sm p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Understanding Population Pyramids (2025-2027)
+              Understanding Population Pyramids (2026-2027)
             </h2>
             <p className="text-gray-600 mb-4">
               Population pyramids are essential demographic tools that visualize the age and gender distribution of a country's population. 
               These charts reveal critical insights about a nation's demographic transition, economic potential, and social challenges.
             </p>
             <p className="text-gray-600 mb-4">
-              Our interactive population pyramids use authentic UN World Population Prospects data through 2025, with projections extending to 2026 and 2027. 
+              Our interactive population pyramids use authentic UN World Population Prospects data through 2026, with projections extending to 2026 and 2027. 
               Next full UN revision: postponed from 2026 to 2027, expected ~July 2027 (World Population Day). Current data: UN WPP 2024. Each pyramid displays male population on the left (blue) 
-              and female population on the right (pink), with age groups from 2025 data stacked from youngest at the bottom to oldest at the top.
+              and female population on the right (pink), with age groups from 2026 data stacked from youngest at the bottom to oldest at the top.
             </p>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
               Types of Population Structures:
@@ -183,10 +185,10 @@ export default async function HomePage() {
           {/* Global Demographic Trends */}
           <div className="bg-white rounded-lg shadow-sm p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Global Demographic Trends 2025-2026
+              Global Demographic Trends 2026-2027
             </h2>
             <p className="text-gray-600 mb-4">
-              The world's population reached {(totalWorldPop2024 / 1000000000).toFixed(2)} billion in 2025, with projections for 2026 showing continued growth. 
+              The world's population reached {(totalWorldPopRef / 1000000000).toFixed(2)} billion in 2026, with projections for 2026 showing continued growth. 
               This represents a {worldGrowthPercent.toFixed(2)}% increase since 2000. By 2027, these trends will reflect significant regional variations, 
               with Sub-Saharan Africa experiencing rapid expansion while East Asia and Europe face population decline through 2026 and beyond.
             </p>
@@ -207,13 +209,13 @@ export default async function HomePage() {
           {/* Regional Analysis */}
           <div className="bg-white rounded-lg shadow-sm p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Regional Demographic Patterns 2025-2027
+              Regional Demographic Patterns 2026-2027
             </h2>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
               Africa: Youth-Driven Growth
             </h3>
             <p className="text-gray-600 mb-3">
-              African countries dominate global population growth in 2025, with nations like Nigeria, Ethiopia, and Democratic Republic of Congo 
+              African countries dominate global population growth in 2026, with nations like Nigeria, Ethiopia, and Democratic Republic of Congo 
               experiencing rapid expansion through 2026. High fertility rates and improving healthcare create expansive population pyramids that will persist into 2027.
             </p>
             
@@ -221,15 +223,15 @@ export default async function HomePage() {
               Asia: Demographic Transition
             </h3>
             <p className="text-gray-600 mb-3">
-              Asia shows diverse patterns in 2025 - India surpassed China as the most populous country, a gap widening by 2026. East Asian nations 
-              like Japan and South Korea face severe aging challenges through 2027. China's demographic structure in 2025-2026 continues reflecting past policy effects.
+              Asia shows diverse patterns in 2026 - India surpassed China as the most populous country, a gap widening by 2026. East Asian nations 
+              like Japan and South Korea face severe aging challenges through 2027. China's demographic structure in 2026-2027 continues reflecting past policy effects.
             </p>
             
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
               Europe: Aging Societies
             </h3>
             <p className="text-gray-600">
-              European countries exhibit constrictive pyramids in 2025 with declining birth rates projected through 2026. Countries like Germany, 
+              European countries exhibit constrictive pyramids in 2026 with declining birth rates projected through 2026. Countries like Germany, 
               Italy, and Eastern European nations face accelerating population decline and aging workforce challenges extending into 2027.
             </p>
           </div>
@@ -237,7 +239,7 @@ export default async function HomePage() {
           {/* Data Applications */}
           <div className="bg-white rounded-lg shadow-sm p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Applications of Population Data 2025-2027
+              Applications of Population Data 2026-2027
             </h2>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
               Economic Planning:
@@ -279,36 +281,36 @@ export default async function HomePage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* What We Provide */}
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Comprehensive Population Data Visualization 2025-2027</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Comprehensive Population Data Visualization 2026-2027</h3>
                 <p className="text-gray-600 mb-4">
                   This platform provides interactive visualization and analysis of demographic data for all {countries.length} countries and territories 
-                  recognized by the United Nations. Our database includes complete data through 2025.
+                  recognized by the United Nations. Our database includes complete data through 2026.
                   Next full UN revision: postponed from 2026 to 2027, expected ~July 2027 (World Population Day). Current data: UN WPP 2024. Projections extend to 2027 and beyond.
                 </p>
                 
                 <h4 className="text-lg font-semibold text-gray-900 mb-2">Interactive Features:</h4>
                 <ul className="text-gray-600 space-y-2 mb-4">
-                  <li>• <strong>World Population Pyramid 2025-2026:</strong> Animated visualization showing global age structure evolution from 1950 through 2025, with 2026 projections</li>
-                  <li>• <strong>Individual Country Pages 2025-2027:</strong> Detailed population pyramids for each of the {countries.length} countries with current 2025 data and projections to 2026-2027</li>
+                  <li>• <strong>World Population Pyramid 2026-2027:</strong> Animated visualization showing global age structure evolution from 1950 through 2026, with 2026 projections</li>
+                  <li>• <strong>Individual Country Pages 2026-2027:</strong> Detailed population pyramids for each of the {countries.length} countries with current 2026 data and projections to 2026-2027</li>
                   <li>• <strong>Sortable Data Tables:</strong> Complete demographic statistics with sorting, filtering, and search capabilities</li>
-                  <li>• <strong>Real-time Statistics 2025:</strong> Current world population of {(totalWorldPop2024 / 1000000000).toFixed(2)} billion in 2025, with projections for 2026 and 2027</li>
+                  <li>• <strong>Real-time Statistics 2026:</strong> Current world population of {(totalWorldPopRef / 1000000000).toFixed(2)} billion in 2026, with projections for 2026 and 2027</li>
                   <li>• <strong>Mobile Responsive:</strong> Full functionality across desktop, tablet, and mobile devices</li>
                 </ul>
               </div>
 
               {/* Data Coverage */}
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Extensive Data Coverage 2025-2026</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Extensive Data Coverage 2026-2027</h3>
                 <p className="text-gray-600 mb-4">
-                  Every country page includes comprehensive demographic indicators for 2025, sourced from UN World Population Prospects. 
+                  Every country page includes comprehensive demographic indicators for 2026, sourced from UN World Population Prospects. 
                   Next full UN revision: postponed from 2026 to 2027, expected ~July 2027 (World Population Day). Current data: UN WPP 2024. All data represents the most 
                   current and authoritative population statistics available.
                 </p>
                 
                 <h4 className="text-lg font-semibold text-gray-900 mb-2">Available Metrics:</h4>
                 <ul className="text-gray-600 space-y-2 mb-4">
-                  <li>• <strong>Total Population:</strong> Annual population figures from 1950 through 2025, with 2026-2027 projections</li>
-                  <li>• <strong>Age Structure 2025-2026:</strong> 21 age groups (0-4, 5-9, ..., 95-99, 100+) with male/female breakdown for 2025 and projected 2026</li>
+                  <li>• <strong>Total Population:</strong> Annual population figures from 1950 through 2026, with 2026-2027 projections</li>
+                  <li>• <strong>Age Structure 2026-2027:</strong> 21 age groups (0-4, 5-9, ..., 95-99, 100+) with male/female breakdown for 2026 and projected 2026</li>
                   <li>• <strong>Median Age:</strong> Population age distribution midpoint for demographic analysis</li>
                   <li>• <strong>Growth Rates:</strong> Population change percentages and absolute numbers</li>
                   <li>• <strong>Dependency Ratios:</strong> Economic burden calculations for non-working age populations</li>

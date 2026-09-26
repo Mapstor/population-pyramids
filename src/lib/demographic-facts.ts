@@ -3154,7 +3154,7 @@ function generateEnhancedFacts(
         },
         {
           icon: '🌍',
-          text: `With ${popWords(yearData.totalPopulation)} people, the US has the world's largest economy and represents ${formatShare((yearData.totalPopulation / (worldPopulation(currentYear) ?? 8231613070)) * 100)} of global population`,
+          text: `With ${popWords(yearData.totalPopulation)} people, the US has the world's largest economy and represents ${formatShare((yearData.totalPopulation / (worldPopulation(currentYear) ?? 1)) * 100)} of global population`,
           category: 'comparison'
         },
         {
