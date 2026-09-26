@@ -1,4 +1,5 @@
 import type { YearData, DemographicMetrics } from '@/types/population';
+import { pyramidTypeOf } from '@/lib/country-rules';
 
 export function calculateMetrics(yearData: YearData): DemographicMetrics {
   // Gender percentages
@@ -39,15 +40,8 @@ export function calculateMetrics(yearData: YearData): DemographicMetrics {
   const potentialSupportRatio = workingAgePopulation / elderlyPopulation;
   const agingIndex = (elderlyPopulation / youthPopulation) * 100;
   
-  // Pyramid type classification
-  let pyramidType: 'expansive' | 'constrictive' | 'stationary';
-  if (youthPercentage > 30 && elderlyPercentage < 10) {
-    pyramidType = 'expansive';
-  } else if (youthPercentage < 20 && elderlyPercentage > 15) {
-    pyramidType = 'constrictive';
-  } else {
-    pyramidType = 'stationary';
-  }
+  // Pyramid type classification (T5a rule: under-15 share + 0–4 vs peak working band)
+  const pyramidType = pyramidTypeOf(yearData);
   
   return {
     totalPopulation: yearData.totalPopulation,

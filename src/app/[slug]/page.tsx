@@ -6,13 +6,11 @@ import { generateCountryContent } from '@/lib/content-generator';
 import { generateCountryMetadata } from '@/lib/seo-helpers';
 import { getComparisons } from '@/lib/country-comparisons';
 import { generateImplications } from '@/lib/implications-analyzer';
-import { generateExpertAnalysis } from '@/lib/expert-analysis';
+import { dtmStage, dividendStatus, agingSpeed, futureTrend, keyFacts, fertilityBand, under15Band, over65Band, dependencyBand } from '@/lib/country-rules';
 import { getHistoricalEvents } from '@/lib/historical-events';
-import { generateDemographicFacts } from '@/lib/demographic-facts';
 import { generateExpandedFAQ } from '@/lib/expanded-faq';
 import { generateDemographicGlossary, generateGlossarySummary } from '@/lib/demographic-glossary';
 import { generateUsageGuide, generateUsageSummary } from '@/lib/usage-guide';
-import { classifyDemographicStage, getDemographicStageExplanation } from '@/lib/demographic-stage-classifier';
 import { loadFertilityData, calculateFertilityMetrics, getFertilityAnalysis } from '@/lib/fertility-loader';
 import { loadLifeExpectancyData } from '@/lib/life-expectancy-loader';
 import { hasValue } from '@/lib/render-guards';
@@ -196,10 +194,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
       .filter(ag => ['15-19', '20-24'].includes(ag.ageRange))
       .reduce((sum, ag) => sum + ag.total, 0);
     const youngAdultPercentage = (youngAdultPopulation / yearData.totalPopulation) * 100;
-    
-    // Log values for verification
-    console.log(`[${countryData.countryName}] Under-25: ${under25Percentage.toFixed(1)}%, Young Adults: ${youngAdultPercentage.toFixed(1)}%`);
-    
+
     // Generate all content
     const content = generateCountryContent(
       countryData.countryName,
@@ -213,21 +208,9 @@ export default async function CountryPage({ params }: CountryPageProps) {
       metrics,
       latestYear
     );
-    const expertAnalysis = generateExpertAnalysis(
-      countryData.countryName,
-      yearData,
-      metrics,
-      countryData,
-      latestYear
-    );
     const historicalEvents = getHistoricalEvents(countrySlug);
-    const demographicFacts = generateDemographicFacts(
-      countryData.countryName,
-      yearData,
-      metrics,
-      countryData,
-      latestYear
-    );
+    // T5a: key facts are derived from the UN data (replaces generateEnhancedFacts).
+    const demographicFacts = await keyFacts(countrySlug);
     const expandedFAQs = generateExpandedFAQ(
       countryData.countryName,
       countrySlug,
@@ -264,9 +247,13 @@ export default async function CountryPage({ params }: CountryPageProps) {
     );
     const usageSummary = generateUsageSummary(countryData.countryName, metrics);
     
-    // Get demographic stage classification
-    const demographicStage = classifyDemographicStage(yearData);
-    const stageExplanation = getDemographicStageExplanation(demographicStage, countryData.countryName);
+    // T5a: DTM stage, dividend window, aging speed and future trend from the UN data.
+    const [dtm, dividend, aging, future] = await Promise.all([
+      dtmStage(countrySlug),
+      dividendStatus(countrySlug),
+      agingSpeed(countrySlug),
+      futureTrend(countrySlug),
+    ]);
 
     // T2 Step 7: computed births are wrong until T4, so the birth-based JSON-LD
     // (dataset + FAQ) is no longer emitted here. The visible FAQ's FAQPage
@@ -379,17 +366,19 @@ export default async function CountryPage({ params }: CountryPageProps) {
                   <div className="font-bold capitalize">{metrics.pyramidType}</div>
                 </div>
               </div>
-              <Link 
-                href={demographicStage.link}
-                className="flex items-center gap-2 hover:opacity-90 transition-opacity"
-                title={`Learn more about ${demographicStage.name}`}
-              >
-                <span className="text-lg">🔄</span>
-                <div>
-                  <div className="text-blue-100 text-xs">DTM Stage</div>
-                  <div className="font-bold underline decoration-blue-200/50">Stage {demographicStage.stage}</div>
-                </div>
-              </Link>
+              {dtm && (
+                <Link
+                  href={dtm.link}
+                  className="flex items-center gap-2 hover:opacity-90 transition-opacity"
+                  title={`Learn more about Stage ${dtm.stage} of the Demographic Transition Model`}
+                >
+                  <span className="text-lg">🔄</span>
+                  <div>
+                    <div className="text-blue-100 text-xs">DTM Stage</div>
+                    <div className="font-bold underline decoration-blue-200/50">Stage {dtm.stage}</div>
+                  </div>
+                </Link>
+              )}
             </div>
           </div>
 
@@ -1015,47 +1004,28 @@ export default async function CountryPage({ params }: CountryPageProps) {
             </section>
           )}
 
-          {/* Demographic Transition Stage */}
-          <section id="demographic-stage" className="mb-8">
-            <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg shadow-sm p-6 border border-green-200">
-              <div className="flex items-center mb-3">
-                <span className="text-2xl mr-3">📊</span>
-                <h2 className="text-2xl font-bold text-gray-900">
-                  Demographic Transition Model (DTM) Stage
-                </h2>
+          {/* Demographic Transition Stage — UN-derived stage sentence (T5a) */}
+          {dtm && (
+            <section id="demographic-stage" className="mb-8">
+              <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg shadow-sm p-6 border border-green-200">
+                <div className="flex items-center mb-3">
+                  <span className="text-2xl mr-3">📊</span>
+                  <h2 className="text-2xl font-bold text-gray-900">
+                    Demographic Transition Model (DTM) Stage
+                  </h2>
+                </div>
+
+                <div className="bg-white rounded-lg p-4 border border-green-100">
+                  <p className="text-gray-800 leading-relaxed">
+                    {dtm.sentence}{' '}
+                    <Link href={dtm.link} className="text-blue-600 hover:text-blue-800 underline font-medium">
+                      Read more about Stage {dtm.stage} of the Demographic Transition Model
+                    </Link>.
+                  </p>
+                </div>
               </div>
-              
-              <div className="bg-white rounded-lg p-4 border border-green-100">
-                <p className="text-gray-800 leading-relaxed">
-                  {stageExplanation.split('. ').map((sentence, index, array) => {
-                    const isLastSentence = index === array.length - 1;
-                    const trimmedSentence = sentence.trim();
-                    
-                    if (isLastSentence && trimmedSentence.includes('You can read more')) {
-                      const [beforeLink, afterHere] = trimmedSentence.split('You can read more about ');
-                      if (afterHere) {
-                        const [linkText] = afterHere.split(' here');
-                        return (
-                          <span key={index}>
-                            {beforeLink}You can read more about{' '}
-                            <Link 
-                              href={demographicStage.link}
-                              className="text-blue-600 hover:text-blue-800 underline font-medium"
-                            >
-                              {linkText}
-                            </Link>
-                            {' '}here.
-                          </span>
-                        );
-                      }
-                    }
-                    
-                    return <span key={index}>{trimmedSentence}{index < array.length - 1 ? '. ' : ''}</span>;
-                  })}
-                </p>
-              </div>
-            </div>
-          </section>
+            </section>
+          )}
 
           {/* Fertility Rate Section - SEO Optimized */}
           {fertilityData && (
@@ -1245,64 +1215,48 @@ export default async function CountryPage({ params }: CountryPageProps) {
             </p>
             
             <div className="space-y-6">
-              {/* Demographic Dividend */}
-              <div className="bg-white rounded-lg p-6 shadow-sm border border-indigo-100">
-                <h3 className="text-xl font-bold text-indigo-900 mb-3 flex items-center">
-                  <span className="text-xl mr-2">📈</span>
-                  Demographic Dividend Window
-                </h3>
-                <p className="text-gray-700 leading-relaxed text-justify">
-                  {expertAnalysis.demographicDividend}
-                </p>
-              </div>
+              {/* Demographic Dividend — from dividendStatus (T5a) */}
+              {dividend && (
+                <div className="bg-white rounded-lg p-6 shadow-sm border border-indigo-100">
+                  <h3 className="text-xl font-bold text-indigo-900 mb-3 flex items-center">
+                    <span className="text-xl mr-2">📈</span>
+                    Demographic Dividend Window
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed text-justify">
+                    {dividend.sentence}
+                  </p>
+                </div>
+              )}
 
-              {/* Fertility Transition */}
-              <div className="bg-white rounded-lg p-6 shadow-sm border border-purple-100">
-                <h3 className="text-xl font-bold text-purple-900 mb-3 flex items-center">
-                  <span className="text-xl mr-2">👶</span>
-                  Fertility Transition Stage
-                </h3>
-                <p className="text-gray-700 leading-relaxed text-justify">
-                  {expertAnalysis.fertilityTransition}
-                </p>
-              </div>
+              {/* Fertility Transition — by TFR band (T5a) */}
+              {fertilityData?.fertilityData?.current?.totalFertilityRate != null && (
+                <div className="bg-white rounded-lg p-6 shadow-sm border border-purple-100">
+                  <h3 className="text-xl font-bold text-purple-900 mb-3 flex items-center">
+                    <span className="text-xl mr-2">👶</span>
+                    Fertility Transition Stage
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed text-justify">
+                    {sentenceStart(countryData.countryName)} is in a period of {fertilityBand(fertilityData.fertilityData.current.totalFertilityRate)}, with a total fertility rate of {fertilityData.fertilityData.current.totalFertilityRate.toFixed(2)} children per woman ({latestYear}, UN WPP 2024).
+                  </p>
+                </div>
+              )}
 
-              {/* Demographic Momentum */}
-              <div className="bg-white rounded-lg p-6 shadow-sm border border-blue-100">
-                <h3 className="text-xl font-bold text-blue-900 mb-3 flex items-center">
-                  <span className="text-xl mr-2">⚡</span>
-                  Demographic Momentum
-                </h3>
-                <p className="text-gray-700 leading-relaxed text-justify">
-                  {expertAnalysis.demographicMomentum}
-                </p>
-              </div>
-
-              {/* Population Aging Speed */}
-              <div className="bg-white rounded-lg p-6 shadow-sm border border-orange-100">
-                <h3 className="text-xl font-bold text-orange-900 mb-3 flex items-center">
-                  <span className="text-xl mr-2">⏰</span>
-                  Population Aging Speed
-                </h3>
-                <p className="text-gray-700 leading-relaxed text-justify">
-                  {expertAnalysis.agingSpeed}
-                </p>
-              </div>
-
-              {/* Professional Assessment */}
-              <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg p-6 shadow-sm">
-                <h3 className="text-xl font-bold mb-3 flex items-center">
-                  <span className="text-xl mr-2">🔬</span>
-                  Professional Assessment
-                </h3>
-                <p className="leading-relaxed text-justify">
-                  {expertAnalysis.professionalAssessment}
-                </p>
-              </div>
+              {/* Population Aging Speed — from agingSpeed (T5a) */}
+              {aging && (
+                <div className="bg-white rounded-lg p-6 shadow-sm border border-orange-100">
+                  <h3 className="text-xl font-bold text-orange-900 mb-3 flex items-center">
+                    <span className="text-xl mr-2">⏰</span>
+                    Population Aging Speed
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed text-justify">
+                    {aging.sentence}
+                  </p>
+                </div>
+              )}
             </div>
 
             <div className="mt-6 text-sm text-gray-600 italic">
-              <p>* Analysis based on demographic transition theory, dependency ratio calculations, and population momentum principles used in professional demographic research.</p>
+              <p>* Based on UN World Population Prospects 2024: demographic-transition thresholds, dependency-ratio and working-age-share calculations.</p>
             </div>
           </section>
 
@@ -1435,9 +1389,17 @@ export default async function CountryPage({ params }: CountryPageProps) {
               Future Demographic Trends
             </h2>
             <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
-              {content.futureTrends.split('\n\n').map((para, i) => (
-                <p key={i} className="mb-4">{para}</p>
-              ))}
+              {future && (
+                <>
+                  <p className="mb-4">{future.population}</p>
+                  <p className="mb-4">{future.medianAge}</p>
+                  <p className="mb-4">
+                    {future.pctChange >= 0
+                      ? 'Continued growth keeps expanding the labour force and consumer base, alongside rising demand for jobs, housing, schooling and services.'
+                      : 'A shrinking population raises the old-age dependency ratio and tightens the labour supply, shaping pension, healthcare and immigration policy.'}
+                  </p>
+                </>
+              )}
             </div>
           </section>
 
@@ -1674,7 +1636,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                   <div className="bg-white rounded-lg p-4 border border-green-300 mb-3">
                     <h4 className="font-semibold text-green-900 mb-2 flex items-center">
                       <span className="text-lg mr-2">🏛️</span>
-                      For {countryData.countryName}
+                      For {inText(countryData.countryName)}
                     </h4>
                     <p className="text-green-800 text-sm leading-relaxed">
                       {term.context}
@@ -1705,17 +1667,6 @@ export default async function CountryPage({ params }: CountryPageProps) {
               </p>
             </div>
 
-            {/* Voice Search Optimization */}
-            <div className="mt-6 bg-gray-50 rounded-lg p-4 border border-gray-200">
-              <h4 className="font-semibold text-gray-900 mb-2 flex items-center">
-                <span className="text-lg mr-2">🎤</span>
-                Voice Search Friendly
-              </h4>
-              <p className="text-gray-700 text-sm">
-                These definitions are optimized for voice search queries like "What is dependency ratio in {inText(countryData.countryName)}?"
-                or "Define median age for {inText(countryData.countryName)}."
-              </p>
-            </div>
           </section>
 
           {/* How to Use This Data Section */}

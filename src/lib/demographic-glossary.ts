@@ -1,5 +1,6 @@
 import type { YearData, DemographicMetrics, CountryPopulationData } from '@/types/population';
 import { inText, sentenceStart, possessiveInText, possessiveStart } from '@/lib/country-names';
+import { under15Band, over65Band, dependencyBand } from '@/lib/country-rules';
 
 interface GlossaryTerm {
   term: string;
@@ -26,7 +27,7 @@ export function generateDemographicGlossary(
     {
       term: 'Dependency Ratio',
       definition: 'The number of dependents (children under 15 and adults over 65) per 100 working-age people (15-64 years old).',
-      context: `For ${inText(countryName)}, this means each working-age person supports ${(metrics.dependencyRatio / 100).toFixed(1)} dependents, with a dependency ratio of ${metrics.dependencyRatio.toFixed(1)}. This ${metrics.dependencyRatio > 60 ? 'high ratio indicates significant economic pressure on the working population' : metrics.dependencyRatio < 50 ? 'favorable ratio suggests optimal conditions for economic growth' : 'moderate ratio shows balanced demographic structure'}.`,
+      context: `For ${inText(countryName)}, this means each working-age person supports ${(metrics.dependencyRatio / 100).toFixed(1)} dependents, with a dependency ratio of ${metrics.dependencyRatio.toFixed(1)} — a ${dependencyBand(metrics.dependencyRatio)} ratio.`,
       example: `${metrics.dependencyRatio > 60 ? 'High dependency ratios like ' + possessiveInText(countryName) + " require substantial social services and limit savings potential." : "Low dependency ratios like " + possessiveInText(countryName) + " create demographic dividends through increased productivity and savings."}`
     },
     {
@@ -50,13 +51,13 @@ export function generateDemographicGlossary(
     {
       term: 'Youth Bulge',
       definition: 'A demographic pattern where a large proportion of the population consists of children and young adults.',
-      context: `${sentenceStart(countryName)} ${metrics.youthPercentage > 30 ? 'exhibits a significant youth bulge with ' + metrics.youthPercentage.toFixed(1) + '% under 15, creating both opportunities and challenges' : 'has a moderate youth population of ' + metrics.youthPercentage.toFixed(1) + '% under 15, suggesting balanced demographic development'}.`,
+      context: `${sentenceStart(countryName)} has a ${under15Band(metrics.youthPercentage)} under-15 share (${metrics.youthPercentage.toFixed(1)}% aged 0–14).`,
       example: `${metrics.youthPercentage > 35 ? 'Pronounced youth bulges like ' + possessiveInText(countryName) + " can drive economic growth through demographic dividends but require massive education and employment investments." : 'Smaller youth populations like ' + possessiveInText(countryName) + " allow focus on quality over quantity in human capital development."}`
     },
     {
       term: 'Population Aging',
       definition: 'The increasing proportion of elderly people in a population, typically measured as percentage over 65.',
-      context: `${sentenceStart(countryName)} shows ${metrics.elderlyPercentage > 15 ? 'advanced population aging with ' + metrics.elderlyPercentage.toFixed(1) + '% elderly, requiring significant adaptation of health and social systems' : metrics.elderlyPercentage > 7 ? 'emerging aging trends with ' + metrics.elderlyPercentage.toFixed(1) + '% elderly, indicating demographic transition progress' : 'minimal aging with only ' + metrics.elderlyPercentage.toFixed(1) + '% elderly, reflecting young population structure'}.`,
+      context: `${sentenceStart(countryName)} has a ${over65Band(metrics.elderlyPercentage)} population by the 65+ share (${metrics.elderlyPercentage.toFixed(1)}% aged 65 and over).`,
       example: `${metrics.elderlyPercentage > 20 ? 'Rapid aging like in ' + inText(countryName) + ' requires comprehensive policy responses addressing healthcare, pensions, and labor force sustainability.' : 'Limited aging like in ' + inText(countryName) + ' provides time to prepare for future demographic transitions while maximizing youth advantages.'}`
     },
     {

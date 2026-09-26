@@ -22,28 +22,36 @@ export default function DecadeBreakdown({ countryName, countrySlug, countryData 
     { key: '1990s', title: '1990s: Development Decade', icon: '🏗️', period: '1990-2000' },
     { key: '2000s', title: '2000s: Millennium Growth', icon: '🚀', period: '2000-2010' },
     { key: '2010s', title: '2010s: Modern Evolution', icon: '💻', period: '2010-2020' },
-    { key: '2020s', title: '2020s: Contemporary Trends', icon: '🌐', period: '2020-2024' }
+    { key: '2020s', title: '2020s: Contemporary Trends', icon: '🌐', period: '2020-2026' }
   ];
 
+  const AG_U15 = ['0-4', '5-9', '10-14'];
+  const AG_O65 = ['65-69', '70-74', '75-79', '80-84', '85-89', '90-94', '95-99', '100+'];
+  const shareOf = (yd: { totalPopulation: number; ageGroups: Array<{ ageRange?: string; total?: number }> }, bands: string[]) =>
+    yd.totalPopulation ? (yd.ageGroups.filter((a) => bands.includes(a.ageRange ?? '')).reduce((s, a) => s + (a.total ?? 0), 0) / yd.totalPopulation) * 100 : 0;
+
   const getPopulationData = (decade: string) => {
-    const startYear = decade === '2020s' ? '2020' : `${decade.slice(0, 3)}0`;
-    const endYear = decade === '2020s' ? '2024' : `${decade.slice(0, 3)}0`.replace('0', '10').slice(0, 4);
-    
+    // Decade first→last year from the population files: 1970→1980 … 2010→2020, 2020→2026.
+    const startYear = decade === '2020s' ? '2020' : decade.slice(0, 4);
+    const endYear = decade === '2020s' ? '2026' : String(parseInt(decade.slice(0, 4), 10) + 10);
+
     const startData = countryData.years[startYear];
-    const endData = countryData.years[endYear] || countryData.years['2024'];
-    
+    const endData = countryData.years[endYear];
+
     if (!startData || !endData) return null;
-    
+
     const populationChange = ((endData.totalPopulation - startData.totalPopulation) / startData.totalPopulation) * 100;
     const medianAgeChange = endData.medianAge - startData.medianAge;
-    
+
     return {
       startPop: (startData.totalPopulation / 1000000).toFixed(1),
       endPop: (endData.totalPopulation / 1000000).toFixed(1),
       populationChange: populationChange.toFixed(1),
       medianAgeChange: medianAgeChange.toFixed(1),
       startMedian: startData.medianAge.toFixed(1),
-      endMedian: endData.medianAge.toFixed(1)
+      endMedian: endData.medianAge.toFixed(1),
+      o65Change: (shareOf(endData, AG_O65) - shareOf(startData, AG_O65)).toFixed(1),
+      u15Change: (shareOf(endData, AG_U15) - shareOf(startData, AG_U15)).toFixed(1),
     };
   };
 
@@ -162,8 +170,8 @@ export default function DecadeBreakdown({ countryName, countrySlug, countryData 
                         <ul className="text-blue-800 text-xs sm:text-sm space-y-1 leading-relaxed">
                           <li>• Population changed from {popData.startPop} million to {popData.endPop} million</li>
                           <li>• {parseFloat(popData.populationChange) > 0 ? 'Growth' : 'Decline'} rate of {Math.abs(parseFloat(popData.populationChange))}% over the decade</li>
-                          <li>• Median age shifted from {popData.startMedian} to {popData.endMedian} years</li>
-                          <li>• {parseFloat(popData.medianAgeChange) > 0 ? 'Aging' : 'Younger'} demographic trend of {Math.abs(parseFloat(popData.medianAgeChange))} years</li>
+                          <li>• Median age shifted from {popData.startMedian} to {popData.endMedian} years ({parseFloat(popData.medianAgeChange) >= 0 ? '+' : ''}{popData.medianAgeChange}y)</li>
+                          <li>• 65+ share changed by {parseFloat(popData.o65Change) >= 0 ? '+' : ''}{popData.o65Change} points; under-15 share by {parseFloat(popData.u15Change) >= 0 ? '+' : ''}{popData.u15Change} points</li>
                         </ul>
                       </div>
                     )}

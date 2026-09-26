@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import RegionalMiniPyramid from './RegionalMiniPyramid';
 import { formatPopulationCompact } from '@/lib/number-format';
-import { sentenceStart } from '@/lib/country-names';
+import { sentenceStart, inText } from '@/lib/country-names';
 import type { YearData, DemographicMetrics } from '@/types/population';
 
 interface ComparisonCountry {
@@ -70,7 +70,7 @@ export default function RegionalComparison({
   return (
     <div className="bg-white rounded-lg shadow-sm p-8">
       <h2 className="text-3xl font-bold text-gray-900 mb-4">
-        How Does {currentCountry.name} Compare to Its Neighbors?
+        How Does {inText(currentCountry.name)} Compare to Its Neighbors?
       </h2>
       
       {/* Insights - Server Rendered */}
