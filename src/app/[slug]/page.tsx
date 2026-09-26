@@ -72,7 +72,9 @@ export async function generateMetadata({ params }: CountryPageProps) {
   try {
     const countryData = await loadCountryData(slug);
     const availableYears = getAvailableYears(countryData);
-    const latestYear = Math.max(...availableYears);
+    // Default display year stays 2025 until T4b adds the year switch, even
+    // though the data now runs to 2030 (vatican-city still falls back to 2023).
+    const latestYear = Math.max(...availableYears.filter((y) => y <= 2025));
     const yearData = countryData.years[latestYear.toString()];
     const metrics = calculateMetrics(yearData);
     const { ranks } = await getRankTable(latestYear);
@@ -103,7 +105,9 @@ export default async function CountryPage({ params }: CountryPageProps) {
     const countryData = await loadCountryData(countrySlug);
     const countries = await loadCountries();
     const availableYears = getAvailableYears(countryData);
-    const latestYear = Math.max(...availableYears);
+    // Default display year stays 2025 until T4b adds the year switch, even
+    // though the data now runs to 2030 (vatican-city still falls back to 2023).
+    const latestYear = Math.max(...availableYears.filter((y) => y <= 2025));
     const yearData = countryData.years[latestYear.toString()];
     const metrics = calculateMetrics(yearData);
 
